@@ -202,17 +202,17 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 								</configuration>
 							</execution>
 							<execution>
-								<id>add-forums-datasource</id>
+								<id>add-school-datasource</id>
 								<phase>install</phase>
 								<goals>
 									<goal>add-resource</goal>
 								</goals>
 								<configuration>
-									<address>subsystem=datasources,data-source=java:jdbc/forums_mdefault</address>
+									<address>subsystem=datasources,data-source=java:jdbc/school_mdefault</address>
 									<resources>
 										<resource>
 											<properties>
-												<jndi-name>java:/jdbc/forums_mdefault</jndi-name>
+												<jndi-name>java:/jdbc/school_mdefault</jndi-name>
 												<enabled>true</enabled>
 												<enable>true</enable>
 												<connection-url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1</connection-url>
@@ -258,7 +258,7 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 										<commands>
 											<command>/subsystem=security/security-domain="rubia-domain":remove
 											</command>
-											<command>/subsystem=datasources/data-source="java:jdbc/forums_mdefault":remove
+											<command>/subsystem=datasources/data-source="java:jdbc/school_mdefault":remove
 												{ "outcome" => "failed", "failure-description" =>
 												"JBAS014749: Operation
 												handler failed: null", "rolled-back"
