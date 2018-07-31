@@ -37,6 +37,9 @@ public class PupilTest extends RestCaller {
 		Response response = post(url + "createPupil", authorization, pupil);
 		response.close();
 		response = get(url + "findPupilByRoom/room", authorization);
-		assertNotNull(response, "Guest user name sent");
+		assertNotNull(response, "The pupil is found");
+		response = get(url + "removePupil/22", authorization);
+		response = get(url + "findPupilByRoom/room", authorization);
+		assertNotNull(response, "The pupil is not found");
 	}
 }
