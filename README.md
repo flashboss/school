@@ -1,7 +1,7 @@
 School
 =============
 Is a javaee 8 based application designed as standalone application, portlet, service layer and api.
-It is an open source project. This means you can download the School package, throw it into your deploy directory and gain fully featured Forums Application or Portlet.
+It is an open source project. This means you can download the School package, throw it into your deploy directory and gain fully featured School Application or Portlet.
 
 It covers the following features:
 
@@ -76,7 +76,7 @@ to deploy it with the shell command in WildFly:
 
     $JBOSS_HOME/bin/jboss-cli.sh
     connect localhost
-    deploy /xxxx/rubia-forums.war
+    deploy /xxxx/school.war
    
  to create new users in WildFly:
 

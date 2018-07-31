@@ -10,11 +10,10 @@ import it.vige.school.model.Pupil;
 public interface SchoolModule {
 
 	/**
-	 * Find a forum by specifying its ID
+	 * Find all pupils
 	 * 
-	 * @param id ID of the forum to retrieve
-	 * @return Forum with specified ID
-	 * @throws ModuleException Throws an exception if the forum cannot be found
+	 * @return pupils
+	 * @throws ModuleException Throws an exception if the pupil cannot be found
 	 */
 	List<Pupil> findAllPupils() throws ModuleException;
 
@@ -23,7 +22,7 @@ public interface SchoolModule {
 	 * 
 	 * @param room room of the pupils to retrieve
 	 * @return Pupils with specified room
-	 * @throws ModuleException Throws an exception if the forum cannot be found
+	 * @throws ModuleException Throws an exception if the pupil cannot be found
 	 */
 	List<Pupil> findPupilsByRoom(String room) throws ModuleException;
 
@@ -32,7 +31,7 @@ public interface SchoolModule {
 	 * 
 	 * @param school school of the pupils to retrieve
 	 * @return Pupils with specified room
-	 * @throws ModuleException Throws an exception if the forum cannot be found
+	 * @throws ModuleException Throws an exception if the pupil cannot be found
 	 */
 	List<Pupil> findPupilsBySchool(String school) throws ModuleException;
 
