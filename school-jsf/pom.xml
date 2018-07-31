@@ -176,7 +176,7 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 									<goal>add-resource</goal>
 								</goals>
 								<configuration>
-									<address>subsystem=security,security-domain=rubia-domain</address>
+									<address>subsystem=security,security-domain=school-domain</address>
 									<resources>
 										<resource>
 											<properties>
@@ -195,7 +195,7 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 								<configuration>
 									<executeCommands>
 										<commands>
-											<command>/subsystem=security/security-domain=rubia-domain/authentication=classic:add(login-modules=[{"code"=>"UsersRoles","flag"=>"required","module-options"=>[("password-stacking"=>"useFirstPass")]}])
+											<command>/subsystem=security/security-domain=school-domain/authentication=classic:add(login-modules=[{"code"=>"UsersRoles","flag"=>"required","module-options"=>[("password-stacking"=>"useFirstPass")]}])
 											</command>
 										</commands>
 									</executeCommands>
@@ -256,7 +256,7 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 								<configuration>
 									<afterDeployment>
 										<commands>
-											<command>/subsystem=security/security-domain="rubia-domain":remove
+											<command>/subsystem=security/security-domain="school-domain":remove
 											</command>
 											<command>/subsystem=datasources/data-source="java:jdbc/school_mdefault":remove
 												{ "outcome" => "failed", "failure-description" =>
