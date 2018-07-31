@@ -1,0 +1,250 @@
+<!--
+/******************************************************************************
+ * Vige, Home of Professional Open Source Copyright 2010, Vige, and           *
+ * individual contributors by the @authors tag. See the copyright.txt in the  *
+ * distribution for a full listing of individual contributors.                *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may    *
+ * not use this file except in compliance with the License. You may obtain    *
+ * a copy of the License at http://www.apache.org/licenses/LICENSE-2.0        *
+ * Unless required by applicable law or agreed to in writing, software        *
+ * distributed under the License is distributed on an "AS IS" BASIS,          *
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   *
+ * See the License for the specific language governing permissions and        *
+ * limitations under the License.                                             *
+ ******************************************************************************/
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>it.vige</groupId>
+	<artifactId>school</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>School Parent</name>
+	<description>School Web and Portlet Application Parent Aggregator</description>
+	<url>http://www.vige.it</url>
+
+	<organization>
+		<name>Vige</name>
+		<url>http://www.vige.it</url>
+	</organization>
+	<licenses>
+		<license>
+			<name>GNU Lesser General Public License Version 2.0</name>
+			<url>http://www.gnu.org/licenses/lgpl.html</url>
+		</license>
+	</licenses>
+	<scm>
+		<connection>svn:git:https://github.com/flashboss/school.git</connection>
+		<developerConnection>svn:git:https://github.com/flashboss/school.git</developerConnection>
+		<tag>0.0.1-SNAPSHOT</tag>
+		<url>svn:git:https://github.com/flashboss/school.git</url>
+	</scm>
+	<developers>
+		<developer>
+			<id>flashboss</id>
+			<name>Luca Stancapiano</name>
+			<organization>vige</organization>
+			<organizationUrl>http://www.vige.it</organizationUrl>
+			<url>http://www.vige.it</url>
+		</developer>
+	</developers>
+
+	<properties>
+		<maven.compiler.source>10</maven.compiler.source>
+		<maven.compiler.target>10</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jboss.home>${env.JBOSS_HOME}</jboss.home>
+		
+		<spec.javaee.version>8.0</spec.javaee.version>
+		<primefaces.version>6.2</primefaces.version>
+		<guava.version>25.1-jre</guava.version>
+		<commons.text.version>1.4</commons.text.version>
+		<commons.jexl.version>2.1.1</commons.jexl.version>
+		<maven.war.plugin.version>3.2.2</maven.war.plugin.version>
+		<maven.ejb.plugin.version>3.0.1</maven.ejb.plugin.version>
+		<maven.surefire.plugin.version>2.22.0</maven.surefire.plugin.version>
+		<ejb.version>3.2</ejb.version>
+		<maven.replacer.plugin.version>1.5.3</maven.replacer.plugin.version>
+		<wildfly.version>14.0.0.Beta2-SNAPSHOT</wildfly.version>
+		<wildfly.maven.plugin.version>1.2.2.Final</wildfly.maven.plugin.version>
+		<picketlink.version>2.5.5.SP12</picketlink.version>
+		<picketbox.version>5.0.3.Final</picketbox.version>
+		<picketbox.commons.version>1.0.0.final</picketbox.commons.version>
+		<lucene.version>5.5.5</lucene.version>
+		<hibernate.version>5.3.3.Final</hibernate.version>
+		<hibernate.search.version>5.10.3.Final</hibernate.search.version>
+		<rome.version>1.11.0</rome.version>
+		
+		<resteasy.version>3.6.0.Final</resteasy.version>
+		<junit.version>5.2.0</junit.version>
+		<junit.surefire.version>1.3.0-M1</junit.surefire.version>
+		<junit.platform.runner.version>1.3.0-M1</junit.platform.runner.version>
+		<org.jboss.arquillian.version>1.4.0.Final</org.jboss.arquillian.version>
+		<org.jboss.arquillian.drone.version>2.5.1</org.jboss.arquillian.drone.version>
+		<selenium.version>3.13.0</selenium.version>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>jboss-public-repository-group</id>
+			<name>JBoss Public Maven Repository Group</name>
+			<url>https://repository.jboss.org/nexus/content/groups/public-jboss/
+            </url>
+			<layout>default</layout>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>redhat-all-public-repository-group</id>
+			<name>Redhat All Public Maven Repository Group</name>
+			<url>http://maven.repository.redhat.com/techpreview/all/
+            </url>
+			<layout>default</layout>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>redhat-early-public-repository-group</id>
+			<name>Redhat Early Public Maven Repository Group</name>
+			<url>https://maven.repository.redhat.com/nexus/content/groups/product-earlyaccess/
+            </url>
+			<layout>default</layout>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>jboss-public-repository-group</id>
+			<name>JBoss Public Maven Repository Group</name>
+			<url>https://repository.jboss.org/nexus/content/groups/public-jboss/
+            </url>
+			<layout>default</layout>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>${spec.javaee.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.wildfly</groupId>
+			<artifactId>wildfly-security</artifactId>
+			<version>${wildfly.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.picketlink</groupId>
+			<artifactId>picketlink-idm-api</artifactId>
+			<version>${picketlink.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.picketlink</groupId>
+			<artifactId>picketlink-idm-impl</artifactId>
+			<version>${picketlink.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-jexl</artifactId>
+			<version>${commons.jexl.version}</version>
+		</dependency>
+	</dependencies>
+
+	<modules>
+		<module>school-ejb</module>
+		<module>school-jsf</module>
+		<module>school-rest</module>
+	</modules>
+
+	<profiles>
+		<profile>
+			<id>release-sign-artifacts</id>
+			<activation>
+				<property>
+					<name>performRelease</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-source-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>attach-sources</id>
+								<goals>
+									<goal>jar-no-fork</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>attach-javadocs</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+			<distributionManagement>
+				<snapshotRepository>
+					<id>oss.sonatype</id>
+					<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+				</snapshotRepository>
+				<repository>
+					<id>oss.sonatype</id>
+					<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+				</repository>
+			</distributionManagement>
+		</profile>
+	</profiles>
+</project>
