@@ -19,7 +19,7 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
 http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
 	version="2.2">
-	<persistence-unit name="forums">
+	<persistence-unit name="school">
 		<jta-data-source>jdbc/forums_mdefault</jta-data-source>
 		<properties>
 			<!-- Properties for Hibernate (default provider for JBoss AS) -->
@@ -30,11 +30,11 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
 			<property name="hibernate.format_sql" value="false" />
 			<property name="hibernate.show_sql" value="false" />
 			<property name="javax.persistence.sql-load-script-source"
-				value="forums.import.sql" />
+				value="school.import.sql" />
 			<property name="hibernate.search.lucene_version"
 				value="LUCENE_CURRENT" />
 			<property name="hibernate.search.default.indexBase"
-				value="rubia-forums" />
+				value="school" />
 		</properties>
 	</persistence-unit>
 </persistence>
