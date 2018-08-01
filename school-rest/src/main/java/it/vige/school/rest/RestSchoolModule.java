@@ -27,6 +27,7 @@ import javax.ws.rs.Produces;
 
 import it.vige.school.ModuleException;
 import it.vige.school.SchoolModule;
+import it.vige.school.model.Presence;
 import it.vige.school.model.Pupil;
 
 @Path("/school/")
@@ -41,6 +42,14 @@ public class RestSchoolModule implements SchoolModule {
 	@Override
 	public List<Pupil> findAllPupils() throws ModuleException {
 		return schoolModule.findAllPupils();
+	}
+
+	@GET
+	@Path("findAllPresences")
+	@Produces(APPLICATION_JSON)
+	@Override
+	public List<Presence> findAllPresences() throws ModuleException {
+		return schoolModule.findAllPresences();
 	}
 
 	@GET
@@ -59,6 +68,14 @@ public class RestSchoolModule implements SchoolModule {
 		return schoolModule.findPupilsBySchool(school);
 	}
 
+	@GET
+	@Path("findPresencesByPupil/{pupil}")
+	@Produces(APPLICATION_JSON)
+	@Override
+	public List<Presence> findPresencesByPupil(Pupil pupil) throws ModuleException {
+		return schoolModule.findPresencesByPupil(pupil);
+	}
+
 	@POST
 	@Path("createPupil")
 	@Consumes(APPLICATION_JSON)
@@ -67,11 +84,26 @@ public class RestSchoolModule implements SchoolModule {
 		return schoolModule.createPupil(name, surname, room, school);
 	}
 
+	@Override
+	@Path("createPresence")
+	@Consumes(APPLICATION_JSON)
+	@Produces(APPLICATION_JSON)
+	public Presence createPresence(Pupil pupil) throws ModuleException {
+		return schoolModule.createPresence(pupil);
+	}
+
 	@GET
 	@Path("removePupil/{id}")
 	@Override
 	public void removePupil(@PathParam("id") int id) throws ModuleException {
 		schoolModule.removePupil(id);
+	}
+
+	@GET
+	@Path("removePresence/{id}")
+	@Override
+	public void removePresence(int id) throws ModuleException {
+		schoolModule.removePresence(id);
 	}
 
 }

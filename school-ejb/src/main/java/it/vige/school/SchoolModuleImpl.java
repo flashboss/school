@@ -2,6 +2,7 @@ package it.vige.school;
 
 import static org.jboss.logging.Logger.getLogger;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -11,6 +12,7 @@ import javax.persistence.TypedQuery;
 
 import org.jboss.logging.Logger;
 
+import it.vige.school.model.Presence;
 import it.vige.school.model.Pupil;
 
 @Stateless
@@ -24,7 +26,7 @@ public class SchoolModuleImpl implements SchoolModule {
 	@Override
 	public List<Pupil> findAllPupils() throws ModuleException {
 		try {
-			TypedQuery<Pupil> query = em.createNamedQuery("findPupilsBySchool", Pupil.class);
+			TypedQuery<Pupil> query = em.createNamedQuery("findAllPupils", Pupil.class);
 			List<Pupil> pupilList = query.getResultList();
 			if (pupilList == null) {
 				throw new ModuleException("No pupil found");
@@ -33,6 +35,22 @@ public class SchoolModuleImpl implements SchoolModule {
 			return pupilList;
 		} catch (Exception e) {
 			String message = "Cannot find pupil";
+			throw new ModuleException(message, e);
+		}
+	}
+
+	@Override
+	public List<Presence> findAllPresences() throws ModuleException {
+		try {
+			TypedQuery<Presence> query = em.createNamedQuery("findAllPresences", Presence.class);
+			List<Presence> presenceList = query.getResultList();
+			if (presenceList == null) {
+				throw new ModuleException("No presence found");
+			}
+			log.debug("pupil found: " + presenceList);
+			return presenceList;
+		} catch (Exception e) {
+			String message = "Cannot find presence";
 			throw new ModuleException(message, e);
 		}
 	}
@@ -80,6 +98,23 @@ public class SchoolModuleImpl implements SchoolModule {
 	}
 
 	@Override
+	public List<Presence> findPresencesByPupil(Pupil pupil) throws ModuleException {
+		try {
+			TypedQuery<Presence> query = em.createNamedQuery("findPresencesByPupil", Presence.class);
+			query.setParameter("pupil", pupil);
+			List<Presence> presenceList = query.getResultList();
+			if (presenceList == null) {
+				throw new ModuleException("No presence found");
+			}
+			log.debug("pupil found: " + presenceList);
+			return presenceList;
+		} catch (Exception e) {
+			String message = "Cannot find presence";
+			throw new ModuleException(message, e);
+		}
+	}
+
+	@Override
 	public Pupil createPupil(String name, String surname, String room, String school) throws ModuleException {
 		Pupil pupil = new Pupil();
 		pupil.setName(name);
@@ -92,10 +127,27 @@ public class SchoolModuleImpl implements SchoolModule {
 	}
 
 	@Override
+	public Presence createPresence(Pupil pupil) throws ModuleException {
+		Presence presence = new Presence();
+		presence.setDay(new Date());
+		presence.setPupil(pupil);
+		em.persist(presence);
+		log.debug("presence created: " + presence);
+		return presence;
+	}
+
+	@Override
 	public void removePupil(int id) throws ModuleException {
 		Pupil pupil = em.find(Pupil.class, id);
 		em.remove(pupil);
 		log.debug("pupil removed: " + pupil);
+	}
+
+	@Override
+	public void removePresence(int id) throws ModuleException {
+		Presence presence = em.find(Presence.class, id);
+		em.remove(presence);
+		log.debug("presence removed: " + presence);
 	}
 
 }

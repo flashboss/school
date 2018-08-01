@@ -26,7 +26,7 @@ import org.hibernate.search.annotations.Indexed;
 @NamedQueries({ @NamedQuery(name = "findAllPresences", query = "select p from Presence"),
 		@NamedQuery(name = "findPresencesByDay", query = "select p from Presence where " + "p.day = :day "
 				+ "order by p.room asc"),
-		@NamedQuery(name = "findPresencesByPupil", query = "select p from Presence where " + "p.school = :school "
+		@NamedQuery(name = "findPresencesByPupil", query = "select p from Presence where " + "p.pupil = :pupil "
 				+ "order by p.school asc"), })
 @Entity
 @Table
@@ -40,8 +40,6 @@ public class Presence {
 
 	private Date day;
 
-	private boolean ok;
-
 	@ManyToOne(fetch = LAZY)
 	@JoinColumn(name = "pupil_id")
 	private Pupil pupil;
@@ -52,14 +50,6 @@ public class Presence {
 
 	public void setDay(Date day) {
 		this.day = day;
-	}
-
-	public boolean isOk() {
-		return ok;
-	}
-
-	public void setOk(boolean ok) {
-		this.ok = ok;
 	}
 
 	public Pupil getPupil() {
