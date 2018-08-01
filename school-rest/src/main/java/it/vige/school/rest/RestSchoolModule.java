@@ -20,6 +20,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import it.vige.school.ModuleException;
@@ -56,7 +57,7 @@ public class RestSchoolModule {
 	@GET
 	@Path("findPupilsByRoom/{room}")
 	@Produces(APPLICATION_JSON)
-	public Pupils findPupilsByRoom(String room) throws ModuleException {
+	public Pupils findPupilsByRoom(@PathParam("room") String room) throws ModuleException {
 		Pupils pupils = new Pupils();
 		pupils.setEntities(schoolModule.findPupilsByRoom(room));
 		return pupils;
@@ -65,14 +66,14 @@ public class RestSchoolModule {
 	@GET
 	@Path("findPupilsBySchool/{school}")
 	@Produces(APPLICATION_JSON)
-	public Pupils findPupilsBySchool(String school) throws ModuleException {
+	public Pupils findPupilsBySchool(@PathParam("school") String school) throws ModuleException {
 		Pupils pupils = new Pupils();
 		pupils.setEntities(schoolModule.findPupilsBySchool(school));
 		return pupils;
 	}
 
 	@POST
-	@Path("findPresencesByPupil/{pupil}")
+	@Path("findPresencesByPupil")
 	@Consumes(APPLICATION_JSON)
 	@Produces(APPLICATION_JSON)
 	public Presences findPresencesByPupil(Pupil pupil) throws ModuleException {
@@ -91,7 +92,7 @@ public class RestSchoolModule {
 
 	@GET
 	@Path("removePresence/{id}")
-	public void removePresence(int id) throws ModuleException {
+	public void removePresence(@PathParam("id") int id) throws ModuleException {
 		schoolModule.removePresence(id);
 	}
 

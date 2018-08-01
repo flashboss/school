@@ -104,7 +104,7 @@ public class SchoolModuleImpl implements SchoolModule, Converters {
 	public List<Presence> findPresencesByPupil(Pupil pupil) throws ModuleException {
 		try {
 			TypedQuery<PresenceEntity> query = em.createNamedQuery("findPresencesByPupil", PresenceEntity.class);
-			query.setParameter("pupil", pupil);
+			query.setParameter("pupil", em.find(PupilEntity.class, pupil.getId()));
 			List<PresenceEntity> presenceList = query.getResultList();
 			if (presenceList == null) {
 				throw new ModuleException("No presence found");
@@ -121,7 +121,7 @@ public class SchoolModuleImpl implements SchoolModule, Converters {
 	public Presence createPresence(Pupil pupil) throws ModuleException {
 		PresenceEntity presence = new PresenceEntity();
 		presence.setDay(new Date());
-		presence.setPupil(PupilToPupilEntity.apply(pupil));
+		presence.setPupil(em.find(PupilEntity.class, pupil.getId()));
 		em.persist(presence);
 		log.debug("presence created: " + presence);
 		return PresenceEntityToPresence.apply(presence);

@@ -13,6 +13,7 @@
  ******************************************************************************/
 package it.vige.school.resttest.schoolmodule.test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import javax.ws.rs.core.Response;
@@ -20,6 +21,7 @@ import javax.ws.rs.core.Response;
 import org.junit.jupiter.api.Test;
 
 import it.vige.school.dto.Presence;
+import it.vige.school.dto.Presences;
 import it.vige.school.dto.Pupil;
 import it.vige.school.dto.Pupils;
 import it.vige.school.resttest.RestCaller;
@@ -33,18 +35,23 @@ public class PresenceTest extends RestCaller {
 	public void setPresence() {
 		Response response = get(url + "findAllPupils", authorization);
 		Pupils result = response.readEntity(Pupils.class);
+		response.close();
 		Pupil firstPupil = result.getEntities().get(0);
 		Presence presence = new Presence();
 		presence.setPupil(firstPupil);
 		response = post(url + "createPresence", authorization, firstPupil);
-		response.close();
 		presence = response.readEntity(Presence.class);
+		assertNotNull(presence, "The presence was inserted");
+		response.close();
 		response = post(url + "findPresencesByPupil", authorization, firstPupil);
-		assertNotNull(response, "The presence is found");
+		Presences presences = response.readEntity(Presences.class);
+		assertEquals(1, presences.getEntities().size(), "The presence is found");
+		response.close();
 		response = get(url + "removePresence/" + presence.getId(), authorization);
 		response.close();
 		response = post(url + "findPresencesByPupil", authorization, firstPupil);
-		assertNotNull(response, "The presence is not found");
+		presences = response.readEntity(Presences.class);
+		assertEquals(0, presences.getEntities().size(), "The presence is not found");
 		response.close();
 	}
 }
