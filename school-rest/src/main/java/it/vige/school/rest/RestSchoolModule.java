@@ -26,8 +26,8 @@ import javax.ws.rs.Produces;
 
 import it.vige.school.ModuleException;
 import it.vige.school.SchoolModule;
-import it.vige.school.model.Presence;
-import it.vige.school.model.Pupil;
+import it.vige.school.model.PresenceEntity;
+import it.vige.school.model.PupilEntity;
 
 @Path("/school/")
 public class RestSchoolModule implements SchoolModule {
@@ -39,7 +39,7 @@ public class RestSchoolModule implements SchoolModule {
 	@Path("findAllPupils")
 	@Produces(APPLICATION_JSON)
 	@Override
-	public List<Pupil> findAllPupils() throws ModuleException {
+	public List<PupilEntity> findAllPupils() throws ModuleException {
 		return schoolModule.findAllPupils();
 	}
 
@@ -47,7 +47,7 @@ public class RestSchoolModule implements SchoolModule {
 	@Path("findAllPresences")
 	@Produces(APPLICATION_JSON)
 	@Override
-	public List<Presence> findAllPresences() throws ModuleException {
+	public List<PresenceEntity> findAllPresences() throws ModuleException {
 		return schoolModule.findAllPresences();
 	}
 
@@ -55,7 +55,7 @@ public class RestSchoolModule implements SchoolModule {
 	@Path("findPupilsByRoom/{room}")
 	@Produces(APPLICATION_JSON)
 	@Override
-	public List<Pupil> findPupilsByRoom(String room) throws ModuleException {
+	public List<PupilEntity> findPupilsByRoom(String room) throws ModuleException {
 		return schoolModule.findPupilsByRoom(room);
 	}
 
@@ -63,7 +63,7 @@ public class RestSchoolModule implements SchoolModule {
 	@Path("findPupilsBySchool/{school}")
 	@Produces(APPLICATION_JSON)
 	@Override
-	public List<Pupil> findPupilsBySchool(String school) throws ModuleException {
+	public List<PupilEntity> findPupilsBySchool(String school) throws ModuleException {
 		return schoolModule.findPupilsBySchool(school);
 	}
 
@@ -72,7 +72,7 @@ public class RestSchoolModule implements SchoolModule {
 	@Consumes(APPLICATION_JSON)
 	@Produces(APPLICATION_JSON)
 	@Override
-	public List<Presence> findPresencesByPupil(Pupil pupil) throws ModuleException {
+	public List<PresenceEntity> findPresencesByPupil(PupilEntity pupil) throws ModuleException {
 		return schoolModule.findPresencesByPupil(pupil);
 	}
 
@@ -81,7 +81,7 @@ public class RestSchoolModule implements SchoolModule {
 	@Consumes(APPLICATION_JSON)
 	@Produces(APPLICATION_JSON)
 	@Override
-	public Presence createPresence(Pupil pupil) throws ModuleException {
+	public PresenceEntity createPresence(PupilEntity pupil) throws ModuleException {
 		return schoolModule.createPresence(pupil);
 	}
 

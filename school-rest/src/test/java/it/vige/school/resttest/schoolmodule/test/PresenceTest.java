@@ -22,8 +22,8 @@ import javax.ws.rs.core.Response;
 
 import org.junit.jupiter.api.Test;
 
-import it.vige.school.model.Presence;
-import it.vige.school.model.Pupil;
+import it.vige.school.model.PresenceEntity;
+import it.vige.school.model.PupilEntity;
 import it.vige.school.resttest.RestCaller;
 
 public class PresenceTest extends RestCaller {
@@ -34,15 +34,15 @@ public class PresenceTest extends RestCaller {
 	@Test
 	public void setPresence() {
 		Response response = get(url + "findAllPupils", authorization);
-		List<Pupil> result = response.readEntity(new GenericType<List<Pupil>>() {
+		List<PupilEntity> result = response.readEntity(new GenericType<List<PupilEntity>>() {
 		});
-		Pupil firstPupil = result.get(0);
+		PupilEntity firstPupil = result.get(0);
 		response = post(url + "findPresencesByPupil", authorization, firstPupil);
-		Presence presence = new Presence();
+		PresenceEntity presence = new PresenceEntity();
 		presence.setPupil(firstPupil);
 		response = post(url + "createPresence", authorization, presence);
 		response.close();
-		presence = response.readEntity(Presence.class);
+		presence = response.readEntity(PresenceEntity.class);
 		response = post(url + "findPresencesByPupil", authorization, firstPupil);
 		assertNotNull(response, "The presence is found");
 		response = get(url + "removePresence/" + presence.getId(), authorization);

@@ -37,16 +37,16 @@ import org.hibernate.search.annotations.Indexed;
  * @author <a href="mailto:toro.gm5s@gmail.com">Alessandro Toro </a>
  */
 
-@NamedQueries({ @NamedQuery(name = "findAllPupils", query = "from Pupil"),
-		@NamedQuery(name = "findPupilsByRoom", query = "select p from Pupil as p where " + "p.room = :room "
+@NamedQueries({ @NamedQuery(name = "findAllPupils", query = "from PupilEntity"),
+		@NamedQuery(name = "findPupilsByRoom", query = "select p from PupilEntity as p where " + "p.room = :room "
 				+ "order by p.room asc"),
-		@NamedQuery(name = "findPupilsBySchool", query = "select p from Pupil as p where " + "p.school = :school "
+		@NamedQuery(name = "findPupilsBySchool", query = "select p from PupilEntity as p where " + "p.school = :school "
 				+ "order by p.school asc"), })
 @Entity
 @Table
 @Indexed(index = "indexes/pupils")
 @SequenceGenerator(name = "seq_pupil", initialValue = 1, allocationSize = 100)
-public class Pupil {
+public class PupilEntity {
 
 	@Id
 	@DocumentId
@@ -62,7 +62,7 @@ public class Pupil {
 	private String school;
 
 	@OneToMany(mappedBy = "pupil", cascade = ALL, orphanRemoval = true)
-	private List<Presence> presences;
+	private List<PresenceEntity> presences;
 
 	public Integer getId() {
 		return id;
@@ -104,11 +104,11 @@ public class Pupil {
 		this.school = school;
 	}
 
-	public List<Presence> getPresences() {
+	public List<PresenceEntity> getPresences() {
 		return presences;
 	}
 
-	public void setPresences(List<Presence> presences) {
+	public void setPresences(List<PresenceEntity> presences) {
 		this.presences = presences;
 	}
 }

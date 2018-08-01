@@ -24,16 +24,16 @@ import org.hibernate.search.annotations.Indexed;
  * @author <a href="mailto:toro.gm5s@gmail.com">Alessandro Toro </a>
  */
 
-@NamedQueries({ @NamedQuery(name = "findAllPresences", query = "from Presence"),
-		@NamedQuery(name = "findPresencesByDay", query = "select p from Presence as p where " + "p.day = :day "
+@NamedQueries({ @NamedQuery(name = "findAllPresences", query = "from PresenceEntity"),
+		@NamedQuery(name = "findPresencesByDay", query = "select p from PresenceEntity as p where " + "p.day = :day "
 				+ "order by p.day asc"),
-		@NamedQuery(name = "findPresencesByPupil", query = "select p from Presence as p where " + "p.pupil = :pupil "
+		@NamedQuery(name = "findPresencesByPupil", query = "select p from PresenceEntity as p where " + "p.pupil = :pupil "
 				+ "order by p.pupil asc"), })
 @Entity
 @Table
 @Indexed(index = "indexes/presences")
 @SequenceGenerator(name = "seq_presence", initialValue = 1, allocationSize = 100)
-public class Presence {
+public class PresenceEntity {
 
 	@Id
 	@DocumentId
@@ -44,7 +44,7 @@ public class Presence {
 
 	@ManyToOne
 	@JoinColumn(name = "pupil_id")
-	private Pupil pupil;
+	private PupilEntity pupil;
 
 	public Integer getId() {
 		return id;
@@ -62,11 +62,11 @@ public class Presence {
 		this.day = day;
 	}
 
-	public Pupil getPupil() {
+	public PupilEntity getPupil() {
 		return pupil;
 	}
 
-	public void setPupil(Pupil pupil) {
+	public void setPupil(PupilEntity pupil) {
 		this.pupil = pupil;
 	}
 
