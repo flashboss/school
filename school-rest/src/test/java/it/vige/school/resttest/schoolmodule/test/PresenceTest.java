@@ -36,13 +36,15 @@ public class PresenceTest extends RestCaller {
 		Pupil firstPupil = result.getEntities().get(0);
 		Presence presence = new Presence();
 		presence.setPupil(firstPupil);
-		response = post(url + "createPresence", authorization, presence);
+		response = post(url + "createPresence", authorization, firstPupil);
 		response.close();
 		presence = response.readEntity(Presence.class);
 		response = post(url + "findPresencesByPupil", authorization, firstPupil);
 		assertNotNull(response, "The presence is found");
 		response = get(url + "removePresence/" + presence.getId(), authorization);
+		response.close();
 		response = post(url + "findPresencesByPupil", authorization, firstPupil);
 		assertNotNull(response, "The presence is not found");
+		response.close();
 	}
 }
