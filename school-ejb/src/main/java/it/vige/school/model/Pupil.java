@@ -14,6 +14,7 @@
 package it.vige.school.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -63,6 +64,8 @@ public class Pupil implements Serializable {
 	@Column
 	private String school;
 
+	private List<Presence> presences;
+
 	public Integer getId() {
 		return id;
 	}
@@ -101,5 +104,13 @@ public class Pupil implements Serializable {
 
 	public void setSchool(String school) {
 		this.school = school;
+	}
+
+	public List<Presence> getPresences() {
+		return presences;
+	}
+
+	public void setPresences(List<Presence> presences) {
+		this.presences = presences;
 	}
 }
