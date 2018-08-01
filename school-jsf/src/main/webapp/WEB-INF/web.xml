@@ -79,16 +79,4 @@
 		<role-name>guest</role-name>
 	</security-role>
 
-	<!-- RSS Servlet -->
-	<servlet>
-		<servlet-name>FeedsServlet</servlet-name>
-		<servlet-class>it.vige.rubia.feeds.FeedsServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>FeedsServlet</servlet-name>
-		<url-pattern>/feeds/*</url-pattern>
-	</servlet-mapping>
-
 </web-app>
