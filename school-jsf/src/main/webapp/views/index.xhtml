@@ -16,8 +16,17 @@
 
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
-	bravoooooooo!
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:prime="http://primefaces.org/ui">
+	<prime:dataTable id="pupils"
+		rendered="#{forum.forum.topicCount>0 and forum.normalThreadsPresent}"
+		value="#{forum.normalThreadsDataModel}" var="topicrow"
+		widgetVar="component" tableStyleClass="forumtablestyle"
+		tableStyle="border-collapse: inherit;table-layout: inherit;"
+		rows="#{prefController.topicsPerForum}" headerClass="forumspecialized"
+		paginator="#{forum.lastPageNumber > 1}"
+		paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+		currentPageReportTemplate="#{resourcebundle.Page} {currentPage} #{resourcebundle.Of} {totalPages}">
+	</prime:dataTable>
 </ui:composition>

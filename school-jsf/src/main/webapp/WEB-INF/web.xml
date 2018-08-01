@@ -48,12 +48,10 @@
 			<url-pattern>/*</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
-			<role-name>users</role-name>
-			<role-name>admins</role-name>
-			<role-name>guests</role-name>
-			<role-name>user</role-name>
 			<role-name>admin</role-name>
-			<role-name>guest</role-name>
+			<role-name>maiorana</role-name>
+			<role-name>cornelionepote</role-name>
+			<role-name>piccinini</role-name>
 		</auth-constraint>
 	</security-constraint>
 	<login-config>
@@ -61,22 +59,16 @@
 		<realm-name>School</realm-name>
 	</login-config>
 	<security-role>
-		<role-name>users</role-name>
-	</security-role>
-	<security-role>
-		<role-name>admins</role-name>
-	</security-role>
-	<security-role>
-		<role-name>guests</role-name>
-	</security-role>
-	<security-role>
-		<role-name>user</role-name>
-	</security-role>
-	<security-role>
 		<role-name>admin</role-name>
 	</security-role>
 	<security-role>
-		<role-name>guest</role-name>
+		<role-name>maiorana</role-name>
+	</security-role>
+	<security-role>
+		<role-name>cornelionepote</role-name>
+	</security-role>
+	<security-role>
+		<role-name>piccinini</role-name>
 	</security-role>
 
 </web-app>
