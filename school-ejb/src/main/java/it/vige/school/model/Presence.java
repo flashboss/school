@@ -23,10 +23,10 @@ import org.hibernate.search.annotations.Indexed;
  * @author <a href="mailto:toro.gm5s@gmail.com">Alessandro Toro </a>
  */
 
-@NamedQueries({ @NamedQuery(name = "findAllPresences", query = "select p from Presence"),
-		@NamedQuery(name = "findPresencesByDay", query = "select p from Presence where " + "p.day = :day "
+@NamedQueries({ @NamedQuery(name = "findAllPresences", query = "from Presence"),
+		@NamedQuery(name = "findPresencesByDay", query = "select p from Presence as p where " + "p.day = :day "
 				+ "order by p.day asc"),
-		@NamedQuery(name = "findPresencesByPupil", query = "select p from Presence where " + "p.pupil = :pupil "
+		@NamedQuery(name = "findPresencesByPupil", query = "select p from Presence as p where " + "p.pupil = :pupil "
 				+ "order by p.pupil asc"), })
 @Entity
 @Table
