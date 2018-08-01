@@ -25,9 +25,9 @@ import org.hibernate.search.annotations.Indexed;
 
 @NamedQueries({ @NamedQuery(name = "findAllPresences", query = "select p from Presence"),
 		@NamedQuery(name = "findPresencesByDay", query = "select p from Presence where " + "p.day = :day "
-				+ "order by p.room asc"),
+				+ "order by p.day asc"),
 		@NamedQuery(name = "findPresencesByPupil", query = "select p from Presence where " + "p.pupil = :pupil "
-				+ "order by p.school asc"), })
+				+ "order by p.pupil asc"), })
 @Entity
 @Table
 @Indexed(index = "indexes/presences")
