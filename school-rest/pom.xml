@@ -128,6 +128,9 @@
 								<configuration>
 									<version>${wildfly.version}</version>
 									<addUser>admin:admin</addUser>
+									<java-opts>
+										<java-opt>-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=8000</java-opt>
+									</java-opts>
 								</configuration>
 							</execution>
 							<execution>

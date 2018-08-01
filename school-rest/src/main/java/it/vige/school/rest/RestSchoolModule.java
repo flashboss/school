@@ -20,9 +20,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import it.vige.school.ModuleException;
@@ -76,27 +74,12 @@ public class RestSchoolModule implements SchoolModule {
 		return schoolModule.findPresencesByPupil(pupil);
 	}
 
-	@POST
-	@Path("createPupil")
-	@Consumes(APPLICATION_JSON)
-	@Produces(APPLICATION_JSON)
-	public Pupil createPupil(String name, String surname, String room, String school) throws ModuleException {
-		return schoolModule.createPupil(name, surname, room, school);
-	}
-
 	@Override
 	@Path("createPresence")
 	@Consumes(APPLICATION_JSON)
 	@Produces(APPLICATION_JSON)
 	public Presence createPresence(Pupil pupil) throws ModuleException {
 		return schoolModule.createPresence(pupil);
-	}
-
-	@GET
-	@Path("removePupil/{id}")
-	@Override
-	public void removePupil(@PathParam("id") int id) throws ModuleException {
-		schoolModule.removePupil(id);
 	}
 
 	@GET

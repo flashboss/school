@@ -28,18 +28,10 @@ public class PupilTest extends RestCaller {
 	private final static String authorization = "Basic cm9vdDpndG4=";
 
 	@Test
-	public void setPupil() {
-		Pupil pupil = new Pupil();
-		pupil.setRoom("room");
-		pupil.setSchool("school");
-		pupil.setName("Pino");
-		pupil.setSurname("Pirelli");
-		Response response = post(url + "createPupil", authorization, pupil);
-		response.close();
-		response = get(url + "findPupilByRoom/room", authorization);
-		assertNotNull(response, "The pupil is found");
-		response = get(url + "removePupil/22", authorization);
-		response = get(url + "findPupilByRoom/room", authorization);
-		assertNotNull(response, "The pupil is not found");
+	public void getPupil() {
+		Response response = get(url + "findPupilBySchool/Maiorana", authorization);
+		assertNotNull(response, "The pupils are found");
+		response = get(url + "findPupilByRoom/1A", authorization);
+		assertNotNull(response, "The pupils are found");
 	}
 }

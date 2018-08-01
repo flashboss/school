@@ -115,18 +115,6 @@ public class SchoolModuleImpl implements SchoolModule {
 	}
 
 	@Override
-	public Pupil createPupil(String name, String surname, String room, String school) throws ModuleException {
-		Pupil pupil = new Pupil();
-		pupil.setName(name);
-		pupil.setRoom(room);
-		pupil.setSchool(school);
-		pupil.setSurname(surname);
-		em.persist(pupil);
-		log.debug("pupil created: " + pupil);
-		return pupil;
-	}
-
-	@Override
 	public Presence createPresence(Pupil pupil) throws ModuleException {
 		Presence presence = new Presence();
 		presence.setDay(new Date());
@@ -134,13 +122,6 @@ public class SchoolModuleImpl implements SchoolModule {
 		em.persist(presence);
 		log.debug("presence created: " + presence);
 		return presence;
-	}
-
-	@Override
-	public void removePupil(int id) throws ModuleException {
-		Pupil pupil = em.find(Pupil.class, id);
-		em.remove(pupil);
-		log.debug("pupil removed: " + pupil);
 	}
 
 	@Override
