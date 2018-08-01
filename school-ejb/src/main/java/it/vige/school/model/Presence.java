@@ -1,6 +1,6 @@
 package it.vige.school.model;
 
-import static javax.persistence.FetchType.LAZY;
+import static javax.persistence.GenerationType.SEQUENCE;
 
 import java.util.Date;
 
@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.search.annotations.DocumentId;
@@ -31,18 +32,27 @@ import org.hibernate.search.annotations.Indexed;
 @Entity
 @Table
 @Indexed(index = "indexes/presences")
+@SequenceGenerator(name = "seq_presence", initialValue = 1, allocationSize = 100)
 public class Presence {
 
 	@Id
 	@DocumentId
-	@GeneratedValue
+	@GeneratedValue(strategy = SEQUENCE, generator = "seq_presence")
 	private Integer id;
 
 	private Date day;
 
-	@ManyToOne(fetch = LAZY)
+	@ManyToOne
 	@JoinColumn(name = "pupil_id")
 	private Pupil pupil;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public Date getDay() {
 		return day;

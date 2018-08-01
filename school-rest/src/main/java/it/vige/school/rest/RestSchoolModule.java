@@ -20,6 +20,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
@@ -66,18 +67,20 @@ public class RestSchoolModule implements SchoolModule {
 		return schoolModule.findPupilsBySchool(school);
 	}
 
-	@GET
+	@POST
 	@Path("findPresencesByPupil/{pupil}")
+	@Consumes(APPLICATION_JSON)
 	@Produces(APPLICATION_JSON)
 	@Override
 	public List<Presence> findPresencesByPupil(Pupil pupil) throws ModuleException {
 		return schoolModule.findPresencesByPupil(pupil);
 	}
 
-	@Override
+	@POST
 	@Path("createPresence")
 	@Consumes(APPLICATION_JSON)
 	@Produces(APPLICATION_JSON)
+	@Override
 	public Presence createPresence(Pupil pupil) throws ModuleException {
 		return schoolModule.createPresence(pupil);
 	}

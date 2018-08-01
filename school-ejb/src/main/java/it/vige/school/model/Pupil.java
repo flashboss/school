@@ -14,8 +14,8 @@
 package it.vige.school.model;
 
 import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.GenerationType.SEQUENCE;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -24,6 +24,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.search.annotations.DocumentId;
@@ -44,13 +45,12 @@ import org.hibernate.search.annotations.Indexed;
 @Entity
 @Table
 @Indexed(index = "indexes/pupils")
-public class Pupil implements Serializable {
-
-	private static final long serialVersionUID = 8164247625235206934L;
+@SequenceGenerator(name = "seq_pupil", initialValue = 1, allocationSize = 100)
+public class Pupil {
 
 	@Id
 	@DocumentId
-	@GeneratedValue
+	@GeneratedValue(strategy = SEQUENCE, generator = "seq_pupil")
 	private Integer id;
 
 	private String name;
