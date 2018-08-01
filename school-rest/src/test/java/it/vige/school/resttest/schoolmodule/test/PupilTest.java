@@ -19,7 +19,6 @@ import javax.ws.rs.core.Response;
 
 import org.junit.jupiter.api.Test;
 
-import it.vige.school.model.Pupil;
 import it.vige.school.resttest.RestCaller;
 
 public class PupilTest extends RestCaller {
