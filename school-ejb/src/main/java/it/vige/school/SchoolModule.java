@@ -4,8 +4,8 @@ import java.util.List;
 
 import javax.ejb.Local;
 
-import it.vige.school.model.PresenceEntity;
-import it.vige.school.model.PupilEntity;
+import it.vige.school.dto.Presence;
+import it.vige.school.dto.Pupil;
 
 @Local
 public interface SchoolModule {
@@ -16,7 +16,7 @@ public interface SchoolModule {
 	 * @return pupils
 	 * @throws ModuleException Throws an exception if the pupil cannot be found
 	 */
-	List<PupilEntity> findAllPupils() throws ModuleException;
+	List<Pupil> findAllPupils() throws ModuleException;
 
 	/**
 	 * Find all presences
@@ -24,7 +24,7 @@ public interface SchoolModule {
 	 * @return presences
 	 * @throws ModuleException Throws an exception if the presence cannot be found
 	 */
-	List<PresenceEntity> findAllPresences() throws ModuleException;
+	List<Presence> findAllPresences() throws ModuleException;
 
 	/**
 	 * Find a pupils by specifying its room
@@ -33,7 +33,7 @@ public interface SchoolModule {
 	 * @return Pupils with specified room
 	 * @throws ModuleException Throws an exception if the pupil cannot be found
 	 */
-	List<PupilEntity> findPupilsByRoom(String room) throws ModuleException;
+	List<Pupil> findPupilsByRoom(String room) throws ModuleException;
 
 	/**
 	 * Find a pupils by specifying its school
@@ -42,7 +42,7 @@ public interface SchoolModule {
 	 * @return Pupils with specified room
 	 * @throws ModuleException Throws an exception if the pupil cannot be found
 	 */
-	List<PupilEntity> findPupilsBySchool(String school) throws ModuleException;
+	List<Pupil> findPupilsBySchool(String school) throws ModuleException;
 
 	/**
 	 * Find a presences by specifying its pupil
@@ -51,7 +51,7 @@ public interface SchoolModule {
 	 * @return Presences with specified room
 	 * @throws ModuleException Throws an exception if the pupil cannot be found
 	 */
-	List<PresenceEntity> findPresencesByPupil(PupilEntity pupil) throws ModuleException;
+	List<Presence> findPresencesByPupil(Pupil pupil) throws ModuleException;
 
 	/**
 	 * DOCUMENT_ME
@@ -60,7 +60,7 @@ public interface SchoolModule {
 	 * @return DOCUMENT_ME
 	 * @throws ModuleException DOCUMENT_ME
 	 */
-	PresenceEntity createPresence(PupilEntity pupil) throws ModuleException;
+	Presence createPresence(Pupil pupil) throws ModuleException;
 
 	/**
 	 * removePresence methods to remove a Presence.

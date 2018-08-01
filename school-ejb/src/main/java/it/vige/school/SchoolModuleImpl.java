@@ -1,5 +1,6 @@
 package it.vige.school;
 
+import static java.util.stream.Collectors.toList;
 import static org.jboss.logging.Logger.getLogger;
 
 import java.util.Date;
@@ -12,11 +13,13 @@ import javax.persistence.TypedQuery;
 
 import org.jboss.logging.Logger;
 
+import it.vige.school.dto.Presence;
+import it.vige.school.dto.Pupil;
 import it.vige.school.model.PresenceEntity;
 import it.vige.school.model.PupilEntity;
 
 @Stateless
-public class SchoolModuleImpl implements SchoolModule {
+public class SchoolModuleImpl implements SchoolModule, Converters {
 
 	private static Logger log = getLogger(SchoolModuleImpl.class);
 
@@ -24,7 +27,7 @@ public class SchoolModuleImpl implements SchoolModule {
 	private EntityManager em;
 
 	@Override
-	public List<PupilEntity> findAllPupils() throws ModuleException {
+	public List<Pupil> findAllPupils() throws ModuleException {
 		try {
 			TypedQuery<PupilEntity> query = em.createNamedQuery("findAllPupils", PupilEntity.class);
 			List<PupilEntity> pupilList = query.getResultList();
@@ -32,7 +35,7 @@ public class SchoolModuleImpl implements SchoolModule {
 				throw new ModuleException("No pupil found");
 			}
 			log.debug("pupil found: " + pupilList);
-			return pupilList;
+			return pupilList.stream().map(t -> PupilEntityToPupil.apply(t)).collect(toList());
 		} catch (Exception e) {
 			String message = "Cannot find pupil";
 			throw new ModuleException(message, e);
@@ -40,7 +43,7 @@ public class SchoolModuleImpl implements SchoolModule {
 	}
 
 	@Override
-	public List<PresenceEntity> findAllPresences() throws ModuleException {
+	public List<Presence> findAllPresences() throws ModuleException {
 		try {
 			TypedQuery<PresenceEntity> query = em.createNamedQuery("findAllPresences", PresenceEntity.class);
 			List<PresenceEntity> presenceList = query.getResultList();
@@ -48,7 +51,7 @@ public class SchoolModuleImpl implements SchoolModule {
 				throw new ModuleException("No presence found");
 			}
 			log.debug("pupil found: " + presenceList);
-			return presenceList;
+			return presenceList.stream().map(t -> PresenceEntityToPresence.apply(t)).collect(toList());
 		} catch (Exception e) {
 			String message = "Cannot find presence";
 			throw new ModuleException(message, e);
@@ -56,7 +59,7 @@ public class SchoolModuleImpl implements SchoolModule {
 	}
 
 	@Override
-	public List<PupilEntity> findPupilsByRoom(String room) throws ModuleException {
+	public List<Pupil> findPupilsByRoom(String room) throws ModuleException {
 		if (room != null) {
 			try {
 				TypedQuery<PupilEntity> query = em.createNamedQuery("findPupilsByRoom", PupilEntity.class);
@@ -66,7 +69,7 @@ public class SchoolModuleImpl implements SchoolModule {
 					throw new ModuleException("No pupil found for " + room);
 				}
 				log.debug("pupil found: " + pupilList);
-				return pupilList;
+				return pupilList.stream().map(t -> PupilEntityToPupil.apply(t)).collect(toList());
 			} catch (Exception e) {
 				String message = "Cannot find pupil by room " + room;
 				throw new ModuleException(message, e);
@@ -77,7 +80,7 @@ public class SchoolModuleImpl implements SchoolModule {
 	}
 
 	@Override
-	public List<PupilEntity> findPupilsBySchool(String school) throws ModuleException {
+	public List<Pupil> findPupilsBySchool(String school) throws ModuleException {
 		if (school != null) {
 			try {
 				TypedQuery<PupilEntity> query = em.createNamedQuery("findPupilsBySchool", PupilEntity.class);
@@ -87,7 +90,7 @@ public class SchoolModuleImpl implements SchoolModule {
 					throw new ModuleException("No pupil found for " + school);
 				}
 				log.debug("pupil found: " + pupilList);
-				return pupilList;
+				return pupilList.stream().map(t -> PupilEntityToPupil.apply(t)).collect(toList());
 			} catch (Exception e) {
 				String message = "Cannot find pupil by room " + school;
 				throw new ModuleException(message, e);
@@ -98,7 +101,7 @@ public class SchoolModuleImpl implements SchoolModule {
 	}
 
 	@Override
-	public List<PresenceEntity> findPresencesByPupil(PupilEntity pupil) throws ModuleException {
+	public List<Presence> findPresencesByPupil(Pupil pupil) throws ModuleException {
 		try {
 			TypedQuery<PresenceEntity> query = em.createNamedQuery("findPresencesByPupil", PresenceEntity.class);
 			query.setParameter("pupil", pupil);
@@ -107,7 +110,7 @@ public class SchoolModuleImpl implements SchoolModule {
 				throw new ModuleException("No presence found");
 			}
 			log.debug("pupil found: " + presenceList);
-			return presenceList;
+			return presenceList.stream().map(t -> PresenceEntityToPresence.apply(t)).collect(toList());
 		} catch (Exception e) {
 			String message = "Cannot find presence";
 			throw new ModuleException(message, e);
@@ -115,13 +118,13 @@ public class SchoolModuleImpl implements SchoolModule {
 	}
 
 	@Override
-	public PresenceEntity createPresence(PupilEntity pupil) throws ModuleException {
+	public Presence createPresence(Pupil pupil) throws ModuleException {
 		PresenceEntity presence = new PresenceEntity();
 		presence.setDay(new Date());
-		presence.setPupil(pupil);
+		presence.setPupil(PupilToPupilEntity.apply(pupil));
 		em.persist(presence);
 		log.debug("presence created: " + presence);
-		return presence;
+		return PresenceEntityToPresence.apply(presence);
 	}
 
 	@Override

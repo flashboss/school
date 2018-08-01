@@ -1,4 +1,4 @@
-package it.vige.school.bean;
+package it.vige.school.dto;
 
 import java.io.Serializable;
 import java.util.Date;

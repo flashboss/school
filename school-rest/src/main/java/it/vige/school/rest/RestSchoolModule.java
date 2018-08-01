@@ -15,8 +15,6 @@ package it.vige.school.rest;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
-import java.util.List;
-
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -26,11 +24,13 @@ import javax.ws.rs.Produces;
 
 import it.vige.school.ModuleException;
 import it.vige.school.SchoolModule;
-import it.vige.school.model.PresenceEntity;
-import it.vige.school.model.PupilEntity;
+import it.vige.school.dto.Presence;
+import it.vige.school.dto.Presences;
+import it.vige.school.dto.Pupil;
+import it.vige.school.dto.Pupils;
 
 @Path("/school/")
-public class RestSchoolModule implements SchoolModule {
+public class RestSchoolModule {
 
 	@EJB
 	private SchoolModule schoolModule;
@@ -38,56 +38,59 @@ public class RestSchoolModule implements SchoolModule {
 	@GET
 	@Path("findAllPupils")
 	@Produces(APPLICATION_JSON)
-	@Override
-	public List<PupilEntity> findAllPupils() throws ModuleException {
-		return schoolModule.findAllPupils();
+	public Pupils findAllPupils() throws ModuleException {
+		Pupils pupils = new Pupils();
+		pupils.setEntities(schoolModule.findAllPupils());
+		return pupils;
 	}
 
 	@GET
 	@Path("findAllPresences")
 	@Produces(APPLICATION_JSON)
-	@Override
-	public List<PresenceEntity> findAllPresences() throws ModuleException {
-		return schoolModule.findAllPresences();
+	public Presences findAllPresences() throws ModuleException {
+		Presences presences = new Presences();
+		presences.setEntities(schoolModule.findAllPresences());
+		return presences;
 	}
 
 	@GET
 	@Path("findPupilsByRoom/{room}")
 	@Produces(APPLICATION_JSON)
-	@Override
-	public List<PupilEntity> findPupilsByRoom(String room) throws ModuleException {
-		return schoolModule.findPupilsByRoom(room);
+	public Pupils findPupilsByRoom(String room) throws ModuleException {
+		Pupils pupils = new Pupils();
+		pupils.setEntities(schoolModule.findPupilsByRoom(room));
+		return pupils;
 	}
 
 	@GET
 	@Path("findPupilsBySchool/{school}")
 	@Produces(APPLICATION_JSON)
-	@Override
-	public List<PupilEntity> findPupilsBySchool(String school) throws ModuleException {
-		return schoolModule.findPupilsBySchool(school);
+	public Pupils findPupilsBySchool(String school) throws ModuleException {
+		Pupils pupils = new Pupils();
+		pupils.setEntities(schoolModule.findPupilsBySchool(school));
+		return pupils;
 	}
 
 	@POST
 	@Path("findPresencesByPupil/{pupil}")
 	@Consumes(APPLICATION_JSON)
 	@Produces(APPLICATION_JSON)
-	@Override
-	public List<PresenceEntity> findPresencesByPupil(PupilEntity pupil) throws ModuleException {
-		return schoolModule.findPresencesByPupil(pupil);
+	public Presences findPresencesByPupil(Pupil pupil) throws ModuleException {
+		Presences presences = new Presences();
+		presences.setEntities(schoolModule.findPresencesByPupil(pupil));
+		return presences;
 	}
 
 	@POST
 	@Path("createPresence")
 	@Consumes(APPLICATION_JSON)
 	@Produces(APPLICATION_JSON)
-	@Override
-	public PresenceEntity createPresence(PupilEntity pupil) throws ModuleException {
+	public Presence createPresence(Pupil pupil) throws ModuleException {
 		return schoolModule.createPresence(pupil);
 	}
 
 	@GET
 	@Path("removePresence/{id}")
-	@Override
 	public void removePresence(int id) throws ModuleException {
 		schoolModule.removePresence(id);
 	}

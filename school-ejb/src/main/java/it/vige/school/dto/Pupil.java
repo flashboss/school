@@ -1,7 +1,6 @@
-package it.vige.school.bean;
+package it.vige.school.dto;
 
 import java.io.Serializable;
-import java.util.List;
 
 public class Pupil implements Serializable {
 
@@ -16,8 +15,6 @@ public class Pupil implements Serializable {
 	private String room;
 
 	private String school;
-
-	private List<Presence> presences;
 
 	public Integer getId() {
 		return id;
@@ -57,13 +54,5 @@ public class Pupil implements Serializable {
 
 	public void setSchool(String school) {
 		this.school = school;
-	}
-
-	public List<Presence> getPresences() {
-		return presences;
-	}
-
-	public void setPresences(List<Presence> presences) {
-		this.presences = presences;
 	}
 }

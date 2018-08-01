@@ -1,21 +1,19 @@
-package it.vige.school.bean;
+package it.vige.school.dto;
 
 import java.io.Serializable;
 import java.util.List;
-
-import it.vige.school.model.PupilEntity;
 
 public class Pupils implements Serializable {
 
 	private static final long serialVersionUID = -8598234417259228545L;
 
-	private List<PupilEntity> entities;
+	private List<Pupil> entities;
 
-	public List<PupilEntity> getEntities() {
+	public List<Pupil> getEntities() {
 		return entities;
 	}
 
-	public void setEntities(List<PupilEntity> entities) {
+	public void setEntities(List<Pupil> entities) {
 		this.entities = entities;
 	}
 

@@ -16,14 +16,11 @@ package it.vige.school.resttest.schoolmodule.test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import java.util.List;
-
-import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
 
 import org.junit.jupiter.api.Test;
 
-import it.vige.school.model.PupilEntity;
+import it.vige.school.dto.Pupils;
 import it.vige.school.resttest.RestCaller;
 
 public class PupilTest extends RestCaller {
@@ -34,14 +31,12 @@ public class PupilTest extends RestCaller {
 	@Test
 	public void getPupil() {
 		Response response = get(url + "findPupilBySchool/Maiorana", authorization);
-		List<PupilEntity> result = response.readEntity(new GenericType<List<PupilEntity>>() {
-		});
+		Pupils result = response.readEntity(Pupils.class);
 		assertNotNull(result, "The pupils from Maiorana are found");
-		assertEquals(19, result.size(), "The pupils from Maiorana are ok");
+		assertEquals(19, result.getEntities().size(), "The pupils from Maiorana are ok");
 		response = get(url + "findPupilByRoom/1A", authorization);
-		result = response.readEntity(new GenericType<List<PupilEntity>>() {
-		});
+		result = response.readEntity(Pupils.class);
 		assertNotNull(response, "The pupils from 1A are found");
-		assertEquals(18, result.size(), "The pupils from 1A are ok");
+		assertEquals(18, result.getEntities().size(), "The pupils from 1A are ok");
 	}
 }
