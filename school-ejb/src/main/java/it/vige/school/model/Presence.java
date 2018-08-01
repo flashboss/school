@@ -1,11 +1,14 @@
 package it.vige.school.model;
 
+import static javax.persistence.FetchType.LAZY;
+
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -29,18 +32,19 @@ import org.hibernate.search.annotations.Indexed;
 @Table
 @Indexed(index = "indexes/presences")
 public class Presence {
-	
+
 	@Id
-	@Column
 	@DocumentId
 	@GeneratedValue
 	private Integer id;
-	
-	@Column
+
 	private Date day;
 
-	@Column
 	private boolean ok;
+
+	@ManyToOne(fetch = LAZY)
+	@JoinColumn(name = "pupil_id")
+	private Pupil pupil;
 
 	public Date getDay() {
 		return day;
@@ -56,6 +60,14 @@ public class Presence {
 
 	public void setOk(boolean ok) {
 		this.ok = ok;
+	}
+
+	public Pupil getPupil() {
+		return pupil;
+	}
+
+	public void setPupil(Pupil pupil) {
+		this.pupil = pupil;
 	}
 
 }

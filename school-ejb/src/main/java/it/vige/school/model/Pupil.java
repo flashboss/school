@@ -13,15 +13,17 @@
  ******************************************************************************/
 package it.vige.school.model;
 
+import static javax.persistence.CascadeType.ALL;
+
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.search.annotations.DocumentId;
@@ -47,23 +49,19 @@ public class Pupil implements Serializable {
 	private static final long serialVersionUID = 8164247625235206934L;
 
 	@Id
-	@Column
 	@DocumentId
 	@GeneratedValue
 	private Integer id;
 
-	@Column
 	private String name;
 
-	@Column
 	private String surname;
 
-	@Column
 	private String room;
 
-	@Column
 	private String school;
 
+	@OneToMany(mappedBy = "pupil", cascade = ALL, orphanRemoval = true)
 	private List<Presence> presences;
 
 	public Integer getId() {
