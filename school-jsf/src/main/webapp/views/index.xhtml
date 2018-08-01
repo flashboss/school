@@ -19,14 +19,10 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:prime="http://primefaces.org/ui">
-	<prime:dataTable id="pupils"
-		rendered="#{forum.forum.topicCount>0 and forum.normalThreadsPresent}"
-		value="#{forum.normalThreadsDataModel}" var="topicrow"
-		widgetVar="component" tableStyleClass="forumtablestyle"
-		tableStyle="border-collapse: inherit;table-layout: inherit;"
-		rows="#{prefController.topicsPerForum}" headerClass="forumspecialized"
-		paginator="#{forum.lastPageNumber > 1}"
-		paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-		currentPageReportTemplate="#{resourcebundle.Page} {currentPage} #{resourcebundle.Of} {totalPages}">
+	<prime:dataTable id="pupils" value="#{pupilsController.pupils}"
+		var="pupil">
+		<prime:column>${pupil.name}</prime:column>
+		<prime:column>${pupil.surname}</prime:column>
+		<prime:column>${pupil.room}</prime:column>
 	</prime:dataTable>
 </ui:composition>
