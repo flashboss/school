@@ -111,24 +111,6 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.picketlink</groupId>
-			<artifactId>picketlink-common</artifactId>
-			<version>${picketlink.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.picketbox</groupId>
-			<artifactId>picketbox-commons</artifactId>
-			<version>${picketbox.commons.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.picketbox</groupId>
-			<artifactId>picketbox</artifactId>
-			<version>${picketbox.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.apache.lucene</groupId>
 			<artifactId>lucene-core</artifactId>
 			<version>${lucene.version}</version>

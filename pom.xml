@@ -66,13 +66,10 @@
 		<maven.replacer.plugin.version>1.5.3</maven.replacer.plugin.version>
 		<wildfly.version>13.0.0.Final</wildfly.version>
 		<wildfly.maven.plugin.version>1.2.2.Final</wildfly.maven.plugin.version>
-		<picketlink.version>2.5.5.SP11</picketlink.version>
-		<picketbox.version>5.0.2.Final</picketbox.version>
-		<picketbox.commons.version>1.0.0.final</picketbox.commons.version>
 		<lucene.version>5.5.5</lucene.version>
+		<jboss.logging.version>3.3.2.Final</jboss.logging.version>
 		<hibernate.version>5.3.1.Final</hibernate.version>
 		<hibernate.search.version>5.10.1.Final</hibernate.search.version>
-		<rome.version>1.11.0</rome.version>
 		
 		<resteasy.version>3.5.1.Final</resteasy.version>
 		<junit.version>5.2.0</junit.version>
@@ -153,20 +150,10 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.wildfly</groupId>
-			<artifactId>wildfly-security</artifactId>
-			<version>${wildfly.version}</version>
+			<groupId>org.jboss.logging</groupId>
+			<artifactId>jboss-logging</artifactId>
+			<version>${jboss.logging.version}</version>
 			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.picketlink</groupId>
-			<artifactId>picketlink-idm-api</artifactId>
-			<version>${picketlink.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.picketlink</groupId>
-			<artifactId>picketlink-idm-impl</artifactId>
-			<version>${picketlink.version}</version>
 		</dependency>
 	</dependencies>
 

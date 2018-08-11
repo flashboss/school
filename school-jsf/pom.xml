@@ -50,36 +50,10 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
-			<build>
-				<plugins>
-					<plugin>
-						<artifactId>maven-surefire-plugin</artifactId>
-						<version>${maven.surefire.plugin.version}</version>
-						<configuration>
-							<excludes>
-								<exclude>**/selenium/**</exclude>
-							</excludes>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
 		</profile>
 
 		<profile>
 			<id>production</id>
-			<build>
-				<plugins>
-					<plugin>
-						<artifactId>maven-surefire-plugin</artifactId>
-						<version>${maven.surefire.plugin.version}</version>
-						<configuration>
-							<excludes>
-								<exclude>**/selenium/**</exclude>
-							</excludes>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
 		</profile>
 
 		<profile>
@@ -246,23 +220,6 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
 			<version>${primefaces.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.rometools</groupId>
-			<artifactId>rome-fetcher</artifactId>
-			<version>${rome.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>commons-codec</groupId>
-					<artifactId>commons-codec</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
 		</dependency>
 	</dependencies>
 </project>
