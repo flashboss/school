@@ -36,6 +36,8 @@ public class PupilsController implements Serializable {
 
 	private List<Pupil> pupils;
 
+	private List<Pupil> filteredPupils;
+
 	@PostConstruct
 	public void init() {
 		boolean isAdmin = isAdmin();
@@ -55,6 +57,14 @@ public class PupilsController implements Serializable {
 
 	public List<Pupil> getPupils() {
 		return pupils;
+	}
+
+	public List<Pupil> getFilteredPupils() {
+		return filteredPupils;
+	}
+
+	public void setFilteredPupils(List<Pupil> filteredPupils) {
+		this.filteredPupils = filteredPupils;
 	}
 
 	public void addPresence(Pupil pupil) throws ModuleException {

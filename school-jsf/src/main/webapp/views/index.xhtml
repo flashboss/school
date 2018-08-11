@@ -29,17 +29,32 @@
 	#{resourcebundle.Subproject}
 	<h:form>
 			<p:dataTable id="pupils" value="#{pupilsController.pupils}"
-				var="pupil">
-				<p:column headerText="#{resourcebundle.Name}" sortBy="#{pupil.name}">${pupil.name}</p:column>
+				filteredValue="#{pupilsController.filteredPupils}" var="pupil"
+				widgetVar="pupilsTable">
+				<p:growl id="msgs" />
+				<f:facet name="header">
+					<p:outputPanel>
+						<h:outputText value="#{resourcebundle.Search_all}:" />
+						<p:inputText id="globalFilter"
+							onkeyup="PF('pupilsTable').filter()"
+							placeholder="#{resourcebundle.Enter_keyword}" />
+					</p:outputPanel>
+				</f:facet>
+				<p:column headerText="#{resourcebundle.Name}" sortBy="#{pupil.name}"
+					filterBy="#{pupil.name}" filterMatchMode="contains">${pupil.name}</p:column>
 				<p:column headerText="#{resourcebundle.Surname}"
-					sortBy="#{pupil.surname}">${pupil.surname}</p:column>
+					sortBy="#{pupil.surname}" filterBy="#{pupil.surname}"
+					filterMatchMode="contains">${pupil.surname}</p:column>
 				<p:column headerText="#{resourcebundle.Room}" sortBy="#{pupil.room}">${pupil.room}</p:column>
 				<p:column rendered="#{pupilsController.admin}"
 					headerText="#{resourcebundle.School}" sortBy="#{pupil.school}">${pupil.school}</p:column>
 				<p:column headerText="#{resourcebundle.Present}"
 					sortBy="#{pupil.present}">
-					<p:selectBooleanButton value="#{pupil.present}">
-						<p:ajax listener="#{pupilsController.addPresence(pupil)}" />
+					<p:selectBooleanButton value="#{pupil.present}"
+						onLabel="#{resourcebundle.Yes}" offLabel="#{resourcebundle.No}"
+						onIcon="ui-icon-check" offIcon="ui-icon-close">
+						<p:ajax update="msgs"
+							listener="#{pupilsController.addPresence(pupil)}" />
 					</p:selectBooleanButton>
 				</p:column>
 			</p:dataTable>
