@@ -2,6 +2,7 @@ package it.vige.school.web;
 
 import static it.vige.school.Constants.ADMIN_ROLE;
 import static it.vige.school.Constants.ERROR;
+import static it.vige.school.web.Utils.getCurrentRole;
 import static javax.faces.application.FacesMessage.SEVERITY_INFO;
 import static javax.faces.context.FacesContext.getCurrentInstance;
 
@@ -14,6 +15,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.security.enterprise.SecurityContext;
+import javax.security.jacc.PolicyContextException;
 
 import it.vige.school.ModuleException;
 import it.vige.school.SchoolModule;
@@ -31,14 +34,16 @@ public class PupilsController implements Serializable {
 	private List<Pupil> pupils;
 
 	@PostConstruct
-	public void init() {
+	public void init() throws PolicyContextException {
 		FacesContext facesContext = getCurrentInstance();
 		boolean isAdmin = facesContext.getExternalContext().isUserInRole(ADMIN_ROLE);
 		try {
 			if (isAdmin)
 				pupils = schoolModule.findAllPupils();
-			else
-				pupils = schoolModule.findPupilsBySchool(null);
+			else {
+				String role = getCurrentRole();
+				pupils = schoolModule.findPupilsBySchool(role);
+			}
 		} catch (ModuleException ex) {
 			FacesMessage message = new FacesMessage(SEVERITY_INFO, // severity
 					ERROR, ERROR);

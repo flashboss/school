@@ -15,6 +15,7 @@ public interface Converters {
 			Pupil pupil = new Pupil();
 			pupil.setId(t.getId());
 			pupil.setName(t.getName());
+			pupil.setSurname(t.getSurname());
 			pupil.setRoom(t.getRoom());
 			pupil.setSchool(t.getSchool());
 
@@ -28,6 +29,7 @@ public interface Converters {
 			PupilEntity pupilEntity = new PupilEntity();
 			pupilEntity.setId(t.getId());
 			pupilEntity.setName(t.getName());
+			pupilEntity.setSurname(t.getSurname());
 			pupilEntity.setRoom(t.getRoom());
 			pupilEntity.setSchool(t.getSchool());
 
