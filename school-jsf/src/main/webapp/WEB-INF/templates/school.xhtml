@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title><ui:insert name="title">Default Title</ui:insert></title>
+	<link href="#{request.contextPath}/css/school.css" rel="stylesheet"
+		type="text/css" />
+</h:head>
+
+<h:body>
+	<div id="container">
+		<div id="header">
+
+			<f:loadBundle basename="ResourceJSF" var="resourcebundle" />
+			<ui:insert name="header">
+				<h1>#{resourcebundle.Welcome}</h1>
+			</ui:insert>
+		</div>
+
+		<div id="content">
+			<ui:insert name="content">
+                Content
+            </ui:insert>
+		</div>
+
+		<div id="footer">
+			<ui:insert name="footer">
+                #{resourcebundle.Powered}
+            </ui:insert>
+		</div>
+	</div>
+</h:body>
+</html>

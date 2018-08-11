@@ -15,8 +15,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.security.enterprise.SecurityContext;
-import javax.security.jacc.PolicyContextException;
 
 import it.vige.school.ModuleException;
 import it.vige.school.SchoolModule;
@@ -34,7 +32,7 @@ public class PupilsController implements Serializable {
 	private List<Pupil> pupils;
 
 	@PostConstruct
-	public void init() throws PolicyContextException {
+	public void init() {
 		FacesContext facesContext = getCurrentInstance();
 		boolean isAdmin = facesContext.getExternalContext().isUserInRole(ADMIN_ROLE);
 		try {
