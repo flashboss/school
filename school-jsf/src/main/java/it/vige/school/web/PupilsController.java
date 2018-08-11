@@ -52,4 +52,8 @@ public class PupilsController implements Serializable {
 	public List<Pupil> getPupils() {
 		return pupils;
 	}
+	
+	public void addPresent(boolean value) {
+		
+	}
 }

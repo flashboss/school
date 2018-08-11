@@ -15,6 +15,8 @@ public class Pupil implements Serializable {
 	private String room;
 
 	private String school;
+	
+	private boolean present;
 
 	public Integer getId() {
 		return id;
@@ -54,5 +56,13 @@ public class Pupil implements Serializable {
 
 	public void setSchool(String school) {
 		this.school = school;
+	}
+
+	public boolean isPresent() {
+		return present;
+	}
+
+	public void setPresent(boolean present) {
+		this.present = present;
 	}
 }

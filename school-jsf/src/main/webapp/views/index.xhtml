@@ -20,19 +20,26 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:prime="http://primefaces.org/ui"
+	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/templates/school.xhtml">
 	<ui:define name="title">
 		#{resourcebundle.Project}
 	</ui:define>
 	<ui:define name="content">
 	#{resourcebundle.Subproject}
-	<prime:dataTable id="pupils" value="#{pupilsController.pupils}"
-			var="pupil">
-			<prime:column headerText="#{resourcebundle.Name}">${pupil.name}</prime:column>
-			<prime:column headerText="#{resourcebundle.Surname}">${pupil.surname}</prime:column>
-			<prime:column headerText="#{resourcebundle.Room}">${pupil.room}</prime:column>
-		</prime:dataTable>
+	<h:form>
+			<p:dataTable id="pupils" value="#{pupilsController.pupils}"
+				var="pupil">
+				<p:column headerText="#{resourcebundle.Name}" sortBy="#{pupil.name}">${pupil.name}</p:column>
+				<p:column headerText="#{resourcebundle.Surname}"
+					sortBy="#{pupil.surname}">${pupil.surname}</p:column>
+				<p:column headerText="#{resourcebundle.Room}" sortBy="#{pupil.room}">${pupil.room}</p:column>
+				<p:column headerText="#{resourcebundle.Present}"
+					sortBy="#{pupil.present}">
+					<p:selectBooleanButton value="#{pupil.present}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
 	</ui:define>
 </ui:composition>
 </html>
