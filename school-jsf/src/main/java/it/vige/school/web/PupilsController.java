@@ -5,6 +5,7 @@ import static it.vige.school.Constants.ERROR;
 import static it.vige.school.web.Utils.getCurrentRole;
 import static javax.faces.application.FacesMessage.SEVERITY_INFO;
 import static javax.faces.context.FacesContext.getCurrentInstance;
+import static org.jboss.logging.Logger.getLogger;
 
 import java.io.Serializable;
 import java.util.List;
@@ -12,9 +13,13 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.component.html.HtmlSelectBooleanCheckbox;
 import javax.faces.context.FacesContext;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import org.jboss.logging.Logger;
 
 import it.vige.school.ModuleException;
 import it.vige.school.SchoolModule;
@@ -25,6 +30,8 @@ import it.vige.school.dto.Pupil;
 public class PupilsController implements Serializable {
 
 	private static final long serialVersionUID = -2260430424205388307L;
+
+	private static Logger log = getLogger(PupilsController.class);
 
 	@Inject
 	private SchoolModule schoolModule;
@@ -52,8 +59,16 @@ public class PupilsController implements Serializable {
 	public List<Pupil> getPupils() {
 		return pupils;
 	}
-	
-	public void addPresent(boolean value) {
-		
+
+	public void addPresence(AjaxBehaviorEvent event) throws ModuleException {
+		HtmlSelectBooleanCheckbox checkbox = (HtmlSelectBooleanCheckbox) event.getSource();
+		Pupil pupil = (Pupil) checkbox.getValue();
+		boolean isSelected = checkbox.isSelected();
+		pupil.setPresent(isSelected);
+		if (isSelected)
+			schoolModule.createPresence(pupil);
+		else
+			schoolModule.removePresence(pupil.getId());
+		log.info("pupil: " + pupil);
 	}
 }
