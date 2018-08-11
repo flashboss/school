@@ -3,6 +3,7 @@ package it.vige.school.web;
 import static it.vige.school.Constants.ADMIN_ROLE;
 import static it.vige.school.Constants.ERROR;
 import static it.vige.school.Utils.getCurrentRole;
+import static java.util.stream.Collectors.toList;
 import static javax.faces.application.FacesMessage.SEVERITY_INFO;
 import static javax.faces.context.FacesContext.getCurrentInstance;
 import static org.jboss.logging.Logger.getLogger;
@@ -36,18 +37,24 @@ public class PupilsController implements Serializable {
 
 	private List<Pupil> pupils;
 
+	private List<String> rooms;
+
+	private List<String> schools;
+
 	private List<Pupil> filteredPupils;
 
 	@PostConstruct
 	public void init() {
 		boolean isAdmin = isAdmin();
 		try {
-			if (isAdmin)
+			if (isAdmin) {
 				pupils = schoolModule.findAllPupils();
-			else {
+			} else {
 				String role = getCurrentRole();
 				pupils = schoolModule.findPupilsBySchool(role);
 			}
+			rooms = pupils.stream().map(x -> x.getRoom()).distinct().sorted().collect(toList());
+			schools = pupils.stream().map(x -> x.getSchool()).distinct().sorted().collect(toList());
 		} catch (ModuleException ex) {
 			FacesMessage message = new FacesMessage(SEVERITY_INFO, // severity
 					ERROR, ERROR);
@@ -57,6 +64,14 @@ public class PupilsController implements Serializable {
 
 	public List<Pupil> getPupils() {
 		return pupils;
+	}
+
+	public List<String> getRooms() {
+		return rooms;
+	}
+
+	public List<String> getSchools() {
+		return schools;
 	}
 
 	public List<Pupil> getFilteredPupils() {
