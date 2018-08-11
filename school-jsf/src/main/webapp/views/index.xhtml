@@ -30,7 +30,7 @@
 	<h:form>
 			<p:dataTable id="pupils" value="#{pupilsController.pupils}"
 				filteredValue="#{pupilsController.filteredPupils}" var="pupil"
-				widgetVar="pupilsTable">
+				widgetVar="pupilsTable" emptyMessage="#{resourcebundle.No_records_found}">
 				<p:growl id="msgs" />
 				<f:facet name="header">
 					<p:outputPanel>
