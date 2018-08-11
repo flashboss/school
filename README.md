@@ -96,11 +96,6 @@ What roles do you want this user to belong to? (Please enter a comma separated l
 The username 'admin' is easy to guess
 Are you sure you want to add user 'admin' yes/no? yes
 
-
-to test the web application with selenium:
-
-    deploy the application in a server
-    mvn -Pselenium test
     
 to test the rest api with junit:
 
@@ -113,4 +108,4 @@ To debug the application using Eclipse you can put this parameter:
 
 It will start on the 5005 port.
 
-The tests are done using Firefox 61.0.1 (64-bit) on WildFly 14.0.0.Beta2-SNAPSHOT
+The tests are done using Firefox 61.0.2 (64-bit) on WildFly 14.0.0.Beta2-SNAPSHOT

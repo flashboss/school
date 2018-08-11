@@ -83,47 +83,6 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 		</profile>
 
 		<profile>
-			<id>selenium</id>
-			<build>
-				<plugins>
-					<plugin>
-						<artifactId>maven-surefire-plugin</artifactId>
-						<configuration>
-							<argLine>-Duser.language=${user.language}
-								-Duser.region=${user.country}</argLine>
-						</configuration>
-					</plugin>
-					<plugin>
-						<groupId>com.google.code.maven-replacer-plugin</groupId>
-						<artifactId>replacer</artifactId>
-						<version>${maven.replacer.plugin.version}</version>
-						<executions>
-							<execution>
-								<phase>test-compile</phase>
-								<goals>
-									<goal>replace</goal>
-								</goals>
-							</execution>
-						</executions>
-						<configuration>
-							<filesToInclude>${project.build.directory}/test-classes/arquillian.xml,${project.build.directory}/test-classes/prefs.js</filesToInclude>
-							<replacements>
-								<replacement>
-									<token>@OUTPUT_DIR@</token>
-									<value>${project.build.directory}</value>
-								</replacement>
-								<replacement>
-									<token>@TEMP_DIR@</token>
-									<value>${java.io.tmpdir}</value>
-								</replacement>
-							</replacements>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-
-		<profile>
 			<id>runtime-jsf</id>
 			<build>
 				<plugins>
@@ -277,25 +236,6 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 		</profile>
 	</profiles>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.jboss.arquillian.selenium</groupId>
-				<artifactId>selenium-bom</artifactId>
-				<version>${selenium.version}</version>
-				<scope>import</scope>
-				<type>pom</type>
-			</dependency>
-			<dependency>
-				<groupId>org.jboss.arquillian.extension</groupId>
-				<artifactId>arquillian-drone-bom</artifactId>
-				<version>${org.jboss.arquillian.drone.version}</version>
-				<scope>import</scope>
-				<type>pom</type>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
 	<dependencies>
 		<dependency>
 			<groupId>it.vige</groupId>
@@ -308,16 +248,6 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 			<version>${primefaces.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-text</artifactId>
-			<version>${commons.text.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>${guava.version}</version>
-		</dependency>
-		<dependency>
 			<groupId>com.rometools</groupId>
 			<artifactId>rome-fetcher</artifactId>
 			<version>${rome.version}</version>
@@ -327,30 +257,6 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 					<artifactId>commons-codec</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.platform</groupId>
-			<artifactId>junit-platform-runner</artifactId>
-			<version>${junit.platform.runner.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.arquillian.junit</groupId>
-			<artifactId>arquillian-junit-container</artifactId>
-			<version>${org.jboss.arquillian.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.arquillian.extension</groupId>
-			<artifactId>arquillian-drone-webdriver-depchain</artifactId>
-			<type>pom</type>
-			<scope>test</scope>
 		</dependency>
 	</dependencies>
 </project>
