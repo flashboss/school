@@ -95,12 +95,6 @@ Re-enter Password : password2
 What roles do you want this user to belong to? (Please enter a comma separated list, or leave blank for none) : users
 The username 'admin' is easy to guess
 Are you sure you want to add user 'admin' yes/no? yes
-
-
-to test the web application with selenium:
-
-    deploy the application in a server
-    mvn -Pselenium test
     
 to test the rest api with junit:
 
