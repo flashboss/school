@@ -71,7 +71,6 @@
 		<jboss.logging.version>3.3.2.Final</jboss.logging.version>
 		<hibernate.version>5.3.3.Final</hibernate.version>
 		<hibernate.search.version>5.10.3.Final</hibernate.search.version>
-		<rome.version>1.11.0</rome.version>
 
 		<resteasy.version>3.6.0.Final</resteasy.version>
 		<junit.version>5.2.0</junit.version>
