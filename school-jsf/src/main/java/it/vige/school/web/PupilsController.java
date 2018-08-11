@@ -9,27 +9,24 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
-import javax.ejb.SessionContext;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import it.vige.school.ModuleException;
 import it.vige.school.SchoolModule;
 import it.vige.school.dto.Pupil;
 
 @SessionScoped
+@Named
 public class PupilsController implements Serializable {
 
 	private static final long serialVersionUID = -2260430424205388307L;
 
 	@Inject
 	private SchoolModule schoolModule;
-
-	@Resource
-	private SessionContext context;
 
 	private List<Pupil> pupils;
 
@@ -41,7 +38,7 @@ public class PupilsController implements Serializable {
 			if (isAdmin)
 				pupils = schoolModule.findAllPupils();
 			else
-				pupils = schoolModule.findPupilsBySchool(context.getCallerPrincipal().getName());
+				pupils = schoolModule.findPupilsBySchool(null);
 		} catch (ModuleException ex) {
 			FacesMessage message = new FacesMessage(SEVERITY_INFO, // severity
 					ERROR, ERROR);
