@@ -96,7 +96,6 @@ What roles do you want this user to belong to? (Please enter a comma separated l
 The username 'admin' is easy to guess
 Are you sure you want to add user 'admin' yes/no? yes
 
-    
 to test the rest api with junit:
 
     deploy the rest api in a server
