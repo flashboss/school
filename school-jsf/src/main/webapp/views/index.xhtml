@@ -29,9 +29,9 @@
 	#{resourcebundle.Subproject}
 	<prime:dataTable id="pupils" value="#{pupilsController.pupils}"
 			var="pupil">
-			<prime:column header="#{resourcebundle.Name}">${pupil.name}</prime:column>
-			<prime:column header="#{resourcebundle.Surname}">${pupil.surname}</prime:column>
-			<prime:column header="#{resourcebundle.Room}">${pupil.room}</prime:column>
+			<prime:column headerText="#{resourcebundle.Name}">${pupil.name}</prime:column>
+			<prime:column headerText="#{resourcebundle.Surname}">${pupil.surname}</prime:column>
+			<prime:column headerText="#{resourcebundle.Room}">${pupil.room}</prime:column>
 		</prime:dataTable>
 	</ui:define>
 </ui:composition>
