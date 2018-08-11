@@ -86,7 +86,7 @@ public class PupilsController implements Serializable {
 		if (pupil.isPresent())
 			schoolModule.createPresence(pupil);
 		else
-			schoolModule.removePresence(pupil.getId());
+			schoolModule.removePresence(pupil);
 		log.debug("pupil: " + pupil);
 	}
 

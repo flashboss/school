@@ -31,7 +31,7 @@ import org.hibernate.search.annotations.Indexed;
 				+ "order by p.day asc"),
 		@NamedQuery(name = "findPresencesByPupil", query = "select p from PresenceEntity as p where "
 				+ "p.pupil = :pupil " + "order by p.pupil asc"),
-		@NamedQuery(name = "findPresencesByPupilAndDate", query = "select p from PresenceEntity as p where "
+		@NamedQuery(name = "findPresenceByPupilAndDay", query = "select p from PresenceEntity as p where "
 				+ "p.pupil = :pupil and p.day = :day " + "order by p.pupil asc") })
 @Entity
 @Table

@@ -4,6 +4,7 @@ import static it.vige.school.Utils.getCurrentDay;
 import static java.util.stream.Collectors.toList;
 import static org.jboss.logging.Logger.getLogger;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -15,6 +16,7 @@ import org.jboss.logging.Logger;
 
 import it.vige.school.dto.Presence;
 import it.vige.school.dto.Pupil;
+import it.vige.school.dto.PupilByDay;
 import it.vige.school.model.PresenceEntity;
 import it.vige.school.model.PupilEntity;
 
@@ -107,6 +109,29 @@ public class SchoolModuleImpl implements SchoolModule, Converters {
 	}
 
 	@Override
+	public List<Presence> findPresencesByDay(Calendar day) throws ModuleException {
+		if (day != null) {
+			try {
+				TypedQuery<PresenceEntity> query = em.createNamedQuery("findPresencesByDay", PresenceEntity.class);
+				query.setParameter("day", day);
+				List<PresenceEntity> presenceList = query.getResultList();
+				log.debug("pupil found: " + presenceList);
+				return presenceList.stream().map(t -> PresenceEntityToPresence.apply(t)).collect(toList());
+			} catch (Exception e) {
+				String message = "Cannot find presence";
+				throw new ModuleException(message, e);
+			}
+		} else {
+			throw new IllegalArgumentException("room cannot be null");
+		}
+	}
+
+	@Override
+	public Presence findPresenceByPupilAndDay(PupilByDay pupilByDay) throws ModuleException {
+		return PresenceEntityToPresence.apply(findPresenceEntityByPupilAndDay(pupilByDay, pupilByDay.getDay()));
+	}
+
+	@Override
 	public Presence createPresence(Pupil pupil) throws ModuleException {
 		if (pupil != null) {
 			PresenceEntity presence = new PresenceEntity();
@@ -121,13 +146,17 @@ public class SchoolModuleImpl implements SchoolModule, Converters {
 	}
 
 	@Override
-	public void removePresence(int id) throws ModuleException {
-		TypedQuery<PresenceEntity> query = em.createNamedQuery("findPresencesByPupilAndDate", PresenceEntity.class);
-		query.setParameter("pupil", em.find(PupilEntity.class, id));
-		query.setParameter("day", getCurrentDay());
-		PresenceEntity presence = query.getSingleResult();
+	public void removePresence(Pupil pupil) throws ModuleException {
+		PresenceEntity presence = findPresenceEntityByPupilAndDay(pupil, getCurrentDay());
 		em.remove(presence);
 		log.debug("presence removed: " + presence);
+	}
+
+	private PresenceEntity findPresenceEntityByPupilAndDay(Pupil pupil, Calendar day) throws ModuleException {
+		TypedQuery<PresenceEntity> query = em.createNamedQuery("findPresenceByPupilAndDay", PresenceEntity.class);
+		query.setParameter("pupil", em.find(PupilEntity.class, pupil.getId()));
+		query.setParameter("day", getCurrentDay());
+		return query.getSingleResult();
 	}
 
 }

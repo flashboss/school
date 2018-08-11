@@ -13,8 +13,11 @@
  ******************************************************************************/
 package it.vige.school.resttest.schoolmodule.test;
 
+import static it.vige.school.Utils.getCurrentDay;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.util.Calendar;
 
 import javax.ws.rs.core.Response;
 
@@ -23,6 +26,7 @@ import org.junit.jupiter.api.Test;
 import it.vige.school.dto.Presence;
 import it.vige.school.dto.Presences;
 import it.vige.school.dto.Pupil;
+import it.vige.school.dto.PupilByDay;
 import it.vige.school.dto.Pupils;
 import it.vige.school.resttest.RestCaller;
 
@@ -47,7 +51,18 @@ public class PresenceTest extends RestCaller {
 		Presences presences = response.readEntity(Presences.class);
 		assertEquals(1, presences.getEntities().size(), "The presence is found");
 		response.close();
-		response = get(url + "removePresence/" + presence.getId(), authorization);
+		Calendar currentDay = getCurrentDay();
+		response = post(url + "findPresencesByDay", authorization, currentDay);
+		presences = response.readEntity(Presences.class);
+		assertEquals(1, presences.getEntities().size(), "The presence is found");
+		response.close();
+		PupilByDay pupilByDay = new PupilByDay(firstPupil);
+		pupilByDay.setDay(currentDay);
+		response = post(url + "findPresenceByPupilAndDay", authorization, firstPupil);
+		presence = response.readEntity(Presence.class);
+		assertNotNull(presence, "The presence was inserted");
+		response.close();
+		response = post(url + "removePresence", authorization, presence);
 		response.close();
 		response = post(url + "findPresencesByPupil", authorization, firstPupil);
 		presences = response.readEntity(Presences.class);

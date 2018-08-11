@@ -15,6 +15,8 @@ package it.vige.school.rest;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
+import java.util.Calendar;
+
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -28,6 +30,7 @@ import it.vige.school.SchoolModule;
 import it.vige.school.dto.Presence;
 import it.vige.school.dto.Presences;
 import it.vige.school.dto.Pupil;
+import it.vige.school.dto.PupilByDay;
 import it.vige.school.dto.Pupils;
 
 @Path("/school/")
@@ -83,6 +86,24 @@ public class RestSchoolModule {
 	}
 
 	@POST
+	@Path("findPresencesByDay")
+	@Consumes(APPLICATION_JSON)
+	@Produces(APPLICATION_JSON)
+	public Presences findPresencesByDay(Calendar day) throws ModuleException {
+		Presences presences = new Presences();
+		presences.setEntities(schoolModule.findPresencesByDay(day));
+		return presences;
+	}
+
+	@POST
+	@Path("findPresenceByPupilAndDay")
+	@Consumes(APPLICATION_JSON)
+	@Produces(APPLICATION_JSON)
+	public Presence findPresenceByPupilAndDay(PupilByDay pupilByDay) throws ModuleException {
+		return schoolModule.findPresenceByPupilAndDay(pupilByDay);
+	}
+
+	@POST
 	@Path("createPresence")
 	@Consumes(APPLICATION_JSON)
 	@Produces(APPLICATION_JSON)
@@ -90,10 +111,11 @@ public class RestSchoolModule {
 		return schoolModule.createPresence(pupil);
 	}
 
-	@GET
-	@Path("removePresence/{id}")
-	public void removePresence(@PathParam("id") int id) throws ModuleException {
-		schoolModule.removePresence(id);
+	@POST
+	@Path("removePresence")
+	@Consumes(APPLICATION_JSON)
+	public void removePresence(Pupil pupil) throws ModuleException {
+		schoolModule.removePresence(pupil);
 	}
 
 }
