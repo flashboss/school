@@ -26,7 +26,7 @@
 		#{resourcebundle.Project}
 	</ui:define>
 	<ui:define name="content">
-	#{resourcebundle.Subproject}
+	#{resourcebundle.Subproject} #{pupilsController.today}
 	<h:form>
 			<p:dataTable id="pupils" value="#{pupilsController.pupils}"
 				filteredValue="#{pupilsController.filteredPupils}" var="pupil"
