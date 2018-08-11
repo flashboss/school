@@ -38,8 +38,7 @@ public class PupilsController implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		FacesContext facesContext = getCurrentInstance();
-		boolean isAdmin = facesContext.getExternalContext().isUserInRole(ADMIN_ROLE);
+		boolean isAdmin = isAdmin();
 		try {
 			if (isAdmin)
 				pupils = schoolModule.findAllPupils();
@@ -64,5 +63,10 @@ public class PupilsController implements Serializable {
 		else
 			schoolModule.removePresence(pupil.getId());
 		log.debug("pupil: " + pupil);
+	}
+
+	public boolean isAdmin() {
+		FacesContext facesContext = getCurrentInstance();
+		return facesContext.getExternalContext().isUserInRole(ADMIN_ROLE);
 	}
 }

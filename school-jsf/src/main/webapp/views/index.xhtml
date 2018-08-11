@@ -34,6 +34,8 @@
 				<p:column headerText="#{resourcebundle.Surname}"
 					sortBy="#{pupil.surname}">${pupil.surname}</p:column>
 				<p:column headerText="#{resourcebundle.Room}" sortBy="#{pupil.room}">${pupil.room}</p:column>
+				<p:column rendered="#{pupilsController.admin}"
+					headerText="#{resourcebundle.School}" sortBy="#{pupil.school}">${pupil.school}</p:column>
 				<p:column headerText="#{resourcebundle.Present}"
 					sortBy="#{pupil.present}">
 					<p:selectBooleanButton value="#{pupil.present}">
