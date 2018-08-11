@@ -26,11 +26,12 @@
 		#{resourcebundle.Project}
 	</ui:define>
 	<ui:define name="content">
-	#{resourcebundle.Subproject} #{pupilsController.today}
+	#{resourcebundle.Subproject} #{pupilsController.today} #{pupilsController.schools}
 	<h:form>
 			<p:dataTable id="pupils" value="#{pupilsController.pupils}"
 				filteredValue="#{pupilsController.filteredPupils}" var="pupil"
-				widgetVar="pupilsTable" emptyMessage="#{resourcebundle.No_records_found}">
+				widgetVar="pupilsTable"
+				emptyMessage="#{resourcebundle.No_records_found}">
 				<p:growl id="msgs" />
 				<f:facet name="header">
 					<p:outputPanel>
