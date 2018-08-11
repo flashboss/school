@@ -3,7 +3,7 @@ School
 Is a javaee 8 based application designed as standalone application, portlet, service layer and api.
 It is an open source project. This means you can download the School package, throw it into your deploy directory and gain fully featured School Application or Portlet.
 
-It covers the following features:
+It covers all the following features:
 
 - Insert pupils.
 - Browsing pupils.
