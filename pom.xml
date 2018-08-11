@@ -13,13 +13,18 @@
  * limitations under the License.                                             *
  ******************************************************************************/
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>it.vige</groupId>
 	<artifactId>school</artifactId>
+<<<<<<< HEAD
 	<version>1.0.1-SNAPSHOT</version>
+=======
+	<version>1.1.0-SNAPSHOT</version>
+>>>>>>> e7cc8cdb96b8eef4f3ffaa3deca6869e3d6e18fe
 	<packaging>pom</packaging>
 	<name>School Parent</name>
 	<description>School Web and Portlet Application Parent Aggregator</description>
@@ -38,7 +43,11 @@
 	<scm>
 		<connection>svn:git:https://github.com/flashboss/school.git</connection>
 		<developerConnection>svn:git:https://github.com/flashboss/school.git</developerConnection>
+<<<<<<< HEAD
 		<tag>1.0.X-SNAPSHOT</tag>
+=======
+		<tag>1.1.X-SNAPSHOT</tag>
+>>>>>>> e7cc8cdb96b8eef4f3ffaa3deca6869e3d6e18fe
 		<url>svn:git:https://github.com/flashboss/school.git</url>
 	</scm>
 	<developers>
@@ -56,7 +65,7 @@
 		<maven.compiler.target>10</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jboss.home>${env.JBOSS_HOME}</jboss.home>
-		
+
 		<spec.javaee.version>8.0</spec.javaee.version>
 		<primefaces.version>6.2</primefaces.version>
 		<maven.war.plugin.version>3.2.2</maven.war.plugin.version>
@@ -67,11 +76,19 @@
 		<wildfly.version>13.0.0.Final</wildfly.version>
 		<wildfly.maven.plugin.version>1.2.2.Final</wildfly.maven.plugin.version>
 		<lucene.version>5.5.5</lucene.version>
+<<<<<<< HEAD
 		<jboss.logging.version>3.3.1.Final</jboss.logging.version>
 		<hibernate.version>5.3.1.Final</hibernate.version>
 		<hibernate.search.version>5.10.1.Final</hibernate.search.version>
 		
 		<resteasy.version>3.5.1.Final</resteasy.version>
+=======
+		<jboss.logging.version>3.3.2.Final</jboss.logging.version>
+		<hibernate.version>5.3.3.Final</hibernate.version>
+		<hibernate.search.version>5.10.3.Final</hibernate.search.version>
+
+		<resteasy.version>3.6.0.Final</resteasy.version>
+>>>>>>> e7cc8cdb96b8eef4f3ffaa3deca6869e3d6e18fe
 		<junit.version>5.2.0</junit.version>
 		<junit.surefire.version>1.3.0-M1</junit.surefire.version>
 	</properties>

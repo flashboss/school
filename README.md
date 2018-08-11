@@ -3,7 +3,7 @@ School
 Is a javaee 8 based application designed as standalone application, portlet, service layer and api.
 It is an open source project. This means you can download the School package, throw it into your deploy directory and gain fully featured School Application or Portlet.
 
-It covers the following features:
+It covers all the following features:
 
 - Insert pupils.
 - Browsing pupils.
@@ -95,7 +95,11 @@ Re-enter Password : password2
 What roles do you want this user to belong to? (Please enter a comma separated list, or leave blank for none) : users
 The username 'admin' is easy to guess
 Are you sure you want to add user 'admin' yes/no? yes
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> e7cc8cdb96b8eef4f3ffaa3deca6869e3d6e18fe
 to test the rest api with junit:
 
     deploy the rest api in a server
@@ -107,4 +111,8 @@ To debug the application using Eclipse you can put this parameter:
 
 It will start on the 5005 port.
 
+<<<<<<< HEAD
 The tests are done using Firefox 61.0.1 (64-bit) on WildFly 13.0.0.Final
+=======
+The tests are done using Firefox 61.0.2 (64-bit) on WildFly 14.0.0.Beta2-SNAPSHOT
+>>>>>>> e7cc8cdb96b8eef4f3ffaa3deca6869e3d6e18fe
