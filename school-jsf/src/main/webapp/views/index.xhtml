@@ -37,7 +37,7 @@
 				<p:column headerText="#{resourcebundle.Present}"
 					sortBy="#{pupil.present}">
 					<p:selectBooleanButton value="#{pupil.present}">
-						<p:ajax listener="#{pupilsController.addPresence}" />
+						<p:ajax listener="#{pupilsController.addPresence(pupil)}" />
 					</p:selectBooleanButton>
 				</p:column>
 			</p:dataTable>

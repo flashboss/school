@@ -1,7 +1,7 @@
 package it.vige.school.dto;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.Calendar;
 
 public class Presence implements Serializable {
 
@@ -9,7 +9,7 @@ public class Presence implements Serializable {
 
 	private Integer id;
 
-	private Date day;
+	private Calendar day;
 
 	private Pupil pupil;
 
@@ -21,11 +21,11 @@ public class Presence implements Serializable {
 		this.id = id;
 	}
 
-	public Date getDay() {
+	public Calendar getDay() {
 		return day;
 	}
 
-	public void setDay(Date day) {
+	public void setDay(Calendar day) {
 		this.day = day;
 	}
 

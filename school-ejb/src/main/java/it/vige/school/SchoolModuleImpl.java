@@ -1,9 +1,9 @@
 package it.vige.school;
 
+import static it.vige.school.Utils.getCurrentDay;
 import static java.util.stream.Collectors.toList;
 import static org.jboss.logging.Logger.getLogger;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -110,7 +110,7 @@ public class SchoolModuleImpl implements SchoolModule, Converters {
 	public Presence createPresence(Pupil pupil) throws ModuleException {
 		if (pupil != null) {
 			PresenceEntity presence = new PresenceEntity();
-			presence.setDay(new Date());
+			presence.setDay(getCurrentDay());
 			presence.setPupil(em.find(PupilEntity.class, pupil.getId()));
 			em.persist(presence);
 			log.debug("presence created: " + presence);
@@ -122,7 +122,10 @@ public class SchoolModuleImpl implements SchoolModule, Converters {
 
 	@Override
 	public void removePresence(int id) throws ModuleException {
-		PresenceEntity presence = em.find(PresenceEntity.class, id);
+		TypedQuery<PresenceEntity> query = em.createNamedQuery("findPresencesByPupilAndDate", PresenceEntity.class);
+		query.setParameter("pupil", em.find(PupilEntity.class, id));
+		query.setParameter("day", getCurrentDay());
+		PresenceEntity presence = query.getSingleResult();
 		em.remove(presence);
 		log.debug("presence removed: " + presence);
 	}
