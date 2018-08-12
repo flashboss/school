@@ -22,7 +22,7 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 	<parent>
 		<groupId>it.vige</groupId>
 		<artifactId>school</artifactId>
-		<version>1.0.1</version>
+		<version>1.0.2-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>school-jsf</artifactId>
