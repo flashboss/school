@@ -15,7 +15,6 @@
  * limitations under the License.                                             *
  ******************************************************************************/
 -->
-<html>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
@@ -26,15 +25,22 @@
 		#{resourcebundle.Project}
 	</ui:define>
 	<ui:define name="content">
+		<h:form>
 	#{resourcebundle.Subproject} 
-	<h:outputText rendered="#{!pupilsController.admin}"
-			value="#{resourcebundle.Of_day} #{pupilsController.today}" />
+				<p:calendar id="popup" value="#{pupilsController.currentDay}"
+				maxdate="#{pupilsController.formattedToday}">
+				<p:ajax event="dateSelect"
+					listener="#{pupilsController.onDateSelect}" update="pupils" />
+			</p:calendar>
 	#{pupilsController.schools}
-	<h:form>
+	<p:commandButton value="#{resourcebundle.Refresh}"
+				actionListener="#{pupilsController.refresh}"
+				styleClass="ui-priority-primary" update="pupils" />
 			<p:dataTable id="pupils" value="#{pupilsController.pupils}"
 				filteredValue="#{pupilsController.filteredPupils}" var="pupil"
 				widgetVar="pupilsTable"
-				emptyMessage="#{resourcebundle.No_records_found}">
+				emptyMessage="#{resourcebundle.No_records_found}"
+				sortMode="multiple">
 				<p:growl id="msgs" />
 				<f:facet name="header">
 					<p:outputPanel>
@@ -92,4 +98,3 @@
 		</h:form>
 	</ui:define>
 </ui:composition>
-</html>

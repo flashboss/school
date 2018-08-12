@@ -81,7 +81,7 @@ public interface SchoolModule {
 	 * @return DOCUMENT_ME
 	 * @throws ModuleException DOCUMENT_ME
 	 */
-	Presence createPresence(Pupil pupil) throws ModuleException;
+	Presence createPresence(PupilByDay pupil) throws ModuleException;
 
 	/**
 	 * removePresence methods to remove a Presence.
@@ -89,5 +89,5 @@ public interface SchoolModule {
 	 * @param pupil DOCUMENT_ME
 	 * @throws ModuleException DOCUMENT_ME
 	 */
-	void removePresence(Pupil pupil) throws ModuleException;
+	void removePresence(PupilByDay pupil) throws ModuleException;
 }

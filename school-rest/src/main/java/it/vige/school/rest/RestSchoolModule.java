@@ -107,14 +107,14 @@ public class RestSchoolModule {
 	@Path("createPresence")
 	@Consumes(APPLICATION_JSON)
 	@Produces(APPLICATION_JSON)
-	public Presence createPresence(Pupil pupil) throws ModuleException {
+	public Presence createPresence(PupilByDay pupil) throws ModuleException {
 		return schoolModule.createPresence(pupil);
 	}
 
 	@POST
 	@Path("removePresence")
 	@Consumes(APPLICATION_JSON)
-	public void removePresence(Pupil pupil) throws ModuleException {
+	public void removePresence(PupilByDay pupil) throws ModuleException {
 		schoolModule.removePresence(pupil);
 	}
 

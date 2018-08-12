@@ -13,11 +13,13 @@
  ******************************************************************************/
 package it.vige.school.resttest.schoolmodule.test;
 
-import static it.vige.school.Utils.getCurrentDay;
+import static it.vige.school.Utils.getCalendarByDate;
+import static it.vige.school.Utils.today;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.Calendar;
+import java.util.List;
 
 import javax.ws.rs.core.Response;
 
@@ -39,11 +41,16 @@ public class PresenceTest extends RestCaller {
 	public void setPresence() {
 		Response response = get(url + "findAllPupils", authorization);
 		Pupils result = response.readEntity(Pupils.class);
+		List<Pupil> pupils = result.getEntities();
+		assertEquals(36, pupils.size(), "The pupils from are all");
 		response.close();
-		Pupil firstPupil = result.getEntities().get(0);
+		Pupil firstPupil = pupils.get(0);
+		Calendar currentDay = getCalendarByDate(today());
+		PupilByDay pupilByDay = new PupilByDay(firstPupil);
+		pupilByDay.setDay(currentDay);
 		Presence presence = new Presence();
 		presence.setPupil(firstPupil);
-		response = post(url + "createPresence", authorization, firstPupil);
+		response = post(url + "createPresence", authorization, pupilByDay);
 		presence = response.readEntity(Presence.class);
 		assertNotNull(presence, "The presence was inserted");
 		response.close();
@@ -51,18 +58,15 @@ public class PresenceTest extends RestCaller {
 		Presences presences = response.readEntity(Presences.class);
 		assertEquals(1, presences.getEntities().size(), "The presence is found");
 		response.close();
-		Calendar currentDay = getCurrentDay();
 		response = post(url + "findPresencesByDay", authorization, currentDay);
 		presences = response.readEntity(Presences.class);
 		assertEquals(1, presences.getEntities().size(), "The presence is found");
 		response.close();
-		PupilByDay pupilByDay = new PupilByDay(firstPupil);
-		pupilByDay.setDay(currentDay);
-		response = post(url + "findPresenceByPupilAndDay", authorization, firstPupil);
+		response = post(url + "findPresenceByPupilAndDay", authorization, pupilByDay);
 		presence = response.readEntity(Presence.class);
 		assertNotNull(presence, "The presence was inserted");
 		response.close();
-		response = post(url + "removePresence", authorization, presence);
+		response = post(url + "removePresence", authorization, pupilByDay);
 		response.close();
 		response = post(url + "findPresencesByPupil", authorization, firstPupil);
 		presences = response.readEntity(Presences.class);

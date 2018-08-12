@@ -1,6 +1,5 @@
 package it.vige.school;
 
-import static it.vige.school.Utils.getCurrentDay;
 import static java.util.stream.Collectors.toList;
 import static org.jboss.logging.Logger.getLogger;
 
@@ -127,15 +126,15 @@ public class SchoolModuleImpl implements SchoolModule, Converters {
 	}
 
 	@Override
-	public Presence findPresenceByPupilAndDay(PupilByDay pupilByDay) throws ModuleException {
-		return PresenceEntityToPresence.apply(findPresenceEntityByPupilAndDay(pupilByDay, pupilByDay.getDay()));
+	public Presence findPresenceByPupilAndDay(PupilByDay pupil) throws ModuleException {
+		return PresenceEntityToPresence.apply(findPresenceEntityByPupilAndDay(pupil));
 	}
 
 	@Override
-	public Presence createPresence(Pupil pupil) throws ModuleException {
+	public Presence createPresence(PupilByDay pupil) throws ModuleException {
 		if (pupil != null) {
 			PresenceEntity presence = new PresenceEntity();
-			presence.setDay(getCurrentDay());
+			presence.setDay(pupil.getDay());
 			presence.setPupil(em.find(PupilEntity.class, pupil.getId()));
 			em.persist(presence);
 			log.debug("presence created: " + presence);
@@ -146,16 +145,16 @@ public class SchoolModuleImpl implements SchoolModule, Converters {
 	}
 
 	@Override
-	public void removePresence(Pupil pupil) throws ModuleException {
-		PresenceEntity presence = findPresenceEntityByPupilAndDay(pupil, getCurrentDay());
+	public void removePresence(PupilByDay pupil) throws ModuleException {
+		PresenceEntity presence = findPresenceEntityByPupilAndDay(pupil);
 		em.remove(presence);
 		log.debug("presence removed: " + presence);
 	}
 
-	private PresenceEntity findPresenceEntityByPupilAndDay(Pupil pupil, Calendar day) throws ModuleException {
+	private PresenceEntity findPresenceEntityByPupilAndDay(PupilByDay pupil) throws ModuleException {
 		TypedQuery<PresenceEntity> query = em.createNamedQuery("findPresenceByPupilAndDay", PresenceEntity.class);
 		query.setParameter("pupil", em.find(PupilEntity.class, pupil.getId()));
-		query.setParameter("day", getCurrentDay());
+		query.setParameter("day", pupil.getDay());
 		return query.getSingleResult();
 	}
 
