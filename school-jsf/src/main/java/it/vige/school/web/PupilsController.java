@@ -40,15 +40,13 @@ public class PupilsController implements Serializable {
 	@Inject
 	private ConfigurationController configurationController;
 
-	@Inject
-	private SchoolsController schoolsController;
-
-	@Inject
-	private RoomsController roomsController;
-
 	private List<Pupil> pupils;
 
 	private List<Pupil> filteredPupils;
+
+	private List<String> rooms;
+
+	private List<String> schools;
 
 	@PostConstruct
 	public void init() {
@@ -73,8 +71,8 @@ public class PupilsController implements Serializable {
 						if (pupil.getId() == x.getId())
 							x.setPresent(pupil.isPresent());
 				});
-			roomsController.setRooms(pupils.stream().map(x -> x.getRoom()).distinct().sorted().collect(toList()));
-			schoolsController.setSchools(pupils.stream().map(x -> x.getSchool()).distinct().sorted().collect(toList()));
+			rooms = pupils.stream().map(x -> x.getRoom()).distinct().sorted().collect(toList());
+			schools = pupils.stream().map(x -> x.getSchool()).distinct().sorted().collect(toList());
 		} catch (ModuleException ex) {
 			FacesMessage message = new FacesMessage(SEVERITY_INFO, // severity
 					ERROR, ERROR);
@@ -92,6 +90,16 @@ public class PupilsController implements Serializable {
 
 	public void setFilteredPupils(List<Pupil> filteredPupils) {
 		this.filteredPupils = filteredPupils;
+	}
+
+	public List<String> getRooms() {
+		log.debug("get rooms: " + rooms);
+		return rooms;
+	}
+
+	public List<String> getSchools() {
+		log.debug("schools: " + schools);
+		return schools;
 	}
 
 	public void addPresence(Pupil pupil) throws ModuleException {

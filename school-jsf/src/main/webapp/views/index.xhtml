@@ -33,7 +33,7 @@
 				<p:ajax event="dateSelect"
 					listener="#{configurationController.onDateSelect}" update="pupils" />
 			</p:calendar>
-	#{schoolsController.schools}
+	#{pupilsController.schools}
 	<p:commandButton value="#{resourcebundle.Refresh}"
 				actionListener="#{pupilsController.refresh}"
 				styleClass="ui-priority-primary" update="pupils" />
@@ -61,7 +61,7 @@
 					<f:facet name="filter">
 						<p:selectCheckboxMenu label="#{resourcebundle.Rooms}"
 							onchange="PF('pupilsTable').filter()" scrollHeight="150">
-							<f:selectItems value="#{roomsController.rooms}" />
+							<f:selectItems value="#{pupilsController.rooms}" />
 						</p:selectCheckboxMenu>
 					</f:facet>
 					${pupil.room}
@@ -72,7 +72,7 @@
 					<f:facet name="filter">
 						<p:selectCheckboxMenu label="#{resourcebundle.Schools}"
 							onchange="PF('pupilsTable').filter()" scrollHeight="150">
-							<f:selectItems value="#{schoolsController.schools}" />
+							<f:selectItems value="#{pupilsController.schools}" />
 						</p:selectCheckboxMenu>
 					</f:facet>
 					${pupil.school}
