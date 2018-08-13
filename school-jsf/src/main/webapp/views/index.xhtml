@@ -27,13 +27,13 @@
 	<ui:define name="content">
 		<h:form>
 	#{resourcebundle.Subproject} 
-				<p:calendar id="popup" value="#{pupilsController.currentDay}"
-				maxdate="#{pupilsController.formattedToday}"
-				locale="#{pupilsController.currentLocale}">
+				<p:calendar id="popup" value="#{configurationController.currentDay}"
+				maxdate="#{configurationController.formattedToday}"
+				locale="#{configurationController.currentLocale}">
 				<p:ajax event="dateSelect"
-					listener="#{pupilsController.onDateSelect}" update="pupils" />
+					listener="#{configurationController.onDateSelect}" update="pupils" />
 			</p:calendar>
-	#{pupilsController.schools}
+	#{schoolsController.schools}
 	<p:commandButton value="#{resourcebundle.Refresh}"
 				actionListener="#{pupilsController.refresh}"
 				styleClass="ui-priority-primary" update="pupils" />
@@ -61,18 +61,18 @@
 					<f:facet name="filter">
 						<p:selectCheckboxMenu label="#{resourcebundle.Rooms}"
 							onchange="PF('pupilsTable').filter()" scrollHeight="150">
-							<f:selectItems value="#{pupilsController.rooms}" />
+							<f:selectItems value="#{roomsController.rooms}" />
 						</p:selectCheckboxMenu>
 					</f:facet>
 					${pupil.room}
 				</p:column>
-				<p:column rendered="#{pupilsController.admin}"
+				<p:column rendered="#{configurationController.admin}"
 					headerText="#{resourcebundle.School}" sortBy="#{pupil.school}"
 					filterBy="#{pupil.school}" filterMatchMode="in">
 					<f:facet name="filter">
 						<p:selectCheckboxMenu label="#{resourcebundle.Schools}"
 							onchange="PF('pupilsTable').filter()" scrollHeight="150">
-							<f:selectItems value="#{pupilsController.schools}" />
+							<f:selectItems value="#{schoolsController.schools}" />
 						</p:selectCheckboxMenu>
 					</f:facet>
 					${pupil.school}
@@ -92,7 +92,7 @@
 						onLabel="#{resourcebundle.Yes}" offLabel="#{resourcebundle.No}"
 						onIcon="ui-icon-check" offIcon="ui-icon-close">
 						<p:ajax update="msgs"
-							listener="#{pupilsController.addPresence(pupil)}" />
+							listener="#{presencesController.addPresence(pupil)}" />
 					</p:selectBooleanButton>
 				</p:column>
 			</p:dataTable>
