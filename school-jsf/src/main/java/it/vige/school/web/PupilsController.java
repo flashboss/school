@@ -1,33 +1,24 @@
 package it.vige.school.web;
 
-import static it.vige.school.Constants.ADMIN_ROLE;
 import static it.vige.school.Constants.ERROR;
 import static it.vige.school.Utils.getCalendarByDate;
 import static it.vige.school.Utils.getCurrentRole;
-import static it.vige.school.Utils.today;
-import static java.lang.System.getProperty;
-import static java.text.DateFormat.SHORT;
-import static java.text.DateFormat.getDateInstance;
-import static java.util.Locale.getDefault;
 import static java.util.stream.Collectors.toList;
 import static javax.faces.application.FacesMessage.SEVERITY_INFO;
 import static javax.faces.context.FacesContext.getCurrentInstance;
 import static org.jboss.logging.Logger.getLogger;
 
 import java.io.Serializable;
-import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.jboss.logging.Logger;
-import org.primefaces.event.SelectEvent;
 
 import it.vige.school.ModuleException;
 import it.vige.school.SchoolModule;
@@ -46,23 +37,22 @@ public class PupilsController implements Serializable {
 	@Inject
 	private SchoolModule schoolModule;
 
-	private DateFormat shortDateFormat = getDateInstance(SHORT, getDefault());
+	@Inject
+	private ConfigurationController configurationController;
 
-	private Date currentDay = today();
+	@Inject
+	private SchoolsController schoolsController;
 
-	private String currentLocale = getProperty("user.language");
+	@Inject
+	private RoomsController roomsController;
 
 	private List<Pupil> pupils;
-
-	private List<String> rooms;
-
-	private List<String> schools;
 
 	private List<Pupil> filteredPupils;
 
 	@PostConstruct
 	public void init() {
-		boolean isAdmin = isAdmin();
+		boolean isAdmin = configurationController.isAdmin();
 		try {
 			if (isAdmin) {
 				pupils = schoolModule.findAllPupils();
@@ -70,6 +60,7 @@ public class PupilsController implements Serializable {
 				String role = getCurrentRole();
 				pupils = schoolModule.findPupilsBySchool(role);
 			}
+			Date currentDay = configurationController.getCurrentDay();
 			List<Presence> presencesOfDay = schoolModule.findPresencesByDay(getCalendarByDate(currentDay));
 			pupils.forEach(x -> {
 				for (Presence presence : presencesOfDay)
@@ -82,8 +73,8 @@ public class PupilsController implements Serializable {
 						if (pupil.getId() == x.getId())
 							x.setPresent(pupil.isPresent());
 				});
-			rooms = pupils.stream().map(x -> x.getRoom()).distinct().sorted().collect(toList());
-			schools = pupils.stream().map(x -> x.getSchool()).distinct().sorted().collect(toList());
+			roomsController.setRooms(pupils.stream().map(x -> x.getRoom()).distinct().sorted().collect(toList()));
+			schoolsController.setSchools(pupils.stream().map(x -> x.getSchool()).distinct().sorted().collect(toList()));
 		} catch (ModuleException ex) {
 			FacesMessage message = new FacesMessage(SEVERITY_INFO, // severity
 					ERROR, ERROR);
@@ -93,14 +84,6 @@ public class PupilsController implements Serializable {
 
 	public List<Pupil> getPupils() {
 		return pupils;
-	}
-
-	public List<String> getRooms() {
-		return rooms;
-	}
-
-	public List<String> getSchools() {
-		return schools;
 	}
 
 	public List<Pupil> getFilteredPupils() {
@@ -113,39 +96,12 @@ public class PupilsController implements Serializable {
 
 	public void addPresence(Pupil pupil) throws ModuleException {
 		PupilByDay pupilByDay = new PupilByDay(pupil);
-		pupilByDay.setDay(getCalendarByDate(currentDay));
+		pupilByDay.setDay(getCalendarByDate(configurationController.getCurrentDay()));
 		if (pupil.isPresent())
 			schoolModule.createPresence(pupilByDay);
 		else
 			schoolModule.removePresence(pupilByDay);
 		log.debug("pupil: " + pupil);
-	}
-
-	public boolean isAdmin() {
-		FacesContext facesContext = getCurrentInstance();
-		return facesContext.getExternalContext().isUserInRole(ADMIN_ROLE);
-	}
-
-	public String getFormattedToday() {
-		String formattedDay = shortDateFormat.format(today());
-		return formattedDay;
-	}
-
-	public Date getCurrentDay() {
-		return currentDay;
-	}
-
-	public void setCurrentDay(Date currentDay) {
-		this.currentDay = currentDay;
-	}
-
-	public String getCurrentLocale() {
-		return currentLocale;
-	}
-
-	public void onDateSelect(SelectEvent event) {
-		currentDay = (Date) event.getObject();
-		init();
 	}
 
 	public void refresh() {
