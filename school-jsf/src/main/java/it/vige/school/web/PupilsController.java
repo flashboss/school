@@ -5,6 +5,7 @@ import static it.vige.school.Constants.ERROR;
 import static it.vige.school.Utils.getCalendarByDate;
 import static it.vige.school.Utils.getCurrentRole;
 import static it.vige.school.Utils.today;
+import static java.lang.System.getProperty;
 import static java.text.DateFormat.SHORT;
 import static java.text.DateFormat.getDateInstance;
 import static java.util.Locale.getDefault;
@@ -48,6 +49,8 @@ public class PupilsController implements Serializable {
 	private DateFormat shortDateFormat = getDateInstance(SHORT, getDefault());
 
 	private Date currentDay = today();
+
+	private String currentLocale = getProperty("user.language");
 
 	private List<Pupil> pupils;
 
@@ -134,6 +137,10 @@ public class PupilsController implements Serializable {
 
 	public void setCurrentDay(Date currentDay) {
 		this.currentDay = currentDay;
+	}
+
+	public String getCurrentLocale() {
+		return currentLocale;
 	}
 
 	public void onDateSelect(SelectEvent event) {

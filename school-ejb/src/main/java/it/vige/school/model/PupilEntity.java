@@ -37,11 +37,12 @@ import org.hibernate.search.annotations.Indexed;
  * @author <a href="mailto:toro.gm5s@gmail.com">Alessandro Toro </a>
  */
 
-@NamedQueries({ @NamedQuery(name = "findAllPupils", query = "from PupilEntity"),
+@NamedQueries({
+		@NamedQuery(name = "findAllPupils", query = "from PupilEntity p order by p.school,p.room,p.surname,p.name asc"),
 		@NamedQuery(name = "findPupilsByRoom", query = "select p from PupilEntity as p where " + "p.room = :room "
-				+ "order by p.room asc"),
+				+ "order by p.room,p.surname,p.name asc"),
 		@NamedQuery(name = "findPupilsBySchool", query = "select p from PupilEntity as p where " + "p.school = :school "
-				+ "order by p.school asc"), })
+				+ "order by p.room,p.surname,p.name asc"), })
 @Entity
 @Table
 @Indexed(index = "indexes/pupils")

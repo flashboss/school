@@ -28,7 +28,8 @@
 		<h:form>
 	#{resourcebundle.Subproject} 
 				<p:calendar id="popup" value="#{pupilsController.currentDay}"
-				maxdate="#{pupilsController.formattedToday}">
+				maxdate="#{pupilsController.formattedToday}"
+				locale="#{pupilsController.currentLocale}">
 				<p:ajax event="dateSelect"
 					listener="#{pupilsController.onDateSelect}" update="pupils" />
 			</p:calendar>
