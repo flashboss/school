@@ -120,6 +120,8 @@
 						<version>${wildfly.maven.plugin.version}</version>
 						<configuration>
 							<server-config>standalone-ee8.xml</server-config>
+							<jvm-args>${JAVA_OPTS}
+							</jvm-args>
 						</configuration>
 						<executions>
 							<execution>
