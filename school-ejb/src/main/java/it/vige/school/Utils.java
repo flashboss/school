@@ -1,8 +1,11 @@
 package it.vige.school;
 
+import static it.vige.school.Constants.ROOM_SEPARATOR;
+import static java.util.Calendar.DAY_OF_MONTH;
 import static java.util.Calendar.HOUR_OF_DAY;
 import static java.util.Calendar.MILLISECOND;
 import static java.util.Calendar.MINUTE;
+import static java.util.Calendar.MONTH;
 import static java.util.Calendar.SECOND;
 import static java.util.Calendar.getInstance;
 import static javax.security.jacc.PolicyContext.getContext;
@@ -34,20 +37,51 @@ public class Utils {
 		}
 		return role;
 	}
-	
+
+	public static String getRoomByRole(String role) {
+		return role.substring(role.indexOf(ROOM_SEPARATOR) + 1);
+	}
+
+	public static String getSchoolByRole(String role) {
+		return role.substring(0, role.indexOf(ROOM_SEPARATOR));
+	}
+
 	public static Calendar getCalendarByDate(Date date) {
 		Calendar day = getInstance();
 		day.setTime(date);
 		return day;
 	}
-	
+
 	public static Date today() {
 		Calendar day = getInstance();
 		day.setTime(new Date());
-		day.set(HOUR_OF_DAY,0);
-		day.set(MINUTE,0);
-		day.set(SECOND,0);
-		day.set(MILLISECOND,0);
+		day.set(HOUR_OF_DAY, 0);
+		day.set(MINUTE, 0);
+		day.set(SECOND, 0);
+		day.set(MILLISECOND, 0);
 		return day.getTime();
+	}
+
+	public static Date thisMonth() {
+		Calendar month = getInstance();
+		month.setTime(new Date());
+		month.set(DAY_OF_MONTH, 0);
+		month.set(HOUR_OF_DAY, 0);
+		month.set(MINUTE, 0);
+		month.set(SECOND, 0);
+		month.set(MILLISECOND, 0);
+		return month.getTime();
+	}
+
+	public static Date thisYear() {
+		Calendar year = getInstance();
+		year.setTime(new Date());
+		year.set(MONTH, 0);
+		year.set(DAY_OF_MONTH, 0);
+		year.set(HOUR_OF_DAY, 0);
+		year.set(MINUTE, 0);
+		year.set(SECOND, 0);
+		year.set(MILLISECOND, 0);
+		return year.getTime();
 	}
 }

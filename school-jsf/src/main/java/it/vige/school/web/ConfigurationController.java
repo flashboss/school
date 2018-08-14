@@ -1,6 +1,10 @@
 package it.vige.school.web;
 
 import static it.vige.school.Constants.ADMIN_ROLE;
+import static it.vige.school.Constants.ROOM_SEPARATOR;
+import static it.vige.school.Utils.getCurrentRole;
+import static it.vige.school.Utils.thisMonth;
+import static it.vige.school.Utils.thisYear;
 import static it.vige.school.Utils.today;
 import static java.lang.System.getProperty;
 import static java.text.DateFormat.SHORT;
@@ -9,11 +13,13 @@ import static java.util.Locale.getDefault;
 import static javax.faces.context.FacesContext.getCurrentInstance;
 import static org.jboss.logging.Logger.getLogger;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.util.Date;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -33,16 +39,33 @@ public class ConfigurationController implements Serializable {
 
 	private Date currentDay = today();
 
+	private Date currentMonth = thisMonth();
+
+	private Date currentYear = thisYear();
+
+	private String role = getCurrentRole();
+
 	private String currentLocale = getProperty("user.language");
 
 	@Inject
 	private PupilsController pupilsController;
+
+	@Inject
+	private ReportController reportController;
 
 	public boolean isAdmin() {
 		FacesContext facesContext = getCurrentInstance();
 		boolean isAdmin = facesContext.getExternalContext().isUserInRole(ADMIN_ROLE);
 		log.debug("isAdmin: " + isAdmin);
 		return isAdmin;
+	}
+
+	public boolean isSchoolOperator() {
+		return role != ADMIN_ROLE && !role.contains(ROOM_SEPARATOR);
+	}
+
+	public boolean isTeacher() {
+		return role != ADMIN_ROLE && role.contains(ROOM_SEPARATOR);
 	}
 
 	public String getFormattedToday() {
@@ -58,12 +81,44 @@ public class ConfigurationController implements Serializable {
 		this.currentDay = currentDay;
 	}
 
+	public Date getCurrentMonth() {
+		return currentMonth;
+	}
+
+	public void setCurrentMonth(Date currentMonth) {
+		this.currentMonth = currentMonth;
+	}
+
+	public Date getCurrentYear() {
+		return currentYear;
+	}
+
+	public void setCurrentYear(Date currentYear) {
+		this.currentYear = currentYear;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
 	public String getCurrentLocale() {
 		return currentLocale;
 	}
 
-	public void onDateSelect(SelectEvent event) {
+	public void onDaySelect(SelectEvent event) {
 		setCurrentDay((Date) event.getObject());
 		pupilsController.init();
+	}
+
+	public void onMonthSelect(SelectEvent event) {
+		setCurrentMonth((Date) event.getObject());
+		reportController.init();
+	}
+
+	public void logout() throws IOException {
+		log.debug("logout");
+		ExternalContext ec = getCurrentInstance().getExternalContext();
+		ec.invalidateSession();
+		ec.redirect(ec.getRequestContextPath() + "/");
 	}
 }

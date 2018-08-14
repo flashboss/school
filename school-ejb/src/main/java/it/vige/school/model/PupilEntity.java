@@ -36,7 +36,9 @@ import javax.persistence.Table;
 		@NamedQuery(name = "findPupilsByRoom", query = "select p from PupilEntity as p where " + "p.room = :room "
 				+ "order by p.room,p.surname,p.name,p.id asc"),
 		@NamedQuery(name = "findPupilsBySchool", query = "select p from PupilEntity as p where " + "p.school = :school "
-				+ "order by p.room,p.surname,p.name,p.id asc"), })
+				+ "order by p.room,p.surname,p.name,p.id asc"),
+		@NamedQuery(name = "findPupilsBySchoolAndRoom", query = "select p from PupilEntity as p where "
+				+ "p.school = :school " + "and p.room = :room " + "order by p.surname,p.name,p.id asc") })
 @Entity
 @Table
 public class PupilEntity {
@@ -48,9 +50,7 @@ public class PupilEntity {
 
 	private String surname;
 
-	private double income;
-
-	private double monthQuote;
+	private int income;
 
 	private String room;
 
@@ -83,20 +83,12 @@ public class PupilEntity {
 		this.surname = surname;
 	}
 
-	public double getIncome() {
+	public int getIncome() {
 		return income;
 	}
 
-	public void setIncome(double income) {
+	public void setIncome(int income) {
 		this.income = income;
-	}
-
-	public double getMonthQuote() {
-		return monthQuote;
-	}
-
-	public void setMonthQuote(double monthQuote) {
-		this.monthQuote = monthQuote;
 	}
 
 	public String getRoom() {

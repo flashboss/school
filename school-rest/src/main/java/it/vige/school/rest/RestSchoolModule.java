@@ -75,6 +75,16 @@ public class RestSchoolModule {
 		return pupils;
 	}
 
+	@GET
+	@Path("findPupilsBySchoolAndRoom/{school}/{room}")
+	@Produces(APPLICATION_JSON)
+	public Pupils findPupilsBySchool(@PathParam("school") String school, @PathParam("room") String room)
+			throws ModuleException {
+		Pupils pupils = new Pupils();
+		pupils.setEntities(schoolModule.findPupilsBySchoolAndRoom(school, room));
+		return pupils;
+	}
+
 	@POST
 	@Path("findPresencesByPupil")
 	@Consumes(APPLICATION_JSON)
