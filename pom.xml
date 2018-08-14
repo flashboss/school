@@ -66,7 +66,6 @@
 		<maven.replacer.plugin.version>1.5.3</maven.replacer.plugin.version>
 		<wildfly.version>13.0.0.Final</wildfly.version>
 		<wildfly.maven.plugin.version>1.2.2.Final</wildfly.maven.plugin.version>
-		<lucene.version>5.5.5</lucene.version>
 		<jboss.logging.version>3.3.1.Final</jboss.logging.version>
 		
 		<resteasy.version>3.5.1.Final</resteasy.version>
