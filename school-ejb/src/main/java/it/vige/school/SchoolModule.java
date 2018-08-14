@@ -75,6 +75,15 @@ public interface SchoolModule {
 	List<Presence> findPresencesByDay(Calendar day) throws ModuleException;
 
 	/**
+	 * Find a presences by specifying its month
+	 * 
+	 * @param month month of the presences to retrieve
+	 * @return Presences with specified room
+	 * @throws ModuleException Throws an exception if the pupil cannot be found
+	 */
+	List<Presence> findPresencesByMonth(Calendar month) throws ModuleException;
+
+	/**
 	 * Find a presences by specifying its pupil and day
 	 * 
 	 * @param pupil pupil of the presences to retrieve

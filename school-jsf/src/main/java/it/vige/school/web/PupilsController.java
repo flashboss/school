@@ -11,7 +11,7 @@ import static org.jboss.logging.Logger.getLogger;
 
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -64,11 +64,11 @@ public class PupilsController implements Serializable {
 				else
 					pupils = schoolModule.findPupilsBySchoolAndRoom(getSchoolByRole(role), getRoomByRole(role));
 			}
-			Date currentDay = configurationController.getCurrentDay();
-			List<Presence> presencesOfDay = schoolModule.findPresencesByDay(getCalendarByDate(currentDay));
+			Calendar currentDay = getCalendarByDate(configurationController.getCurrentDay());
+			List<Presence> presencesOfDay = schoolModule.findPresencesByDay(currentDay);
 			pupils.forEach(x -> {
 				for (Presence presence : presencesOfDay)
-					if (presence.getPupil().equals(x) && presence.getDay().getTime().equals(currentDay))
+					if (presence.getPupil().equals(x) && presence.getDay().equals(currentDay))
 						x.setPresent(true);
 			});
 			if (filteredPupils != null)

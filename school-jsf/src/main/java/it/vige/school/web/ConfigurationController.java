@@ -3,8 +3,6 @@ package it.vige.school.web;
 import static it.vige.school.Constants.ADMIN_ROLE;
 import static it.vige.school.Constants.ROOM_SEPARATOR;
 import static it.vige.school.Utils.getCurrentRole;
-import static it.vige.school.Utils.thisMonth;
-import static it.vige.school.Utils.thisYear;
 import static it.vige.school.Utils.today;
 import static java.lang.System.getProperty;
 import static java.text.DateFormat.SHORT;
@@ -39,9 +37,7 @@ public class ConfigurationController implements Serializable {
 
 	private Date currentDay = today();
 
-	private Date currentMonth = thisMonth();
-
-	private Date currentYear = thisYear();
+	private Date currentDate = today();
 
 	private String role = getCurrentRole();
 
@@ -81,20 +77,12 @@ public class ConfigurationController implements Serializable {
 		this.currentDay = currentDay;
 	}
 
-	public Date getCurrentMonth() {
-		return currentMonth;
+	public Date getCurrentDate() {
+		return currentDate;
 	}
 
-	public void setCurrentMonth(Date currentMonth) {
-		this.currentMonth = currentMonth;
-	}
-
-	public Date getCurrentYear() {
-		return currentYear;
-	}
-
-	public void setCurrentYear(Date currentYear) {
-		this.currentYear = currentYear;
+	public void setCurrentDate(Date currentDate) {
+		this.currentDate = currentDate;
 	}
 
 	public String getRole() {
@@ -111,7 +99,7 @@ public class ConfigurationController implements Serializable {
 	}
 
 	public void onMonthSelect(SelectEvent event) {
-		setCurrentMonth((Date) event.getObject());
+		setCurrentDate((Date) event.getObject());
 		reportController.init();
 	}
 

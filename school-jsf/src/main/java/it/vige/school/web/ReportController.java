@@ -1,6 +1,7 @@
 package it.vige.school.web;
 
 import static it.vige.school.Constants.ERROR;
+import static it.vige.school.Utils.getCalendarByDate;
 import static java.lang.Integer.valueOf;
 import static javax.faces.application.FacesMessage.SEVERITY_INFO;
 import static javax.faces.context.FacesContext.getCurrentInstance;
@@ -8,6 +9,7 @@ import static org.jboss.logging.Logger.getLogger;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
@@ -42,12 +44,16 @@ public class ReportController {
 	@Inject
 	private SchoolModule schoolModule;
 
+	@Inject
+	private ConfigurationController configurationController;
+
 	@PostConstruct
 	public void init() {
 		log.debug("calling the report controller");
 		try {
-			List<Presence> presences = schoolModule.findAllPresences();
 			List<Pupil> oldPupils = pupilsController.getPupils();
+			Calendar currentDate = getCalendarByDate(configurationController.getCurrentDate());
+			List<Presence> presences = schoolModule.findPresencesByMonth(currentDate);
 			pupils = new ArrayList<ReportPupil>();
 			oldPupils.forEach(x -> {
 				ReportPupil reportPupil = new ReportPupil(x);

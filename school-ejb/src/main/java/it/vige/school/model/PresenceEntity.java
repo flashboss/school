@@ -26,6 +26,8 @@ import javax.persistence.Temporal;
 @NamedQueries({ @NamedQuery(name = "findAllPresences", query = "from PresenceEntity"),
 		@NamedQuery(name = "findPresencesByDay", query = "select p from PresenceEntity as p where " + "p.day = :day "
 				+ "order by p.day asc"),
+		@NamedQuery(name = "findPresencesByMonth", query = "select p from PresenceEntity as p where " + "p.day = :month "
+				+ "order by p.day asc"),
 		@NamedQuery(name = "findPresencesByPupil", query = "select p from PresenceEntity as p where "
 				+ "p.pupil = :pupil " + "order by p.pupil asc"),
 		@NamedQuery(name = "findPresenceByPupilAndDay", query = "select p from PresenceEntity as p where "
