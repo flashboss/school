@@ -8,6 +8,9 @@ public class PupilByDay extends Pupil {
 
 	private Calendar day;
 
+	public PupilByDay() {
+	}
+
 	public PupilByDay(Pupil pupil) {
 		setId(pupil.getId());
 		setName(pupil.getName());
