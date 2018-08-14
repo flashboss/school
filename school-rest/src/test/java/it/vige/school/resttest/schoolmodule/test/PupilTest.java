@@ -30,7 +30,7 @@ public class PupilTest extends RestCaller {
 
 	@Test
 	public void getPupil() {
-		Response response = get(url + "findPupilsBySchool/maiorana", authorization);
+		Response response = get(url + "findPupilsBySchool/donlorenzomilani", authorization);
 		Pupils result = response.readEntity(Pupils.class);
 		assertNotNull(result, "The pupils from Maiorana are found");
 		assertEquals(16, result.getEntities().size(), "The pupils from Maiorana are ok");
@@ -38,5 +38,9 @@ public class PupilTest extends RestCaller {
 		result = response.readEntity(Pupils.class);
 		assertNotNull(response, "The pupils from 1A are found");
 		assertEquals(5, result.getEntities().size(), "The pupils from 1A are ok");
+		response = get(url + "findPupilsBySchoolAndRoom/donlorenzomilani/1A", authorization);
+		result = response.readEntity(Pupils.class);
+		assertNotNull(response, "The pupils from 1A are found");
+		assertEquals(4, result.getEntities().size(), "The pupils from donlorenzomilani 1A are ok");
 	}
 }

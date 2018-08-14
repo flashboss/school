@@ -12,9 +12,7 @@ public class Pupil implements Serializable {
 
 	private String surname;
 
-	private double income;
-
-	private double monthQuote;
+	private int income;
 
 	private String room;
 
@@ -46,20 +44,12 @@ public class Pupil implements Serializable {
 		this.surname = surname;
 	}
 
-	public double getIncome() {
+	public int getIncome() {
 		return income;
 	}
 
-	public void setIncome(double income) {
+	public void setIncome(int income) {
 		this.income = income;
-	}
-
-	public double getMonthQuote() {
-		return monthQuote;
-	}
-
-	public void setMonthQuote(double monthQuote) {
-		this.monthQuote = monthQuote;
 	}
 
 	public String getRoom() {
@@ -91,16 +81,6 @@ public class Pupil implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(income);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(monthQuote);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + (present ? 1231 : 1237);
-		result = prime * result + ((room == null) ? 0 : room.hashCode());
-		result = prime * result + ((school == null) ? 0 : school.hashCode());
-		result = prime * result + ((surname == null) ? 0 : surname.hashCode());
 		return result;
 	}
 
@@ -117,32 +97,6 @@ public class Pupil implements Serializable {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
-			return false;
-		if (Double.doubleToLongBits(income) != Double.doubleToLongBits(other.income))
-			return false;
-		if (Double.doubleToLongBits(monthQuote) != Double.doubleToLongBits(other.monthQuote))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (present != other.present)
-			return false;
-		if (room == null) {
-			if (other.room != null)
-				return false;
-		} else if (!room.equals(other.room))
-			return false;
-		if (school == null) {
-			if (other.school != null)
-				return false;
-		} else if (!school.equals(other.school))
-			return false;
-		if (surname == null) {
-			if (other.surname != null)
-				return false;
-		} else if (!surname.equals(other.surname))
 			return false;
 		return true;
 	}

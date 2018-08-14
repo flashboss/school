@@ -26,25 +26,27 @@
 	</ui:define>
 	<ui:define name="content">
 		<h:form>
-	#{resourcebundle.Subproject} 
-				<p:calendar id="popup" value="#{configurationController.currentDay}"
+	#{resourcebundle.Subreport} 
+				<p:calendar id="popup" value="#{configurationController.currentMonth}"
 				maxdate="#{configurationController.formattedToday}"
-				locale="#{configurationController.currentLocale}">
+				locale="#{configurationController.currentLocale}"
+				lang="#{configurationController.currentLocale}" navigator="true"
+				mode="inline">
 				<p:ajax event="dateSelect"
-					listener="#{configurationController.onDaySelect}" update="pupils" />
+					listener="#{configurationController.onMonthSelect}" update="pupils" />
 			</p:calendar>
 	#{pupilsController.schools} - #{pupilsController.rooms}
 	<p:commandButton value="#{resourcebundle.Refresh}"
 				actionListener="#{pupilsController.refresh}"
 				styleClass="ui-priority-primary" update="pupils" />
-			<p:commandButton value="#{resourcebundle.Report}"
-				actionListener="#{pupilsController.report}"
+			<p:commandButton value="#{resourcebundle.Insert}"
+				actionListener="#{reportController.insert}"
 				styleClass="ui-priority-primary" />
 			<p:commandButton value="#{resourcebundle.Logout}"
 				actionListener="#{configurationController.logout}"
 				styleClass="ui-priority-primary" />
-			<p:dataTable id="pupils" value="#{pupilsController.pupils}"
-				filteredValue="#{pupilsController.filteredPupils}" var="pupil"
+			<p:dataTable id="pupils" value="#{reportController.pupils}"
+				filteredValue="#{reportController.filteredPupils}" var="pupil"
 				widgetVar="pupilsTable"
 				emptyMessage="#{resourcebundle.No_records_found}"
 				sortMode="multiple">
@@ -91,23 +93,11 @@
 					</f:facet>
 					${pupil.school}
 				</p:column>
-				<p:column headerText="#{resourcebundle.Present}"
-					sortBy="#{pupil.present}" filterBy="#{pupil.present}"
-					filterMatchMode="equals" styleClass="present">
-					<f:facet name="filter">
-						<p:selectOneButton onchange="PF('pupilsTable').filter()">
-							<f:converter converterId="javax.faces.Boolean" />
-							<f:selectItem itemLabel="#{resourcebundle.All}" itemValue="" />
-							<f:selectItem itemLabel="#{resourcebundle.Yes}" itemValue="true" />
-							<f:selectItem itemLabel="#{resourcebundle.No}" itemValue="false" />
-						</p:selectOneButton>
-					</f:facet>
-					<p:selectBooleanButton value="#{pupil.present}"
-						onLabel="#{resourcebundle.Yes}" offLabel="#{resourcebundle.No}"
-						onIcon="ui-icon-check" offIcon="ui-icon-close">
-						<p:ajax update="msgs"
-							listener="#{presencesController.addPresence(pupil)}" />
-					</p:selectBooleanButton>
+				<p:column headerText="#{resourcebundle.Presences}"
+					sortBy="#{pupil.presences}" filterBy="#{pupil.presences}"
+					filterFunction="#{reportController.filterByPresence}"
+					styleClass="present">
+					#{pupil.presences}
 				</p:column>
 			</p:dataTable>
 		</h:form>

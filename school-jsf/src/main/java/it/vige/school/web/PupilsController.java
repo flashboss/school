@@ -2,12 +2,14 @@ package it.vige.school.web;
 
 import static it.vige.school.Constants.ERROR;
 import static it.vige.school.Utils.getCalendarByDate;
-import static it.vige.school.Utils.getCurrentRole;
+import static it.vige.school.Utils.getRoomByRole;
+import static it.vige.school.Utils.getSchoolByRole;
 import static java.util.stream.Collectors.toList;
 import static javax.faces.application.FacesMessage.SEVERITY_INFO;
 import static javax.faces.context.FacesContext.getCurrentInstance;
 import static org.jboss.logging.Logger.getLogger;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -15,6 +17,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.context.ExternalContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -55,8 +58,11 @@ public class PupilsController implements Serializable {
 			if (isAdmin) {
 				pupils = schoolModule.findAllPupils();
 			} else {
-				String role = getCurrentRole();
-				pupils = schoolModule.findPupilsBySchool(role);
+				String role = configurationController.getRole();
+				if (configurationController.isSchoolOperator())
+					pupils = schoolModule.findPupilsBySchool(role);
+				else
+					pupils = schoolModule.findPupilsBySchoolAndRoom(getSchoolByRole(role), getRoomByRole(role));
 			}
 			Date currentDay = configurationController.getCurrentDay();
 			List<Presence> presencesOfDay = schoolModule.findPresencesByDay(getCalendarByDate(currentDay));
@@ -114,5 +120,11 @@ public class PupilsController implements Serializable {
 
 	public void refresh() {
 		init();
+	}
+
+	public void report() throws IOException {
+		log.debug("report");
+		ExternalContext ec = getCurrentInstance().getExternalContext();
+		ec.redirect(ec.getRequestContextPath() + "/views/report.xhtml");
 	}
 }

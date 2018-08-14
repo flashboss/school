@@ -1,7 +1,7 @@
 #footer {
 	text-align: center;
 	position: relative;
-    top: 33px;
+	top: 33px;
 }
 
 .room {
@@ -10,4 +10,16 @@
 
 .present {
 	width: 10%;
+}
+
+.income {
+	width: 8%;
+}
+
+.school {
+	width: 12%;
+}
+
+.hasDatepicker .ui-datepicker-calendar {
+	display: none;
 }

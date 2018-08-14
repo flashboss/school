@@ -47,6 +47,16 @@ public interface SchoolModule {
 	List<Pupil> findPupilsBySchool(String school) throws ModuleException;
 
 	/**
+	 * Find a pupils by specifying its school and room
+	 * 
+	 * @param school school of the pupils to retrieve
+	 * @param room room of the pupils to retrieve
+	 * @return Pupils with specified room
+	 * @throws ModuleException Throws an exception if the pupil cannot be found
+	 */
+	List<Pupil> findPupilsBySchoolAndRoom(String school, String room) throws ModuleException;
+
+	/**
 	 * Find a presences by specifying its pupil
 	 * 
 	 * @param pupil pupil of the presences to retrieve

@@ -5,4 +5,6 @@ public interface Constants {
 	String ADMIN_ROLE = "admin";
 	
 	String ERROR = "error";
+	
+	String ROOM_SEPARATOR = "-";
 }

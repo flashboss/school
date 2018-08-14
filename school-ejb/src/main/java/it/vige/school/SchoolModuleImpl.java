@@ -90,6 +90,25 @@ public class SchoolModuleImpl implements SchoolModule, Converters {
 	}
 
 	@Override
+	public List<Pupil> findPupilsBySchoolAndRoom(String school, String room) throws ModuleException {
+		if (school != null) {
+			try {
+				TypedQuery<PupilEntity> query = em.createNamedQuery("findPupilsBySchoolAndRoom", PupilEntity.class);
+				query.setParameter("school", school);
+				query.setParameter("room", room);
+				List<PupilEntity> pupilList = query.getResultList();
+				log.debug("pupil found: " + pupilList);
+				return pupilList.stream().map(t -> PupilEntityToPupil.apply(t)).collect(toList());
+			} catch (Exception e) {
+				String message = "Cannot find pupil by room " + school;
+				throw new ModuleException(message, e);
+			}
+		} else {
+			throw new IllegalArgumentException("room cannot be null");
+		}
+	}
+
+	@Override
 	public List<Presence> findPresencesByPupil(Pupil pupil) throws ModuleException {
 		if (pupil != null) {
 			try {

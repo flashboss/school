@@ -17,7 +17,6 @@ public interface Converters {
 			pupil.setName(t.getName());
 			pupil.setSurname(t.getSurname());
 			pupil.setIncome(t.getIncome());
-			pupil.setMonthQuote(t.getMonthQuote());
 			pupil.setRoom(t.getRoom());
 			pupil.setSchool(t.getSchool());
 
@@ -33,7 +32,6 @@ public interface Converters {
 			pupilEntity.setName(t.getName());
 			pupilEntity.setSurname(t.getSurname());
 			pupilEntity.setIncome(t.getIncome());
-			pupilEntity.setMonthQuote(t.getMonthQuote());
 			pupilEntity.setRoom(t.getRoom());
 			pupilEntity.setSchool(t.getSchool());
 
