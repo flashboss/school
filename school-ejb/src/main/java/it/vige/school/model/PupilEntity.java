@@ -14,21 +14,15 @@
 package it.vige.school.model;
 
 import static javax.persistence.CascadeType.ALL;
-import static javax.persistence.GenerationType.SEQUENCE;
 
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
-import org.hibernate.search.annotations.DocumentId;
-import org.hibernate.search.annotations.Indexed;
 
 /**
  * Pupils.
@@ -40,23 +34,23 @@ import org.hibernate.search.annotations.Indexed;
 @NamedQueries({
 		@NamedQuery(name = "findAllPupils", query = "from PupilEntity p order by p.school,p.room,p.surname,p.name asc"),
 		@NamedQuery(name = "findPupilsByRoom", query = "select p from PupilEntity as p where " + "p.room = :room "
-				+ "order by p.room,p.surname,p.name asc"),
+				+ "order by p.room,p.surname,p.name,p.id asc"),
 		@NamedQuery(name = "findPupilsBySchool", query = "select p from PupilEntity as p where " + "p.school = :school "
-				+ "order by p.room,p.surname,p.name asc"), })
+				+ "order by p.room,p.surname,p.name,p.id asc"), })
 @Entity
 @Table
-@Indexed(index = "indexes/pupils")
-@SequenceGenerator(name = "seq_pupil", initialValue = 1, allocationSize = 100)
 public class PupilEntity {
 
 	@Id
-	@DocumentId
-	@GeneratedValue(strategy = SEQUENCE, generator = "seq_pupil")
-	private Integer id;
+	private String id;
 
 	private String name;
 
 	private String surname;
+
+	private double income;
+
+	private double monthQuote;
 
 	private String room;
 
@@ -65,11 +59,11 @@ public class PupilEntity {
 	@OneToMany(mappedBy = "pupil", cascade = ALL, orphanRemoval = true)
 	private List<PresenceEntity> presences;
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -87,6 +81,22 @@ public class PupilEntity {
 
 	public void setSurname(String surname) {
 		this.surname = surname;
+	}
+
+	public double getIncome() {
+		return income;
+	}
+
+	public void setIncome(double income) {
+		this.income = income;
+	}
+
+	public double getMonthQuote() {
+		return monthQuote;
+	}
+
+	public void setMonthQuote(double monthQuote) {
+		this.monthQuote = monthQuote;
 	}
 
 	public String getRoom() {

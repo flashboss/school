@@ -6,23 +6,27 @@ public class Pupil implements Serializable {
 
 	private static final long serialVersionUID = -6713889813860348323L;
 
-	private Integer id;
+	private String id;
 
 	private String name;
 
 	private String surname;
 
+	private double income;
+
+	private double monthQuote;
+
 	private String room;
 
 	private String school;
-	
+
 	private boolean present;
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -40,6 +44,22 @@ public class Pupil implements Serializable {
 
 	public void setSurname(String surname) {
 		this.surname = surname;
+	}
+
+	public double getIncome() {
+		return income;
+	}
+
+	public void setIncome(double income) {
+		this.income = income;
+	}
+
+	public double getMonthQuote() {
+		return monthQuote;
+	}
+
+	public void setMonthQuote(double monthQuote) {
+		this.monthQuote = monthQuote;
 	}
 
 	public String getRoom() {
@@ -71,6 +91,11 @@ public class Pupil implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(income);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(monthQuote);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + (present ? 1231 : 1237);
 		result = prime * result + ((room == null) ? 0 : room.hashCode());
@@ -92,6 +117,10 @@ public class Pupil implements Serializable {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
+			return false;
+		if (Double.doubleToLongBits(income) != Double.doubleToLongBits(other.income))
+			return false;
+		if (Double.doubleToLongBits(monthQuote) != Double.doubleToLongBits(other.monthQuote))
 			return false;
 		if (name == null) {
 			if (other.name != null)

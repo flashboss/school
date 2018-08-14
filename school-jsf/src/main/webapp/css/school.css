@@ -3,3 +3,11 @@
 	position: relative;
     top: 33px;
 }
+
+.room {
+	width: 8%;
+}
+
+.present {
+	width: 10%;
+}

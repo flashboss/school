@@ -51,13 +51,22 @@
 							placeholder="#{resourcebundle.Enter_keyword}" />
 					</p:outputPanel>
 				</f:facet>
+				<p:column headerText="#{resourcebundle.FiscalCode}"
+					sortBy="#{pupil.id}" filterBy="#{pupil.id}"
+					filterMatchMode="contains">${pupil.id}</p:column>
 				<p:column headerText="#{resourcebundle.Name}" sortBy="#{pupil.name}"
 					filterBy="#{pupil.name}" filterMatchMode="contains">${pupil.name}</p:column>
 				<p:column headerText="#{resourcebundle.Surname}"
 					sortBy="#{pupil.surname}" filterBy="#{pupil.surname}"
 					filterMatchMode="contains">${pupil.surname}</p:column>
+				<p:column headerText="#{resourcebundle.Income}"
+					sortBy="#{pupil.income}" filterBy="#{pupil.income}"
+					filterMatchMode="contains">${pupil.income}</p:column>
+				<p:column headerText="#{resourcebundle.MonthQuote}"
+					sortBy="#{pupil.monthQuote}" filterBy="#{pupil.monthQuote}"
+					filterMatchMode="contains">${pupil.monthQuote}</p:column>
 				<p:column headerText="#{resourcebundle.Room}" sortBy="#{pupil.room}"
-					filterBy="#{pupil.room}" filterMatchMode="in">
+					filterBy="#{pupil.room}" filterMatchMode="in" styleClass="room">
 					<f:facet name="filter">
 						<p:selectCheckboxMenu label="#{resourcebundle.Rooms}"
 							onchange="PF('pupilsTable').filter()" scrollHeight="150">
@@ -68,7 +77,7 @@
 				</p:column>
 				<p:column rendered="#{configurationController.admin}"
 					headerText="#{resourcebundle.School}" sortBy="#{pupil.school}"
-					filterBy="#{pupil.school}" filterMatchMode="in">
+					filterBy="#{pupil.school}" filterMatchMode="in" styleClass="room">
 					<f:facet name="filter">
 						<p:selectCheckboxMenu label="#{resourcebundle.Schools}"
 							onchange="PF('pupilsTable').filter()" scrollHeight="150">
@@ -79,7 +88,7 @@
 				</p:column>
 				<p:column headerText="#{resourcebundle.Present}"
 					sortBy="#{pupil.present}" filterBy="#{pupil.present}"
-					filterMatchMode="equals">
+					filterMatchMode="equals" styleClass="present">
 					<f:facet name="filter">
 						<p:selectOneButton onchange="PF('pupilsTable').filter()">
 							<f:converter converterId="javax.faces.Boolean" />

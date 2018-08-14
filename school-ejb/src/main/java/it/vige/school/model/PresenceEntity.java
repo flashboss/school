@@ -16,9 +16,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
-import org.hibernate.search.annotations.DocumentId;
-import org.hibernate.search.annotations.Indexed;
-
 /**
  * Presences.
  * 
@@ -35,12 +32,10 @@ import org.hibernate.search.annotations.Indexed;
 				+ "p.pupil = :pupil and p.day = :day " + "order by p.pupil asc") })
 @Entity
 @Table
-@Indexed(index = "indexes/presences")
 @SequenceGenerator(name = "seq_presence", initialValue = 1, allocationSize = 100)
 public class PresenceEntity {
 
 	@Id
-	@DocumentId
 	@GeneratedValue(strategy = SEQUENCE, generator = "seq_presence")
 	private Integer id;
 
