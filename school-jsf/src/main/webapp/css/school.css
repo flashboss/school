@@ -23,3 +23,23 @@
 .school {
 	width: 12%;
 }
+
+.month .ui-datepicker-calendar {
+	display: none;
+}
+
+.year .ui-datepicker-calendar {
+	display: none;
+}
+
+.year .ui-datepicker-month {
+	display: none;
+}
+
+.year .ui-datepicker-prev {
+	display: none;
+}
+
+.year .ui-datepicker-next {
+	display: none;
+}

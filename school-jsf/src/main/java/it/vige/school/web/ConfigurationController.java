@@ -2,6 +2,7 @@ package it.vige.school.web;
 
 import static it.vige.school.Constants.ADMIN_ROLE;
 import static it.vige.school.Constants.ROOM_SEPARATOR;
+import static it.vige.school.Utils.getCalendarByDate;
 import static it.vige.school.Utils.getCurrentRole;
 import static it.vige.school.Utils.today;
 import static it.vige.school.web.ReportType.MONTH;
@@ -15,6 +16,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.enterprise.context.SessionScoped;
@@ -24,6 +26,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.jboss.logging.Logger;
+import org.primefaces.event.DateViewChangeEvent;
 import org.primefaces.event.SelectEvent;
 
 @SessionScoped
@@ -102,15 +105,20 @@ public class ConfigurationController implements Serializable {
 		pupilsController.init();
 	}
 
-	public void onMonthSelect(SelectEvent event) {
-		setCurrentDate((Date) event.getObject());
+	public void onMonthSelect(DateViewChangeEvent event) {
+		Calendar calendar = getCalendarByDate(currentDate);
+		calendar.set(Calendar.MONTH, event.getMonth() - 1);
+		calendar.set(Calendar.YEAR, event.getYear());
+		setCurrentDate(calendar.getTime());
 		formattedDate = monthDateFormat.format(currentDate);
 		reportController.setType(MONTH);
 		reportController.init();
 	}
 
-	public void onYearSelect(SelectEvent event) {
-		setCurrentDate((Date) event.getObject());
+	public void onYearSelect(DateViewChangeEvent event) {
+		Calendar calendar = getCalendarByDate(currentDate);
+		calendar.set(Calendar.YEAR, event.getYear());
+		setCurrentDate(calendar.getTime());
 		formattedDate = yearDateFormat.format(currentDate);
 		reportController.setType(YEAR);
 		reportController.init();

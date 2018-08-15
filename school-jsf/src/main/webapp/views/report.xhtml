@@ -30,8 +30,9 @@
 				<p:calendar id="popupmonth"
 				value="#{configurationController.currentDate}"
 				maxdate="#{configurationController.currentDate}"
-				locale="#{configurationController.currentLocale}" navigator="true">
-				<p:ajax event="dateSelect"
+				locale="#{configurationController.currentLocale}" navigator="true"
+				mode="inline" styleClass="month">
+				<p:ajax event="viewChange"
 					listener="#{configurationController.onMonthSelect}"
 					update="period,pupils" />
 			</p:calendar>
@@ -39,8 +40,9 @@
 				<p:calendar id="popupyear"
 				value="#{configurationController.currentDate}"
 				maxdate="#{configurationController.currentDate}"
-				locale="#{configurationController.currentLocale}" navigator="true">
-				<p:ajax event="dateSelect"
+				locale="#{configurationController.currentLocale}" navigator="true"
+				mode="inline" styleClass="year">
+				<p:ajax event="viewChange"
 					listener="#{configurationController.onYearSelect}"
 					update="period,pupils" />
 			</p:calendar>
