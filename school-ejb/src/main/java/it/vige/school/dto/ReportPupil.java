@@ -1,13 +1,13 @@
 package it.vige.school.dto;
 
-public class ReportPupil extends Pupil {
+import it.vige.school.Constants;
+
+public class ReportPupil extends Pupil implements Constants {
 
 	private static final long serialVersionUID = 8684674995138083622L;
 
-	private double quote;
-
 	private int presences;
-	
+
 	public ReportPupil(Pupil pupil) {
 		setId(pupil.getId());
 		setName(pupil.getName());
@@ -19,11 +19,7 @@ public class ReportPupil extends Pupil {
 	}
 
 	public double getQuote() {
-		return quote;
-	}
-
-	public void setQuote(double quote) {
-		this.quote = quote;
+		return presences * calculateQuote(getIncome());
 	}
 
 	public int getPresences() {

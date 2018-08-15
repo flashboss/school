@@ -28,6 +28,8 @@ import javax.persistence.Temporal;
 				+ "order by p.day asc"),
 		@NamedQuery(name = "findPresencesByMonth", query = "select p from PresenceEntity as p where "
 				+ "MONTH(p.day) = :month " + "and YEAR(p.day) = :year " + "order by p.day asc"),
+		@NamedQuery(name = "findPresencesByYear", query = "select p from PresenceEntity as p where "
+				+ "YEAR(p.day) = :year " + "order by p.day asc"),
 		@NamedQuery(name = "findPresencesByPupil", query = "select p from PresenceEntity as p where "
 				+ "p.pupil = :pupil " + "order by p.pupil asc"),
 		@NamedQuery(name = "findPresenceByPupilAndDay", query = "select p from PresenceEntity as p where "

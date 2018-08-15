@@ -168,6 +168,25 @@ public class SchoolModuleImpl implements SchoolModule, Converters {
 	}
 
 	@Override
+	public List<Presence> findPresencesByYear(Calendar year) throws ModuleException {
+		if (year != null) {
+			try {
+				TypedQuery<PresenceEntity> query = null;
+				query = em.createNamedQuery("findPresencesByYear", PresenceEntity.class);
+				query.setParameter("year", year.get(YEAR));
+				List<PresenceEntity> presenceList = query.getResultList();
+				log.debug("pupil found: " + presenceList);
+				return presenceList.stream().map(t -> PresenceEntityToPresence.apply(t)).collect(toList());
+			} catch (Exception e) {
+				String message = "Cannot find presence";
+				throw new ModuleException(message, e);
+			}
+		} else {
+			throw new IllegalArgumentException("room cannot be null");
+		}
+	}
+
+	@Override
 	public Presence findPresenceByPupilAndDay(PupilByDay pupil) throws ModuleException {
 		return PresenceEntityToPresence.apply(findPresenceEntityByPupilAndDay(pupil));
 	}

@@ -2,11 +2,12 @@ package it.vige.school.web;
 
 import static it.vige.school.Constants.ADMIN_ROLE;
 import static it.vige.school.Constants.ROOM_SEPARATOR;
+import static it.vige.school.Utils.getCalendarByDate;
 import static it.vige.school.Utils.getCurrentRole;
 import static it.vige.school.Utils.today;
 import static java.lang.System.getProperty;
-import static java.text.DateFormat.SHORT;
-import static java.text.DateFormat.getDateInstance;
+import static java.util.Calendar.MONTH;
+import static java.util.Calendar.YEAR;
 import static java.util.Locale.getDefault;
 import static javax.faces.context.FacesContext.getCurrentInstance;
 import static org.jboss.logging.Logger.getLogger;
@@ -14,6 +15,8 @@ import static org.jboss.logging.Logger.getLogger;
 import java.io.IOException;
 import java.io.Serializable;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.enterprise.context.SessionScoped;
@@ -33,7 +36,7 @@ public class ConfigurationController implements Serializable {
 
 	private static Logger log = getLogger(ConfigurationController.class);
 
-	private DateFormat shortDateFormat = getDateInstance(SHORT, getDefault());
+	private DateFormat monthDateFormat = new SimpleDateFormat("MMMM YYYY", getDefault());
 
 	private Date currentDay = today();
 
@@ -64,8 +67,8 @@ public class ConfigurationController implements Serializable {
 		return role != ADMIN_ROLE && role.contains(ROOM_SEPARATOR);
 	}
 
-	public String getFormattedToday() {
-		String formattedDay = shortDateFormat.format(today());
+	public String getFormattedDate() {
+		String formattedDay = monthDateFormat.format(currentDate);
 		return formattedDay;
 	}
 
@@ -98,8 +101,31 @@ public class ConfigurationController implements Serializable {
 		pupilsController.init();
 	}
 
-	public void onMonthSelect(SelectEvent event) {
-		setCurrentDate((Date) event.getObject());
+	public void decrementMonth() throws Exception {
+		Calendar calendar = getCalendarByDate(currentDate);
+		calendar.add(MONTH, -1);
+		setCurrentDate(calendar.getTime());
+		reportController.init();
+	}
+
+	public void incrementMonth() throws Exception {
+		Calendar calendar = getCalendarByDate(currentDate);
+		calendar.add(MONTH, 1);
+		setCurrentDate(calendar.getTime());
+		reportController.init();
+	}
+
+	public void decrementYear() throws Exception {
+		Calendar calendar = getCalendarByDate(currentDate);
+		calendar.add(YEAR, -1);
+		setCurrentDate(calendar.getTime());
+		reportController.init();
+	}
+
+	public void incrementYear() throws Exception {
+		Calendar calendar = getCalendarByDate(currentDate);
+		calendar.add(YEAR, 1);
+		setCurrentDate(calendar.getTime());
 		reportController.init();
 	}
 

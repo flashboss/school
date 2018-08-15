@@ -12,6 +12,10 @@
 	width: 10%;
 }
 
+.quote {
+	width: 10%;
+}
+
 .income {
 	width: 8%;
 }
@@ -20,6 +24,7 @@
 	width: 12%;
 }
 
-.hasDatepicker .ui-datepicker-calendar {
+.tableView table, .tableView a.ui-datepicker-prev, .tableView a.ui-datepicker-next
+	{
 	display: none;
 }

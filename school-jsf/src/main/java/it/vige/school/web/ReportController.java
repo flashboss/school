@@ -70,7 +70,7 @@ public class ReportController {
 		}
 	}
 
-	public boolean filterByPresence(Comparable<Integer> value, Object filter, Locale locale) {
+	public boolean filterByNumber(Comparable<Integer> value, Object filter, Locale locale) {
 		String filterText = (filter == null) ? null : filter.toString().trim();
 		if (filterText == null || filterText.equals("")) {
 			return true;

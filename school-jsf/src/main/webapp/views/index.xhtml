@@ -26,14 +26,15 @@
 	</ui:define>
 	<ui:define name="content">
 		<h:form>
-	#{resourcebundle.Subproject} 
+	#{resourcebundle.Subproject}
 				<p:calendar id="popup" value="#{configurationController.currentDay}"
-				maxdate="#{configurationController.formattedToday}"
+				maxdate="#{configurationController.currentDay}"
 				locale="#{configurationController.currentLocale}">
 				<p:ajax event="dateSelect"
 					listener="#{configurationController.onDaySelect}" update="pupils" />
 			</p:calendar>
-	#{pupilsController.schools} - #{pupilsController.rooms}
+	<h:outputText rendered="#{!configurationController.admin}" value="#{pupilsController.schools}" />
+	<h:outputText rendered="#{configurationController.teacher}" value="- #{pupilsController.rooms}" />
 	<p:commandButton value="#{resourcebundle.Refresh}"
 				actionListener="#{pupilsController.refresh}"
 				styleClass="ui-priority-primary" update="pupils" />

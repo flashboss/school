@@ -26,17 +26,43 @@
 	</ui:define>
 	<ui:define name="content">
 		<h:form>
-	#{resourcebundle.Subreport} 
-				<p:calendar id="popup" value="#{configurationController.currentDate}"
-				maxdate="#{configurationController.formattedToday}"
-				locale="#{configurationController.currentLocale}"
-				lang="#{configurationController.currentLocale}" navigator="true"
-				mode="inline">
-				<p:ajax event="dateSelect"
-					listener="#{configurationController.onMonthSelect}" update="pupils" />
-			</p:calendar>
-	#{pupilsController.schools} - #{pupilsController.rooms}
-	<p:commandButton value="#{resourcebundle.Refresh}"
+	#{resourcebundle.Subreport}
+			<p:commandButton
+				actionListener="#{configurationController.decrementMonth}"
+				id="navLeftMonth" update="month,pupils,period"
+				icon="ui-icon-triangle-1-w" />
+			<h:panelGroup class="tableView">
+				<p:calendar id="month"
+					value="#{configurationController.currentDate}"
+					maxdate="#{configurationController.currentDate}"
+					locale="#{configurationController.currentLocale}"
+					lang="#{configurationController.currentLocale}" mode="inline" />
+			</h:panelGroup>
+			<p:commandButton
+				actionListener="#{configurationController.incrementMonth}"
+				id="navRightMonth" update="month,pupils,period"
+				icon="ui-icon-triangle-1-e" />
+	#{resourcebundle.Subreportyear}
+			<p:commandButton
+				actionListener="#{configurationController.decrementYear}"
+				id="navLeftYear" update="year,pupils,period" icon="ui-icon-triangle-1-w" />
+			<h:panelGroup class="tableView">
+				<p:calendar id="year" value="#{configurationController.currentDate}"
+					maxdate="#{configurationController.currentDate}"
+					locale="#{configurationController.currentLocale}"
+					lang="#{configurationController.currentLocale}" mode="inline" />
+			</h:panelGroup>
+			<p:commandButton
+				actionListener="#{configurationController.incrementYear}"
+				id="navRightYear" update="year,pupils,period"
+				icon="ui-icon-triangle-1-e" />
+			<h:outputText rendered="#{!configurationController.admin}"
+				value="#{pupilsController.schools} - " />
+			<h:outputText rendered="#{configurationController.teacher}"
+				value="#{pupilsController.rooms} - " />
+			<h:outputText id="period"
+				value="#{configurationController.formattedDate}" />
+			<p:commandButton value="#{resourcebundle.Refresh}"
 				actionListener="#{pupilsController.refresh}"
 				styleClass="ui-priority-primary" update="pupils" />
 			<p:commandButton value="#{resourcebundle.Insert}"
@@ -93,9 +119,16 @@
 					</f:facet>
 					${pupil.school}
 				</p:column>
+				<p:column rendered="#{configurationController.admin}"
+					headerText="#{resourcebundle.Quote}" sortBy="#{pupil.quote}"
+					filterBy="#{pupil.quote}"
+					filterFunction="#{reportController.filterByNumber}"
+					styleClass="quote">
+					#{pupil.quote}
+				</p:column>
 				<p:column headerText="#{resourcebundle.Presences}"
 					sortBy="#{pupil.presences}" filterBy="#{pupil.presences}"
-					filterFunction="#{reportController.filterByPresence}"
+					filterFunction="#{reportController.filterByNumber}"
 					styleClass="present">
 					#{pupil.presences}
 				</p:column>

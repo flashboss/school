@@ -116,6 +116,16 @@ public class RestSchoolModule {
 	}
 
 	@POST
+	@Path("findPresencesByYear")
+	@Consumes(APPLICATION_JSON)
+	@Produces(APPLICATION_JSON)
+	public Presences findPresencesByYear(Calendar year) throws ModuleException {
+		Presences presences = new Presences();
+		presences.setEntities(schoolModule.findPresencesByYear(year));
+		return presences;
+	}
+
+	@POST
 	@Path("findPresenceByPupilAndDay")
 	@Consumes(APPLICATION_JSON)
 	@Produces(APPLICATION_JSON)

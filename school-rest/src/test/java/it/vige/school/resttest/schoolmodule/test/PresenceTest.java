@@ -66,6 +66,10 @@ public class PresenceTest extends RestCaller {
 		presences = response.readEntity(Presences.class);
 		assertEquals(1, presences.getEntities().size(), "The presence is found");
 		response.close();
+		response = post(url + "findPresencesByYear", authorization, currentDay);
+		presences = response.readEntity(Presences.class);
+		assertEquals(1, presences.getEntities().size(), "The presence is found");
+		response.close();
 		response = post(url + "findPresenceByPupilAndDay", authorization, pupilByDay);
 		presence = response.readEntity(Presence.class);
 		assertNotNull(presence, "The presence was inserted");
