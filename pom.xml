@@ -61,6 +61,9 @@
 		<primefaces.version>6.2</primefaces.version>
 		<maven.war.plugin.version>3.2.2</maven.war.plugin.version>
 		<maven.ejb.plugin.version>3.0.1</maven.ejb.plugin.version>
+		<maven.source.plugin.version>3.0.1</maven.source.plugin.version>
+		<maven.javadoc.plugin.version>3.0.1</maven.javadoc.plugin.version>
+		<maven.gpg.plugin.version>1.6</maven.gpg.plugin.version>
 		<maven.surefire.plugin.version>2.22.0</maven.surefire.plugin.version>
 		<ejb.version>3.2</ejb.version>
 		<maven.replacer.plugin.version>1.5.3</maven.replacer.plugin.version>
@@ -173,6 +176,7 @@
 				<plugins>
 					<plugin>
 						<artifactId>maven-source-plugin</artifactId>
+						<version>maven.source.plugin.version</version>
 						<executions>
 							<execution>
 								<id>attach-sources</id>
@@ -184,6 +188,7 @@
 					</plugin>
 					<plugin>
 						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>maven.javadoc.plugin.version</version>
 						<executions>
 							<execution>
 								<id>attach-javadocs</id>
@@ -195,6 +200,7 @@
 					</plugin>
 					<plugin>
 						<artifactId>maven-gpg-plugin</artifactId>
+						<version>maven.gpg.plugin.version</version>
 						<executions>
 							<execution>
 								<id>sign-artifacts</id>
