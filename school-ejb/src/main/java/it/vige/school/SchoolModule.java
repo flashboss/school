@@ -86,7 +86,7 @@ public interface SchoolModule {
 	/**
 	 * Find a presences by specifying its month
 	 * 
-	 * @param month month of the presences to retrieve
+	 * @param year year of the presences to retrieve
 	 * @return Presences with specified room
 	 * @throws ModuleException Throws an exception if the pupil cannot be found
 	 */
@@ -95,8 +95,7 @@ public interface SchoolModule {
 	/**
 	 * Find a presences by specifying its pupil and day
 	 * 
-	 * @param pupil pupil of the presences to retrieve
-	 * @param day   day of the presences to retrieve
+	 * @param pupilByDay pupil of the presences to retrieve
 	 * @return Presence with specified room
 	 * @throws ModuleException Throws an exception if the pupil cannot be found
 	 */
