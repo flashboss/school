@@ -23,8 +23,3 @@
 .school {
 	width: 12%;
 }
-
-.tableView table, .tableView a.ui-datepicker-prev, .tableView a.ui-datepicker-next
-	{
-	display: none;
-}

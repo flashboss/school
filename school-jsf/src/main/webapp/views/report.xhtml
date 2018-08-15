@@ -27,35 +27,23 @@
 	<ui:define name="content">
 		<h:form>
 	#{resourcebundle.Subreport}
-			<p:commandButton
-				actionListener="#{configurationController.decrementMonth}"
-				id="navLeftMonth" update="month,pupils,period"
-				icon="ui-icon-triangle-1-w" />
-			<h:panelGroup class="tableView">
-				<p:calendar id="month"
-					value="#{configurationController.currentDate}"
-					maxdate="#{configurationController.currentDate}"
-					locale="#{configurationController.currentLocale}"
-					lang="#{configurationController.currentLocale}" mode="inline" />
-			</h:panelGroup>
-			<p:commandButton
-				actionListener="#{configurationController.incrementMonth}"
-				id="navRightMonth" update="month,pupils,period"
-				icon="ui-icon-triangle-1-e" />
+				<p:calendar id="popupmonth"
+				value="#{configurationController.currentDate}"
+				maxdate="#{configurationController.currentDate}"
+				locale="#{configurationController.currentLocale}" navigator="true">
+				<p:ajax event="dateSelect"
+					listener="#{configurationController.onMonthSelect}"
+					update="period,pupils" />
+			</p:calendar>
 	#{resourcebundle.Subreportyear}
-			<p:commandButton
-				actionListener="#{configurationController.decrementYear}"
-				id="navLeftYear" update="year,pupils,period" icon="ui-icon-triangle-1-w" />
-			<h:panelGroup class="tableView">
-				<p:calendar id="year" value="#{configurationController.currentDate}"
-					maxdate="#{configurationController.currentDate}"
-					locale="#{configurationController.currentLocale}"
-					lang="#{configurationController.currentLocale}" mode="inline" />
-			</h:panelGroup>
-			<p:commandButton
-				actionListener="#{configurationController.incrementYear}"
-				id="navRightYear" update="year,pupils,period"
-				icon="ui-icon-triangle-1-e" />
+				<p:calendar id="popupyear"
+				value="#{configurationController.currentDate}"
+				maxdate="#{configurationController.currentDate}"
+				locale="#{configurationController.currentLocale}" navigator="true">
+				<p:ajax event="dateSelect"
+					listener="#{configurationController.onYearSelect}"
+					update="period,pupils" />
+			</p:calendar>
 			<h:outputText rendered="#{!configurationController.admin}"
 				value="#{pupilsController.schools} - " />
 			<h:outputText rendered="#{configurationController.teacher}"

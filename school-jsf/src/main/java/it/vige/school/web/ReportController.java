@@ -2,6 +2,7 @@ package it.vige.school.web;
 
 import static it.vige.school.Constants.ERROR;
 import static it.vige.school.Utils.getCalendarByDate;
+import static it.vige.school.web.ReportType.MONTH;
 import static java.lang.Integer.valueOf;
 import static javax.faces.application.FacesMessage.SEVERITY_INFO;
 import static javax.faces.context.FacesContext.getCurrentInstance;
@@ -47,13 +48,20 @@ public class ReportController {
 	@Inject
 	private ConfigurationController configurationController;
 
+	private ReportType type = MONTH;
+
 	@PostConstruct
 	public void init() {
 		log.debug("calling the report controller");
 		try {
 			List<Pupil> oldPupils = pupilsController.getPupils();
 			Calendar currentDate = getCalendarByDate(configurationController.getCurrentDate());
-			List<Presence> presences = schoolModule.findPresencesByMonth(currentDate);
+			List<Presence> presencesByCurrentDate = null;
+			if (type == MONTH)
+				presencesByCurrentDate = schoolModule.findPresencesByMonth(currentDate);
+			else
+				presencesByCurrentDate = schoolModule.findPresencesByYear(currentDate);
+			List<Presence> presences = presencesByCurrentDate;
 			pupils = new ArrayList<ReportPupil>();
 			oldPupils.forEach(x -> {
 				ReportPupil reportPupil = new ReportPupil(x);
@@ -88,6 +96,14 @@ public class ReportController {
 
 	public List<Pupil> getFilteredPupils() {
 		return filteredPupils;
+	}
+
+	public ReportType getType() {
+		return type;
+	}
+
+	public void setType(ReportType type) {
+		this.type = type;
 	}
 
 	public void setFilteredPupils(List<Pupil> filteredPupils) {

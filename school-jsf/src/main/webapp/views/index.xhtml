@@ -34,7 +34,7 @@
 					listener="#{configurationController.onDaySelect}" update="pupils" />
 			</p:calendar>
 	<h:outputText rendered="#{!configurationController.admin}" value="#{pupilsController.schools}" />
-	<h:outputText rendered="#{configurationController.teacher}" value="- #{pupilsController.rooms}" />
+	<h:outputText rendered="#{configurationController.teacher}" value=" - #{pupilsController.rooms}" />
 	<p:commandButton value="#{resourcebundle.Refresh}"
 				actionListener="#{pupilsController.refresh}"
 				styleClass="ui-priority-primary" update="pupils" />
