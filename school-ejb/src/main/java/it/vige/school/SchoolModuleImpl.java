@@ -1,5 +1,7 @@
 package it.vige.school;
 
+import static java.util.Calendar.MONTH;
+import static java.util.Calendar.YEAR;
 import static java.util.stream.Collectors.toList;
 import static org.jboss.logging.Logger.getLogger;
 
@@ -151,7 +153,8 @@ public class SchoolModuleImpl implements SchoolModule, Converters {
 			try {
 				TypedQuery<PresenceEntity> query = null;
 				query = em.createNamedQuery("findPresencesByMonth", PresenceEntity.class);
-				query.setParameter("month", month);
+				query.setParameter("month", month.get(MONTH) + 1);
+				query.setParameter("year", month.get(YEAR));
 				List<PresenceEntity> presenceList = query.getResultList();
 				log.debug("pupil found: " + presenceList);
 				return presenceList.stream().map(t -> PresenceEntityToPresence.apply(t)).collect(toList());
