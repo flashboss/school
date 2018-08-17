@@ -22,12 +22,13 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/templates/school.xhtml">
 	<ui:define name="title">
-		#{resourcebundle.Project}
+		#{resourcebundle.Welcome} - #{resourcebundle.Report}
 	</ui:define>
 	<ui:define name="content">
-		<h:form>
-	#{resourcebundle.Subreport}
-				<p:calendar id="popupmonth"
+		<h:form styleClass="reportform">
+			<h:outputText value="#{resourcebundle.Subreport}"
+				styleClass="subreportLabel" />
+			<p:calendar id="popupmonth"
 				value="#{configurationController.currentDate}"
 				maxdate="#{configurationController.currentDate}"
 				locale="#{configurationController.currentLocale}" navigator="true"
@@ -36,8 +37,9 @@
 					listener="#{configurationController.onMonthSelect}"
 					update="period,pupils" />
 			</p:calendar>
-	#{resourcebundle.Subreportyear}
-				<p:calendar id="popupyear"
+			<h:outputText styleClass="yearlabel"
+				value="#{resourcebundle.Subreportyear}" />
+			<p:calendar id="popupyear"
 				value="#{configurationController.currentDate}"
 				maxdate="#{configurationController.currentDate}"
 				locale="#{configurationController.currentLocale}" navigator="true"
@@ -46,21 +48,15 @@
 					listener="#{configurationController.onYearSelect}"
 					update="period,pupils" />
 			</p:calendar>
-			<h:outputText rendered="#{!configurationController.admin}"
-				value="#{pupilsController.schools} - " />
-			<h:outputText rendered="#{configurationController.teacher}"
-				value="#{pupilsController.rooms} - " />
 			<h:outputText id="period"
-				value="#{configurationController.formattedDate}" />
+				value="#{configurationController.formattedDate}"
+				styleClass="periodLabel" />
 			<p:commandButton value="#{resourcebundle.Refresh}"
 				actionListener="#{pupilsController.refresh}"
-				styleClass="ui-priority-primary" update="pupils" />
+				styleClass="ui-priority-primary refreshreport" update="pupils" />
 			<p:commandButton value="#{resourcebundle.Insert}"
 				actionListener="#{reportController.insert}"
-				styleClass="ui-priority-primary" />
-			<p:commandButton value="#{resourcebundle.Logout}"
-				actionListener="#{configurationController.logout}"
-				styleClass="ui-priority-primary" />
+				styleClass="ui-priority-primary pagereport" />
 			<p:dataTable id="pupils" value="#{reportController.pupils}"
 				filteredValue="#{reportController.filteredPupils}" var="pupil"
 				widgetVar="pupilsTable"
@@ -75,9 +71,9 @@
 							placeholder="#{resourcebundle.Enter_keyword}" />
 					</p:outputPanel>
 				</f:facet>
-				<p:column headerText="#{resourcebundle.FiscalCode}"
-					sortBy="#{pupil.id}" filterBy="#{pupil.id}"
-					filterMatchMode="contains">${pupil.id}</p:column>
+				<p:column rendered="#{!configurationController.teacher}"
+					headerText="#{resourcebundle.FiscalCode}" sortBy="#{pupil.id}"
+					filterBy="#{pupil.id}" filterMatchMode="contains">${pupil.id}</p:column>
 				<p:column headerText="#{resourcebundle.Name}" sortBy="#{pupil.name}"
 					filterBy="#{pupil.name}" filterMatchMode="contains">${pupil.name}</p:column>
 				<p:column headerText="#{resourcebundle.Surname}"

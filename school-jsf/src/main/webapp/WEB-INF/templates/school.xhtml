@@ -18,7 +18,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
 	<title><ui:insert name="title">Default Title</ui:insert></title>
@@ -34,7 +35,16 @@
 
 			<f:loadBundle basename="ResourceJSF" var="resourcebundle" />
 			<ui:insert name="header">
-				<h1>#{resourcebundle.Welcome}</h1>
+				<h1>
+					#{resourcebundle.Welcome}
+					<h:outputText rendered="#{!configurationController.admin}"
+						value="#{pupilsController.schools}" />
+					<h:outputText rendered="#{configurationController.teacher}"
+						value=" - #{pupilsController.rooms}" />
+				</h1>
+				<p:commandButton value="#{resourcebundle.Logout}"
+					actionListener="#{configurationController.logout}"
+					styleClass="ui-priority-primary logout" />
 			</ui:insert>
 		</div>
 
@@ -46,6 +56,8 @@
 
 		<div id="footer">
 			<ui:insert name="footer">
+				#{resourcebundle.Project} <a
+					href="https://flashboss.github.io/school" target="_blank">School</a>
                 #{resourcebundle.Powered} <a href="http://www.vige.it"
 					target="_blank">Vige Community</a>
 			</ui:insert>

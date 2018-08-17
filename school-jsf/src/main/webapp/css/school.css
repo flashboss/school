@@ -8,6 +8,11 @@
 	width: 8%;
 }
 
+.logout {
+	left: 94%;
+	bottom: 55px;
+}
+
 .present {
 	width: 10%;
 }
@@ -24,8 +29,26 @@
 	width: 12%;
 }
 
+.month {
+	left: 16%;
+	position: relative;
+	top: 94px;
+}
+
 .month .ui-datepicker-calendar {
 	display: none;
+}
+
+.yearlabel {
+	left: 41%;
+	position: relative;
+	top: 71px;
+}
+
+.year {
+	left: 51%;
+	position: relative;
+	top: 31px;
 }
 
 .year .ui-datepicker-calendar {
@@ -42,4 +65,48 @@
 
 .year .ui-datepicker-next {
 	display: none;
+}
+
+#content {
+	position: relative;
+	bottom: 40px;
+}
+
+.periodLabel {
+	position: relative;
+	left: 76%;
+}
+
+.refreshreport {
+	position: relative;
+	bottom: 49px;
+	left: 68%;
+}
+
+.subreportLabel {
+	position: relative;
+	top: 134px;
+}
+
+.pagereport {
+	position: relative;
+	bottom: 49px;
+	left: 68%;
+}
+
+.refreshinsert {
+	position: relative;
+	bottom: 48px;
+	left: 44%;
+}
+
+.pageinsert {
+	position: relative;
+	bottom: 48px;
+	left: 44%;
+}
+
+.reportform {
+	position: relative;
+	bottom: 125px;
 }

@@ -5,7 +5,7 @@ It is an open source project. This means you can download the School package, th
 
 It covers all the following features:
 
-- Insert pupils.
+- Import pupils.
 - Browsing pupils.
 - Report the presences.
 

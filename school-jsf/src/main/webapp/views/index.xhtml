@@ -22,7 +22,7 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/templates/school.xhtml">
 	<ui:define name="title">
-		#{resourcebundle.Project}
+		#{resourcebundle.Welcome} - #{resourcebundle.Insert}
 	</ui:define>
 	<ui:define name="content">
 		<h:form>
@@ -33,17 +33,12 @@
 				<p:ajax event="dateSelect"
 					listener="#{configurationController.onDaySelect}" update="pupils" />
 			</p:calendar>
-	<h:outputText rendered="#{!configurationController.admin}" value="#{pupilsController.schools}" />
-	<h:outputText rendered="#{configurationController.teacher}" value=" - #{pupilsController.rooms}" />
-	<p:commandButton value="#{resourcebundle.Refresh}"
+			<p:commandButton value="#{resourcebundle.Refresh}"
 				actionListener="#{pupilsController.refresh}"
-				styleClass="ui-priority-primary" update="pupils" />
+				styleClass="ui-priority-primary refreshinsert" update="pupils" />
 			<p:commandButton value="#{resourcebundle.Report}"
 				actionListener="#{pupilsController.report}"
-				styleClass="ui-priority-primary" />
-			<p:commandButton value="#{resourcebundle.Logout}"
-				actionListener="#{configurationController.logout}"
-				styleClass="ui-priority-primary" />
+				styleClass="ui-priority-primary pageinsert" />
 			<p:dataTable id="pupils" value="#{pupilsController.pupils}"
 				filteredValue="#{pupilsController.filteredPupils}" var="pupil"
 				widgetVar="pupilsTable"
@@ -58,9 +53,9 @@
 							placeholder="#{resourcebundle.Enter_keyword}" />
 					</p:outputPanel>
 				</f:facet>
-				<p:column headerText="#{resourcebundle.FiscalCode}"
-					sortBy="#{pupil.id}" filterBy="#{pupil.id}"
-					filterMatchMode="contains">${pupil.id}</p:column>
+				<p:column rendered="#{!configurationController.teacher}"
+					headerText="#{resourcebundle.FiscalCode}" sortBy="#{pupil.id}"
+					filterBy="#{pupil.id}" filterMatchMode="contains">${pupil.id}</p:column>
 				<p:column headerText="#{resourcebundle.Name}" sortBy="#{pupil.name}"
 					filterBy="#{pupil.name}" filterMatchMode="contains">${pupil.name}</p:column>
 				<p:column headerText="#{resourcebundle.Surname}"
