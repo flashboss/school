@@ -12,7 +12,6 @@ import static java.util.Locale.getDefault;
 import static javax.faces.context.FacesContext.getCurrentInstance;
 import static org.jboss.logging.Logger.getLogger;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -20,7 +19,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 import javax.enterprise.context.SessionScoped;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -122,12 +120,5 @@ public class ConfigurationController implements Serializable {
 		formattedDate = yearDateFormat.format(currentDate);
 		reportController.setType(YEAR);
 		reportController.init();
-	}
-
-	public void logout() throws IOException {
-		log.debug("logout");
-		ExternalContext ec = getCurrentInstance().getExternalContext();
-		ec.invalidateSession();
-		ec.redirect(ec.getRequestContextPath() + "/");
 	}
 }
