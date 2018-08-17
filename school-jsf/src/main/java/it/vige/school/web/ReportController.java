@@ -3,7 +3,7 @@ package it.vige.school.web;
 import static it.vige.school.Constants.ERROR;
 import static it.vige.school.Utils.getCalendarByDate;
 import static it.vige.school.web.ReportType.MONTH;
-import static java.lang.Integer.valueOf;
+import static java.lang.Double.valueOf;
 import static javax.faces.application.FacesMessage.SEVERITY_INFO;
 import static javax.faces.context.FacesContext.getCurrentInstance;
 import static org.jboss.logging.Logger.getLogger;
@@ -79,6 +79,18 @@ public class ReportController {
 	}
 
 	public boolean filterByNumber(Comparable<Integer> value, Object filter, Locale locale) {
+		String filterText = (filter == null) ? null : filter.toString().trim();
+		if (filterText == null || filterText.equals("")) {
+			return true;
+		}
+
+		if (value == null) {
+			return false;
+		}
+		return value.compareTo(Integer.valueOf(filterText)) > 0;
+	}
+
+	public boolean filterByQuote(Comparable<Double> value, Object filter, Locale locale) {
 		String filterText = (filter == null) ? null : filter.toString().trim();
 		if (filterText == null || filterText.equals("")) {
 			return true;
