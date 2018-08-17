@@ -42,25 +42,14 @@
 					<h:outputText rendered="#{configurationController.teacher}"
 						value=" - #{pupilsController.rooms}" />
 				</h1>
-				<p:commandButton value="#{resourcebundle.Logout}"
-					actionListener="#{configurationController.logout}"
-					styleClass="ui-priority-primary logout" />
-			</ui:insert>
+				<br /><br />
+				</ui:insert>
 		</div>
 
 		<div id="content">
 			<ui:insert name="content">
                 Content
             </ui:insert>
-		</div>
-
-		<div id="footer">
-			<ui:insert name="footer">
-				#{resourcebundle.Project} <a
-					href="https://flashboss.github.io/school" target="_blank">School</a>
-                #{resourcebundle.Powered} <a href="http://www.vige.it"
-					target="_blank">Vige Community</a>
-			</ui:insert>
 		</div>
 	</div>
 </h:body>
