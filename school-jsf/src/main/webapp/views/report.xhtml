@@ -81,7 +81,8 @@
 					filterMatchMode="contains">${pupil.surname}</p:column>
 				<p:column rendered="#{configurationController.admin}"
 					headerText="#{resourcebundle.Income}" sortBy="#{pupil.income}"
-					filterBy="#{pupil.income}" filterMatchMode="contains"
+					filterBy="#{pupil.income}"
+					filterFunction="#{reportController.filterByNumber}"
 					styleClass="income">${pupil.income}</p:column>
 				<p:column rendered="#{!configurationController.teacher}"
 					headerText="#{resourcebundle.Room}" sortBy="#{pupil.room}"
@@ -108,7 +109,7 @@
 				<p:column rendered="#{configurationController.admin}"
 					headerText="#{resourcebundle.Quote}" sortBy="#{pupil.quote}"
 					filterBy="#{pupil.quote}"
-					filterFunction="#{reportController.filterByNumber}"
+					filterFunction="#{reportController.filterByQuote}"
 					styleClass="quote">
 					#{pupil.quote}
 				</p:column>
