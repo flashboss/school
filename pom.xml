@@ -67,11 +67,11 @@
 		<maven.surefire.plugin.version>2.22.0</maven.surefire.plugin.version>
 		<ejb.version>3.2</ejb.version>
 		<maven.replacer.plugin.version>1.5.3</maven.replacer.plugin.version>
-		<wildfly.version>14.0.0.Beta2-SNAPSHOT</wildfly.version>
+		<wildfly.version>14.0.0.CR1-SNAPSHOT</wildfly.version>
 		<wildfly.maven.plugin.version>1.2.2.Final</wildfly.maven.plugin.version>
 		<jboss.logging.version>3.3.2.Final</jboss.logging.version>
 
-		<resteasy.version>3.6.0.Final</resteasy.version>
+		<resteasy.version>3.6.1.Final</resteasy.version>
 		<junit.version>5.2.0</junit.version>
 		<junit.surefire.version>1.3.0-M1</junit.surefire.version>
 	</properties>
