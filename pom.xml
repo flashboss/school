@@ -39,7 +39,7 @@
 	<scm>
 		<connection>svn:git:https://github.com/flashboss/school.git</connection>
 		<developerConnection>svn:git:https://github.com/flashboss/school.git</developerConnection>
-		<tag>1.1.X-SNAPSHOT</tag>
+		<tag>1.1.0</tag>
 		<url>svn:git:https://github.com/flashboss/school.git</url>
 	</scm>
 	<developers>
