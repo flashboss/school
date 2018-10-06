@@ -176,7 +176,7 @@
 				<plugins>
 					<plugin>
 						<artifactId>maven-source-plugin</artifactId>
-						<version>maven.source.plugin.version</version>
+						<version>${maven.source.plugin.version}</version>
 						<executions>
 							<execution>
 								<id>attach-sources</id>
@@ -188,7 +188,7 @@
 					</plugin>
 					<plugin>
 						<artifactId>maven-javadoc-plugin</artifactId>
-						<version>maven.javadoc.plugin.version</version>
+						<version>${maven.javadoc.plugin.version}</version>
 						<executions>
 							<execution>
 								<id>attach-javadocs</id>
@@ -200,7 +200,7 @@
 					</plugin>
 					<plugin>
 						<artifactId>maven-gpg-plugin</artifactId>
-						<version>maven.gpg.plugin.version</version>
+						<version>${maven.gpg.plugin.version}</version>
 						<executions>
 							<execution>
 								<id>sign-artifacts</id>
