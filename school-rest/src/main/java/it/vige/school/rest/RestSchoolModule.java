@@ -16,6 +16,7 @@ package it.vige.school.rest;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
 import java.util.Calendar;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
@@ -28,10 +29,8 @@ import javax.ws.rs.Produces;
 import it.vige.school.ModuleException;
 import it.vige.school.SchoolModule;
 import it.vige.school.dto.Presence;
-import it.vige.school.dto.Presences;
 import it.vige.school.dto.Pupil;
 import it.vige.school.dto.PupilByDay;
-import it.vige.school.dto.Pupils;
 
 @Path("/school/")
 public class RestSchoolModule {
@@ -42,87 +41,69 @@ public class RestSchoolModule {
 	@GET
 	@Path("findAllPupils")
 	@Produces(APPLICATION_JSON)
-	public Pupils findAllPupils() throws ModuleException {
-		Pupils pupils = new Pupils();
-		pupils.setEntities(schoolModule.findAllPupils());
-		return pupils;
+	public List<Pupil> findAllPupils() throws ModuleException {
+		return schoolModule.findAllPupils();
 	}
 
 	@GET
 	@Path("findAllPresences")
 	@Produces(APPLICATION_JSON)
-	public Presences findAllPresences() throws ModuleException {
-		Presences presences = new Presences();
-		presences.setEntities(schoolModule.findAllPresences());
-		return presences;
+	public List<Presence> findAllPresences() throws ModuleException {
+		return schoolModule.findAllPresences();
 	}
 
 	@GET
 	@Path("findPupilsByRoom/{room}")
 	@Produces(APPLICATION_JSON)
-	public Pupils findPupilsByRoom(@PathParam("room") String room) throws ModuleException {
-		Pupils pupils = new Pupils();
-		pupils.setEntities(schoolModule.findPupilsByRoom(room));
-		return pupils;
+	public List<Pupil> findPupilsByRoom(@PathParam("room") String room) throws ModuleException {
+		return schoolModule.findPupilsByRoom(room);
 	}
 
 	@GET
 	@Path("findPupilsBySchool/{school}")
 	@Produces(APPLICATION_JSON)
-	public Pupils findPupilsBySchool(@PathParam("school") String school) throws ModuleException {
-		Pupils pupils = new Pupils();
-		pupils.setEntities(schoolModule.findPupilsBySchool(school));
-		return pupils;
+	public List<Pupil> findPupilsBySchool(@PathParam("school") String school) throws ModuleException {
+		return schoolModule.findPupilsBySchool(school);
 	}
 
 	@GET
 	@Path("findPupilsBySchoolAndRoom/{school}/{room}")
 	@Produces(APPLICATION_JSON)
-	public Pupils findPupilsBySchool(@PathParam("school") String school, @PathParam("room") String room)
+	public List<Pupil> findPupilsBySchoolAndRoom(@PathParam("school") String school, @PathParam("room") String room)
 			throws ModuleException {
-		Pupils pupils = new Pupils();
-		pupils.setEntities(schoolModule.findPupilsBySchoolAndRoom(school, room));
-		return pupils;
+		return schoolModule.findPupilsBySchoolAndRoom(school, room);
 	}
 
 	@POST
 	@Path("findPresencesByPupil")
 	@Consumes(APPLICATION_JSON)
 	@Produces(APPLICATION_JSON)
-	public Presences findPresencesByPupil(Pupil pupil) throws ModuleException {
-		Presences presences = new Presences();
-		presences.setEntities(schoolModule.findPresencesByPupil(pupil));
-		return presences;
+	public List<Presence> findPresencesByPupil(Pupil pupil) throws ModuleException {
+		return schoolModule.findPresencesByPupil(pupil);
 	}
 
 	@POST
 	@Path("findPresencesByDay")
 	@Consumes(APPLICATION_JSON)
 	@Produces(APPLICATION_JSON)
-	public Presences findPresencesByDay(Calendar day) throws ModuleException {
-		Presences presences = new Presences();
-		presences.setEntities(schoolModule.findPresencesByDay(day));
-		return presences;
+	public List<Presence> findPresencesByDay(Calendar day) throws ModuleException {
+		return schoolModule.findPresencesByDay(day);
 	}
 
 	@POST
 	@Path("findPresencesByMonth")
 	@Consumes(APPLICATION_JSON)
 	@Produces(APPLICATION_JSON)
-	public Presences findPresencesByMonth(Calendar month) throws ModuleException {
-		Presences presences = new Presences();
-		presences.setEntities(schoolModule.findPresencesByMonth(month));
-		return presences;
+	public List<Presence> findPresencesByMonth(Calendar month) throws ModuleException {
+		return schoolModule.findPresencesByMonth(month);
 	}
 
 	@POST
 	@Path("findPresencesByYear")
 	@Consumes(APPLICATION_JSON)
 	@Produces(APPLICATION_JSON)
-	public Presences findPresencesByYear(Calendar year) throws ModuleException {
-		Presences presences = new Presences();
-		presences.setEntities(schoolModule.findPresencesByYear(year));
-		return presences;
+	public List<Presence> findPresencesByYear(Calendar year) throws ModuleException {
+		return schoolModule.findPresencesByYear(year);
 	}
 
 	@POST

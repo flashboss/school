@@ -16,11 +16,14 @@ package it.vige.school.resttest.schoolmodule.test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.util.List;
+
+import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
 
 import org.junit.jupiter.api.Test;
 
-import it.vige.school.dto.Pupils;
+import it.vige.school.dto.Pupil;
 import it.vige.school.resttest.RestCaller;
 
 public class PupilTest extends RestCaller {
@@ -31,16 +34,19 @@ public class PupilTest extends RestCaller {
 	@Test
 	public void getPupil() {
 		Response response = get(url + "findPupilsBySchool/donlorenzomilani", authorization);
-		Pupils result = response.readEntity(Pupils.class);
-		assertNotNull(result, "The pupils from Maiorana are found");
-		assertEquals(16, result.getEntities().size(), "The pupils from Maiorana are ok");
+		List<Pupil> pupils = response.readEntity(new GenericType<List<Pupil>>() {
+		});
+		assertNotNull(pupils, "The pupils from Maiorana are found");
+		assertEquals(16, pupils.size(), "The pupils from Maiorana are ok");
 		response = get(url + "findPupilsByRoom/1A", authorization);
-		result = response.readEntity(Pupils.class);
+		pupils = response.readEntity(new GenericType<List<Pupil>>() {
+		});
 		assertNotNull(response, "The pupils from 1A are found");
-		assertEquals(5, result.getEntities().size(), "The pupils from 1A are ok");
+		assertEquals(5, pupils.size(), "The pupils from 1A are ok");
 		response = get(url + "findPupilsBySchoolAndRoom/donlorenzomilani/1A", authorization);
-		result = response.readEntity(Pupils.class);
+		pupils = response.readEntity(new GenericType<List<Pupil>>() {
+		});
 		assertNotNull(response, "The pupils from 1A are found");
-		assertEquals(4, result.getEntities().size(), "The pupils from donlorenzomilani 1A are ok");
+		assertEquals(4, pupils.size(), "The pupils from donlorenzomilani 1A are ok");
 	}
 }

@@ -21,15 +21,14 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
 
 import org.junit.jupiter.api.Test;
 
 import it.vige.school.dto.Presence;
-import it.vige.school.dto.Presences;
 import it.vige.school.dto.Pupil;
 import it.vige.school.dto.PupilByDay;
-import it.vige.school.dto.Pupils;
 import it.vige.school.resttest.RestCaller;
 
 public class PresenceTest extends RestCaller {
@@ -40,8 +39,8 @@ public class PresenceTest extends RestCaller {
 	@Test
 	public void setPresence() {
 		Response response = get(url + "findAllPupils", authorization);
-		Pupils result = response.readEntity(Pupils.class);
-		List<Pupil> pupils = result.getEntities();
+		List<Pupil> pupils = response.readEntity(new GenericType<List<Pupil>>() {
+		});
 		assertEquals(36, pupils.size(), "The pupils from are all");
 		response.close();
 		Pupil firstPupil = pupils.get(0);
@@ -55,20 +54,24 @@ public class PresenceTest extends RestCaller {
 		assertNotNull(presence, "The presence was inserted");
 		response.close();
 		response = post(url + "findPresencesByPupil", authorization, firstPupil);
-		Presences presences = response.readEntity(Presences.class);
-		assertEquals(1, presences.getEntities().size(), "The presence is found");
+		List<Presence> presences = response.readEntity(new GenericType<List<Presence>>() {
+		});
+		assertEquals(1, presences.size(), "The presence is found");
 		response.close();
 		response = post(url + "findPresencesByDay", authorization, currentDay);
-		presences = response.readEntity(Presences.class);
-		assertEquals(1, presences.getEntities().size(), "The presence is found");
+		presences = response.readEntity(new GenericType<List<Presence>>() {
+		});
+		assertEquals(1, presences.size(), "The presence is found");
 		response.close();
 		response = post(url + "findPresencesByMonth", authorization, currentDay);
-		presences = response.readEntity(Presences.class);
-		assertEquals(1, presences.getEntities().size(), "The presence is found");
+		presences = response.readEntity(new GenericType<List<Presence>>() {
+		});
+		assertEquals(1, presences.size(), "The presence is found");
 		response.close();
 		response = post(url + "findPresencesByYear", authorization, currentDay);
-		presences = response.readEntity(Presences.class);
-		assertEquals(1, presences.getEntities().size(), "The presence is found");
+		presences = response.readEntity(new GenericType<List<Presence>>() {
+		});
+		assertEquals(1, presences.size(), "The presence is found");
 		response.close();
 		response = post(url + "findPresenceByPupilAndDay", authorization, pupilByDay);
 		presence = response.readEntity(Presence.class);
@@ -77,8 +80,9 @@ public class PresenceTest extends RestCaller {
 		response = post(url + "removePresence", authorization, pupilByDay);
 		response.close();
 		response = post(url + "findPresencesByPupil", authorization, firstPupil);
-		presences = response.readEntity(Presences.class);
-		assertEquals(0, presences.getEntities().size(), "The presence is not found");
+		presences = response.readEntity(new GenericType<List<Presence>>() {
+		});
+		assertEquals(0, presences.size(), "The presence is not found");
 		response.close();
 	}
 }
