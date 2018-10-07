@@ -17,7 +17,6 @@ import org.jboss.logging.Logger;
 
 import it.vige.school.dto.Presence;
 import it.vige.school.dto.Pupil;
-import it.vige.school.dto.PupilByDay;
 import it.vige.school.model.PresenceEntity;
 import it.vige.school.model.PupilEntity;
 
@@ -187,35 +186,35 @@ public class SchoolModuleImpl implements SchoolModule, Converters {
 	}
 
 	@Override
-	public Presence findPresenceByPupilAndDay(PupilByDay pupil) throws ModuleException {
-		return PresenceEntityToPresence.apply(findPresenceEntityByPupilAndDay(pupil));
+	public Presence findPresenceByPupilAndDay(Presence presence) throws ModuleException {
+		return PresenceEntityToPresence.apply(findPresenceEntityByPupilAndDay(presence));
 	}
 
 	@Override
-	public Presence createPresence(PupilByDay pupil) throws ModuleException {
-		if (pupil != null) {
-			PresenceEntity presence = new PresenceEntity();
-			presence.setDay(pupil.getDay());
-			presence.setPupil(em.find(PupilEntity.class, pupil.getId()));
-			em.persist(presence);
-			log.debug("presence created: " + presence);
-			return PresenceEntityToPresence.apply(presence);
+	public Presence createPresence(Presence presence) throws ModuleException {
+		if (presence != null) {
+			PresenceEntity presenceEntity = PresenceToPresenceEntity.apply(presence);
+			Pupil pupil = presence.getPupil();
+			presenceEntity.setPupil(em.find(PupilEntity.class, pupil.getId()));
+			em.persist(presenceEntity);
+			log.debug("presence created: " + presenceEntity);
+			return PresenceEntityToPresence.apply(presenceEntity);
 		} else {
 			throw new IllegalArgumentException("room cannot be null");
 		}
 	}
 
 	@Override
-	public void removePresence(PupilByDay pupil) throws ModuleException {
-		PresenceEntity presence = findPresenceEntityByPupilAndDay(pupil);
-		em.remove(presence);
-		log.debug("presence removed: " + presence);
+	public void removePresence(Presence presence) throws ModuleException {
+		PresenceEntity presenceEntity = findPresenceEntityByPupilAndDay(presence);
+		em.remove(presenceEntity);
+		log.debug("presence removed: " + presenceEntity);
 	}
 
-	private PresenceEntity findPresenceEntityByPupilAndDay(PupilByDay pupil) throws ModuleException {
+	private PresenceEntity findPresenceEntityByPupilAndDay(Presence presence) throws ModuleException {
 		TypedQuery<PresenceEntity> query = em.createNamedQuery("findPresenceByPupilAndDay", PresenceEntity.class);
-		query.setParameter("pupil", em.find(PupilEntity.class, pupil.getId()));
-		query.setParameter("day", pupil.getDay());
+		query.setParameter("pupil", em.find(PupilEntity.class, presence.getPupil().getId()));
+		query.setParameter("day", presence.getDay());
 		return query.getSingleResult();
 	}
 

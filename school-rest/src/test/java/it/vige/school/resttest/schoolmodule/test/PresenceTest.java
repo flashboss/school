@@ -28,7 +28,6 @@ import org.junit.jupiter.api.Test;
 
 import it.vige.school.dto.Presence;
 import it.vige.school.dto.Pupil;
-import it.vige.school.dto.PupilByDay;
 import it.vige.school.resttest.RestCaller;
 
 public class PresenceTest extends RestCaller {
@@ -45,11 +44,10 @@ public class PresenceTest extends RestCaller {
 		response.close();
 		Pupil firstPupil = pupils.get(0);
 		Calendar currentDay = getCalendarByDate(today());
-		PupilByDay pupilByDay = new PupilByDay(firstPupil);
-		pupilByDay.setDay(currentDay);
 		Presence presence = new Presence();
+		presence.setDay(currentDay);
 		presence.setPupil(firstPupil);
-		response = post(url + "createPresence", authorization, pupilByDay);
+		response = post(url + "createPresence", authorization, presence);
 		presence = response.readEntity(Presence.class);
 		assertNotNull(presence, "The presence was inserted");
 		response.close();
@@ -73,11 +71,11 @@ public class PresenceTest extends RestCaller {
 		});
 		assertEquals(1, presences.size(), "The presence is found");
 		response.close();
-		response = post(url + "findPresenceByPupilAndDay", authorization, pupilByDay);
+		response = post(url + "findPresenceByPupilAndDay", authorization, presence);
 		presence = response.readEntity(Presence.class);
 		assertNotNull(presence, "The presence was inserted");
 		response.close();
-		response = post(url + "removePresence", authorization, pupilByDay);
+		response = post(url + "removePresence", authorization, presence);
 		response.close();
 		response = post(url + "findPresencesByPupil", authorization, firstPupil);
 		presences = response.readEntity(new GenericType<List<Presence>>() {

@@ -1,18 +1,15 @@
 package it.vige.school.model;
 
-import static javax.persistence.GenerationType.SEQUENCE;
 import static javax.persistence.TemporalType.DATE;
 
 import java.util.Calendar;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
@@ -36,12 +33,10 @@ import javax.persistence.Temporal;
 				+ "p.pupil = :pupil and p.day = :day " + "order by p.pupil asc") })
 @Entity
 @Table
-@SequenceGenerator(name = "seq_presence", initialValue = 1, allocationSize = 100)
 public class PresenceEntity {
 
 	@Id
-	@GeneratedValue(strategy = SEQUENCE, generator = "seq_presence")
-	private Integer id;
+	private String id;
 
 	@Temporal(DATE)
 	private Calendar day;
@@ -50,11 +45,11 @@ public class PresenceEntity {
 	@JoinColumn(name = "pupil_id")
 	private PupilEntity pupil;
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

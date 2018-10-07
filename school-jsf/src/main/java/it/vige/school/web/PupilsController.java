@@ -27,7 +27,6 @@ import it.vige.school.ModuleException;
 import it.vige.school.SchoolModule;
 import it.vige.school.dto.Presence;
 import it.vige.school.dto.Pupil;
-import it.vige.school.dto.PupilByDay;
 
 @SessionScoped
 @Named
@@ -109,12 +108,13 @@ public class PupilsController implements Serializable {
 	}
 
 	public void addPresence(Pupil pupil) throws ModuleException {
-		PupilByDay pupilByDay = new PupilByDay(pupil);
-		pupilByDay.setDay(getCalendarByDate(configurationController.getCurrentDay()));
+		Presence presence = new Presence();
+		presence.setDay(getCalendarByDate(configurationController.getCurrentDay()));
+		presence.setPupil(pupil);
 		if (pupil.isPresent())
-			schoolModule.createPresence(pupilByDay);
+			schoolModule.createPresence(presence);
 		else
-			schoolModule.removePresence(pupilByDay);
+			schoolModule.removePresence(presence);
 		log.debug("pupil: " + pupil);
 	}
 

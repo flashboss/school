@@ -30,7 +30,6 @@ import it.vige.school.ModuleException;
 import it.vige.school.SchoolModule;
 import it.vige.school.dto.Presence;
 import it.vige.school.dto.Pupil;
-import it.vige.school.dto.PupilByDay;
 
 @Path("/school/")
 public class RestSchoolModule {
@@ -110,23 +109,23 @@ public class RestSchoolModule {
 	@Path("findPresenceByPupilAndDay")
 	@Consumes(APPLICATION_JSON)
 	@Produces(APPLICATION_JSON)
-	public Presence findPresenceByPupilAndDay(PupilByDay pupilByDay) throws ModuleException {
-		return schoolModule.findPresenceByPupilAndDay(pupilByDay);
+	public Presence findPresenceByPupilAndDay(Presence presence) throws ModuleException {
+		return schoolModule.findPresenceByPupilAndDay(presence);
 	}
 
 	@POST
 	@Path("createPresence")
 	@Consumes(APPLICATION_JSON)
 	@Produces(APPLICATION_JSON)
-	public Presence createPresence(PupilByDay pupil) throws ModuleException {
-		return schoolModule.createPresence(pupil);
+	public Presence createPresence(Presence presence) throws ModuleException {
+		return schoolModule.createPresence(presence);
 	}
 
 	@POST
 	@Path("removePresence")
 	@Consumes(APPLICATION_JSON)
-	public void removePresence(PupilByDay pupil) throws ModuleException {
-		schoolModule.removePresence(pupil);
+	public void removePresence(Presence presence) throws ModuleException {
+		schoolModule.removePresence(presence);
 	}
 
 }

@@ -43,7 +43,6 @@ public interface Converters {
 
 		public Presence apply(PresenceEntity t) {
 			Presence presence = new Presence();
-			presence.setId(t.getId());
 			presence.setDay(t.getDay());
 			presence.setPupil(PupilEntityToPupil.apply(t.getPupil()));
 
