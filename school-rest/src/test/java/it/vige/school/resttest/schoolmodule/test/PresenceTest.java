@@ -75,6 +75,9 @@ public class PresenceTest extends RestCaller {
 		presence = response.readEntity(Presence.class);
 		assertNotNull(presence, "The presence was inserted");
 		response.close();
+		response = post(url + "createPresence", authorization, presence);
+		assertEquals(500, response.getStatus(), "We cannot insert duplicates presences");
+		response.close();
 		response = post(url + "removePresence", authorization, presence);
 		response.close();
 		response = post(url + "findPresencesByPupil", authorization, firstPupil);
