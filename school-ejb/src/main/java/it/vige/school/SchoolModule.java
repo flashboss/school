@@ -7,7 +7,6 @@ import javax.ejb.Local;
 
 import it.vige.school.dto.Presence;
 import it.vige.school.dto.Pupil;
-import it.vige.school.dto.PupilByDay;
 
 @Local
 public interface SchoolModule {
@@ -50,7 +49,7 @@ public interface SchoolModule {
 	 * Find a pupils by specifying its school and room
 	 * 
 	 * @param school school of the pupils to retrieve
-	 * @param room room of the pupils to retrieve
+	 * @param room   room of the pupils to retrieve
 	 * @return Pupils with specified room
 	 * @throws ModuleException Throws an exception if the pupil cannot be found
 	 */
@@ -95,26 +94,26 @@ public interface SchoolModule {
 	/**
 	 * Find a presences by specifying its pupil and day
 	 * 
-	 * @param pupilByDay pupil of the presences to retrieve
+	 * @param presence presence to retrieve
 	 * @return Presence with specified room
 	 * @throws ModuleException Throws an exception if the pupil cannot be found
 	 */
-	Presence findPresenceByPupilAndDay(PupilByDay pupilByDay) throws ModuleException;
+	Presence findPresenceByPupilAndDay(Presence presence) throws ModuleException;
 
 	/**
 	 * DOCUMENT_ME
 	 * 
-	 * @param pupil DOCUMENT_ME
+	 * @param presence DOCUMENT_ME
 	 * @return DOCUMENT_ME
 	 * @throws ModuleException DOCUMENT_ME
 	 */
-	Presence createPresence(PupilByDay pupil) throws ModuleException;
+	Presence createPresence(Presence presence) throws ModuleException;
 
 	/**
 	 * removePresence methods to remove a Presence.
 	 * 
-	 * @param pupil DOCUMENT_ME
+	 * @param presence DOCUMENT_ME
 	 * @throws ModuleException DOCUMENT_ME
 	 */
-	void removePresence(PupilByDay pupil) throws ModuleException;
+	void removePresence(Presence presence) throws ModuleException;
 }
