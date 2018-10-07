@@ -82,8 +82,7 @@
 				<p:column rendered="#{configurationController.admin}"
 					headerText="#{resourcebundle.Income}" sortBy="#{pupil.income}"
 					filterBy="#{pupil.income}"
-					filterFunction="#{reportController.filterByNumber}"
-					styleClass="income">${pupil.income}</p:column>
+					filterFunction="#{filters.filterByNumber}" styleClass="income">${pupil.income}</p:column>
 				<p:column rendered="#{!configurationController.teacher}"
 					headerText="#{resourcebundle.Room}" sortBy="#{pupil.room}"
 					filterBy="#{pupil.room}" filterMatchMode="in" styleClass="room">
@@ -108,15 +107,13 @@
 				</p:column>
 				<p:column rendered="#{configurationController.admin}"
 					headerText="#{resourcebundle.Quote}" sortBy="#{pupil.quote}"
-					filterBy="#{pupil.quote}"
-					filterFunction="#{reportController.filterByQuote}"
+					filterBy="#{pupil.quote}" filterFunction="#{filters.filterByQuote}"
 					styleClass="quote">
 					#{pupil.quote}
 				</p:column>
 				<p:column headerText="#{resourcebundle.Presences}"
 					sortBy="#{pupil.presences}" filterBy="#{pupil.presences}"
-					filterFunction="#{reportController.filterByNumber}"
-					styleClass="present">
+					filterFunction="#{filters.filterByNumber}" styleClass="present">
 					#{pupil.presences}
 				</p:column>
 			</p:dataTable>
