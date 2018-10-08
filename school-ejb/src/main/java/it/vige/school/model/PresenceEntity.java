@@ -1,17 +1,10 @@
 package it.vige.school.model;
 
-import static javax.persistence.TemporalType.DATE;
-
-import java.util.Calendar;
-
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
 
 /**
  * Presences.
@@ -21,52 +14,29 @@ import javax.persistence.Temporal;
  */
 
 @NamedQueries({ @NamedQuery(name = "findAllPresences", query = "from PresenceEntity"),
-		@NamedQuery(name = "findPresencesByDay", query = "select p from PresenceEntity as p where " + "p.day = :day "
-				+ "order by p.day asc"),
+		@NamedQuery(name = "findPresencesByDay", query = "select p from PresenceEntity as p where " + "p.id.day = :day "
+				+ "order by p.id.day asc"),
 		@NamedQuery(name = "findPresencesByMonth", query = "select p from PresenceEntity as p where "
-				+ "MONTH(p.day) = :month " + "and YEAR(p.day) = :year " + "order by p.day asc"),
+				+ "MONTH(p.id.day) = :month " + "and YEAR(p.id.day) = :year " + "order by p.id.day asc"),
 		@NamedQuery(name = "findPresencesByYear", query = "select p from PresenceEntity as p where "
-				+ "YEAR(p.day) = :year " + "order by p.day asc"),
+				+ "YEAR(p.id.day) = :year " + "order by p.id.day asc"),
 		@NamedQuery(name = "findPresencesByPupil", query = "select p from PresenceEntity as p where "
-				+ "p.pupil = :pupil " + "order by p.pupil asc"),
+				+ "p.id.pupil = :pupil " + "order by p.id.pupil asc"),
 		@NamedQuery(name = "findPresenceByPupilAndDay", query = "select p from PresenceEntity as p where "
-				+ "p.pupil = :pupil and p.day = :day " + "order by p.pupil asc") })
+				+ "p.id.pupil = :pupil and p.id.day = :day " + "order by p.id.pupil asc") })
 @Entity
 @Table
 public class PresenceEntity {
 
-	@Id
-	private String id;
+	@EmbeddedId
+	private PresenceId id;
 
-	@Temporal(DATE)
-	private Calendar day;
-
-	@ManyToOne
-	@JoinColumn(name = "pupil_id")
-	private PupilEntity pupil;
-
-	public String getId() {
+	public PresenceId getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(PresenceId id) {
 		this.id = id;
-	}
-
-	public Calendar getDay() {
-		return day;
-	}
-
-	public void setDay(Calendar day) {
-		this.day = day;
-	}
-
-	public PupilEntity getPupil() {
-		return pupil;
-	}
-
-	public void setPupil(PupilEntity pupil) {
-		this.pupil = pupil;
 	}
 
 }

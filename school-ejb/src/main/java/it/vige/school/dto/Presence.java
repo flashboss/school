@@ -1,8 +1,6 @@
 package it.vige.school.dto;
 
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class Presence implements Serializable {
@@ -12,12 +10,6 @@ public class Presence implements Serializable {
 	private Calendar day;
 
 	private Pupil pupil;
-
-	private DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-
-	public String getId() {
-		return dateFormat.format(day.getTime()) + "--" + pupil.getId();
-	}
 
 	public Calendar getDay() {
 		return day;
