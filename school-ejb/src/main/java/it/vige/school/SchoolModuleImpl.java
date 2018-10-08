@@ -195,7 +195,7 @@ public class SchoolModuleImpl implements SchoolModule, Converters {
 		if (presence != null) {
 			PresenceEntity presenceEntity = PresenceToPresenceEntity.apply(presence);
 			Pupil pupil = presence.getPupil();
-			presenceEntity.setPupil(em.find(PupilEntity.class, pupil.getId()));
+			presenceEntity.getId().setPupil(em.find(PupilEntity.class, pupil.getId()));
 			em.persist(presenceEntity);
 			log.debug("presence created: " + presenceEntity);
 			return PresenceEntityToPresence.apply(presenceEntity);

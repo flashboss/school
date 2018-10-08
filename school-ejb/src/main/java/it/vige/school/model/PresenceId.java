@@ -1,15 +1,26 @@
-package it.vige.school.dto;
+package it.vige.school.model;
+
+import static javax.persistence.TemporalType.DATE;
 
 import java.io.Serializable;
 import java.util.Calendar;
 
-public class Presence implements Serializable {
+import javax.persistence.Embeddable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 
-	private static final long serialVersionUID = 5714119820308270263L;
+@Embeddable
+public class PresenceId implements Serializable {
 
+	private static final long serialVersionUID = -3002711450547460105L;
+
+	@Temporal(DATE)
 	private Calendar day;
 
-	private Pupil pupil;
+	@ManyToOne
+	@JoinColumn(name = "pupil_id")
+	private PupilEntity pupil;
 
 	public Calendar getDay() {
 		return day;
@@ -19,11 +30,11 @@ public class Presence implements Serializable {
 		this.day = day;
 	}
 
-	public Pupil getPupil() {
+	public PupilEntity getPupil() {
 		return pupil;
 	}
 
-	public void setPupil(Pupil pupil) {
+	public void setPupil(PupilEntity pupil) {
 		this.pupil = pupil;
 	}
 
@@ -44,7 +55,7 @@ public class Presence implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Presence other = (Presence) obj;
+		PresenceId other = (PresenceId) obj;
 		if (day == null) {
 			if (other.day != null)
 				return false;

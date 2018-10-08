@@ -56,7 +56,7 @@ public class PupilEntity {
 
 	private String school;
 
-	@OneToMany(mappedBy = "pupil", cascade = ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "id.pupil", cascade = ALL, orphanRemoval = true)
 	private List<PresenceEntity> presences;
 
 	public String getId() {

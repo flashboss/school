@@ -5,6 +5,7 @@ import java.util.function.Function;
 import it.vige.school.dto.Presence;
 import it.vige.school.dto.Pupil;
 import it.vige.school.model.PresenceEntity;
+import it.vige.school.model.PresenceId;
 import it.vige.school.model.PupilEntity;
 
 public interface Converters {
@@ -43,8 +44,8 @@ public interface Converters {
 
 		public Presence apply(PresenceEntity t) {
 			Presence presence = new Presence();
-			presence.setDay(t.getDay());
-			presence.setPupil(PupilEntityToPupil.apply(t.getPupil()));
+			presence.setDay(t.getId().getDay());
+			presence.setPupil(PupilEntityToPupil.apply(t.getId().getPupil()));
 
 			return presence;
 		}
@@ -54,9 +55,10 @@ public interface Converters {
 
 		public PresenceEntity apply(Presence t) {
 			PresenceEntity presenceEntity = new PresenceEntity();
-			presenceEntity.setId(t.getId());
-			presenceEntity.setDay(t.getDay());
-			presenceEntity.setPupil(PupilToPupilEntity.apply(t.getPupil()));
+			PresenceId presenceId = new PresenceId();
+			presenceId.setDay(t.getDay());
+			presenceId.setPupil(PupilToPupilEntity.apply(t.getPupil()));
+			presenceEntity.setId(presenceId);
 
 			return presenceEntity;
 		}
