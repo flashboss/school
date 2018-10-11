@@ -116,6 +116,13 @@
 					filterFunction="#{filters.filterByNumber}" styleClass="present">
 					#{pupil.presences}
 				</p:column>
+				<p:column styleClass="detail">
+					<p:commandLink actionListener="#{detail.page(pupil)}"
+						title="#{resourcebundle.Detail}">
+						<h:outputText styleClass="ui-icon icon-details"
+							style="margin:0 auto;" />
+					</p:commandLink>
+				</p:column>
 			</p:dataTable>
 			<div id="footer">
 				<ui:insert name="footer">
