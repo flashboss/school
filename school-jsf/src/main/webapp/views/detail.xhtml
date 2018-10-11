@@ -28,37 +28,37 @@
 		<h:form styleClass="detailform">
 			<h:outputText value="#{resourcebundle.UserDetail}" />
 			<p:commandButton value="#{resourcebundle.Refresh}"
-				actionListener="#{pupilsController.refresh}"
+				actionListener="#{pupils.refresh}"
 				styleClass="ui-priority-primary refreshdetail" />
 			<p:commandButton value="#{resourcebundle.Report}"
-				actionListener="#{pupilsController.report}"
+				actionListener="#{pupils.report}"
 				styleClass="ui-priority-primary pageinsertdetail" />
 
 			<h:outputLabel for="fiscalCode" value="#{resourcebundle.FiscalCode}" />
 			<h:outputText id="fiscalCode"
-				rendered="#{!configurationController.teacher}" value="${pupil.id}" />
+				rendered="#{!configuration.teacher}" value="${pupil.id}" />
 
 			<h:outputLabel for="name" value="#{resourcebundle.Name}" />
-			<h:outputText id="name" value="${pupil.name}" />
+			<h:outputText id="name" value="#{pupil.name}" />
 
 			<h:outputLabel for="surname" value="#{resourcebundle.Surname}" />
 			<h:outputText id="surname" value="${pupil.surname}" />
 
 			<h:outputLabel for="income" value="#{resourcebundle.Income}" />
-			<h:outputText id="income" rendered="#{configurationController.admin}"
+			<h:outputText id="income" rendered="#{configuration.admin}"
 				styleClass="income" value="${pupil.income}" />
 
 			<h:outputLabel for="room" value="#{resourcebundle.Room}" />
 			<h:outputText id="room"
-				rendered="#{!configurationController.teacher}" styleClass="room"
+				rendered="#{!configuration.teacher}" styleClass="room"
 				value="${pupil.room}" />
 
 			<h:outputLabel for="school" value="#{resourcebundle.School}" />
-			<h:outputText id="school" rendered="#{configurationController.admin}"
+			<h:outputText id="school" rendered="#{configuration.admin}"
 				styleClass="school" value="${pupil.school}" />
 
 			<h:outputLabel for="quote" value="#{resourcebundle.Quote}" />
-			<h:outputText id="quote" rendered="#{configurationController.admin}"
+			<h:outputText id="quote" rendered="#{configuration.admin}"
 				styleClass="quote" value="#{pupil.quote}" />
 
 			<h:outputLabel for="presences" value="#{resourcebundle.Presences}" />

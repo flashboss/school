@@ -29,14 +29,14 @@ import it.vige.school.dto.ReportPupil;
 
 @RequestScoped
 @Named
-public class ReportController {
+public class Report {
 
-	private static Logger log = getLogger(ReportController.class);
+	private static Logger log = getLogger(Report.class);
 
 	@Inject
-	private PupilsController pupilsController;
+	private Pupils pupilsController;
 
-	private List<ReportPupil> pupils;
+	private List<ReportPupil> reportPupils;
 
 	private List<Pupil> filteredPupils;
 
@@ -44,7 +44,7 @@ public class ReportController {
 	private SchoolModule schoolModule;
 
 	@Inject
-	private ConfigurationController configurationController;
+	private Configuration configurationController;
 
 	private ReportType type = MONTH;
 
@@ -60,14 +60,14 @@ public class ReportController {
 			else
 				presencesByCurrentDate = schoolModule.findPresencesByYear(currentDate);
 			List<Presence> presences = presencesByCurrentDate;
-			pupils = new ArrayList<ReportPupil>();
+			reportPupils = new ArrayList<ReportPupil>();
 			oldPupils.forEach(x -> {
 				ReportPupil reportPupil = new ReportPupil(x);
 				presences.forEach(y -> {
 					if (y.getPupil().equals(x))
 						reportPupil.setPresences(reportPupil.getPresences() + 1);
 				});
-				pupils.add(reportPupil);
+				reportPupils.add(reportPupil);
 			});
 		} catch (ModuleException ex) {
 			FacesMessage message = new FacesMessage(SEVERITY_INFO, // severity
@@ -76,8 +76,8 @@ public class ReportController {
 		}
 	}
 
-	public List<ReportPupil> getPupils() {
-		return pupils;
+	public List<ReportPupil> getReportPupils() {
+		return reportPupils;
 	}
 
 	public List<Pupil> getFilteredPupils() {

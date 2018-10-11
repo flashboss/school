@@ -27,20 +27,20 @@
 	<ui:define name="content">
 		<h:form>
 	#{resourcebundle.Subproject}
-				<p:calendar id="popup" value="#{configurationController.currentDay}"
-				maxdate="#{configurationController.currentDay}"
-				locale="#{configurationController.currentLocale}">
+				<p:calendar id="popup" value="#{configuration.currentDay}"
+				maxdate="#{configuration.currentDay}"
+				locale="#{configuration.currentLocale}">
 				<p:ajax event="dateSelect"
-					listener="#{configurationController.onDaySelect}" update="pupils" />
+					listener="#{configuration.onDaySelect}" update="pupils" />
 			</p:calendar>
 			<p:commandButton value="#{resourcebundle.Refresh}"
-				actionListener="#{pupilsController.refresh}"
+				actionListener="#{pupils.refresh}"
 				styleClass="ui-priority-primary refreshinsert" update="pupils" />
 			<p:commandButton value="#{resourcebundle.Report}"
-				actionListener="#{pupilsController.report}"
+				actionListener="#{pupils.report}"
 				styleClass="ui-priority-primary pageinsert" />
-			<p:dataTable id="pupils" value="#{pupilsController.pupils}"
-				filteredValue="#{pupilsController.filteredPupils}" var="pupil"
+			<p:dataTable id="pupils" value="#{pupils.pupils}"
+				filteredValue="#{pupils.filteredPupils}" var="pupil"
 				widgetVar="pupilsTable"
 				emptyMessage="#{resourcebundle.No_records_found}"
 				sortMode="multiple">
@@ -53,7 +53,7 @@
 							placeholder="#{resourcebundle.Enter_keyword}" />
 					</p:outputPanel>
 				</f:facet>
-				<p:column rendered="#{!configurationController.teacher}"
+				<p:column rendered="#{!configuration.teacher}"
 					headerText="#{resourcebundle.FiscalCode}" sortBy="#{pupil.id}"
 					filterBy="#{pupil.id}" filterMatchMode="contains">${pupil.id}</p:column>
 				<p:column headerText="#{resourcebundle.Name}" sortBy="#{pupil.name}"
@@ -61,28 +61,28 @@
 				<p:column headerText="#{resourcebundle.Surname}"
 					sortBy="#{pupil.surname}" filterBy="#{pupil.surname}"
 					filterMatchMode="contains">${pupil.surname}</p:column>
-				<p:column rendered="#{configurationController.admin}"
+				<p:column rendered="#{configuration.admin}"
 					headerText="#{resourcebundle.Income}" sortBy="#{pupil.income}"
 					filterBy="#{pupil.income}"
 					filterFunction="#{filters.filterByNumber}" styleClass="income">${pupil.income}</p:column>
-				<p:column rendered="#{!configurationController.teacher}"
+				<p:column rendered="#{!configuration.teacher}"
 					headerText="#{resourcebundle.Room}" sortBy="#{pupil.room}"
 					filterBy="#{pupil.room}" filterMatchMode="in" styleClass="room">
 					<f:facet name="filter">
 						<p:selectCheckboxMenu label="#{resourcebundle.Rooms}"
 							onchange="PF('pupilsTable').filter()" scrollHeight="150">
-							<f:selectItems value="#{pupilsController.rooms}" />
+							<f:selectItems value="#{pupils.rooms}" />
 						</p:selectCheckboxMenu>
 					</f:facet>
 					${pupil.room}
 				</p:column>
-				<p:column rendered="#{configurationController.admin}"
+				<p:column rendered="#{configuration.admin}"
 					headerText="#{resourcebundle.School}" sortBy="#{pupil.school}"
 					filterBy="#{pupil.school}" filterMatchMode="in" styleClass="school">
 					<f:facet name="filter">
 						<p:selectCheckboxMenu label="#{resourcebundle.Schools}"
 							onchange="PF('pupilsTable').filter()" scrollHeight="150">
-							<f:selectItems value="#{pupilsController.schools}" />
+							<f:selectItems value="#{pupils.schools}" />
 						</p:selectCheckboxMenu>
 					</f:facet>
 					${pupil.school}
@@ -102,7 +102,7 @@
 						onLabel="#{resourcebundle.Yes}" offLabel="#{resourcebundle.No}"
 						onIcon="ui-icon-check" offIcon="ui-icon-close">
 						<p:ajax update="msgs"
-							listener="#{presencesController.addPresence(pupil)}" />
+							listener="#{presences.addPresence(pupil)}" />
 					</p:selectBooleanButton>
 				</p:column>
 			</p:dataTable>
