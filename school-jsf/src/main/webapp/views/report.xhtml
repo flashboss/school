@@ -29,36 +29,36 @@
 			<h:outputText value="#{resourcebundle.Subreport}"
 				styleClass="subreportLabel" />
 			<p:calendar id="popupmonth"
-				value="#{configurationController.currentDate}"
-				maxdate="#{configurationController.currentDate}"
-				locale="#{configurationController.currentLocale}" navigator="true"
+				value="#{configuration.currentDate}"
+				maxdate="#{configuration.maxDate}"
+				locale="#{configuration.currentLocale}" navigator="true"
 				mode="inline" styleClass="month">
 				<p:ajax event="viewChange"
-					listener="#{configurationController.onMonthSelect}"
+					listener="#{configuration.onMonthSelect}"
 					update="period,pupils" />
 			</p:calendar>
 			<h:outputText styleClass="yearlabel"
 				value="#{resourcebundle.Subreportyear}" />
 			<p:calendar id="popupyear"
-				value="#{configurationController.currentDate}"
-				maxdate="#{configurationController.currentDate}"
-				locale="#{configurationController.currentLocale}" navigator="true"
+				value="#{configuration.currentDate}"
+				maxdate="#{configuration.maxDate}"
+				locale="#{configuration.currentLocale}" navigator="true"
 				mode="inline" styleClass="year">
 				<p:ajax event="viewChange"
-					listener="#{configurationController.onYearSelect}"
+					listener="#{configuration.onYearSelect}"
 					update="period,pupils" />
 			</p:calendar>
 			<h:outputText id="period"
-				value="#{configurationController.formattedDate}"
+				value="#{configuration.formattedDate}"
 				styleClass="periodLabel" />
 			<p:commandButton value="#{resourcebundle.Refresh}"
-				actionListener="#{pupilsController.refresh}"
+				actionListener="#{pupils.refresh}"
 				styleClass="ui-priority-primary refreshreport" update="pupils" />
 			<p:commandButton value="#{resourcebundle.Insert}"
-				actionListener="#{reportController.insert}"
+				actionListener="#{report.insert}"
 				styleClass="ui-priority-primary pagereport" />
-			<p:dataTable id="pupils" value="#{reportController.pupils}"
-				filteredValue="#{reportController.filteredPupils}" var="pupil"
+			<p:dataTable id="pupils" value="#{report.reportPupils}"
+				filteredValue="#{report.filteredPupils}" var="pupil"
 				widgetVar="pupilsTable"
 				emptyMessage="#{resourcebundle.No_records_found}"
 				sortMode="multiple">
@@ -71,7 +71,7 @@
 							placeholder="#{resourcebundle.Enter_keyword}" />
 					</p:outputPanel>
 				</f:facet>
-				<p:column rendered="#{!configurationController.teacher}"
+				<p:column rendered="#{!configuration.teacher}"
 					headerText="#{resourcebundle.FiscalCode}" sortBy="#{pupil.id}"
 					filterBy="#{pupil.id}" filterMatchMode="contains">${pupil.id}</p:column>
 				<p:column headerText="#{resourcebundle.Name}" sortBy="#{pupil.name}"
@@ -79,33 +79,33 @@
 				<p:column headerText="#{resourcebundle.Surname}"
 					sortBy="#{pupil.surname}" filterBy="#{pupil.surname}"
 					filterMatchMode="contains">${pupil.surname}</p:column>
-				<p:column rendered="#{configurationController.admin}"
+				<p:column rendered="#{configuration.admin}"
 					headerText="#{resourcebundle.Income}" sortBy="#{pupil.income}"
 					filterBy="#{pupil.income}"
 					filterFunction="#{filters.filterByNumber}" styleClass="income">${pupil.income}</p:column>
-				<p:column rendered="#{!configurationController.teacher}"
+				<p:column rendered="#{!configuration.teacher}"
 					headerText="#{resourcebundle.Room}" sortBy="#{pupil.room}"
 					filterBy="#{pupil.room}" filterMatchMode="in" styleClass="room">
 					<f:facet name="filter">
 						<p:selectCheckboxMenu label="#{resourcebundle.Rooms}"
 							onchange="PF('pupilsTable').filter()" scrollHeight="150">
-							<f:selectItems value="#{pupilsController.rooms}" />
+							<f:selectItems value="#{pupils.rooms}" />
 						</p:selectCheckboxMenu>
 					</f:facet>
 					${pupil.room}
 				</p:column>
-				<p:column rendered="#{configurationController.admin}"
+				<p:column rendered="#{configuration.admin}"
 					headerText="#{resourcebundle.School}" sortBy="#{pupil.school}"
 					filterBy="#{pupil.school}" filterMatchMode="in" styleClass="school">
 					<f:facet name="filter">
 						<p:selectCheckboxMenu label="#{resourcebundle.Schools}"
 							onchange="PF('pupilsTable').filter()" scrollHeight="150">
-							<f:selectItems value="#{pupilsController.schools}" />
+							<f:selectItems value="#{pupils.schools}" />
 						</p:selectCheckboxMenu>
 					</f:facet>
 					${pupil.school}
 				</p:column>
-				<p:column rendered="#{configurationController.admin}"
+				<p:column rendered="#{configuration.admin}"
 					headerText="#{resourcebundle.Quote}" sortBy="#{pupil.quote}"
 					filterBy="#{pupil.quote}" filterFunction="#{filters.filterByQuote}"
 					styleClass="quote">
@@ -115,6 +115,13 @@
 					sortBy="#{pupil.presences}" filterBy="#{pupil.presences}"
 					filterFunction="#{filters.filterByNumber}" styleClass="present">
 					#{pupil.presences}
+				</p:column>
+				<p:column styleClass="detail">
+					<p:commandLink actionListener="#{detail.page(pupil)}"
+						title="#{resourcebundle.Detail}">
+						<h:outputText styleClass="ui-icon icon-details"
+							style="margin:0 auto;" />
+					</p:commandLink>
 				</p:column>
 			</p:dataTable>
 			<div id="footer">

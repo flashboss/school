@@ -29,11 +29,11 @@ import org.primefaces.event.SelectEvent;
 
 @SessionScoped
 @Named
-public class ConfigurationController implements Serializable {
+public class Configuration implements Serializable {
 
 	private static final long serialVersionUID = -2260430424205388307L;
 
-	private static Logger log = getLogger(ConfigurationController.class);
+	private static Logger log = getLogger(Configuration.class);
 
 	private DateFormat monthDateFormat = new SimpleDateFormat("MMMM YYYY", getDefault());
 
@@ -43,6 +43,8 @@ public class ConfigurationController implements Serializable {
 
 	private Date currentDate = today();
 
+	private Date maxDate = today();
+
 	private String formattedDate = monthDateFormat.format(currentDate);
 
 	private String role = getCurrentRole();
@@ -50,10 +52,10 @@ public class ConfigurationController implements Serializable {
 	private String currentLocale = getProperty("user.language");
 
 	@Inject
-	private PupilsController pupilsController;
+	private Pupils pupils;
 
 	@Inject
-	private ReportController reportController;
+	private Report report;
 
 	public boolean isAdmin() {
 		FacesContext facesContext = getCurrentInstance();
@@ -90,6 +92,14 @@ public class ConfigurationController implements Serializable {
 		this.currentDate = currentDate;
 	}
 
+	public Date getMaxDate() {
+		return maxDate;
+	}
+
+	public void setMaxDate(Date maxDate) {
+		this.maxDate = maxDate;
+	}
+
 	public String getRole() {
 		return role;
 	}
@@ -100,7 +110,7 @@ public class ConfigurationController implements Serializable {
 
 	public void onDaySelect(SelectEvent event) {
 		setCurrentDay((Date) event.getObject());
-		pupilsController.init();
+		pupils.init();
 	}
 
 	public void onMonthSelect(DateViewChangeEvent event) {
@@ -109,8 +119,8 @@ public class ConfigurationController implements Serializable {
 		calendar.set(Calendar.YEAR, event.getYear());
 		setCurrentDate(calendar.getTime());
 		formattedDate = monthDateFormat.format(currentDate);
-		reportController.setType(MONTH);
-		reportController.init();
+		report.setType(MONTH);
+		report.init();
 	}
 
 	public void onYearSelect(DateViewChangeEvent event) {
@@ -118,7 +128,7 @@ public class ConfigurationController implements Serializable {
 		calendar.set(Calendar.YEAR, event.getYear());
 		setCurrentDate(calendar.getTime());
 		formattedDate = yearDateFormat.format(currentDate);
-		reportController.setType(YEAR);
-		reportController.init();
+		report.setType(YEAR);
+		report.init();
 	}
 }

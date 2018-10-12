@@ -30,17 +30,17 @@ import it.vige.school.dto.Pupil;
 
 @SessionScoped
 @Named
-public class PupilsController implements Serializable {
+public class Pupils implements Serializable {
 
 	private static final long serialVersionUID = -2260430424205388307L;
 
-	private static Logger log = getLogger(PupilsController.class);
+	private static Logger log = getLogger(Pupils.class);
 
 	@Inject
 	private SchoolModule schoolModule;
 
 	@Inject
-	private ConfigurationController configurationController;
+	private Configuration configuration;
 
 	private List<Pupil> pupils;
 
@@ -52,18 +52,18 @@ public class PupilsController implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		boolean isAdmin = configurationController.isAdmin();
+		boolean isAdmin = configuration.isAdmin();
 		try {
 			if (isAdmin) {
 				pupils = schoolModule.findAllPupils();
 			} else {
-				String role = configurationController.getRole();
-				if (configurationController.isSchoolOperator())
+				String role = configuration.getRole();
+				if (configuration.isSchoolOperator())
 					pupils = schoolModule.findPupilsBySchool(role);
 				else
 					pupils = schoolModule.findPupilsBySchoolAndRoom(getSchoolByRole(role), getRoomByRole(role));
 			}
-			Calendar currentDay = getCalendarByDate(configurationController.getCurrentDay());
+			Calendar currentDay = getCalendarByDate(configuration.getCurrentDay());
 			List<Presence> presencesOfDay = schoolModule.findPresencesByDay(currentDay);
 			pupils.forEach(x -> {
 				for (Presence presence : presencesOfDay)
@@ -109,7 +109,7 @@ public class PupilsController implements Serializable {
 
 	public void addPresence(Pupil pupil) throws ModuleException {
 		Presence presence = new Presence();
-		presence.setDay(getCalendarByDate(configurationController.getCurrentDay()));
+		presence.setDay(getCalendarByDate(configuration.getCurrentDay()));
 		presence.setPupil(pupil);
 		if (pupil.isPresent())
 			schoolModule.createPresence(presence);

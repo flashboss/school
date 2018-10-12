@@ -26,7 +26,7 @@
 	<link href="#{request.contextPath}/css/school.css" rel="stylesheet"
 		type="text/css" />
 	<script type="text/javascript"
-		src="#{request.contextPath}/js/#{configurationController.currentLocale}.js" />
+		src="#{request.contextPath}/js/#{configuration.currentLocale}.js" />
 </h:head>
 
 <h:body>
@@ -37,10 +37,10 @@
 			<ui:insert name="header">
 				<h1>
 					#{resourcebundle.Welcome}
-					<h:outputText rendered="#{!configurationController.admin}"
-						value="#{pupilsController.schools}" />
-					<h:outputText rendered="#{configurationController.teacher}"
-						value=" - #{pupilsController.rooms}" />
+					<h:outputText rendered="#{!configuration.admin}"
+						value="#{pupils.schools}" />
+					<h:outputText rendered="#{configuration.teacher}"
+						value=" - #{pupils.rooms}" />
 				</h1>
 				<br /><br />
 				</ui:insert>

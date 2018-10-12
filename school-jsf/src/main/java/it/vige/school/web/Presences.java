@@ -18,22 +18,22 @@ import it.vige.school.dto.Pupil;
 
 @SessionScoped
 @Named
-public class PresencesController implements Serializable {
+public class Presences implements Serializable {
 
 	private static final long serialVersionUID = -2260430424205388307L;
 
-	private static Logger log = getLogger(PresencesController.class);
+	private static Logger log = getLogger(Presences.class);
 
 	@Inject
 	private SchoolModule schoolModule;
 
 	@Inject
-	private ConfigurationController configurationController;
+	private Configuration configuration;
 
 	public void addPresence(Pupil pupil) throws ModuleException {
 		Presence presence = new Presence();
 		presence.setPupil(pupil);
-		presence.setDay(getCalendarByDate(configurationController.getCurrentDay()));
+		presence.setDay(getCalendarByDate(configuration.getCurrentDay()));
 		if (pupil.isPresent())
 			schoolModule.createPresence(presence);
 		else

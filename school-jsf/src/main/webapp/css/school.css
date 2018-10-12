@@ -17,6 +17,10 @@
 	width: 10%;
 }
 
+.detail {
+	width: 5%;
+}
+
 .quote {
 	width: 10%;
 }
@@ -80,7 +84,13 @@
 .refreshreport {
 	position: relative;
 	bottom: 49px;
-	left: 74%;
+	left: 73.6%;
+}
+
+.refreshdetail {
+	position: relative;
+	bottom: 49px;
+	left: 75%;
 }
 
 .subreportLabel {
@@ -91,7 +101,7 @@
 .pagereport {
 	position: relative;
 	bottom: 49px;
-	left: 74%;
+	left: 73.5%;
 }
 
 .refreshinsert {
@@ -104,6 +114,12 @@
 	position: relative;
 	bottom: 48px;
 	left: 50.5%;
+}
+
+.pageinsertdetail {
+	position: relative;
+	bottom: 49px;
+	left: 75%;
 }
 
 .reportform {
