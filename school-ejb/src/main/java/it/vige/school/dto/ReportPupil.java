@@ -9,13 +9,7 @@ public class ReportPupil extends Pupil implements Constants {
 	private int presences;
 
 	public ReportPupil(Pupil pupil) {
-		setId(pupil.getId());
-		setName(pupil.getName());
-		setPresent(pupil.isPresent());
-		setRoom(pupil.getRoom());
-		setSchool(pupil.getSchool());
-		setSurname(pupil.getSurname());
-		setIncome(pupil.getIncome());
+		update(pupil);
 	}
 
 	public double getQuote() {
@@ -28,6 +22,16 @@ public class ReportPupil extends Pupil implements Constants {
 
 	public void setPresences(int presences) {
 		this.presences = presences;
+	}
+	
+	public void update(Pupil pupil) {
+		setId(pupil.getId());
+		setName(pupil.getName());
+		setPresent(pupil.isPresent());
+		setRoom(pupil.getRoom());
+		setSchool(pupil.getSchool());
+		setSurname(pupil.getSurname());
+		setIncome(pupil.getIncome());
 	}
 
 }

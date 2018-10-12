@@ -30,7 +30,7 @@
 				styleClass="subreportLabel" />
 			<p:calendar id="popupmonth"
 				value="#{configuration.currentDate}"
-				maxdate="#{configuration.currentDate}"
+				maxdate="#{configuration.maxDate}"
 				locale="#{configuration.currentLocale}" navigator="true"
 				mode="inline" styleClass="month">
 				<p:ajax event="viewChange"
@@ -41,7 +41,7 @@
 				value="#{resourcebundle.Subreportyear}" />
 			<p:calendar id="popupyear"
 				value="#{configuration.currentDate}"
-				maxdate="#{configuration.currentDate}"
+				maxdate="#{configuration.maxDate}"
 				locale="#{configuration.currentLocale}" navigator="true"
 				mode="inline" styleClass="year">
 				<p:ajax event="viewChange"

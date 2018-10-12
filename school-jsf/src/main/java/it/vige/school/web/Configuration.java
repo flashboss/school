@@ -43,6 +43,8 @@ public class Configuration implements Serializable {
 
 	private Date currentDate = today();
 
+	private Date maxDate = today();
+
 	private String formattedDate = monthDateFormat.format(currentDate);
 
 	private String role = getCurrentRole();
@@ -88,6 +90,14 @@ public class Configuration implements Serializable {
 
 	public void setCurrentDate(Date currentDate) {
 		this.currentDate = currentDate;
+	}
+
+	public Date getMaxDate() {
+		return maxDate;
+	}
+
+	public void setMaxDate(Date maxDate) {
+		this.maxDate = maxDate;
 	}
 
 	public String getRole() {

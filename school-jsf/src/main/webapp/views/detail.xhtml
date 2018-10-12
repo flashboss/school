@@ -20,12 +20,18 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
+	xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
 	template="/WEB-INF/templates/school.xhtml">
 	<ui:define name="title">
 		#{resourcebundle.Welcome} - #{resourcebundle.Report}
 	</ui:define>
 	<ui:define name="content">
-		<h:form styleClass="detailform">
+		<h:outputScript>
+   //<![CDATA[
+     var selectedDays = new Array(#{fn:join(detail.dates, ',')});
+  //]]>
+		</h:outputScript>
+		<h:form>
 			<h:outputText value="#{resourcebundle.UserDetail}" />
 			<p:commandButton value="#{resourcebundle.Refresh}"
 				actionListener="#{pupils.refresh}"
@@ -34,36 +40,44 @@
 				actionListener="#{pupils.report}"
 				styleClass="ui-priority-primary pageinsertdetail" />
 
-			<h:outputLabel for="fiscalCode" value="#{resourcebundle.FiscalCode}" />
-			<h:outputText id="fiscalCode"
-				rendered="#{!configuration.teacher}" value="${pupil.id}" />
+			<p:panelGrid columns="2" cellpadding="10">
+				<p:panelGrid columns="2" layout="tabular">
+					<h:outputLabel for="fiscalCode"
+						value="#{resourcebundle.FiscalCode}" />
+					<h:outputText id="fiscalCode" rendered="#{!configuration.teacher}"
+						value="${detail.pupil.id}" />
 
-			<h:outputLabel for="name" value="#{resourcebundle.Name}" />
-			<h:outputText id="name" value="#{pupil.name}" />
+					<h:outputLabel for="name" value="#{resourcebundle.Name}" />
+					<h:outputText id="name" value="#{detail.pupil.name}" />
 
-			<h:outputLabel for="surname" value="#{resourcebundle.Surname}" />
-			<h:outputText id="surname" value="${pupil.surname}" />
+					<h:outputLabel for="surname" value="#{resourcebundle.Surname}" />
+					<h:outputText id="surname" value="${detail.pupil.surname}" />
 
-			<h:outputLabel for="income" value="#{resourcebundle.Income}" />
-			<h:outputText id="income" rendered="#{configuration.admin}"
-				styleClass="income" value="${pupil.income}" />
+					<h:outputLabel for="income" value="#{resourcebundle.Income}" />
+					<h:outputText id="income" rendered="#{configuration.admin}"
+						styleClass="income" value="${detail.pupil.income}" />
 
-			<h:outputLabel for="room" value="#{resourcebundle.Room}" />
-			<h:outputText id="room"
-				rendered="#{!configuration.teacher}" styleClass="room"
-				value="${pupil.room}" />
+					<h:outputLabel for="room" value="#{resourcebundle.Room}" />
+					<h:outputText id="room" rendered="#{!configuration.teacher}"
+						styleClass="room" value="${detail.pupil.room}" />
 
-			<h:outputLabel for="school" value="#{resourcebundle.School}" />
-			<h:outputText id="school" rendered="#{configuration.admin}"
-				styleClass="school" value="${pupil.school}" />
+					<h:outputLabel for="school" value="#{resourcebundle.School}" />
+					<h:outputText id="school" rendered="#{configuration.admin}"
+						styleClass="school" value="${detail.pupil.school}" />
 
-			<h:outputLabel for="quote" value="#{resourcebundle.Quote}" />
-			<h:outputText id="quote" rendered="#{configuration.admin}"
-				styleClass="quote" value="#{pupil.quote}" />
+					<h:outputLabel for="quote" value="#{resourcebundle.Quote}" />
+					<h:outputText id="quote" rendered="#{configuration.admin}"
+						styleClass="quote" value="#{detail.pupil.quote}" />
 
-			<h:outputLabel for="presences" value="#{resourcebundle.Presences}" />
-			<h:outputText id="presences" styleClass="present"
-				value="#{pupil.presences}" />
+					<h:outputLabel for="presences" value="#{resourcebundle.Presences}" />
+					<h:outputText id="presences" styleClass="present"
+						value="#{detail.pupil.presences}" />
+				</p:panelGrid>
+
+				<p:calendar id="calendarAdv" maxdate="#{configuration.maxDate}"
+					locale="#{configuration.currentLocale}" mode="inline" pages="3"
+					readonly="true" />
+			</p:panelGrid>
 
 			<div id="footer">
 				<ui:insert name="footer">
