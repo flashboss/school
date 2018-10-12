@@ -8,6 +8,8 @@ public interface Constants {
 
 	String ROOM_SEPARATOR = "-";
 
+	String PUPIL_ROLE = "pupil";
+
 	default double calculateQuote(int income) {
 		double quote = 0.0;
 		if (income > 60000) {

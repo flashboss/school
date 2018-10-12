@@ -101,7 +101,22 @@ public class SchoolModuleImpl implements SchoolModule, Converters {
 				log.debug("pupil found: " + pupilList);
 				return pupilList.stream().map(t -> PupilEntityToPupil.apply(t)).collect(toList());
 			} catch (Exception e) {
-				String message = "Cannot find pupil by room " + school;
+				String message = "Cannot find pupil by school " + school;
+				throw new ModuleException(message, e);
+			}
+		} else {
+			throw new IllegalArgumentException("room cannot be null");
+		}
+	}
+
+	@Override
+	public Pupil findPupilById(String id) throws ModuleException {
+		if (id != null) {
+			try {
+				PupilEntity pupilEntity = em.find(PupilEntity.class, id);
+				return PupilEntityToPupil.apply(pupilEntity);
+			} catch (Exception e) {
+				String message = "Cannot find pupil by id " + id;
 				throw new ModuleException(message, e);
 			}
 		} else {

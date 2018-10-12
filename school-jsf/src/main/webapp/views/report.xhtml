@@ -51,12 +51,12 @@
 			<h:outputText id="period"
 				value="#{configuration.formattedDate}"
 				styleClass="periodLabel" />
-			<p:commandButton value="#{resourcebundle.Refresh}"
-				actionListener="#{pupils.refresh}"
-				styleClass="ui-priority-primary refreshreport" update="pupils" />
 			<p:commandButton value="#{resourcebundle.Insert}"
 				actionListener="#{report.insert}"
 				styleClass="ui-priority-primary pagereport" />
+			<p:commandButton value="#{resourcebundle.Refresh}"
+				actionListener="#{report.refresh}"
+				styleClass="ui-priority-primary refreshreport" update="pupils" />
 			<p:dataTable id="pupils" value="#{report.reportPupils}"
 				filteredValue="#{report.filteredPupils}" var="pupil"
 				widgetVar="pupilsTable"

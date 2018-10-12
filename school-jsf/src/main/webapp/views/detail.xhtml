@@ -34,13 +34,14 @@
 		<h:outputScript library="js" name="custom_datepicker.js" />
 		<h:form>
 			<h:outputText value="#{resourcebundle.UserDetail}" />
-			<p:commandButton value="#{resourcebundle.Refresh}"
-				actionListener="#{pupils.refresh}"
-				styleClass="ui-priority-primary refreshdetail" />
 			<p:commandButton value="#{resourcebundle.Report}"
 				actionListener="#{pupils.report}"
-				styleClass="ui-priority-primary pageinsertdetail" />
-
+				styleClass="ui-priority-primary pageinsertdetail"
+				rendered="#{!configuration.pupil}" />
+			<p:commandButton value="#{resourcebundle.Refresh}"
+				actionListener="#{detail.refresh}"
+				styleClass="ui-priority-primary #{configuration.pupil ? 'refreshpupildetail' : 'refreshdetail'}" />
+			
 			<p:panelGrid columns="2" cellpadding="10">
 				<p:panelGrid columns="2" layout="tabular">
 					<h:outputLabel for="fiscalCode"
@@ -54,20 +55,27 @@
 					<h:outputLabel for="surname" value="#{resourcebundle.Surname}" />
 					<h:outputText id="surname" value="${detail.pupil.surname}" />
 
-					<h:outputLabel for="income" value="#{resourcebundle.Income}" />
-					<h:outputText id="income" rendered="#{configuration.admin}"
+					<h:outputLabel for="income" value="#{resourcebundle.Income}"
+						rendered="#{configuration.admin or configuration.pupil}" />
+					<h:outputText id="income"
+						rendered="#{configuration.admin or configuration.pupil}"
 						styleClass="income" value="${detail.pupil.income}" />
 
-					<h:outputLabel for="room" value="#{resourcebundle.Room}" />
+					<h:outputLabel for="room" value="#{resourcebundle.Room}"
+						rendered="#{!configuration.teacher}" />
 					<h:outputText id="room" rendered="#{!configuration.teacher}"
 						styleClass="room" value="${detail.pupil.room}" />
 
-					<h:outputLabel for="school" value="#{resourcebundle.School}" />
-					<h:outputText id="school" rendered="#{configuration.admin}"
+					<h:outputLabel for="school" value="#{resourcebundle.School}"
+						rendered="#{configuration.admin or configuration.pupil}" />
+					<h:outputText id="school"
+						rendered="#{configuration.admin or configuration.pupil}"
 						styleClass="school" value="${detail.pupil.school}" />
 
-					<h:outputLabel for="quote" value="#{resourcebundle.Quote}" />
-					<h:outputText id="quote" rendered="#{configuration.admin}"
+					<h:outputLabel for="quote" value="#{resourcebundle.Quote}"
+						rendered="#{configuration.admin or configuration.pupil}" />
+					<h:outputText id="quote"
+						rendered="#{configuration.admin or configuration.pupil}"
 						styleClass="quote" value="#{detail.pupil.quote}" />
 
 					<h:outputLabel for="presences" value="#{resourcebundle.Presences}" />

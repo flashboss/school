@@ -1,5 +1,6 @@
 package it.vige.school;
 
+import static it.vige.school.Constants.PUPIL_ROLE;
 import static it.vige.school.Constants.ROOM_SEPARATOR;
 import static java.util.Calendar.HOUR_OF_DAY;
 import static java.util.Calendar.MILLISECOND;
@@ -36,8 +37,23 @@ public class Utils {
 		return role;
 	}
 
+	public static String getCurrentUser() {
+		String user = null;
+		try {
+			Subject subject;
+			subject = (Subject) getContext(SUBJECT_CONTAINER);
+			user = subject.getPrincipals().toArray()[0].toString();
+		} catch (PolicyContextException e) {
+			log.error(e);
+		}
+		return user;
+	}
+
 	public static String getRoomByRole(String role) {
-		return role.substring(role.indexOf(ROOM_SEPARATOR) + 1);
+		if (role.endsWith(PUPIL_ROLE))
+			return role.split(ROOM_SEPARATOR)[1];
+		else
+			return role.substring(role.indexOf(ROOM_SEPARATOR) + 1);
 	}
 
 	public static String getSchoolByRole(String role) {
