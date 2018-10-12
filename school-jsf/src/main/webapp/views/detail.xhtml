@@ -31,6 +31,7 @@
      var selectedDays = new Array(#{fn:join(detail.dates, ',')});
   //]]>
 		</h:outputScript>
+		<h:outputScript library="js" name="custom_datepicker.js" />
 		<h:form>
 			<h:outputText value="#{resourcebundle.UserDetail}" />
 			<p:commandButton value="#{resourcebundle.Refresh}"
