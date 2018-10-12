@@ -73,6 +73,13 @@ public class RestSchoolModule {
 		return schoolModule.findPupilsBySchoolAndRoom(school, room);
 	}
 
+	@GET
+	@Path("findPupilById/{id}")
+	@Produces(APPLICATION_JSON)
+	public Pupil findPupilById(@PathParam("id") String id) throws ModuleException {
+		return schoolModule.findPupilById(id);
+	}
+
 	@POST
 	@Path("findPresencesByPupil")
 	@Consumes(APPLICATION_JSON)

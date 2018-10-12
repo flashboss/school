@@ -36,17 +36,24 @@ public class PupilTest extends RestCaller {
 		Response response = get(url + "findPupilsBySchool/donlorenzomilani", authorization);
 		List<Pupil> pupils = response.readEntity(new GenericType<List<Pupil>>() {
 		});
+		response.close();
 		assertNotNull(pupils, "The pupils from Maiorana are found");
 		assertEquals(16, pupils.size(), "The pupils from Maiorana are ok");
 		response = get(url + "findPupilsByRoom/1A", authorization);
 		pupils = response.readEntity(new GenericType<List<Pupil>>() {
 		});
+		response.close();
 		assertNotNull(response, "The pupils from 1A are found");
 		assertEquals(5, pupils.size(), "The pupils from 1A are ok");
 		response = get(url + "findPupilsBySchoolAndRoom/donlorenzomilani/1A", authorization);
 		pupils = response.readEntity(new GenericType<List<Pupil>>() {
 		});
+		response.close();
 		assertNotNull(response, "The pupils from 1A are found");
 		assertEquals(4, pupils.size(), "The pupils from donlorenzomilani 1A are ok");
+		response = get(url + "findPupilById/STNLCU76E15H501X", authorization);
+		Pupil pupil = response.readEntity(Pupil.class);
+		assertEquals("Luca", pupil.getName(), "Pupil by id received");
+		response.close();
 	}
 }

@@ -23,10 +23,10 @@
 
 <h:head>
 	<title><ui:insert name="title">Default Title</ui:insert></title>
-	<link href="#{request.contextPath}/css/school.css" rel="stylesheet"
-		type="text/css" />
+	<link href="#{request.contextPath}/resources/css/school.css"
+		rel="stylesheet" type="text/css" />
 	<script type="text/javascript"
-		src="#{request.contextPath}/js/#{configuration.currentLocale}.js" />
+		src="#{request.contextPath}/resources/js/#{configuration.currentLocale}.js" />
 </h:head>
 
 <h:body>
@@ -37,13 +37,14 @@
 			<ui:insert name="header">
 				<h1>
 					#{resourcebundle.Welcome}
-					<h:outputText rendered="#{!configuration.admin}"
+					<h:outputText rendered="#{!configuration.admin and !configuration.pupil}"
 						value="#{pupils.schools}" />
 					<h:outputText rendered="#{configuration.teacher}"
 						value=" - #{pupils.rooms}" />
 				</h1>
-				<br /><br />
-				</ui:insert>
+				<br />
+				<br />
+			</ui:insert>
 		</div>
 
 		<div id="content">

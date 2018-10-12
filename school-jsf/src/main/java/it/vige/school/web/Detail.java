@@ -1,5 +1,8 @@
 package it.vige.school.web;
 
+import static it.vige.school.Utils.getCalendarByDate;
+import static it.vige.school.Utils.getCurrentUser;
+import static it.vige.school.Utils.today;
 import static java.lang.String.format;
 import static javax.faces.context.FacesContext.getCurrentInstance;
 import static org.jboss.logging.Logger.getLogger;
@@ -7,6 +10,7 @@ import static org.jboss.logging.Logger.getLogger;
 import java.io.IOException;
 import java.io.Serializable;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -34,6 +38,23 @@ public class Detail implements Serializable {
 	@Inject
 	private SchoolModule schoolModule;
 
+	@Inject
+	private Configuration configuration;
+
+	@PostConstruct
+	public void init() {
+		if (configuration.isPupil()) {
+			try {
+				String id = getCurrentUser();
+				pupil = new ReportPupil(schoolModule.findPupilById(id));
+				pupil.setPresences(schoolModule.findPresencesByYear(getCalendarByDate(today())).size());
+				update(pupil);
+			} catch (ModuleException me) {
+				log.error(me);
+			}
+		}
+	}
+
 	public ReportPupil getPupil() {
 		return pupil;
 	}
@@ -53,6 +74,18 @@ public class Detail implements Serializable {
 	public void page(ReportPupil pupil) throws IOException, ModuleException {
 		log.debug("detail");
 		update(pupil);
+		FacesContext facesContext = getCurrentInstance();
+		ExternalContext ec = facesContext.getExternalContext();
+		ec.redirect(ec.getRequestContextPath() + "/views/detail.xhtml");
+	}
+
+	public void refresh() throws IOException, ModuleException {
+		init();
+		if (!configuration.isPupil()) {
+			pupil = new ReportPupil(schoolModule.findPupilById(pupil.getId()));
+			pupil.setPresences(schoolModule.findPresencesByYear(getCalendarByDate(today())).size());
+			update(pupil);
+		}
 		FacesContext facesContext = getCurrentInstance();
 		ExternalContext ec = facesContext.getExternalContext();
 		ec.redirect(ec.getRequestContextPath() + "/views/detail.xhtml");

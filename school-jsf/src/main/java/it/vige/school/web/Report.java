@@ -96,6 +96,10 @@ public class Report {
 		this.filteredPupils = filteredPupils;
 	}
 
+	public void refresh() {
+		init();
+	}
+
 	public void insert() throws IOException {
 		log.debug("insert");
 		ExternalContext ec = getCurrentInstance().getExternalContext();

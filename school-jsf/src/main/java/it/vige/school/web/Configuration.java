@@ -1,6 +1,7 @@
 package it.vige.school.web;
 
 import static it.vige.school.Constants.ADMIN_ROLE;
+import static it.vige.school.Constants.PUPIL_ROLE;
 import static it.vige.school.Constants.ROOM_SEPARATOR;
 import static it.vige.school.Utils.getCalendarByDate;
 import static it.vige.school.Utils.getCurrentRole;
@@ -69,7 +70,11 @@ public class Configuration implements Serializable {
 	}
 
 	public boolean isTeacher() {
-		return role != ADMIN_ROLE && role.contains(ROOM_SEPARATOR);
+		return role != ADMIN_ROLE && role.contains(ROOM_SEPARATOR) && !role.contains(PUPIL_ROLE);
+	}
+
+	public boolean isPupil() {
+		return role != ADMIN_ROLE && role.contains(ROOM_SEPARATOR) && role.contains(PUPIL_ROLE);
 	}
 
 	public String getFormattedDate() {
