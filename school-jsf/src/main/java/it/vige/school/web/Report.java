@@ -15,7 +15,6 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.context.ExternalContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -34,7 +33,7 @@ public class Report {
 	private static Logger log = getLogger(Report.class);
 
 	@Inject
-	private Pupils pupilsController;
+	private Pupils pupils;
 
 	private List<ReportPupil> reportPupils;
 
@@ -44,7 +43,7 @@ public class Report {
 	private SchoolModule schoolModule;
 
 	@Inject
-	private Configuration configurationController;
+	private Configuration configuration;
 
 	private ReportType type = MONTH;
 
@@ -52,8 +51,8 @@ public class Report {
 	public void init() {
 		log.debug("calling the report controller");
 		try {
-			List<Pupil> oldPupils = pupilsController.getPupils();
-			Calendar currentDate = getCalendarByDate(configurationController.getCurrentDate());
+			List<Pupil> oldPupils = pupils.getPupils();
+			Calendar currentDate = getCalendarByDate(configuration.getCurrentDate());
 			List<Presence> presencesByCurrentDate = null;
 			if (type == MONTH)
 				presencesByCurrentDate = schoolModule.findPresencesByMonth(currentDate);
@@ -102,7 +101,6 @@ public class Report {
 
 	public void insert() throws IOException {
 		log.debug("insert");
-		ExternalContext ec = getCurrentInstance().getExternalContext();
-		ec.redirect(ec.getRequestContextPath() + "/");
+		configuration.redirect("/");
 	}
 }

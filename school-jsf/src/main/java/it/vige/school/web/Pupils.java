@@ -17,7 +17,6 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.context.ExternalContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -124,7 +123,6 @@ public class Pupils implements Serializable {
 
 	public void report() throws IOException {
 		log.debug("report");
-		ExternalContext ec = getCurrentInstance().getExternalContext();
-		ec.redirect(ec.getRequestContextPath() + "/views/report.xhtml");
+		configuration.redirect("/views/report.xhtml");
 	}
 }
