@@ -43,9 +43,7 @@ public class Detail implements Serializable {
 		if (configuration.isPupil()) {
 			try {
 				String id = getCurrentUser();
-				pupil = new ReportPupil(schoolModule.findPupilById(id));
-				pupil.setPresences(schoolModule.findPresencesByYear(getCalendarByDate(today())).size());
-				update(pupil);
+				create(id);
 			} catch (ModuleException me) {
 				log.error(me);
 			}
@@ -76,12 +74,15 @@ public class Detail implements Serializable {
 
 	public void refresh() throws IOException, ModuleException {
 		init();
-		if (!configuration.isPupil()) {
-			pupil = new ReportPupil(schoolModule.findPupilById(pupil.getId()));
-			pupil.setPresences(schoolModule.findPresencesByYear(getCalendarByDate(today())).size());
-			update(pupil);
-		}
+		if (!configuration.isPupil())
+			create(pupil.getId());
 		configuration.redirect("/views/detail.xhtml");
+	}
+
+	private void create(String id) throws ModuleException {
+		pupil = new ReportPupil(schoolModule.findPupilById(id));
+		pupil.setPresences(schoolModule.findPresencesByYear(getCalendarByDate(today())).size());
+		update(pupil);
 	}
 
 	private void update(ReportPupil pupil) throws ModuleException {
