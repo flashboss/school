@@ -2,7 +2,7 @@ package it.vige.school.dto;
 
 import java.io.Serializable;
 
-public class Pupil implements Serializable {
+public class User implements Serializable {
 
 	private static final long serialVersionUID = -6713889813860348323L;
 
@@ -92,7 +92,7 @@ public class Pupil implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Pupil other = (Pupil) obj;
+		User other = (User) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

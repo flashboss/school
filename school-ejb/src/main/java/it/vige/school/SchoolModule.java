@@ -6,18 +6,18 @@ import java.util.List;
 import javax.ejb.Local;
 
 import it.vige.school.dto.Presence;
-import it.vige.school.dto.Pupil;
+import it.vige.school.dto.User;
 
 @Local
 public interface SchoolModule {
 
 	/**
-	 * Find all pupils
+	 * Find all users
 	 * 
-	 * @return pupils
-	 * @throws ModuleException Throws an exception if the pupil cannot be found
+	 * @return users
+	 * @throws ModuleException Throws an exception if the user cannot be found
 	 */
-	List<Pupil> findAllPupils() throws ModuleException;
+	List<User> findAllUsers() throws ModuleException;
 
 	/**
 	 * Find all presences
@@ -28,57 +28,57 @@ public interface SchoolModule {
 	List<Presence> findAllPresences() throws ModuleException;
 
 	/**
-	 * Find a pupils by specifying its room
+	 * Find a users by specifying its room
 	 * 
-	 * @param room room of the pupils to retrieve
-	 * @return Pupils with specified room
-	 * @throws ModuleException Throws an exception if the pupil cannot be found
+	 * @param room room of the users to retrieve
+	 * @return Users with specified room
+	 * @throws ModuleException Throws an exception if the user cannot be found
 	 */
-	List<Pupil> findPupilsByRoom(String room) throws ModuleException;
+	List<User> findUsersByRoom(String room) throws ModuleException;
 
 	/**
-	 * Find a pupils by specifying its school
+	 * Find a users by specifying its school
 	 * 
-	 * @param school school of the pupils to retrieve
-	 * @return Pupils with specified room
-	 * @throws ModuleException Throws an exception if the pupil cannot be found
+	 * @param school school of the users to retrieve
+	 * @return Users with specified room
+	 * @throws ModuleException Throws an exception if the user cannot be found
 	 */
-	List<Pupil> findPupilsBySchool(String school) throws ModuleException;
+	List<User> findUsersBySchool(String school) throws ModuleException;
 
 	/**
-	 * Find a pupils by specifying its school and room
+	 * Find a users by specifying its school and room
 	 * 
-	 * @param school school of the pupils to retrieve
-	 * @param room   room of the pupils to retrieve
-	 * @return Pupils with specified room
-	 * @throws ModuleException Throws an exception if the pupil cannot be found
+	 * @param school school of the users to retrieve
+	 * @param room   room of the users to retrieve
+	 * @return Users with specified room
+	 * @throws ModuleException Throws an exception if the user cannot be found
 	 */
-	List<Pupil> findPupilsBySchoolAndRoom(String school, String room) throws ModuleException;
+	List<User> findUsersBySchoolAndRoom(String school, String room) throws ModuleException;
 
 	/**
-	 * Find a pupil by specifying its id
+	 * Find a user by specifying its id
 	 * 
-	 * @param id id of the pupil to retrieve
-	 * @return Pupil with specified id
-	 * @throws ModuleException Throws an exception if the pupil cannot be found
+	 * @param id id of the user to retrieve
+	 * @return User with specified id
+	 * @throws ModuleException Throws an exception if the user cannot be found
 	 */
-	Pupil findPupilById(String id) throws ModuleException;
+	User findUserById(String id) throws ModuleException;
 
 	/**
-	 * Find a presences by specifying its pupil
+	 * Find a presences by specifying its user
 	 * 
-	 * @param pupil pupil of the presences to retrieve
+	 * @param user user of the presences to retrieve
 	 * @return Presences with specified room
-	 * @throws ModuleException Throws an exception if the pupil cannot be found
+	 * @throws ModuleException Throws an exception if the user cannot be found
 	 */
-	List<Presence> findPresencesByPupil(Pupil pupil) throws ModuleException;
+	List<Presence> findPresencesByUser(User user) throws ModuleException;
 
 	/**
 	 * Find a presences by specifying its day
 	 * 
 	 * @param day day of the presences to retrieve
 	 * @return Presences with specified room
-	 * @throws ModuleException Throws an exception if the pupil cannot be found
+	 * @throws ModuleException Throws an exception if the user cannot be found
 	 */
 	List<Presence> findPresencesByDay(Calendar day) throws ModuleException;
 
@@ -87,7 +87,7 @@ public interface SchoolModule {
 	 * 
 	 * @param month month of the presences to retrieve
 	 * @return Presences with specified room
-	 * @throws ModuleException Throws an exception if the pupil cannot be found
+	 * @throws ModuleException Throws an exception if the user cannot be found
 	 */
 	List<Presence> findPresencesByMonth(Calendar month) throws ModuleException;
 
@@ -96,18 +96,18 @@ public interface SchoolModule {
 	 * 
 	 * @param year year of the presences to retrieve
 	 * @return Presences with specified room
-	 * @throws ModuleException Throws an exception if the pupil cannot be found
+	 * @throws ModuleException Throws an exception if the user cannot be found
 	 */
 	List<Presence> findPresencesByYear(Calendar year) throws ModuleException;
 
 	/**
-	 * Find a presences by specifying its pupil and day
+	 * Find a presences by specifying its user and day
 	 * 
 	 * @param presence presence to retrieve
 	 * @return Presence with specified room
-	 * @throws ModuleException Throws an exception if the pupil cannot be found
+	 * @throws ModuleException Throws an exception if the user cannot be found
 	 */
-	Presence findPresenceByPupilAndDay(Presence presence) throws ModuleException;
+	Presence findPresenceByUserAndDay(Presence presence) throws ModuleException;
 
 	/**
 	 * DOCUMENT_ME

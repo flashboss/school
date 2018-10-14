@@ -5,8 +5,8 @@ It is an open source project. This means you can download the School package, th
 
 It covers all the following features:
 
-- Import pupils.
-- Browsing pupils.
+- Import pupils and teachers.
+- Browsing pupils and teachers.
 - Report the presences.
 
 This draft version has been tested on WildFly 15.0.0.Alpha1.

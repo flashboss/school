@@ -23,8 +23,8 @@ import org.jboss.logging.Logger;
 import it.vige.school.ModuleException;
 import it.vige.school.SchoolModule;
 import it.vige.school.dto.Presence;
-import it.vige.school.dto.Pupil;
-import it.vige.school.dto.ReportPupil;
+import it.vige.school.dto.User;
+import it.vige.school.dto.ReportUser;
 
 @RequestScoped
 @Named
@@ -33,11 +33,11 @@ public class Report {
 	private static Logger log = getLogger(Report.class);
 
 	@Inject
-	private Pupils pupils;
+	private Users users;
 
-	private List<ReportPupil> reportPupils;
+	private List<ReportUser> reportUsers;
 
-	private List<Pupil> filteredPupils;
+	private List<User> filteredUsers;
 
 	@Inject
 	private SchoolModule schoolModule;
@@ -51,7 +51,7 @@ public class Report {
 	public void init() {
 		log.debug("calling the report controller");
 		try {
-			List<Pupil> oldPupils = pupils.getPupils();
+			List<User> oldUsers = users.getUsers();
 			Calendar currentDate = getCalendarByDate(configuration.getCurrentDate());
 			List<Presence> presencesByCurrentDate = null;
 			if (type == MONTH)
@@ -59,14 +59,14 @@ public class Report {
 			else
 				presencesByCurrentDate = schoolModule.findPresencesByYear(currentDate);
 			List<Presence> presences = presencesByCurrentDate;
-			reportPupils = new ArrayList<ReportPupil>();
-			oldPupils.forEach(x -> {
-				ReportPupil reportPupil = new ReportPupil(x);
+			reportUsers = new ArrayList<ReportUser>();
+			oldUsers.forEach(x -> {
+				ReportUser reportUser = new ReportUser(x);
 				presences.forEach(y -> {
-					if (y.getPupil().equals(x))
-						reportPupil.setPresences(reportPupil.getPresences() + 1);
+					if (y.getUser().equals(x))
+						reportUser.setPresences(reportUser.getPresences() + 1);
 				});
-				reportPupils.add(reportPupil);
+				reportUsers.add(reportUser);
 			});
 		} catch (ModuleException ex) {
 			FacesMessage message = new FacesMessage(SEVERITY_INFO, // severity
@@ -75,12 +75,12 @@ public class Report {
 		}
 	}
 
-	public List<ReportPupil> getReportPupils() {
-		return reportPupils;
+	public List<ReportUser> getReportUsers() {
+		return reportUsers;
 	}
 
-	public List<Pupil> getFilteredPupils() {
-		return filteredPupils;
+	public List<User> getFilteredUsers() {
+		return filteredUsers;
 	}
 
 	public ReportType getType() {
@@ -91,8 +91,8 @@ public class Report {
 		this.type = type;
 	}
 
-	public void setFilteredPupils(List<Pupil> filteredPupils) {
-		this.filteredPupils = filteredPupils;
+	public void setFilteredUsers(List<User> filteredUsers) {
+		this.filteredUsers = filteredUsers;
 	}
 
 	public void refresh() {
@@ -101,6 +101,6 @@ public class Report {
 
 	public void insert() throws IOException {
 		log.debug("insert");
-		configuration.redirect("/");
+		configuration.redirect("/views/insert.xhtml");
 	}
 }

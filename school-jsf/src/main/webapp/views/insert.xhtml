@@ -31,17 +31,17 @@
 				maxdate="#{configuration.maxDate}"
 				locale="#{configuration.currentLocale}">
 				<p:ajax event="dateSelect"
-					listener="#{configuration.onDaySelect}" update="pupils" />
+					listener="#{configuration.onDaySelect}" update="users" />
 			</p:calendar>
 			<p:commandButton value="#{resourcebundle.Report}"
-				actionListener="#{pupils.report}"
+				actionListener="#{users.report}"
 				styleClass="ui-priority-primary pageinsert" />
 			<p:commandButton value="#{resourcebundle.Refresh}"
-				actionListener="#{pupils.refresh}"
-				styleClass="ui-priority-primary refreshinsert" update="pupils" />
-			<p:dataTable id="pupils" value="#{pupils.pupils}"
-				filteredValue="#{pupils.filteredPupils}" var="pupil"
-				widgetVar="pupilsTable"
+				actionListener="#{users.refresh}"
+				styleClass="ui-priority-primary refreshinsert" update="users" />
+			<p:dataTable id="users" value="#{users.users}"
+				filteredValue="#{users.filteredUsers}" var="user"
+				widgetVar="usersTable"
 				emptyMessage="#{resourcebundle.No_records_found}"
 				sortMode="multiple">
 				<p:growl id="msgs" />
@@ -49,60 +49,60 @@
 					<p:outputPanel>
 						<h:outputText value="#{resourcebundle.Search_all}:" />
 						<p:inputText id="globalFilter"
-							onkeyup="PF('pupilsTable').filter()"
+							onkeyup="PF('usersTable').filter()"
 							placeholder="#{resourcebundle.Enter_keyword}" />
 					</p:outputPanel>
 				</f:facet>
 				<p:column rendered="#{!configuration.teacher}"
-					headerText="#{resourcebundle.FiscalCode}" sortBy="#{pupil.id}"
-					filterBy="#{pupil.id}" filterMatchMode="contains">${pupil.id}</p:column>
-				<p:column headerText="#{resourcebundle.Name}" sortBy="#{pupil.name}"
-					filterBy="#{pupil.name}" filterMatchMode="contains">${pupil.name}</p:column>
+					headerText="#{resourcebundle.FiscalCode}" sortBy="#{user.id}"
+					filterBy="#{user.id}" filterMatchMode="contains">${user.id}</p:column>
+				<p:column headerText="#{resourcebundle.Name}" sortBy="#{user.name}"
+					filterBy="#{user.name}" filterMatchMode="contains">${user.name}</p:column>
 				<p:column headerText="#{resourcebundle.Surname}"
-					sortBy="#{pupil.surname}" filterBy="#{pupil.surname}"
-					filterMatchMode="contains">${pupil.surname}</p:column>
+					sortBy="#{user.surname}" filterBy="#{user.surname}"
+					filterMatchMode="contains">${user.surname}</p:column>
 				<p:column rendered="#{configuration.admin}"
-					headerText="#{resourcebundle.Income}" sortBy="#{pupil.income}"
-					filterBy="#{pupil.income}"
-					filterFunction="#{filters.filterByNumber}" styleClass="income">${pupil.income}</p:column>
+					headerText="#{resourcebundle.Income}" sortBy="#{user.income}"
+					filterBy="#{user.income}"
+					filterFunction="#{filters.filterByNumber}" styleClass="income">${user.income}</p:column>
 				<p:column rendered="#{!configuration.teacher}"
-					headerText="#{resourcebundle.Room}" sortBy="#{pupil.room}"
-					filterBy="#{pupil.room}" filterMatchMode="in" styleClass="room">
+					headerText="#{resourcebundle.Room}" sortBy="#{user.room}"
+					filterBy="#{user.room}" filterMatchMode="in" styleClass="room">
 					<f:facet name="filter">
 						<p:selectCheckboxMenu label="#{resourcebundle.Rooms}"
-							onchange="PF('pupilsTable').filter()" scrollHeight="150">
-							<f:selectItems value="#{pupils.rooms}" />
+							onchange="PF('usersTable').filter()" scrollHeight="150">
+							<f:selectItems value="#{users.rooms}" />
 						</p:selectCheckboxMenu>
 					</f:facet>
-					${pupil.room}
+					${user.room}
 				</p:column>
 				<p:column rendered="#{configuration.admin}"
-					headerText="#{resourcebundle.School}" sortBy="#{pupil.school}"
-					filterBy="#{pupil.school}" filterMatchMode="in" styleClass="school">
+					headerText="#{resourcebundle.School}" sortBy="#{user.school}"
+					filterBy="#{user.school}" filterMatchMode="in" styleClass="school">
 					<f:facet name="filter">
 						<p:selectCheckboxMenu label="#{resourcebundle.Schools}"
-							onchange="PF('pupilsTable').filter()" scrollHeight="150">
-							<f:selectItems value="#{pupils.schools}" />
+							onchange="PF('usersTable').filter()" scrollHeight="150">
+							<f:selectItems value="#{users.schools}" />
 						</p:selectCheckboxMenu>
 					</f:facet>
-					${pupil.school}
+					${user.school}
 				</p:column>
 				<p:column headerText="#{resourcebundle.Present}"
-					sortBy="#{pupil.present}" filterBy="#{pupil.present}"
+					sortBy="#{user.present}" filterBy="#{user.present}"
 					filterMatchMode="equals" styleClass="present">
 					<f:facet name="filter">
-						<p:selectOneButton onchange="PF('pupilsTable').filter()">
+						<p:selectOneButton onchange="PF('usersTable').filter()">
 							<f:converter converterId="javax.faces.Boolean" />
 							<f:selectItem itemLabel="#{resourcebundle.All}" itemValue="" />
 							<f:selectItem itemLabel="#{resourcebundle.Yes}" itemValue="true" />
 							<f:selectItem itemLabel="#{resourcebundle.No}" itemValue="false" />
 						</p:selectOneButton>
 					</f:facet>
-					<p:selectBooleanButton value="#{pupil.present}"
+					<p:selectBooleanButton value="#{user.present}"
 						onLabel="#{resourcebundle.Yes}" offLabel="#{resourcebundle.No}"
 						onIcon="ui-icon-check" offIcon="ui-icon-close">
 						<p:ajax update="msgs"
-							listener="#{presences.addPresence(pupil)}" />
+							listener="#{presences.addPresence(user)}" />
 					</p:selectBooleanButton>
 				</p:column>
 			</p:dataTable>

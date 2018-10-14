@@ -19,8 +19,8 @@ public class PresenceId implements Serializable {
 	private Calendar day;
 
 	@ManyToOne
-	@JoinColumn(name = "pupil_id")
-	private PupilEntity pupil;
+	@JoinColumn(name = "user_id")
+	private UserEntity user;
 
 	public Calendar getDay() {
 		return day;
@@ -30,12 +30,12 @@ public class PresenceId implements Serializable {
 		this.day = day;
 	}
 
-	public PupilEntity getPupil() {
-		return pupil;
+	public UserEntity getUser() {
+		return user;
 	}
 
-	public void setPupil(PupilEntity pupil) {
-		this.pupil = pupil;
+	public void setUser(UserEntity user) {
+		this.user = user;
 	}
 
 	@Override
@@ -43,7 +43,7 @@ public class PresenceId implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((day == null) ? 0 : day.hashCode());
-		result = prime * result + ((pupil == null) ? 0 : pupil.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
 
@@ -61,10 +61,10 @@ public class PresenceId implements Serializable {
 				return false;
 		} else if (!day.equals(other.day))
 			return false;
-		if (pupil == null) {
-			if (other.pupil != null)
+		if (user == null) {
+			if (other.user != null)
 				return false;
-		} else if (!pupil.equals(other.pupil))
+		} else if (!user.equals(other.user))
 			return false;
 		return true;
 	}
