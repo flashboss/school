@@ -14,7 +14,7 @@ import org.jboss.logging.Logger;
 import it.vige.school.ModuleException;
 import it.vige.school.SchoolModule;
 import it.vige.school.dto.Presence;
-import it.vige.school.dto.Pupil;
+import it.vige.school.dto.User;
 
 @SessionScoped
 @Named
@@ -30,14 +30,14 @@ public class Presences implements Serializable {
 	@Inject
 	private Configuration configuration;
 
-	public void addPresence(Pupil pupil) throws ModuleException {
+	public void addPresence(User user) throws ModuleException {
 		Presence presence = new Presence();
-		presence.setPupil(pupil);
+		presence.setUser(user);
 		presence.setDay(getCalendarByDate(configuration.getCurrentDay()));
-		if (pupil.isPresent())
+		if (user.isPresent())
 			schoolModule.createPresence(presence);
 		else
 			schoolModule.removePresence(presence);
-		log.debug("pupil: " + pupil);
+		log.debug("user: " + user);
 	}
 }

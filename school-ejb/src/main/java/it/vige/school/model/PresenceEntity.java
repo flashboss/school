@@ -20,10 +20,10 @@ import javax.persistence.Table;
 				+ "MONTH(p.id.day) = :month " + "and YEAR(p.id.day) = :year " + "order by p.id.day asc"),
 		@NamedQuery(name = "findPresencesByYear", query = "select p from PresenceEntity as p where "
 				+ "YEAR(p.id.day) = :year " + "order by p.id.day asc"),
-		@NamedQuery(name = "findPresencesByPupil", query = "select p from PresenceEntity as p where "
-				+ "p.id.pupil = :pupil " + "order by p.id.pupil asc"),
-		@NamedQuery(name = "findPresenceByPupilAndDay", query = "select p from PresenceEntity as p where "
-				+ "p.id.pupil = :pupil and p.id.day = :day " + "order by p.id.pupil asc") })
+		@NamedQuery(name = "findPresencesByUser", query = "select p from PresenceEntity as p where "
+				+ "p.id.user = :user " + "order by p.id.user asc"),
+		@NamedQuery(name = "findPresenceByUserAndDay", query = "select p from PresenceEntity as p where "
+				+ "p.id.user = :user and p.id.day = :day " + "order by p.id.user asc") })
 @Entity
 @Table
 public class PresenceEntity {

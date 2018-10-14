@@ -35,52 +35,55 @@
 		<h:form>
 			<h:outputText value="#{resourcebundle.UserDetail}" />
 			<p:commandButton value="#{resourcebundle.Report}"
-				actionListener="#{pupils.report}"
+				actionListener="#{users.report}"
 				styleClass="ui-priority-primary pageinsertdetail"
 				rendered="#{!configuration.pupil}" />
 			<p:commandButton value="#{resourcebundle.Refresh}"
 				actionListener="#{detail.refresh}"
-				styleClass="ui-priority-primary #{configuration.pupil ? 'refreshpupildetail' : 'refreshdetail'}" />
-			
+				styleClass="ui-priority-primary #{configuration.pupil ? 'refreshuserdetail' : 'refreshdetail'}" />
+
 			<p:panelGrid columns="2" cellpadding="10">
 				<p:panelGrid columns="2" layout="tabular">
 					<h:outputLabel for="fiscalCode"
-						value="#{resourcebundle.FiscalCode}" />
-					<h:outputText id="fiscalCode" rendered="#{!configuration.teacher}"
-						value="${detail.pupil.id}" />
+						value="#{resourcebundle.FiscalCode}"
+						rendered="#{!configuration.teacher or configuration.user == detail.user.id}" />
+					<h:outputText id="fiscalCode"
+						rendered="#{!configuration.teacher or configuration.user == detail.user.id}"
+						value="${detail.user.id}" />
 
 					<h:outputLabel for="name" value="#{resourcebundle.Name}" />
-					<h:outputText id="name" value="#{detail.pupil.name}" />
+					<h:outputText id="name" value="#{detail.user.name}" />
 
 					<h:outputLabel for="surname" value="#{resourcebundle.Surname}" />
-					<h:outputText id="surname" value="${detail.pupil.surname}" />
+					<h:outputText id="surname" value="${detail.user.surname}" />
 
 					<h:outputLabel for="income" value="#{resourcebundle.Income}"
-						rendered="#{configuration.admin or configuration.pupil}" />
+						rendered="#{configuration.admin or configuration.pupil or configuration.user == detail.user.id}" />
 					<h:outputText id="income"
-						rendered="#{configuration.admin or configuration.pupil}"
-						styleClass="income" value="${detail.pupil.income}" />
+						rendered="#{configuration.admin or configuration.pupil or configuration.user == detail.user.id}"
+						styleClass="income" value="${detail.user.income}" />
 
 					<h:outputLabel for="room" value="#{resourcebundle.Room}"
-						rendered="#{!configuration.teacher}" />
-					<h:outputText id="room" rendered="#{!configuration.teacher}"
-						styleClass="room" value="${detail.pupil.room}" />
+						rendered="#{!configuration.teacher or configuration.user == detail.user.id}" />
+					<h:outputText id="room"
+						rendered="#{!configuration.teacher or configuration.user == detail.user.id}"
+						styleClass="room" value="${detail.user.room}" />
 
 					<h:outputLabel for="school" value="#{resourcebundle.School}"
-						rendered="#{configuration.admin or configuration.pupil}" />
+						rendered="#{configuration.admin or configuration.pupil or configuration.user == detail.user.id}" />
 					<h:outputText id="school"
-						rendered="#{configuration.admin or configuration.pupil}"
-						styleClass="school" value="${detail.pupil.school}" />
+						rendered="#{configuration.admin or configuration.pupil or configuration.user == detail.user.id}"
+						styleClass="school" value="${detail.user.school}" />
 
 					<h:outputLabel for="quote" value="#{resourcebundle.Quote}"
-						rendered="#{configuration.admin or configuration.pupil}" />
+						rendered="#{configuration.admin or configuration.pupil or configuration.user == detail.user.id}" />
 					<h:outputText id="quote"
-						rendered="#{configuration.admin or configuration.pupil}"
-						styleClass="quote" value="#{detail.pupil.quote}" />
+						rendered="#{configuration.admin or configuration.pupil or configuration.user == detail.user.id}"
+						styleClass="quote" value="#{detail.user.quote}" />
 
 					<h:outputLabel for="presences" value="#{resourcebundle.Presences}" />
 					<h:outputText id="presences" styleClass="present"
-						value="#{detail.pupil.presences}" />
+						value="#{detail.user.presences}" />
 				</p:panelGrid>
 
 				<p:calendar id="calendarAdv" maxdate="#{configuration.maxDate}"

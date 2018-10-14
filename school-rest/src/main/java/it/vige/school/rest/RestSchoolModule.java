@@ -29,7 +29,7 @@ import javax.ws.rs.Produces;
 import it.vige.school.ModuleException;
 import it.vige.school.SchoolModule;
 import it.vige.school.dto.Presence;
-import it.vige.school.dto.Pupil;
+import it.vige.school.dto.User;
 
 @Path("/school/")
 public class RestSchoolModule {
@@ -38,10 +38,10 @@ public class RestSchoolModule {
 	private SchoolModule schoolModule;
 
 	@GET
-	@Path("findAllPupils")
+	@Path("findAllUsers")
 	@Produces(APPLICATION_JSON)
-	public List<Pupil> findAllPupils() throws ModuleException {
-		return schoolModule.findAllPupils();
+	public List<User> findAllUsers() throws ModuleException {
+		return schoolModule.findAllUsers();
 	}
 
 	@GET
@@ -52,40 +52,40 @@ public class RestSchoolModule {
 	}
 
 	@GET
-	@Path("findPupilsByRoom/{room}")
+	@Path("findUsersByRoom/{room}")
 	@Produces(APPLICATION_JSON)
-	public List<Pupil> findPupilsByRoom(@PathParam("room") String room) throws ModuleException {
-		return schoolModule.findPupilsByRoom(room);
+	public List<User> findUsersByRoom(@PathParam("room") String room) throws ModuleException {
+		return schoolModule.findUsersByRoom(room);
 	}
 
 	@GET
-	@Path("findPupilsBySchool/{school}")
+	@Path("findUsersBySchool/{school}")
 	@Produces(APPLICATION_JSON)
-	public List<Pupil> findPupilsBySchool(@PathParam("school") String school) throws ModuleException {
-		return schoolModule.findPupilsBySchool(school);
+	public List<User> findUsersBySchool(@PathParam("school") String school) throws ModuleException {
+		return schoolModule.findUsersBySchool(school);
 	}
 
 	@GET
-	@Path("findPupilsBySchoolAndRoom/{school}/{room}")
+	@Path("findUsersBySchoolAndRoom/{school}/{room}")
 	@Produces(APPLICATION_JSON)
-	public List<Pupil> findPupilsBySchoolAndRoom(@PathParam("school") String school, @PathParam("room") String room)
+	public List<User> findUsersBySchoolAndRoom(@PathParam("school") String school, @PathParam("room") String room)
 			throws ModuleException {
-		return schoolModule.findPupilsBySchoolAndRoom(school, room);
+		return schoolModule.findUsersBySchoolAndRoom(school, room);
 	}
 
 	@GET
-	@Path("findPupilById/{id}")
+	@Path("findUserById/{id}")
 	@Produces(APPLICATION_JSON)
-	public Pupil findPupilById(@PathParam("id") String id) throws ModuleException {
-		return schoolModule.findPupilById(id);
+	public User findUserById(@PathParam("id") String id) throws ModuleException {
+		return schoolModule.findUserById(id);
 	}
 
 	@POST
-	@Path("findPresencesByPupil")
+	@Path("findPresencesByUser")
 	@Consumes(APPLICATION_JSON)
 	@Produces(APPLICATION_JSON)
-	public List<Presence> findPresencesByPupil(Pupil pupil) throws ModuleException {
-		return schoolModule.findPresencesByPupil(pupil);
+	public List<Presence> findPresencesByUser(User user) throws ModuleException {
+		return schoolModule.findPresencesByUser(user);
 	}
 
 	@POST
@@ -113,11 +113,11 @@ public class RestSchoolModule {
 	}
 
 	@POST
-	@Path("findPresenceByPupilAndDay")
+	@Path("findPresenceByUserAndDay")
 	@Consumes(APPLICATION_JSON)
 	@Produces(APPLICATION_JSON)
-	public Presence findPresenceByPupilAndDay(Presence presence) throws ModuleException {
-		return schoolModule.findPresenceByPupilAndDay(presence);
+	public Presence findPresenceByUserAndDay(Presence presence) throws ModuleException {
+		return schoolModule.findPresenceByUserAndDay(presence);
 	}
 
 	@POST

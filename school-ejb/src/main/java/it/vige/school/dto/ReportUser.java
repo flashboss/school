@@ -2,14 +2,14 @@ package it.vige.school.dto;
 
 import it.vige.school.Constants;
 
-public class ReportPupil extends Pupil implements Constants {
+public class ReportUser extends User implements Constants {
 
 	private static final long serialVersionUID = 8684674995138083622L;
 
 	private int presences;
 
-	public ReportPupil(Pupil pupil) {
-		update(pupil);
+	public ReportUser(User user) {
+		update(user);
 	}
 
 	public double getQuote() {
@@ -24,14 +24,14 @@ public class ReportPupil extends Pupil implements Constants {
 		this.presences = presences;
 	}
 	
-	public void update(Pupil pupil) {
-		setId(pupil.getId());
-		setName(pupil.getName());
-		setPresent(pupil.isPresent());
-		setRoom(pupil.getRoom());
-		setSchool(pupil.getSchool());
-		setSurname(pupil.getSurname());
-		setIncome(pupil.getIncome());
+	public void update(User user) {
+		setId(user.getId());
+		setName(user.getName());
+		setPresent(user.isPresent());
+		setRoom(user.getRoom());
+		setSchool(user.getSchool());
+		setSurname(user.getSurname());
+		setIncome(user.getIncome());
 	}
 
 }
