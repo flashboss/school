@@ -6,9 +6,9 @@ public interface Constants {
 
 	String ERROR = "error";
 
-	String ROOM_SEPARATOR = "-";
-
 	String PUPIL_ROLE = "pupil";
+
+	String TEACHER_ROLE = "teacher";
 
 	default double calculateQuote(int income) {
 		double quote = 0.0;

@@ -18,7 +18,7 @@ import org.jboss.logging.Logger;
 
 import it.vige.school.ModuleException;
 import it.vige.school.SchoolModule;
-import it.vige.school.dto.ReportPupil;
+import it.vige.school.dto.ReportUser;
 
 @SessionScoped
 @Named
@@ -28,7 +28,7 @@ public class Detail implements Serializable {
 
 	private static Logger log = getLogger(Detail.class);
 
-	private ReportPupil pupil;
+	private ReportUser user;
 
 	private String[] dates;
 
@@ -50,12 +50,12 @@ public class Detail implements Serializable {
 		}
 	}
 
-	public ReportPupil getPupil() {
-		return pupil;
+	public ReportUser getUser() {
+		return user;
 	}
 
-	public void setPupil(ReportPupil pupil) {
-		this.pupil = pupil;
+	public void setUser(ReportUser user) {
+		this.user = user;
 	}
 
 	public String[] getDates() {
@@ -66,28 +66,28 @@ public class Detail implements Serializable {
 		this.dates = dates;
 	}
 
-	public void page(ReportPupil pupil) throws IOException, ModuleException {
+	public void page(ReportUser user) throws IOException, ModuleException {
 		log.debug("detail");
-		update(pupil);
+		update(user);
 		configuration.redirect("/views/detail.xhtml");
 	}
 
 	public void refresh() throws IOException, ModuleException {
 		init();
 		if (!configuration.isPupil())
-			create(pupil.getId());
+			create(user.getId());
 		configuration.redirect("/views/detail.xhtml");
 	}
 
 	private void create(String id) throws ModuleException {
-		pupil = new ReportPupil(schoolModule.findPupilById(id));
-		pupil.setPresences(schoolModule.findPresencesByYear(getCalendarByDate(today())).size());
-		update(pupil);
+		user = new ReportUser(schoolModule.findUserById(id));
+		user.setPresences(schoolModule.findPresencesByYear(getCalendarByDate(today())).size());
+		update(user);
 	}
 
-	private void update(ReportPupil pupil) throws ModuleException {
-		setPupil(pupil);
-		setDates(schoolModule.findPresencesByPupil(pupil).stream()
+	private void update(ReportUser user) throws ModuleException {
+		setUser(user);
+		setDates(schoolModule.findPresencesByUser(user).stream()
 				.map(x -> format("'%s'", x.getDay().getTime().getTime())).toArray(String[]::new));
 	}
 }

@@ -23,37 +23,37 @@ import javax.ws.rs.core.Response;
 
 import org.junit.jupiter.api.Test;
 
-import it.vige.school.dto.Pupil;
+import it.vige.school.dto.User;
 import it.vige.school.resttest.RestCaller;
 
-public class PupilTest extends RestCaller {
+public class UserTest extends RestCaller {
 
 	private final static String url = "http://localhost:8080/school-rest/services/school/";
 	private final static String authorization = "Basic cm9vdDpndG4=";
 
 	@Test
-	public void getPupil() {
-		Response response = get(url + "findPupilsBySchool/donlorenzomilani", authorization);
-		List<Pupil> pupils = response.readEntity(new GenericType<List<Pupil>>() {
+	public void getUser() {
+		Response response = get(url + "findUsersBySchool/donlorenzomilani", authorization);
+		List<User> users = response.readEntity(new GenericType<List<User>>() {
 		});
 		response.close();
-		assertNotNull(pupils, "The pupils from Maiorana are found");
-		assertEquals(16, pupils.size(), "The pupils from Maiorana are ok");
-		response = get(url + "findPupilsByRoom/1A", authorization);
-		pupils = response.readEntity(new GenericType<List<Pupil>>() {
+		assertNotNull(users, "The users from Maiorana are found");
+		assertEquals(29, users.size(), "The users from Maiorana are ok");
+		response = get(url + "findUsersByRoom/1A", authorization);
+		users = response.readEntity(new GenericType<List<User>>() {
 		});
 		response.close();
-		assertNotNull(response, "The pupils from 1A are found");
-		assertEquals(5, pupils.size(), "The pupils from 1A are ok");
-		response = get(url + "findPupilsBySchoolAndRoom/donlorenzomilani/1A", authorization);
-		pupils = response.readEntity(new GenericType<List<Pupil>>() {
+		assertNotNull(response, "The users from 1A are found");
+		assertEquals(9, users.size(), "The users from 1A are ok");
+		response = get(url + "findUsersBySchoolAndRoom/donlorenzomilani/1A", authorization);
+		users = response.readEntity(new GenericType<List<User>>() {
 		});
 		response.close();
-		assertNotNull(response, "The pupils from 1A are found");
-		assertEquals(4, pupils.size(), "The pupils from donlorenzomilani 1A are ok");
-		response = get(url + "findPupilById/STNLCU76E15H501X", authorization);
-		Pupil pupil = response.readEntity(Pupil.class);
-		assertEquals("Luca", pupil.getName(), "Pupil by id received");
+		assertNotNull(response, "The users from 1A are found");
+		assertEquals(5, users.size(), "The users from donlorenzomilani 1A are ok");
+		response = get(url + "findUserById/STNLCU76E15H501X", authorization);
+		User user = response.readEntity(User.class);
+		assertEquals("Luca", user.getName(), "User by id received");
 		response.close();
 	}
 }

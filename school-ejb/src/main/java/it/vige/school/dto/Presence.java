@@ -9,7 +9,7 @@ public class Presence implements Serializable {
 
 	private Calendar day;
 
-	private Pupil pupil;
+	private User user;
 
 	public Calendar getDay() {
 		return day;
@@ -19,12 +19,12 @@ public class Presence implements Serializable {
 		this.day = day;
 	}
 
-	public Pupil getPupil() {
-		return pupil;
+	public User getUser() {
+		return user;
 	}
 
-	public void setPupil(Pupil pupil) {
-		this.pupil = pupil;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override
@@ -32,7 +32,7 @@ public class Presence implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((day == null) ? 0 : day.hashCode());
-		result = prime * result + ((pupil == null) ? 0 : pupil.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
 
@@ -50,10 +50,10 @@ public class Presence implements Serializable {
 				return false;
 		} else if (!day.equals(other.day))
 			return false;
-		if (pupil == null) {
-			if (other.pupil != null)
+		if (user == null) {
+			if (other.user != null)
 				return false;
-		} else if (!pupil.equals(other.pupil))
+		} else if (!user.equals(other.user))
 			return false;
 		return true;
 	}

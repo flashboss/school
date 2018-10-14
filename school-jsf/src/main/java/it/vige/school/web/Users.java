@@ -2,8 +2,6 @@ package it.vige.school.web;
 
 import static it.vige.school.Constants.ERROR;
 import static it.vige.school.Utils.getCalendarByDate;
-import static it.vige.school.Utils.getRoomByRole;
-import static it.vige.school.Utils.getSchoolByRole;
 import static java.util.stream.Collectors.toList;
 import static javax.faces.application.FacesMessage.SEVERITY_INFO;
 import static javax.faces.context.FacesContext.getCurrentInstance;
@@ -25,15 +23,15 @@ import org.jboss.logging.Logger;
 import it.vige.school.ModuleException;
 import it.vige.school.SchoolModule;
 import it.vige.school.dto.Presence;
-import it.vige.school.dto.Pupil;
+import it.vige.school.dto.User;
 
 @SessionScoped
 @Named
-public class Pupils implements Serializable {
+public class Users implements Serializable {
 
 	private static final long serialVersionUID = -2260430424205388307L;
 
-	private static Logger log = getLogger(Pupils.class);
+	private static Logger log = getLogger(Users.class);
 
 	@Inject
 	private SchoolModule schoolModule;
@@ -41,9 +39,9 @@ public class Pupils implements Serializable {
 	@Inject
 	private Configuration configuration;
 
-	private List<Pupil> pupils;
+	private List<User> users;
 
-	private List<Pupil> filteredPupils;
+	private List<User> filteredUsers;
 
 	private List<String> rooms;
 
@@ -54,29 +52,31 @@ public class Pupils implements Serializable {
 		boolean isAdmin = configuration.isAdmin();
 		try {
 			if (isAdmin) {
-				pupils = schoolModule.findAllPupils();
+				users = schoolModule.findAllUsers();
 			} else {
 				String role = configuration.getRole();
 				if (configuration.isSchoolOperator())
-					pupils = schoolModule.findPupilsBySchool(role);
-				else
-					pupils = schoolModule.findPupilsBySchoolAndRoom(getSchoolByRole(role), getRoomByRole(role));
+					users = schoolModule.findUsersBySchool(role);
+				else {
+					User currentUser = schoolModule.findUserById(configuration.getUser());
+					users = schoolModule.findUsersBySchoolAndRoom(currentUser.getSchool(), currentUser.getRoom());
+				}
 			}
 			Calendar currentDay = getCalendarByDate(configuration.getCurrentDay());
 			List<Presence> presencesOfDay = schoolModule.findPresencesByDay(currentDay);
-			pupils.forEach(x -> {
+			users.forEach(x -> {
 				for (Presence presence : presencesOfDay)
-					if (presence.getPupil().equals(x) && presence.getDay().equals(currentDay))
+					if (presence.getUser().equals(x) && presence.getDay().equals(currentDay))
 						x.setPresent(true);
 			});
-			if (filteredPupils != null)
-				filteredPupils.forEach(x -> {
-					for (Pupil pupil : pupils)
-						if (pupil.getId() == x.getId())
-							x.setPresent(pupil.isPresent());
+			if (filteredUsers != null)
+				filteredUsers.forEach(x -> {
+					for (User user : users)
+						if (user.getId() == x.getId())
+							x.setPresent(user.isPresent());
 				});
-			rooms = pupils.stream().map(x -> x.getRoom()).distinct().sorted().collect(toList());
-			schools = pupils.stream().map(x -> x.getSchool()).distinct().sorted().collect(toList());
+			rooms = users.stream().map(x -> x.getRoom()).distinct().sorted().collect(toList());
+			schools = users.stream().map(x -> x.getSchool()).distinct().sorted().collect(toList());
 		} catch (ModuleException ex) {
 			FacesMessage message = new FacesMessage(SEVERITY_INFO, // severity
 					ERROR, ERROR);
@@ -84,16 +84,16 @@ public class Pupils implements Serializable {
 		}
 	}
 
-	public List<Pupil> getPupils() {
-		return pupils;
+	public List<User> getUsers() {
+		return users;
 	}
 
-	public List<Pupil> getFilteredPupils() {
-		return filteredPupils;
+	public List<User> getFilteredUsers() {
+		return filteredUsers;
 	}
 
-	public void setFilteredPupils(List<Pupil> filteredPupils) {
-		this.filteredPupils = filteredPupils;
+	public void setFilteredUsers(List<User> filteredUsers) {
+		this.filteredUsers = filteredUsers;
 	}
 
 	public List<String> getRooms() {
@@ -106,15 +106,15 @@ public class Pupils implements Serializable {
 		return schools;
 	}
 
-	public void addPresence(Pupil pupil) throws ModuleException {
+	public void addPresence(User user) throws ModuleException {
 		Presence presence = new Presence();
 		presence.setDay(getCalendarByDate(configuration.getCurrentDay()));
-		presence.setPupil(pupil);
-		if (pupil.isPresent())
+		presence.setUser(user);
+		if (user.isPresent())
 			schoolModule.createPresence(presence);
 		else
 			schoolModule.removePresence(presence);
-		log.debug("pupil: " + pupil);
+		log.debug("user: " + user);
 	}
 
 	public void refresh() {

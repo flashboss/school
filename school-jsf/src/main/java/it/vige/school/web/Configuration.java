@@ -2,9 +2,10 @@ package it.vige.school.web;
 
 import static it.vige.school.Constants.ADMIN_ROLE;
 import static it.vige.school.Constants.PUPIL_ROLE;
-import static it.vige.school.Constants.ROOM_SEPARATOR;
+import static it.vige.school.Constants.TEACHER_ROLE;
 import static it.vige.school.Utils.getCalendarByDate;
 import static it.vige.school.Utils.getCurrentRole;
+import static it.vige.school.Utils.getCurrentUser;
 import static it.vige.school.Utils.today;
 import static it.vige.school.web.ReportType.MONTH;
 import static it.vige.school.web.ReportType.YEAR;
@@ -50,12 +51,14 @@ public class Configuration implements Serializable {
 
 	private String formattedDate = monthDateFormat.format(currentDate);
 
+	private String user = getCurrentUser();
+
 	private String role = getCurrentRole();
 
 	private String currentLocale = getProperty("user.language");
 
 	@Inject
-	private Pupils pupils;
+	private Users users;
 
 	@Inject
 	private Report report;
@@ -68,15 +71,15 @@ public class Configuration implements Serializable {
 	}
 
 	public boolean isSchoolOperator() {
-		return role != ADMIN_ROLE && !role.contains(ROOM_SEPARATOR);
+		return !role.equals(ADMIN_ROLE) && !role.equals(TEACHER_ROLE) && !role.equals(PUPIL_ROLE);
 	}
 
 	public boolean isTeacher() {
-		return role != ADMIN_ROLE && role.contains(ROOM_SEPARATOR) && !role.contains(PUPIL_ROLE);
+		return role.equals(TEACHER_ROLE);
 	}
 
 	public boolean isPupil() {
-		return role != ADMIN_ROLE && role.contains(ROOM_SEPARATOR) && role.contains(PUPIL_ROLE);
+		return role.equals(PUPIL_ROLE);
 	}
 
 	public String getFormattedDate() {
@@ -107,6 +110,10 @@ public class Configuration implements Serializable {
 		this.maxDate = maxDate;
 	}
 
+	public String getUser() {
+		return user;
+	}
+
 	public String getRole() {
 		return role;
 	}
@@ -117,7 +124,7 @@ public class Configuration implements Serializable {
 
 	public void onDaySelect(SelectEvent event) {
 		setCurrentDay((Date) event.getObject());
-		pupils.init();
+		users.init();
 	}
 
 	public void onMonthSelect(DateViewChangeEvent event) {
@@ -138,7 +145,7 @@ public class Configuration implements Serializable {
 		report.setType(YEAR);
 		report.init();
 	}
-	
+
 	public void redirect(String page) throws IOException {
 		FacesContext facesContext = getCurrentInstance();
 		ExternalContext ec = facesContext.getExternalContext();

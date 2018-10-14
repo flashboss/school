@@ -37,10 +37,10 @@
 			<ui:insert name="header">
 				<h1>
 					#{resourcebundle.Welcome}
-					<h:outputText rendered="#{!configuration.admin and !configuration.pupil}"
-						value="#{pupils.schools}" />
+					<h:outputText rendered="#{!configuration.admin and !configuration.user}"
+						value="#{users.schools}" />
 					<h:outputText rendered="#{configuration.teacher}"
-						value=" - #{pupils.rooms}" />
+						value=" - #{users.rooms}" />
 				</h1>
 				<br />
 				<br />

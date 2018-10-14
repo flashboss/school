@@ -25,23 +25,23 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
- * Pupils.
+ * Users.
  * 
  * @author <a href="mailto:luca.stancapiano@vige.it">Luca Stancapiano </a>
  * @author <a href="mailto:toro.gm5s@gmail.com">Alessandro Toro </a>
  */
 
 @NamedQueries({
-		@NamedQuery(name = "findAllPupils", query = "from PupilEntity p order by p.school,p.room,p.surname,p.name asc"),
-		@NamedQuery(name = "findPupilsByRoom", query = "select p from PupilEntity as p where " + "p.room = :room "
+		@NamedQuery(name = "findAllUsers", query = "from UserEntity p order by p.school,p.room,p.surname,p.name asc"),
+		@NamedQuery(name = "findUsersByRoom", query = "select p from UserEntity as p where " + "p.room = :room "
 				+ "order by p.room,p.surname,p.name,p.id asc"),
-		@NamedQuery(name = "findPupilsBySchool", query = "select p from PupilEntity as p where " + "p.school = :school "
+		@NamedQuery(name = "findUsersBySchool", query = "select p from UserEntity as p where " + "p.school = :school "
 				+ "order by p.room,p.surname,p.name,p.id asc"),
-		@NamedQuery(name = "findPupilsBySchoolAndRoom", query = "select p from PupilEntity as p where "
+		@NamedQuery(name = "findUsersBySchoolAndRoom", query = "select p from UserEntity as p where "
 				+ "p.school = :school " + "and p.room = :room " + "order by p.surname,p.name,p.id asc") })
 @Entity
 @Table
-public class PupilEntity {
+public class UserEntity {
 
 	@Id
 	private String id;
@@ -56,7 +56,7 @@ public class PupilEntity {
 
 	private String school;
 
-	@OneToMany(mappedBy = "id.pupil", cascade = ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "id.user", cascade = ALL, orphanRemoval = true)
 	private List<PresenceEntity> presences;
 
 	public String getId() {
