@@ -1421,6 +1421,70 @@
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=IIILCU76E15H501X,
 												name=Roles, value=["pupil"])
 											</command>
+											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=DONLORENZOMILANI)
+											</command>
+											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:set-password(identity=DONLORENZOMILANI,
+												clear={password="gtn"})
+											</command>
+											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=DONLORENZOMILANI,
+												name=Roles, value=["schooloperator"])
+											</command>
+											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=EDOARDODEFILIPPO)
+											</command>
+											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:set-password(identity=EDOARDODEFILIPPO,
+												clear={password="gtn"})
+											</command>
+											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=EDOARDODEFILIPPO,
+												name=Roles, value=["schooloperator"])
+											</command>
+											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=GARIBALDIXXXXXXX)
+											</command>
+											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:set-password(identity=GARIBALDIXXXXXXX,
+												clear={password="gtn"})
+											</command>
+											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=GARIBALDIXXXXXXX,
+												name=Roles, value=["schooloperator"])
+											</command>
+											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=GIOVANNIXXXIIIYY)
+											</command>
+											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:set-password(identity=GIOVANNIXXXIIIYY,
+												clear={password="gtn"})
+											</command>
+											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=GIOVANNIXXXIIIYY,
+												name=Roles, value=["schooloperator"])
+											</command>
+											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=LEONARDODAVINCIX)
+											</command>
+											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:set-password(identity=LEONARDODAVINCIX,
+												clear={password="gtn"})
+											</command>
+											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=LEONARDODAVINCIX,
+												name=Roles, value=["schooloperator"])
+											</command>
+											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=MANZIXXXXXXXXXXX)
+											</command>
+											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:set-password(identity=MANZIXXXXXXXXXXX,
+												clear={password="gtn"})
+											</command>
+											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=MANZIXXXXXXXXXXX,
+												name=Roles, value=["schooloperator"])
+											</command>
+											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=MONTECELIOXXXXXX)
+											</command>
+											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:set-password(identity=MONTECELIOXXXXXX,
+												clear={password="gtn"})
+											</command>
+											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=MONTECELIOXXXXXX,
+												name=Roles, value=["schooloperator"])
+											</command>
+											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=MONTELUCCIXXXXXX)
+											</command>
+											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:set-password(identity=MONTELUCCIXXXXXX,
+												clear={password="gtn"})
+											</command>
+											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=MONTELUCCIXXXXXX,
+												name=Roles, value=["schooloperator"])
+											</command>
 											<command>/subsystem=elytron/simple-role-decoder=from-roles-attribute:add(attribute=Roles)
 											</command>
 											<command>/subsystem=elytron/security-domain=schoolFsSD:add(realms=[{realm=schoolFsRealm,role-decoder=from-roles-attribute}],default-realm=schoolFsRealm,permission-mapper=default-permission-mapper)
@@ -1805,6 +1869,22 @@
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=VVSLCU76E15H501X)
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=IIILCU76E15H501X)
+											</command>
+											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=DONLORENZOMILANI)
+											</command>
+											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=EDOARDODEFILIPPO)
+											</command>
+											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=GARIBALDIXXXXXXX)
+											</command>
+											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=GIOVANNIXXXIIIYY)
+											</command>
+											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=LEONARDODAVINCIX)
+											</command>
+											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=MANZIXXXXXXXXXXX)
+											</command>
+											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=MONTECELIOXXXXXX)
+											</command>
+											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=MONTELUCCIXXXXXX)
 											</command>
 											<command>/subsystem=undertow/application-security-domain=school-domain:remove
 											</command>

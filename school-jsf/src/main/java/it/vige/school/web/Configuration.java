@@ -2,9 +2,9 @@ package it.vige.school.web;
 
 import static it.vige.school.Constants.ADMIN_ROLE;
 import static it.vige.school.Constants.PUPIL_ROLE;
+import static it.vige.school.Constants.SCHOOL_OPERATOR_ROLE;
 import static it.vige.school.Constants.TEACHER_ROLE;
 import static it.vige.school.Utils.getCalendarByDate;
-import static it.vige.school.Utils.getCurrentRole;
 import static it.vige.school.Utils.getCurrentUser;
 import static it.vige.school.Utils.today;
 import static it.vige.school.web.ReportType.MONTH;
@@ -53,8 +53,6 @@ public class Configuration implements Serializable {
 
 	private String user = getCurrentUser();
 
-	private String role = getCurrentRole();
-
 	private String currentLocale = getProperty("user.language");
 
 	@Inject
@@ -71,15 +69,18 @@ public class Configuration implements Serializable {
 	}
 
 	public boolean isSchoolOperator() {
-		return !role.equals(ADMIN_ROLE) && !role.equals(TEACHER_ROLE) && !role.equals(PUPIL_ROLE);
+		FacesContext facesContext = getCurrentInstance();
+		return facesContext.getExternalContext().isUserInRole(SCHOOL_OPERATOR_ROLE);
 	}
 
 	public boolean isTeacher() {
-		return role.equals(TEACHER_ROLE);
+		FacesContext facesContext = getCurrentInstance();
+		return facesContext.getExternalContext().isUserInRole(TEACHER_ROLE);
 	}
 
 	public boolean isPupil() {
-		return role.equals(PUPIL_ROLE);
+		FacesContext facesContext = getCurrentInstance();
+		return facesContext.getExternalContext().isUserInRole(PUPIL_ROLE);
 	}
 
 	public String getFormattedDate() {
@@ -112,10 +113,6 @@ public class Configuration implements Serializable {
 
 	public String getUser() {
 		return user;
-	}
-
-	public String getRole() {
-		return role;
 	}
 
 	public String getCurrentLocale() {

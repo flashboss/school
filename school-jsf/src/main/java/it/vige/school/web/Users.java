@@ -54,11 +54,10 @@ public class Users implements Serializable {
 			if (isAdmin) {
 				users = schoolModule.findAllUsers();
 			} else {
-				String role = configuration.getRole();
+				User currentUser = schoolModule.findUserById(configuration.getUser());
 				if (configuration.isSchoolOperator())
-					users = schoolModule.findUsersBySchool(role);
+					users = schoolModule.findUsersBySchool(currentUser.getSchool());
 				else {
-					User currentUser = schoolModule.findUserById(configuration.getUser());
 					users = schoolModule.findUsersBySchoolAndRoom(currentUser.getSchool(), currentUser.getRoom());
 				}
 			}
