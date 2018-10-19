@@ -23,7 +23,7 @@ public class ReportUser extends User implements Constants {
 	public void setPresences(int presences) {
 		this.presences = presences;
 	}
-	
+
 	public void update(User user) {
 		setId(user.getId());
 		setName(user.getName());
