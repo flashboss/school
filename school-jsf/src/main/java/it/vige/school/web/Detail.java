@@ -1,8 +1,6 @@
 package it.vige.school.web;
 
-import static it.vige.school.Utils.getCalendarByDate;
 import static it.vige.school.Utils.getCurrentUser;
-import static it.vige.school.Utils.today;
 import static java.lang.String.format;
 import static org.jboss.logging.Logger.getLogger;
 
@@ -81,13 +79,14 @@ public class Detail implements Serializable {
 
 	private void create(String id) throws ModuleException {
 		user = new ReportUser(schoolModule.findUserById(id));
-		user.setPresences(schoolModule.findPresencesByYear(getCalendarByDate(today())).size());
 		update(user);
 	}
 
 	private void update(ReportUser user) throws ModuleException {
 		setUser(user);
-		setDates(schoolModule.findPresencesByUser(user).stream()
-				.map(x -> format("'%s'", x.getDay().getTime().getTime())).toArray(String[]::new));
+		String[] dates = schoolModule.findPresencesByUser(user).stream()
+				.map(x -> format("'%s'", x.getDay().getTime().getTime())).toArray(String[]::new);
+		setDates(dates);
+		user.setPresences(dates.length);
 	}
 }
