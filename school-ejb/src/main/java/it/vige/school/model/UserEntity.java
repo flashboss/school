@@ -32,11 +32,11 @@ import javax.persistence.Table;
  */
 
 @NamedQueries({
-		@NamedQuery(name = "findAllUsers", query = "from UserEntity p order by p.school,p.room,p.surname,p.name asc"),
+		@NamedQuery(name = "findAllUsers", query = "from UserEntity p where p.room is not null order by p.school,p.room,p.surname,p.name asc"),
 		@NamedQuery(name = "findUsersByRoom", query = "select p from UserEntity as p where " + "p.room = :room "
 				+ "order by p.room,p.surname,p.name,p.id asc"),
-		@NamedQuery(name = "findUsersBySchool", query = "select p from UserEntity as p where " + "p.school = :school "
-				+ "order by p.room,p.surname,p.name,p.id asc"),
+		@NamedQuery(name = "findUsersBySchool", query = "select p from UserEntity as p where "
+				+ "p.school = :school and p.room is not null " + "order by p.room,p.surname,p.name,p.id asc"),
 		@NamedQuery(name = "findUsersBySchoolAndRoom", query = "select p from UserEntity as p where "
 				+ "p.school = :school " + "and p.room = :room " + "order by p.surname,p.name,p.id asc") })
 @Entity

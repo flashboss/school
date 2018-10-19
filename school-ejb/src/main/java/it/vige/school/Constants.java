@@ -4,11 +4,13 @@ public interface Constants {
 
 	String ADMIN_ROLE = "admin";
 
-	String ERROR = "error";
-
 	String PUPIL_ROLE = "pupil";
 
 	String TEACHER_ROLE = "teacher";
+
+	String SCHOOL_OPERATOR_ROLE = "schooloperator";
+
+	String ERROR = "error";
 
 	default double calculateQuote(int income) {
 		double quote = 0.0;
