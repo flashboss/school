@@ -27,7 +27,7 @@
 	<ui:define name="content">
 		<h:form styleClass="reportform">
 			<h:outputText value="#{resourcebundle.Subreport}"
-				styleClass="subreportLabel" />
+				styleClass="subreportlabel" />
 			<p:calendar id="popupmonth"
 				value="#{configuration.currentDate}"
 				maxdate="#{configuration.maxDate}"
@@ -50,7 +50,7 @@
 			</p:calendar>
 			<h:outputText id="period"
 				value="#{configuration.formattedDate}"
-				styleClass="periodLabel" />
+				styleClass="periodlabel" />
 			<p:commandButton value="#{resourcebundle.Insert}"
 				actionListener="#{report.insert}"
 				styleClass="ui-priority-primary pagereport" />
