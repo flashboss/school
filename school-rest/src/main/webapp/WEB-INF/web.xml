@@ -32,14 +32,7 @@
 		</web-resource-collection>
 		<auth-constraint>
 			<role-name>admin</role-name>
-			<role-name>donlorenzomilani</role-name>
-			<role-name>edoardodefilippo</role-name>
-			<role-name>garibaldi</role-name>
-			<role-name>giovannixxiii</role-name>
-			<role-name>leonardodavinci</role-name>
-			<role-name>manzi</role-name>
-			<role-name>montecelio</role-name>
-			<role-name>montelucci</role-name>
+			<role-name>schooloperator</role-name>
 			<role-name>teacher</role-name>
 			<role-name>pupil</role-name>
 		</auth-constraint>
@@ -52,25 +45,7 @@
 		<role-name>admin</role-name>
 	</security-role>
 	<security-role>
-		<role-name>donlorenzomilani</role-name>
-	</security-role>
-	<security-role>
-		<role-name>edoardodefilippo</role-name>
-	</security-role>
-	<security-role>
-		<role-name>garibaldi</role-name>
-	</security-role>
-	<security-role>
-		<role-name>giovannixxiii</role-name>
-	</security-role>
-	<security-role>
-		<role-name>leonardodavinci</role-name>
-	</security-role>
-	<security-role>
-		<role-name>manzi</role-name>
-	</security-role>
-	<security-role>
-		<role-name>montecelio</role-name>
+		<role-name>schooloperator</role-name>
 	</security-role>
 	<security-role>
 		<role-name>teacher</role-name>

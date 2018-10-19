@@ -8,7 +8,6 @@ import static java.util.Calendar.getInstance;
 import static javax.security.jacc.PolicyContext.getContext;
 import static org.jboss.logging.Logger.getLogger;
 
-import java.security.acl.Group;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -22,18 +21,6 @@ public class Utils {
 	private final static String SUBJECT_CONTAINER = "javax.security.auth.Subject.container";
 
 	private static Logger log = getLogger(Utils.class);
-
-	public static String getCurrentRole() {
-		String role = null;
-		try {
-			Subject subject;
-			subject = (Subject) getContext(SUBJECT_CONTAINER);
-			role = ((Group) subject.getPrincipals().toArray()[1]).members().nextElement().getName();
-		} catch (PolicyContextException e) {
-			log.error(e);
-		}
-		return role;
-	}
 
 	public static String getCurrentUser() {
 		String user = null;
