@@ -46,7 +46,7 @@
 	</security-constraint>
 	<login-config>
 		<auth-method>BASIC</auth-method>
-		<realm-name>School</realm-name>
+		<realm-name>school-domain</realm-name>
 	</login-config>
 	<security-role>
 		<role-name>admin</role-name>

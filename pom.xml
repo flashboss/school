@@ -55,7 +55,6 @@
 		<maven.compiler.source>10</maven.compiler.source>
 		<maven.compiler.target>10</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
 		<spec.javaee.version>8.0</spec.javaee.version>
 		<primefaces.version>6.2</primefaces.version>
 		<maven.war.plugin.version>3.2.2</maven.war.plugin.version>
@@ -63,83 +62,15 @@
 		<maven.source.plugin.version>3.0.1</maven.source.plugin.version>
 		<maven.javadoc.plugin.version>3.0.1</maven.javadoc.plugin.version>
 		<maven.gpg.plugin.version>1.6</maven.gpg.plugin.version>
-		<maven.surefire.plugin.version>2.22.0</maven.surefire.plugin.version>
+		<maven.surefire.plugin.version>2.22.1</maven.surefire.plugin.version>
 		<ejb.version>3.2</ejb.version>
 		<maven.replacer.plugin.version>1.5.3</maven.replacer.plugin.version>
 		<wildfly.version>15.0.0.Alpha1-SNAPSHOT</wildfly.version>
 		<wildfly.maven.plugin.version>1.2.2.Final</wildfly.maven.plugin.version>
 		<jboss.logging.version>3.3.2.Final</jboss.logging.version>
-
-		<resteasy.version>3.6.1.Final</resteasy.version>
-		<junit.version>5.2.0</junit.version>
-		<junit.surefire.version>1.3.0-M1</junit.surefire.version>
+		<resteasy.version>3.6.1.SP2</resteasy.version>
+		<junit.version>5.3.1</junit.version>
 	</properties>
-
-	<repositories>
-		<repository>
-			<id>jboss-public-repository-group</id>
-			<name>JBoss Public Maven Repository Group</name>
-			<url>https://repository.jboss.org/nexus/content/groups/public-jboss/
-            </url>
-			<layout>default</layout>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>redhat-all-public-repository-group</id>
-			<name>Redhat All Public Maven Repository Group</name>
-			<url>http://maven.repository.redhat.com/techpreview/all/
-            </url>
-			<layout>default</layout>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>redhat-early-public-repository-group</id>
-			<name>Redhat Early Public Maven Repository Group</name>
-			<url>https://maven.repository.redhat.com/nexus/content/groups/product-earlyaccess/
-            </url>
-			<layout>default</layout>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</snapshots>
-		</repository>
-	</repositories>
-
-	<pluginRepositories>
-		<pluginRepository>
-			<id>jboss-public-repository-group</id>
-			<name>JBoss Public Maven Repository Group</name>
-			<url>https://repository.jboss.org/nexus/content/groups/public-jboss/
-            </url>
-			<layout>default</layout>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
 
 	<dependencies>
 		<dependency>
