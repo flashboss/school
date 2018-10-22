@@ -126,6 +126,7 @@ public class Users implements Serializable {
 	public void report() throws IOException {
 		log.debug("report");
 		report.init();
+		report.setFilteredUsers(null);
 		configuration.redirect("/views/report.xhtml");
 	}
 }
