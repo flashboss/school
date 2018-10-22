@@ -8,12 +8,13 @@ import static javax.faces.context.FacesContext.getCurrentInstance;
 import static org.jboss.logging.Logger.getLogger;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -23,12 +24,14 @@ import org.jboss.logging.Logger;
 import it.vige.school.ModuleException;
 import it.vige.school.SchoolModule;
 import it.vige.school.dto.Presence;
-import it.vige.school.dto.User;
 import it.vige.school.dto.ReportUser;
+import it.vige.school.dto.User;
 
-@RequestScoped
+@SessionScoped
 @Named
-public class Report {
+public class Report implements Serializable {
+
+	private static final long serialVersionUID = -717207127748548665L;
 
 	private static Logger log = getLogger(Report.class);
 
@@ -58,6 +61,7 @@ public class Report {
 				presencesByCurrentDate = schoolModule.findPresencesByMonth(currentDate);
 			else
 				presencesByCurrentDate = schoolModule.findPresencesByYear(currentDate);
+			configuration.setFormattedDate(currentDate.getTime(), type);
 			List<Presence> presences = presencesByCurrentDate;
 			reportUsers = new ArrayList<ReportUser>();
 			oldUsers.forEach(x -> {
@@ -68,6 +72,7 @@ public class Report {
 				});
 				reportUsers.add(reportUser);
 			});
+			filteredUsers = null;
 		} catch (ModuleException ex) {
 			FacesMessage message = new FacesMessage(SEVERITY_INFO, // severity
 					ERROR, ERROR);

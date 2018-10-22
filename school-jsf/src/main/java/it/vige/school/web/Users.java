@@ -39,6 +39,9 @@ public class Users implements Serializable {
 	@Inject
 	private Configuration configuration;
 
+	@Inject
+	private Report report;
+
 	private List<User> users;
 
 	private List<User> filteredUsers;
@@ -122,6 +125,7 @@ public class Users implements Serializable {
 
 	public void report() throws IOException {
 		log.debug("report");
+		report.init();
 		configuration.redirect("/views/report.xhtml");
 	}
 }
