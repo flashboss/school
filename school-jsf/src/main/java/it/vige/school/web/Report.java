@@ -38,7 +38,7 @@ public class Report implements Serializable {
 	@Inject
 	private Users users;
 
-	private List<ReportUser> reportUsers;
+	private List<ReportUser> reportUsers = new ArrayList<ReportUser>();
 
 	private List<User> filteredUsers;
 
@@ -63,16 +63,25 @@ public class Report implements Serializable {
 				presencesByCurrentDate = schoolModule.findPresencesByYear(currentDate);
 			configuration.setFormattedDate(currentDate.getTime(), type);
 			List<Presence> presences = presencesByCurrentDate;
-			reportUsers = new ArrayList<ReportUser>();
+			List<ReportUser> toRemove = new ArrayList<ReportUser>();
 			oldUsers.forEach(x -> {
 				ReportUser reportUser = new ReportUser(x);
-				presences.forEach(y -> {
-					if (y.getUser().equals(x))
-						reportUser.setPresences(reportUser.getPresences() + 1);
+				if (!reportUsers.contains(reportUser))
+					reportUsers.add(reportUser);
+				reportUsers.forEach(z -> {
+					if (z.equals(reportUser)) {
+						z.update(reportUser);
+						z.setPresences(0);
+						presences.forEach(y -> {
+							if (y.getUser().getId().equals(z.getId()))
+								z.setPresences(z.getPresences() + 1);
+						});
+					}
+					if (oldUsers.stream().filter(j -> j.getId() == z.getId()).count() == 0)
+						toRemove.add(z);
 				});
-				reportUsers.add(reportUser);
 			});
-			filteredUsers = null;
+			reportUsers.removeAll(toRemove);
 		} catch (ModuleException ex) {
 			FacesMessage message = new FacesMessage(SEVERITY_INFO, // severity
 					ERROR, ERROR);
