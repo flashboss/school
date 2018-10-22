@@ -129,14 +129,6 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=root,
 												name=Roles, value=["admin"])
 											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=donlorenzomilani)
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:set-password(identity=donlorenzomilani,
-												clear={password="gtn"})
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=donlorenzomilani,
-												name=Roles, value=["donlorenzomilani"])
-											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=NLORENZOMILANI0A)
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:set-password(identity=NLORENZOMILANI0A,
@@ -240,14 +232,6 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=NLORENZOMILANI5B,
 												name=Roles, value=["teacher"])
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=edoardodefilippo)
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:set-password(identity=edoardodefilippo,
-												clear={password="gtn"})
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=edoardodefilippo,
-												name=Roles, value=["edoardodefilippo"])
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=OARDODEFILIPPO0B)
 											</command>
@@ -392,14 +376,6 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=OARDODEFILIPPO5G,
 												name=Roles, value=["teacher"])
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=garibaldi)
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:set-password(identity=garibaldi,
-												clear={password="gtn"})
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=garibaldi,
-												name=Roles, value=["garibaldi"])
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=AAAAAGARIBALDI0A)
 											</command>
@@ -569,14 +545,6 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=AAAAAGARIBALDI5C,
 												name=Roles, value=["teacher"])
 											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=giovannixxiii)
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:set-password(identity=giovannixxiii,
-												clear={password="gtn"})
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=giovannixxiii,
-												name=Roles, value=["giovannixxiii"])
-											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=AGIOVANNIXXIII0A)
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:set-password(identity=AGIOVANNIXXIII0A,
@@ -672,14 +640,6 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=AGIOVANNIXXIII5C,
 												name=Roles, value=["teacher"])
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=leonardodavinci)
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:set-password(identity=leonardodavinci,
-												clear={password="gtn"})
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=leonardodavinci,
-												name=Roles, value=["leonardodavinci"])
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=EONARDODAVINCI0B)
 											</command>
@@ -841,14 +801,6 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=EONARDODAVINCI3F,
 												name=Roles, value=["teacher"])
 											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=manzi)
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:set-password(identity=manzi,
-												clear={password="gtn"})
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=manzi,
-												name=Roles, value=["manzi"])
-											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=CCCCCCCCCMANZI0D)
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:set-password(identity=CCCCCCCCCMANZI0D,
@@ -953,14 +905,6 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=CCCCCCCCCMANZI5E,
 												name=Roles, value=["teacher"])
 											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=montecelio)
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:set-password(identity=montecelio,
-												clear={password="gtn"})
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=montecelio,
-												name=Roles, value=["montecelio"])
-											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=CCCCMONTECELIO0A)
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:set-password(identity=CCCCMONTECELIO0A,
@@ -976,14 +920,6 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=CCCCMONTECELIO2B,
 												name=Roles, value=["teacher"])
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=montelucci)
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:set-password(identity=montelucci,
-												clear={password="gtn"})
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=montelucci,
-												name=Roles, value=["montelucci"])
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=CCCCMONTELUCCI0B)
 											</command>
@@ -1506,8 +1442,6 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=root)
 											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=donlorenzomilani)
-											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=NLORENZOMILANI0A)
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=NLORENZOMILANI0B)
@@ -1533,8 +1467,6 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=NLORENZOMILANI4B)
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=NLORENZOMILANI5B)
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=edoardodefilippo)
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=OARDODEFILIPPO0B)
 											</command>
@@ -1571,8 +1503,6 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=OARDODEFILIPPO5F)
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=OARDODEFILIPPO5G)
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=garibaldi)
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=AAAAAGARIBALDI0A)
 											</command>
@@ -1616,8 +1546,6 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=AAAAAGARIBALDI5C)
 											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=giovannixxiii)
-											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=AGIOVANNIXXIII0A)
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=AGIOVANNIXXIII0B)
@@ -1641,8 +1569,6 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=AGIOVANNIXXIII4C)
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=AGIOVANNIXXIII5C)
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=leonardodavinci)
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=EONARDODAVINCI0B)
 											</command>
@@ -1684,8 +1610,6 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=EONARDODAVINCI3F)
 											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=manzi)
-											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=CCCCCCCCCMANZI0D)
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=CCCCCCCCCMANZI0E)
@@ -1712,13 +1636,9 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=CCCCCCCCCMANZI5E)
 											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=montecelio)
-											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=CCCCMONTECELIO0A)
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=CCCCMONTECELIO2B)
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=montelucci)
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=CCCCMONTELUCCI0B)
 											</command>
