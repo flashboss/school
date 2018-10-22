@@ -28,35 +28,31 @@
 		<h:form styleClass="reportform">
 			<h:outputText value="#{resourcebundle.Subreport}"
 				styleClass="subreportlabel" />
-			<p:calendar id="popupmonth"
-				value="#{configuration.currentDate}"
+			<p:calendar id="inlinemonth" value="#{configuration.currentDate}"
 				maxdate="#{configuration.maxDate}"
 				locale="#{configuration.currentLocale}" navigator="true"
 				mode="inline" styleClass="month">
-				<p:ajax event="viewChange"
-					listener="#{configuration.onMonthSelect}"
+				<p:ajax event="viewChange" listener="#{configuration.onMonthSelect}"
 					update="period,users" />
 			</p:calendar>
 			<h:outputText styleClass="yearlabel"
 				value="#{resourcebundle.Subreportyear}" />
-			<p:calendar id="popupyear"
-				value="#{configuration.currentDate}"
+			<p:calendar id="inlineyear" value="#{configuration.currentDate}"
 				maxdate="#{configuration.maxDate}"
 				locale="#{configuration.currentLocale}" navigator="true"
 				mode="inline" styleClass="year">
-				<p:ajax event="viewChange"
-					listener="#{configuration.onYearSelect}"
+				<p:ajax event="viewChange" listener="#{configuration.onYearSelect}"
 					update="period,users" />
 			</p:calendar>
-			<h:outputText id="period"
-				value="#{configuration.formattedDate}"
+			<h:outputText id="period" value="#{configuration.formattedDate}"
 				styleClass="periodlabel" />
 			<p:commandButton value="#{resourcebundle.Insert}"
 				actionListener="#{report.insert}"
 				styleClass="ui-priority-primary pagereport" />
 			<p:commandButton value="#{resourcebundle.Refresh}"
 				actionListener="#{report.refresh}"
-				styleClass="ui-priority-primary refreshreport" update="users" />
+				styleClass="ui-priority-primary refreshreport"
+				update="users,inlineyear,inlinemonth,period" />
 			<p:dataTable id="users" value="#{report.reportUsers}"
 				filteredValue="#{report.filteredUsers}" var="user"
 				widgetVar="usersTable"
@@ -66,8 +62,7 @@
 				<f:facet name="header">
 					<p:outputPanel>
 						<h:outputText value="#{resourcebundle.Search_all}:" />
-						<p:inputText id="globalFilter"
-							onkeyup="PF('usersTable').filter()"
+						<p:inputText id="globalFilter" onkeyup="PF('usersTable').filter()"
 							placeholder="#{resourcebundle.Enter_keyword}" />
 					</p:outputPanel>
 				</f:facet>

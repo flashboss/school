@@ -87,6 +87,13 @@ public class Configuration implements Serializable {
 		return formattedDate;
 	}
 
+	public void setFormattedDate(Date currentDate, ReportType reportType) {
+		if (reportType == MONTH)
+			formattedDate = monthDateFormat.format(currentDate);
+		else
+			formattedDate = yearDateFormat.format(currentDate);
+	}
+
 	public Date getCurrentDay() {
 		return currentDay;
 	}
@@ -129,7 +136,7 @@ public class Configuration implements Serializable {
 		calendar.set(Calendar.MONTH, event.getMonth() - 1);
 		calendar.set(Calendar.YEAR, event.getYear());
 		setCurrentDate(calendar.getTime());
-		formattedDate = monthDateFormat.format(currentDate);
+		setFormattedDate(currentDate, MONTH);
 		report.setType(MONTH);
 		report.init();
 	}
@@ -138,7 +145,7 @@ public class Configuration implements Serializable {
 		Calendar calendar = getCalendarByDate(currentDate);
 		calendar.set(Calendar.YEAR, event.getYear());
 		setCurrentDate(calendar.getTime());
-		formattedDate = yearDateFormat.format(currentDate);
+		setFormattedDate(currentDate, YEAR);
 		report.setType(YEAR);
 		report.init();
 	}

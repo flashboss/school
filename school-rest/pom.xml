@@ -166,8 +166,7 @@
 								<configuration>
 									<executeCommands>
 										<commands>
-											<command>/subsystem=security:write-attribute(name=initialize-jacc,
-												value=false)
+											<command>/subsystem=security:write-attribute(name=initialize-jacc, value=false)
 											</command>
 											<command>/subsystem=elytron/policy=jacc:add(jacc-policy={})
 											</command>
@@ -180,14 +179,6 @@
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=root,
 												name=Roles, value=["admin"])
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=donlorenzomilani)
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:set-password(identity=donlorenzomilani,
-												clear={password="gtn"})
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=donlorenzomilani,
-												name=Roles, value=["donlorenzomilani"])
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=NLORENZOMILANI0A)
 											</command>
@@ -292,14 +283,6 @@
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=NLORENZOMILANI5B,
 												name=Roles, value=["teacher"])
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=edoardodefilippo)
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:set-password(identity=edoardodefilippo,
-												clear={password="gtn"})
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=edoardodefilippo,
-												name=Roles, value=["edoardodefilippo"])
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=OARDODEFILIPPO0B)
 											</command>
@@ -444,14 +427,6 @@
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=OARDODEFILIPPO5G,
 												name=Roles, value=["teacher"])
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=garibaldi)
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:set-password(identity=garibaldi,
-												clear={password="gtn"})
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=garibaldi,
-												name=Roles, value=["garibaldi"])
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=AAAAAGARIBALDI0A)
 											</command>
@@ -621,14 +596,6 @@
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=AAAAAGARIBALDI5C,
 												name=Roles, value=["teacher"])
 											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=giovannixxiii)
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:set-password(identity=giovannixxiii,
-												clear={password="gtn"})
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=giovannixxiii,
-												name=Roles, value=["giovannixxiii"])
-											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=AGIOVANNIXXIII0A)
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:set-password(identity=AGIOVANNIXXIII0A,
@@ -724,14 +691,6 @@
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=AGIOVANNIXXIII5C,
 												name=Roles, value=["teacher"])
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=leonardodavinci)
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:set-password(identity=leonardodavinci,
-												clear={password="gtn"})
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=leonardodavinci,
-												name=Roles, value=["leonardodavinci"])
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=EONARDODAVINCI0B)
 											</command>
@@ -893,14 +852,6 @@
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=EONARDODAVINCI3F,
 												name=Roles, value=["teacher"])
 											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=manzi)
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:set-password(identity=manzi,
-												clear={password="gtn"})
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=manzi,
-												name=Roles, value=["manzi"])
-											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=CCCCCCCCCMANZI0D)
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:set-password(identity=CCCCCCCCCMANZI0D,
@@ -1005,14 +956,6 @@
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=CCCCCCCCCMANZI5E,
 												name=Roles, value=["teacher"])
 											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=montecelio)
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:set-password(identity=montecelio,
-												clear={password="gtn"})
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=montecelio,
-												name=Roles, value=["montecelio"])
-											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=CCCCMONTECELIO0A)
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:set-password(identity=CCCCMONTECELIO0A,
@@ -1028,14 +971,6 @@
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=CCCCMONTECELIO2B,
 												name=Roles, value=["teacher"])
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=montelucci)
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:set-password(identity=montelucci,
-												clear={password="gtn"})
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity-attribute(identity=montelucci,
-												name=Roles, value=["montelucci"])
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:add-identity(identity=CCCCMONTELUCCI0B)
 											</command>
@@ -1491,11 +1426,9 @@
 											</command>
 											<command>/subsystem=elytron/http-authentication-factory=school-fs-http-auth:add(http-server-mechanism-factory=global,security-domain=schoolFsSD,mechanism-configurations=[{mechanism-name=BASIC,mechanism-realm-configurations=[{realm-name=school-domain}]}])
 											</command>
-											<command>/subsystem=undertow/application-security-domain=school-domain:add(http-authentication-factory=school-fs-http-auth,
-												enable-jacc=true)
+											<command>/subsystem=undertow/application-security-domain=school-domain:add(http-authentication-factory=school-fs-http-auth, enable-jacc=true)
 											</command>
-											<command>/subsystem=ejb3/application-security-domain=school-domain:add(security-domain=schoolFsSD,
-												enable-jacc=true)
+											<command>/subsystem=ejb3/application-security-domain=school-domain:add(security-domain=schoolFsSD, enable-jacc=true)
 											</command>
 										</commands>
 									</executeCommands>
@@ -1560,8 +1493,6 @@
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=root)
 											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=donlorenzomilani)
-											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=NLORENZOMILANI0A)
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=NLORENZOMILANI0B)
@@ -1587,8 +1518,6 @@
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=NLORENZOMILANI4B)
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=NLORENZOMILANI5B)
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=edoardodefilippo)
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=OARDODEFILIPPO0B)
 											</command>
@@ -1625,8 +1554,6 @@
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=OARDODEFILIPPO5F)
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=OARDODEFILIPPO5G)
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=garibaldi)
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=AAAAAGARIBALDI0A)
 											</command>
@@ -1670,8 +1597,6 @@
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=AAAAAGARIBALDI5C)
 											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=giovannixxiii)
-											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=AGIOVANNIXXIII0A)
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=AGIOVANNIXXIII0B)
@@ -1695,8 +1620,6 @@
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=AGIOVANNIXXIII4C)
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=AGIOVANNIXXIII5C)
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=leonardodavinci)
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=EONARDODAVINCI0B)
 											</command>
@@ -1738,8 +1661,6 @@
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=EONARDODAVINCI3F)
 											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=manzi)
-											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=CCCCCCCCCMANZI0D)
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=CCCCCCCCCMANZI0E)
@@ -1766,13 +1687,9 @@
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=CCCCCCCCCMANZI5E)
 											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=montecelio)
-											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=CCCCMONTECELIO0A)
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=CCCCMONTECELIO2B)
-											</command>
-											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=montelucci)
 											</command>
 											<command>/subsystem=elytron/filesystem-realm=schoolFsRealm:remove-identity(identity=CCCCMONTELUCCI0B)
 											</command>
@@ -1898,8 +1815,7 @@
 											</command>
 											<command>/subsystem=elytron/policy=jacc:remove
 											</command>
-											<command>/subsystem=security:write-attribute(name=initialize-jacc,
-												value=true)
+											<command>/subsystem=security:write-attribute(name=initialize-jacc, value=true)
 											</command>
 											<command>/subsystem=datasources/data-source="java:jdbc/school_mdefault":remove
 												{ "outcome" => "failed", "failure-description" =>
