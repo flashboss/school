@@ -1,6 +1,7 @@
 
      var override = {
      _generateHTML: function( inst ) {
+    	this._defaults.stepMonths = this.maxRows -1;
 		var maxDraw, prevText, prev, nextText, next, currentText, gotoDate,
 			controls, buttonPanel, firstDay, showWeek, dayNames, dayNamesMin,
 			monthNames, monthNamesShort, beforeShowDay, showOtherMonths,
