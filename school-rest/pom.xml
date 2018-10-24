@@ -165,7 +165,7 @@
 								</goals>
 								<configuration>
 									<scripts>
-										<script>../scripts/start_environment.cli</script>
+										<script>../school-scripts/start_environment.cli</script>
 									</scripts>
 								</configuration>
 							</execution>
@@ -185,7 +185,7 @@
 								<configuration>
 									<afterDeployment>
 										<scripts>
-											<script>../scripts/clean_environment.cli</script>
+											<script>../school-scripts/clean_environment.cli</script>
 										</scripts>
 									</afterDeployment>
 								</configuration>

@@ -114,7 +114,7 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 								</goals>
 								<configuration>
 									<scripts>
-										<script>../scripts/start_environment.cli</script>
+										<script>../school-scripts/start_environment.cli</script>
 									</scripts>
 								</configuration>
 							</execution>
@@ -134,7 +134,7 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 								<configuration>
 									<afterDeployment>
 										<scripts>
-											<script>../scripts/clean_environment.cli</script>
+											<script>../school-scripts/clean_environment.cli</script>
 										</scripts>
 									</afterDeployment>
 								</configuration>
