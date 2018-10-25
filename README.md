@@ -14,7 +14,7 @@ This draft version has been tested on WildFly 14.0.1.Final.
 Requirements
 ------------
 
-- JDK 10
+- JDK 11
 - Maven 3.5.x
 
 
@@ -60,17 +60,9 @@ If you want to start a WildFly instance and execute the deploy of the JSF applic
 
     mvn install -Pproduction,runtime-jsf,deploy-jsf
     
-To stop the WildFly instance:
-  
-    mvn clean -Pruntime-jsf
-    
 Or for the REST application:
 
-    mvn install -Pproduction,runtime-${distribution}-rest,deploy-rest
-    
-To stop the WildFly instance:
-  
-    mvn clean -Pruntime-rest
+    mvn install -Pproduction,runtime-rest,deploy-rest
 
 to deploy it with the shell command in WildFly:
 
@@ -107,4 +99,5 @@ To debug the application using Eclipse you can put this parameter:
 
 It will start on the 5005 port.
 
-The tests are done using Firefox 62.0.3 (64-bit) on WildFly 14.0.1.Final
+
+The tests are done using Chrome 69.0.3497.100 (64-bit) on WildFly 14.0.1.Final
