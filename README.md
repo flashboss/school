@@ -60,17 +60,9 @@ If you want to start a WildFly instance and execute the deploy of the JSF applic
 
     mvn install -Pproduction,runtime-jsf,deploy-jsf
     
-To stop the WildFly instance:
-  
-    mvn clean -Pruntime-jsf
-    
 Or for the REST application:
 
-    mvn install -Pproduction,runtime-${distribution}-rest,deploy-rest
-    
-To stop the WildFly instance:
-  
-    mvn clean -Pruntime-rest
+    mvn install -Pproduction,runtime-rest,deploy-rest
 
 to deploy it with the shell command in WildFly:
 
