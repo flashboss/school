@@ -14,7 +14,7 @@ This draft version has been tested on WildFly 15.0.0.Alpha1.
 Requirements
 ------------
 
-- JDK 10
+- JDK 11
 - Maven 3.5.x
 
 
