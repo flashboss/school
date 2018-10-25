@@ -38,8 +38,8 @@ insert into USERENTITY (id, name, surname, income, room, school) values ('IIILCU
 insert into USERENTITY (id, name, surname, income, room, school) values ('NLORENZOMILANI0A', 'Michel', 'Barbet', 54632325, '0A', 'donlorenzomilani');
 insert into USERENTITY (id, name, surname, income, room, school) values ('NLORENZOMILANI0B', 'Davide', 'Russo', 43542354, '0B', 'donlorenzomilani');
 insert into USERENTITY (id, name, surname, income, room, school) values ('NLORENZOMILANI0C', 'Salvatore', 'Galletta', 34543252, '0C', 'donlorenzomilani');
-insert into USERENTITY (id, name, surname, income, room, school) values ('NLORENZOMILANI1A', 'Maria', 'Naimo', 43254325, '1A', 'donlorenzomilani');
-insert into USERENTITY (id, name, surname, income, room, school) values ('NLORENZOMILANI2A', 'Raffaele', 'Bonaffini', 5454, '2A', 'donlorenzomilani');
+insert into USERENTITY (id, name, surname, income, room, school) values ('NLORENZOMILANI1A', 'Davide', 'Casaleggio', 43254325, '1A', 'donlorenzomilani');
+insert into USERENTITY (id, name, surname, income, room, school) values ('NLORENZOMILANI2A', 'Devid', 'Porrello', 5454, '2A', 'donlorenzomilani');
 insert into USERENTITY (id, name, surname, income, room, school) values ('NLORENZOMILANI3A', 'Zefferino', 'Ridolfi', 23341452, '3A', 'donlorenzomilani');
 insert into USERENTITY (id, name, surname, income, room, school) values ('NLORENZOMILANI4A', 'Lamberto', 'Cardellino', 3425325, '4A', 'donlorenzomilani');
 insert into USERENTITY (id, name, surname, income, room, school) values ('NLORENZOMILANI5A', 'Fabrizio', 'Fossati', 312431242, '5A', 'donlorenzomilani');
@@ -66,7 +66,7 @@ insert into USERENTITY (id, name, surname, income, room, school) values ('OARDOD
 insert into USERENTITY (id, name, surname, income, room, school) values ('OARDODEFILIPPO4F', 'Cristian', 'Falconi', 345325, '4F', 'edoardodefilippo');
 insert into USERENTITY (id, name, surname, income, room, school) values ('OARDODEFILIPPO5F', 'David', 'Rossi', 6546436, '5F', 'edoardodefilippo');
 insert into USERENTITY (id, name, surname, income, room, school) values ('OARDODEFILIPPO5G', 'Tiziana', 'Mastropietro', 3455, '5G', 'edoardodefilippo');
-insert into USERENTITY (id, name, surname, income, room, school) values ('AAAAAGARIBALDI0A', 'Giuseppe', 'Bonaventura', 54325, '0A', 'garibaldi');
+insert into USERENTITY (id, name, surname, income, room, school) values ('AAAAAGARIBALDI0A', 'Laura', 'Baldassarre', 54325, '0A', 'garibaldi');
 insert into USERENTITY (id, name, surname, income, room, school) values ('AAAAAGARIBALDI0B', 'Fabrizio', 'Santomaggio', 6757645, '0B', 'garibaldi');
 insert into USERENTITY (id, name, surname, income, room, school) values ('AAAAAGARIBALDI0C', 'Russotto', 'Vitale', 76574, '0C', 'garibaldi');
 insert into USERENTITY (id, name, surname, income, room, school) values ('AAAAAGARIBALDI1A', 'Chiara', 'Amati', 76547654, '1A', 'garibaldi');
