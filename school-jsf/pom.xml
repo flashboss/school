@@ -65,7 +65,7 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 						<artifactId>wildfly-maven-plugin</artifactId>
 						<version>${wildfly.maven.plugin.version}</version>
 						<configuration>
-							<jvm-args>${JAVA_OPTS}
+							<jvm-args>${JAVA_OPTS} --add-modules=java.se
 							</jvm-args>
 						</configuration>
 						<executions>
@@ -77,18 +77,6 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 								</goals>
 								<configuration>
 									<version>${wildfly.version}</version>
-									<addUser>admin:admin</addUser>
-								</configuration>
-							</execution>
-							<execution>
-								<id>stop-wildfly</id>
-								<phase>pre-clean</phase>
-								<goals>
-									<goal>shutdown</goal>
-								</goals>
-								<configuration>
-									<username>admin</username>
-									<password>admin</password>
 								</configuration>
 							</execution>
 						</executions>
