@@ -15,7 +15,7 @@ Requirements
 ------------
 
 - JDK 11
-- Maven 3.5.x
+- Maven 3.6.x
 
 
 Build
