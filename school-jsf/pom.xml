@@ -60,6 +60,36 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 			<id>runtime-jsf</id>
 			<build>
 				<plugins>
+                    <plugin>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>unpack-wildfly-adapter</id>
+                                <phase>process-test-classes</phase>
+                                <goals>
+                                    <goal>unpack</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>   
+                                        <artifactItem>
+                                            <groupId>org.wildfly</groupId>
+                                            <artifactId>wildfly-dist</artifactId>
+                                            <version>${wildfly.version}</version>
+                                            <type>zip</type>
+                                            <outputDirectory>target/wildfly-run/</outputDirectory>
+                                        </artifactItem>
+                                        <artifactItem>
+                                            <groupId>org.keycloak</groupId>
+                                            <artifactId>keycloak-wildfly-adapter-dist</artifactId>
+                                            <version>${keycloak.version}</version>
+                                            <type>zip</type>
+                                            <outputDirectory>target/wildfly-run/wildfly-${wildfly.version}</outputDirectory>
+                                        </artifactItem>
+                                    </artifactItems>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
 					<plugin>
 						<groupId>org.wildfly.plugins</groupId>
 						<artifactId>wildfly-maven-plugin</artifactId>
@@ -76,7 +106,7 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 									<goal>start</goal>
 								</goals>
 								<configuration>
-									<version>${wildfly.version}</version>
+									<jbossHome>${project.build.directory}/wildfly-run/wildfly-${wildfly.version}</jbossHome>
 								</configuration>
 							</execution>
 						</executions>
@@ -102,8 +132,32 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 								</goals>
 								<configuration>
 									<scripts>
-										<script>../school-scripts/start_environment.cli</script>
+										<script>target/wildfly-run/wildfly-${wildfly.version}/bin/adapter-elytron-install.cli</script>
 									</scripts>
+								</configuration>
+							</execution>
+							<execution>
+								<id>add-school-datasource</id>
+								<phase>install</phase>
+								<goals>
+									<goal>add-resource</goal>
+								</goals>
+								<configuration>
+									<address>subsystem=datasources,data-source=java:jdbc/school_mdefault</address>
+									<resources>
+										<resource>
+											<properties>
+												<jndi-name>java:/jdbc/school_mdefault</jndi-name>
+												<enabled>true</enabled>
+												<enable>true</enable>
+												<connection-url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1</connection-url>
+												<driver-name>h2</driver-name>
+												<user-name>sa</user-name>
+												<min-pool-size>5</min-pool-size>
+												<max-pool-size>20</max-pool-size>
+											</properties>
+										</resource>
+									</resources>
 								</configuration>
 							</execution>
 							<execution>
@@ -114,16 +168,21 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 								</goals>
 							</execution>
 							<execution>
-								<id>clean_environment</id>
+								<id>del-resources</id>
 								<phase>clean</phase>
 								<goals>
 									<goal>undeploy</goal>
 								</goals>
 								<configuration>
 									<afterDeployment>
-										<scripts>
-											<script>../school-scripts/clean_environment.cli</script>
-										</scripts>
+										<commands>
+											<command>/subsystem=datasources/data-source="java:jdbc/school_mdefault":remove
+												{ "outcome" => "failed", "failure-description" =>
+												"JBAS014749: Operation
+												handler failed: null", "rolled-back"
+												=> true }
+											</command>
+										</commands>
 									</afterDeployment>
 								</configuration>
 							</execution>
