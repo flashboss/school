@@ -38,7 +38,7 @@
 		</auth-constraint>
 	</security-constraint>
 	<login-config>
-		<auth-method>BASIC</auth-method>
+        <auth-method>KEYCLOAK</auth-method>
 		<realm-name>school-domain</realm-name>
 	</login-config>
 	<security-role>
