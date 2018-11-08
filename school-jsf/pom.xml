@@ -57,39 +57,39 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 		</profile>
 
 		<profile>
-			<id>runtime-jsf</id>
+			<id>runtime-school-jsf</id>
 			<build>
 				<plugins>
-                    <plugin>
-                        <artifactId>maven-dependency-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>unpack-wildfly-adapter</id>
-                                <phase>process-test-classes</phase>
-                                <goals>
-                                    <goal>unpack</goal>
-                                </goals>
-                                <configuration>
-                                    <artifactItems>   
-                                        <artifactItem>
-                                            <groupId>org.wildfly</groupId>
-                                            <artifactId>wildfly-dist</artifactId>
-                                            <version>${wildfly.version}</version>
-                                            <type>zip</type>
-                                            <outputDirectory>target/wildfly-run/</outputDirectory>
-                                        </artifactItem>
-                                        <artifactItem>
-                                            <groupId>org.keycloak</groupId>
-                                            <artifactId>keycloak-wildfly-adapter-dist</artifactId>
-                                            <version>${keycloak.version}</version>
-                                            <type>zip</type>
-                                            <outputDirectory>target/wildfly-run/wildfly-${wildfly.version}</outputDirectory>
-                                        </artifactItem>
-                                    </artifactItems>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
+					<plugin>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>unpack-wildfly-adapter</id>
+								<phase>process-test-classes</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.wildfly</groupId>
+											<artifactId>wildfly-dist</artifactId>
+											<version>${wildfly.version}</version>
+											<type>zip</type>
+											<outputDirectory>target/school-run/</outputDirectory>
+										</artifactItem>
+										<artifactItem>
+											<groupId>org.keycloak</groupId>
+											<artifactId>keycloak-wildfly-adapter-dist</artifactId>
+											<version>${keycloak.version}</version>
+											<type>zip</type>
+											<outputDirectory>target/school-run/wildfly-${wildfly.version}</outputDirectory>
+										</artifactItem>
+									</artifactItems>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
 					<plugin>
 						<groupId>org.wildfly.plugins</groupId>
 						<artifactId>wildfly-maven-plugin</artifactId>
@@ -106,7 +106,7 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 									<goal>start</goal>
 								</goals>
 								<configuration>
-									<jbossHome>${project.build.directory}/wildfly-run/wildfly-${wildfly.version}</jbossHome>
+									<jbossHome>${project.build.directory}/school-run/wildfly-${wildfly.version}</jbossHome>
 								</configuration>
 							</execution>
 						</executions>
@@ -132,7 +132,7 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 								</goals>
 								<configuration>
 									<scripts>
-										<script>target/wildfly-run/wildfly-${wildfly.version}/bin/adapter-elytron-install.cli</script>
+										<script>target/school-run/wildfly-${wildfly.version}/bin/adapter-elytron-install.cli</script>
 									</scripts>
 								</configuration>
 							</execution>

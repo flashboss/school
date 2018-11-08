@@ -1,5 +1,5 @@
 {
-  "realm": "school",
+  "realm": "school-domain",
   "enabled": true,
   "accessTokenLifespan": 60,
   "accessCodeLifespan": 60,
