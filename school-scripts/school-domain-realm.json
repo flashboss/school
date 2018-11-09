@@ -1,3769 +1,4080 @@
 {
-  "realm": "school-domain",
-  "enabled": true,
-  "accessTokenLifespan": 60,
-  "accessCodeLifespan": 60,
-  "accessCodeLifespanUserAction": 300,
-  "ssoSessionIdleTimeout": 600,
-  "ssoSessionMaxLifespan": 36000,
-  "sslRequired": "external",
-  "registrationAllowed": true,
-  "privateKey": "MIICXAIBAAKBgQCrVrCuTtArbgaZzL1hvh0xtL5mc7o0NqPVnYXkLvgcwiC3BjLGw1tGEGoJaXDuSaRllobm53JBhjx33UNv+5z/UMG4kytBWxheNVKnL6GgqlNabMaFfPLPCF8kAgKnsi79NMo+n6KnSY8YeUmec/p2vjO2NjsSAVcWEQMVhJ31LwIDAQABAoGAfmO8gVhyBxdqlxmIuglbz8bcjQbhXJLR2EoS8ngTXmN1bo2L90M0mUKSdc7qF10LgETBzqL8jYlQIbt+e6TH8fcEpKCjUlyq0Mf/vVbfZSNaVycY13nTzo27iPyWQHK5NLuJzn1xvxxrUeXI6A2WFpGEBLbHjwpx5WQG9A+2scECQQDvdn9NE75HPTVPxBqsEd2z10TKkl9CZxu10Qby3iQQmWLEJ9LNmy3acvKrE3gMiYNWb6xHPKiIqOR1as7L24aTAkEAtyvQOlCvr5kAjVqrEKXalj0Tzewjweuxc0pskvArTI2Oo070h65GpoIKLc9jf+UA69cRtquwP93aZKtW06U8dQJAF2Y44ks/mK5+eyDqik3koCI08qaC8HYq2wVl7G2QkJ6sbAaILtcvD92ToOvyGyeE0flvmDZxMYlvaZnaQ0lcSQJBAKZU6umJi3/xeEbkJqMfeLclD27XGEFoPeNrmdx0q10Azp4NfJAY+Z8KRyQCR2BEG+oNitBOZ+YXF9KCpH3cdmECQHEigJhYg+ykOvr1aiZUMFT72HU0jnmQe2FVekuG+LJUt2Tm7GtMjTFoGpf0JwrVuZN39fOYAlo+nTixgeW7X8Y=",
-  "publicKey": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCrVrCuTtArbgaZzL1hvh0xtL5mc7o0NqPVnYXkLvgcwiC3BjLGw1tGEGoJaXDuSaRllobm53JBhjx33UNv+5z/UMG4kytBWxheNVKnL6GgqlNabMaFfPLPCF8kAgKnsi79NMo+n6KnSY8YeUmec/p2vjO2NjsSAVcWEQMVhJ31LwIDAQAB",
-  "requiredCredentials": [
-    "password"
-  ],
-  "users": [
-    {
-      "username": "root",
-      "enabled": true,
-      "email": "lsflashboss62@gmail.com",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "admin"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "STNLCU76E15H501X",
-      "enabled": true,
-      "email": "luca.stancapiano@vige.it",
-      "firstName": "Luca",
-      "lastName": "Stancapiano",
-      "income": "230000",
-      "room": "1B",
-      "school": "donlorenzomilani",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "SANLCU76E15H501X",
-      "enabled": true,
-      "email": "davide.barillari@vige.it",
-      "firstName": "Davide",
-      "lastName": "Barillari",
-      "income": "10000",
-      "room": "2B",
-      "school": "donlorenzomilani",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "STHLCU76E15H501X",
-      "enabled": true,
-      "email": "davide.barillari@vige.it",
-      "firstName": "Beppe",
-      "lastName": "Grillo",
-      "income": "11000",
-      "room": "3B",
-      "school": "donlorenzomilani",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "STNLCO76E15H501X",
-      "enabled": true,
-      "email": "luca.stancapiano@vige.it",
-      "firstName": "Manlio",
-      "lastName": "Di Stefano",
-      "income": "6000",
-      "room": "4B",
-      "school": "donlorenzomilani",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "STN9CU76E15H501X",
-      "enabled": true,
-      "email": "luca.stancapiano@vige.it",
-      "firstName": "Sebastiano",
-      "lastName": "Cubeddu",
-      "income": "5000",
-      "room": "5B",
-      "school": "donlorenzomilani",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "STNMCU76E15H501X",
-      "enabled": true,
-      "email": "maurizio.celani@vige.it",
-      "firstName": "Maurizio",
-      "lastName": "Celani",
-      "income": "1000",
-      "room": "1A",
-      "school": "donlorenzomilani",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "STNLCU76E15H601X",
-      "enabled": true,
-      "email": "domenico.gigliotti@vige.it",
-      "firstName": "Domenico",
-      "lastName": "Gigliotti",
-      "income": "20000",
-      "room": "1A",
-      "school": "donlorenzomilani",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "STNLCU76E15U801X",
-      "enabled": true,
-      "email": "laura.spinella@vige.it",
-      "firstName": "Laura",
-      "lastName": "Spinella",
-      "income": "12000",
-      "room": "1A",
-      "school": "donlorenzomilani",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "STNLCU99I15H501X",
-      "enabled": true,
-      "email": "laura.alessandrini@vige.it",
-      "firstName": "Laura",
-      "lastName": "Alessandrini",
-      "income": "15000",
-      "room": "1A",
-      "school": "donlorenzomilani",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "STNLCY98E15H501X",
-      "enabled": true,
-      "email": "laura.santoni@vige.it",
-      "firstName": "Laura",
-      "lastName": "Santoni",
-      "income": "60000",
-      "room": "5A",
-      "school": "donlorenzomilani",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "STNUQ786E15H501X",
-      "enabled": true,
-      "email": "giuliano.santoboni@vige.it",
-      "firstName": "Giuliano",
-      "lastName": "Santoboni",
-      "income": "90000",
-      "room": "5C",
-      "school": "donlorenzomilani",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "STNLCU76E15H502Y",
-      "enabled": true,
-      "email": "maria.naimo@vige.it",
-      "firstName": "Maria",
-      "lastName": "Naimo",
-      "income": "84000",
-      "room": "5C",
-      "school": "donlorenzomilani",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "STNLCU73T85H501X",
-      "enabled": true,
-      "email": "raffaele.bonaffini@vige.it",
-      "firstName": "Raffaele",
-      "lastName": "Bonaffini",
-      "income": "12300",
-      "room": "5C",
-      "school": "donlorenzomilani",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "ABNLCU76E15H501X",
-      "enabled": true,
-      "email": "fabrizio.fossati@vige.it",
-      "firstName": "Fabrizio",
-      "lastName": "Fossati",
-      "income": "100000",
-      "room": "5C",
-      "school": "donlorenzomilani",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "OPILCU76E15H501X",
-      "enabled": true,
-      "email": "patrizia.fontana@vige.it",
-      "firstName": "Patrizia",
-      "lastName": "Fontana",
-      "income": "3400",
-      "room": "5C",
-      "school": "donlorenzomilani",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "BHJLCU76E15H501X",
-      "enabled": true,
-      "email": "gladys.carrizales@vige.it",
-      "firstName": "Gladys",
-      "lastName": "Carrizales",
-      "income": "200000",
-      "room": "1D",
-      "school": "donlorenzomilani",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AQWLCU76E15H501X",
-      "enabled": true,
-      "email": "alessandro.toro@vige.it",
-      "firstName": "Alessandro",
-      "lastName": "Toro",
-      "income": "10000",
-      "room": "1A",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "MLLLCU76E15H501X",
-      "enabled": true,
-      "email": "daniele.ronci@vige.it",
-      "firstName": "Daniele",
-      "lastName": "Ronci",
-      "income": "11000",
-      "room": "2A",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "OOOLCU76E15H501X",
-      "enabled": true,
-      "email": "luigi.dimaio@vige.it",
-      "firstName": "Luigi",
-      "lastName": "Di Maio",
-      "income": "14000",
-      "room": "3A",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "QWERCU76E15H501X",
-      "enabled": true,
-      "email": "claudio.cos@vige.it",
-      "firstName": "Claudio",
-      "lastName": "Cos",
-      "income": "16000",
-      "room": "4A",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "MJKLCU76E15H501X",
-      "enabled": true,
-      "email": "antonino.briganti@vige.it",
-      "firstName": "Antonino",
-      "lastName": "Briganti",
-      "income": "12300",
-      "room": "5A",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "YYTLCU76E15H501X",
-      "enabled": true,
-      "email": "luigi.briganti@vige.it",
-      "firstName": "Luigi",
-      "lastName": "Briganti",
-      "income": "2000",
-      "room": "1C",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AQWLC576E15H501X",
-      "enabled": true,
-      "email": "matteo.castorino@vige.it",
-      "firstName": "Matteo",
-      "lastName": "Castorino",
-      "income": "3000",
-      "room": "2C",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "NNBLCU76E15H501X",
-      "enabled": true,
-      "email": "stefano.bufalieri@vige.it",
-      "firstName": "Stefano",
-      "lastName": "Bufalieri",
-      "income": "14000",
-      "room": "3C",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "NNJLCU76E15H501X",
-      "enabled": true,
-      "email": "giuseppe.conte@vige.it",
-      "firstName": "Giuseppe",
-      "lastName": "Conte",
-      "income": "450000",
-      "room": "4C",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "SSALCU76E15H501X",
-      "enabled": true,
-      "email": "giulia.grillo@vige.it",
-      "firstName": "Giulia",
-      "lastName": "Grillo",
-      "income": "45000",
-      "room": "4C",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "IIYLCU76E15H501X",
-      "enabled": true,
-      "email": "riccardo.fraccaro@vige.it",
-      "firstName": "Riccardo",
-      "lastName": "Fraccaro",
-      "income": "45000",
-      "room": "4C",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "HJULCU76E15H501X",
-      "enabled": true,
-      "email": "alfonso.bonafede@vige.it",
-      "firstName": "Alfonso",
-      "lastName": "Bonafede",
-      "income": "12000",
-      "room": "4C",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "IIVLCU76E15H501X",
-      "enabled": true,
-      "email": "valerio.novelli@vige.it",
-      "firstName": "Valerio",
-      "lastName": "Novelli",
-      "income": "13000",
-      "room": "4C",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "STNLCU75SZ3H501X",
-      "enabled": true,
-      "email": "valentina.corrado@vige.it",
-      "firstName": "Valentina",
-      "lastName": "Corrado",
-      "income": "6000",
-      "room": "4C",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AAAACU76E15H501X",
-      "enabled": true,
-      "email": "roberta.lombardi@vige.it",
-      "firstName": "Roberta",
-      "lastName": "Lombardi",
-      "income": "8000",
-      "room": "4C",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "ABCLCU76E15H501X",
-      "enabled": true,
-      "email": "roberta.dellacasa@vige.it",
-      "firstName": "Roberta",
-      "lastName": "Della Casa",
-      "income": "3400",
-      "room": "4C",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "GHYYCU76E15H501X",
-      "enabled": true,
-      "email": "virginia.raggi@vige.it",
-      "firstName": "Virginia",
-      "lastName": "Raggi",
-      "income": "12000",
-      "room": "1C",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "DDSLCU76E15H501X",
-      "enabled": true,
-      "email": "marcello.devito@vige.it",
-      "firstName": "Marcello",
-      "lastName": "De Vito",
-      "income": "1200",
-      "room": "1C",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "VVSLCU76E15H501X",
-      "enabled": true,
-      "email": "giuseppe.bonaventura@vige.it",
-      "firstName": "Giuseppe",
-      "lastName": "Bonaventura",
-      "income": "45000",
-      "room": "1C",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "IIILCU76E15H501X",
-      "enabled": true,
-      "email": "alessandro.cocchiarella@vige.it",
-      "firstName": "Alessandro",
-      "lastName": "Cocchiarella",
-      "income": "64000",
-      "room": "1C",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "pupil"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "NLORENZOMILANI0A",
-      "enabled": true,
-      "email": "michel.barbet@vige.it",
-      "firstName": "Michel",
-      "lastName": "Barbet",
-      "income": "54632325",
-      "room": "0A",
-      "school": "donlorenzomilani",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "NLORENZOMILANI0B",
-      "enabled": true,
-      "email": "davide.russo@vige.it",
-      "firstName": "Davide",
-      "lastName": "Russo",
-      "income": "43542354",
-      "room": "0B",
-      "school": "donlorenzomilani",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "NLORENZOMILANI0C",
-      "enabled": true,
-      "email": "salvatore.galletta@vige.it",
-      "firstName": "Salvatore",
-      "lastName": "Galletta",
-      "income": "34543252",
-      "room": "0C",
-      "school": "donlorenzomilani",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "NLORENZOMILANI1A",
-      "enabled": true,
-      "email": "davide.casaleggio@vige.it",
-      "firstName": "Davide",
-      "lastName": "Casaleggio",
-      "income": "43254325",
-      "room": "1A",
-      "school": "donlorenzomilani",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "NLORENZOMILANI2A",
-      "enabled": true,
-      "email": "devid.porrello@vige.it",
-      "firstName": "Devid",
-      "lastName": "Porrello",
-      "income": "5454",
-      "room": "2A",
-      "school": "donlorenzomilani",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "NLORENZOMILANI3A",
-      "enabled": true,
-      "email": "zefferino.ridolfi@vige.it",
-      "firstName": "Zefferino",
-      "lastName": "Ridolfi",
-      "income": "23341452",
-      "room": "3A",
-      "school": "donlorenzomilani",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "NLORENZOMILANI4A",
-      "enabled": true,
-      "email": "lamberto.cardellino@vige.it",
-      "firstName": "Lamberto",
-      "lastName": "Cardellino",
-      "income": "3425325",
-      "room": "4A",
-      "school": "donlorenzomilani",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "NLORENZOMILANI5A",
-      "enabled": true,
-      "email": "fabrizio.fossati@vige.it",
-      "firstName": "Fabrizio",
-      "lastName": "Fossati",
-      "income": "312431242",
-      "room": "5A",
-      "school": "donlorenzomilani",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "NLORENZOMILANI1B",
-      "enabled": true,
-      "email": "valerio.romanazzi@vige.it",
-      "firstName": "Valerio",
-      "lastName": "Romanazzi",
-      "income": "453253254",
-      "room": "1B",
-      "school": "donlorenzomilani",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "NLORENZOMILANI2B",
-      "enabled": true,
-      "email": "claudio.zarro@vige.it",
-      "firstName": "Claudio",
-      "lastName": "Zarro",
-      "income": "3424235",
-      "room": "2B",
-      "school": "donlorenzomilani",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "NLORENZOMILANI3B",
-      "enabled": true,
-      "email": "gaetano.cali@vige.it",
-      "firstName": "Gaetano",
-      "lastName": "Calì",
-      "income": "345234562",
-      "room": "3B",
-      "school": "donlorenzomilani",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "NLORENZOMILANI4B",
-      "enabled": true,
-      "email": "mattia.marini@vige.it",
-      "firstName": "Mattia",
-      "lastName": "Marini",
-      "income": "4325",
-      "room": "4B",
-      "school": "donlorenzomilani",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "NLORENZOMILANI5B",
-      "enabled": true,
-      "email": "armando.caponegro@vige.it",
-      "firstName": "Armando",
-      "lastName": "Caponegro",
-      "income": "5463465",
-      "room": "5B",
-      "school": "donlorenzomilani",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "OARDODEFILIPPO0B",
-      "enabled": true,
-      "email": "tiziana.guida@vige.it",
-      "firstName": "Tiziana",
-      "lastName": "Guida",
-      "income": "43235432",
-      "room": "0B",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "OARDODEFILIPPO0C",
-      "enabled": true,
-      "email": "marco.colazza@vige.it",
-      "firstName": "Marco",
-      "lastName": "Colazza",
-      "income": "34254325",
-      "room": "0C",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "OARDODEFILIPPO0D",
-      "enabled": true,
-      "email": "ilaria.nicolella@vige.it",
-      "firstName": "Ilaria",
-      "lastName": "Nicolella",
-      "income": "453523",
-      "room": "0D",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "OARDODEFILIPPO1A",
-      "enabled": true,
-      "email": "elisa.strani@vige.it",
-      "firstName": "Elisa",
-      "lastName": "Strani",
-      "income": "6554",
-      "room": "1A",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "OARDODEFILIPPO2A",
-      "enabled": true,
-      "email": "rossana.santarelli@vige.it",
-      "firstName": "Rossana",
-      "lastName": "Santarelli",
-      "income": "656745",
-      "room": "2A",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "OARDODEFILIPPO3A",
-      "enabled": true,
-      "email": "loredana.terzulli@vige.it",
-      "firstName": "Loredana",
-      "lastName": "Terzulli",
-      "income": "654643",
-      "room": "3A",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "OARDODEFILIPPO4A",
-      "enabled": true,
-      "email": "anna.checchi@vige.it",
-      "firstName": "Anna",
-      "lastName": "Checchi",
-      "income": "43543",
-      "room": "4A",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "OARDODEFILIPPO5A",
-      "enabled": true,
-      "email": "fabrizio.mastroddi@vige.it",
-      "firstName": "Fabrizio",
-      "lastName": "Mastroddi",
-      "income": "56434634",
-      "room": "5A",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "OARDODEFILIPPO1C",
-      "enabled": true,
-      "email": "roberto.zilli@vige.it",
-      "firstName": "Roberto",
-      "lastName": "Zilli",
-      "income": "54325432",
-      "room": "1C",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "OARDODEFILIPPO2C",
-      "enabled": true,
-      "email": "raffaella.fantegrossi@vige.it",
-      "firstName": "Raffaella",
-      "lastName": "Fantegrossi",
-      "income": "4353253",
-      "room": "2C",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "OARDODEFILIPPO3C",
-      "enabled": true,
-      "email": "marina.cocchiarella@vige.it",
-      "firstName": "Marina",
-      "lastName": "Cocchiarella",
-      "income": "4323",
-      "room": "3C",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "OARDODEFILIPPO4C",
-      "enabled": true,
-      "email": "alberto.airola@vige.it",
-      "firstName": "Alberto",
-      "lastName": "Airola",
-      "income": "6565436",
-      "room": "4C",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "OARDODEFILIPPO5C",
-      "enabled": true,
-      "email": "angelo.scipioni@vige.it",
-      "firstName": "Angelo",
-      "lastName": "Scipioni",
-      "income": "65436534",
-      "room": "5C",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "OARDODEFILIPPO2F",
-      "enabled": true,
-      "email": "emanuela.bivi@vige.it",
-      "firstName": "Emanuela",
-      "lastName": "Bivi",
-      "income": "342",
-      "room": "2F",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "OARDODEFILIPPO3F",
-      "enabled": true,
-      "email": "antonio.iennaco@vige.it",
-      "firstName": "Antonio",
-      "lastName": "Iennaco",
-      "income": "543252345",
-      "room": "3F",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "OARDODEFILIPPO4F",
-      "enabled": true,
-      "email": "cristian.falconi@vige.it",
-      "firstName": "Cristian",
-      "lastName": "Falconi",
-      "income": "345325",
-      "room": "4F",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "OARDODEFILIPPO5F",
-      "enabled": true,
-      "email": "david.rossi@vige.it",
-      "firstName": "David",
-      "lastName": "Rossi",
-      "income": "6546436",
-      "room": "5F",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "OARDODEFILIPPO5G",
-      "enabled": true,
-      "email": "tiziana.mastropietro@vige.it",
-      "firstName": "Tiziana",
-      "lastName": "Mastropietro",
-      "income": "3455",
-      "room": "5G",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AAAAAGARIBALDI0A",
-      "enabled": true,
-      "email": "laura.baldassarre@vige.it",
-      "firstName": "Laura",
-      "lastName": "Baldassarre",
-      "income": "54325",
-      "room": "0A",
-      "school": "garibaldi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AAAAAGARIBALDI0B",
-      "enabled": true,
-      "email": "fabrizio.santomaggio@vige.it",
-      "firstName": "Fabrizio",
-      "lastName": "Santomaggio",
-      "income": "6757645",
-      "room": "0B",
-      "school": "garibaldi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AAAAAGARIBALDI0C",
-      "enabled": true,
-      "email": "russotto.vitale@vige.it",
-      "firstName": "Russotto",
-      "lastName": "Vitale",
-      "income": "76574",
-      "room": "0C",
-      "school": "garibaldi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AAAAAGARIBALDI1A",
-      "enabled": true,
-      "email": "chiara.amati@vige.it",
-      "firstName": "Chiara",
-      "lastName": "Amati",
-      "income": "76547654",
-      "room": "1A",
-      "school": "garibaldi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AAAAAGARIBALDI2A",
-      "enabled": true,
-      "email": "maria.dipalma@vige.it",
-      "firstName": "Maria",
-      "lastName": "Di Palma",
-      "income": "543252",
-      "room": "2A",
-      "school": "garibaldi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AAAAAGARIBALDI3A",
-      "enabled": true,
-      "email": "claudio.ortenzi@vige.it",
-      "firstName": "Claudio",
-      "lastName": "Ortenzi",
-      "income": "65543",
-      "room": "3A",
-      "school": "garibaldi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AAAAAGARIBALDI4A",
-      "enabled": true,
-      "email": "paolo.aprile@vige.it",
-      "firstName": "Paolo",
-      "lastName": "Aprile",
-      "income": "64563",
-      "room": "4A",
-      "school": "garibaldi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AAAAAGARIBALDI5A",
-      "enabled": true,
-      "email": "lorena.roscetti@vige.it",
-      "firstName": "Lorena",
-      "lastName": "Roscetti",
-      "income": "65754",
-      "room": "5A",
-      "school": "garibaldi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AAAAAGARIBALDI1G",
-      "enabled": true,
-      "email": "sonia.caregnato@vige.it",
-      "firstName": "Sonia",
-      "lastName": "Caregnato",
-      "income": "5443",
-      "room": "1G",
-      "school": "garibaldi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AAAAAGARIBALDI2G",
-      "enabled": true,
-      "email": "michele.solimando@vige.it",
-      "firstName": "Michele",
-      "lastName": "Solimando",
-      "income": "6546543",
-      "room": "2G",
-      "school": "garibaldi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AAAAAGARIBALDI3G",
-      "enabled": true,
-      "email": "stefania.cerqua@vige.it",
-      "firstName": "Stefania",
-      "lastName": "Cerqua",
-      "income": "6575467",
-      "room": "3G",
-      "school": "garibaldi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AAAAAGARIBALDI1B",
-      "enabled": true,
-      "email": "vito.telesca@vige.it",
-      "firstName": "Vito",
-      "lastName": "Telesca",
-      "income": "64356",
-      "room": "1B",
-      "school": "garibaldi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AAAAAGARIBALDI2B",
-      "enabled": true,
-      "email": "fabiana.carletti@vige.it",
-      "firstName": "Fabiana",
-      "lastName": "Carletti",
-      "income": "3452",
-      "room": "2B",
-      "school": "garibaldi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AAAAAGARIBALDI3B",
-      "enabled": true,
-      "email": "massimo.nasini@vige.it",
-      "firstName": "Massimo",
-      "lastName": "Nasini",
-      "income": "532523",
-      "room": "3B",
-      "school": "garibaldi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AAAAAGARIBALDI4B",
-      "enabled": true,
-      "email": "maurizio.brunetti@vige.it",
-      "firstName": "Maurizio",
-      "lastName": "Brunetti",
-      "income": "6456534",
-      "room": "4B",
-      "school": "garibaldi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AAAAAGARIBALDI5B",
-      "enabled": true,
-      "email": "enrico.lanzo@vige.it",
-      "firstName": "Enrico",
-      "lastName": "Lanzo",
-      "income": "3254",
-      "room": "5B",
-      "school": "garibaldi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AAAAAGARIBALDI1C",
-      "enabled": true,
-      "email": "carlo.proietti@vige.it",
-      "firstName": "Carlo",
-      "lastName": "Proietti",
-      "income": "65463",
-      "room": "1C",
-      "school": "garibaldi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AAAAAGARIBALDI2C",
-      "enabled": true,
-      "email": "antonio.castellino@vige.it",
-      "firstName": "Antonio",
-      "lastName": "Castellino",
-      "income": "543634",
-      "room": "2C",
-      "school": "garibaldi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AAAAAGARIBALDI3C",
-      "enabled": true,
-      "email": "elia.santori@vige.it",
-      "firstName": "Elia",
-      "lastName": "Santori",
-      "income": "65463",
-      "room": "3C",
-      "school": "garibaldi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AAAAAGARIBALDI4C",
-      "enabled": true,
-      "email": "claudio.deriu@vige.it",
-      "firstName": "Claudio",
-      "lastName": "Deriu",
-      "income": "3553532",
-      "room": "4C",
-      "school": "garibaldi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AAAAAGARIBALDI5C",
-      "enabled": true,
-      "email": "romina.polverini@vige.it",
-      "firstName": "Romina",
-      "lastName": "Polverini",
-      "income": "64654356",
-      "room": "5C",
-      "school": "garibaldi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AGIOVANNIXXIII0A",
-      "enabled": true,
-      "email": "antonio.caridi@vige.it",
-      "firstName": "Antonio",
-      "lastName": "Caridi",
-      "income": "6453456",
-      "room": "0A",
-      "school": "giovannixxiii",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AGIOVANNIXXIII0B",
-      "enabled": true,
-      "email": "roberto.lucia@vige.it",
-      "firstName": "Roberto",
-      "lastName": "Lucia",
-      "income": "657465",
-      "room": "0B",
-      "school": "giovannixxiii",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AGIOVANNIXXIII1A",
-      "enabled": true,
-      "email": "claudio.caruso@vige.it",
-      "firstName": "Claudio",
-      "lastName": "Caruso",
-      "income": "654456336",
-      "room": "1A",
-      "school": "giovannixxiii",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AGIOVANNIXXIII2A",
-      "enabled": true,
-      "email": "alessandra.sabatini@vige.it",
-      "firstName": "Alessandra",
-      "lastName": "Sabatini",
-      "income": "542543",
-      "room": "2A",
-      "school": "giovannixxiii",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AGIOVANNIXXIII3A",
-      "enabled": true,
-      "email": "marco.spazziani@vige.it",
-      "firstName": "Marco",
-      "lastName": "Spazziani",
-      "income": "2305342000",
-      "room": "3A",
-      "school": "giovannixxiii",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AGIOVANNIXXIII4A",
-      "enabled": true,
-      "email": "monia.felici@vige.it",
-      "firstName": "Monia",
-      "lastName": "Felici",
-      "income": "3245655",
-      "room": "4A",
-      "school": "giovannixxiii",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AGIOVANNIXXIII5A",
-      "enabled": true,
-      "email": "umberto.brunelletti@vige.it",
-      "firstName": "Umberto",
-      "lastName": "Brunelletti",
-      "income": "4365564",
-      "room": "5A",
-      "school": "giovannixxiii",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AGIOVANNIXXIII1C",
-      "enabled": true,
-      "email": "gianfranco.diroma@vige.it",
-      "firstName": "Gianfranco",
-      "lastName": "Di Roma",
-      "income": "6453645",
-      "room": "1C",
-      "school": "giovannixxiii",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AGIOVANNIXXIII2C",
-      "enabled": true,
-      "email": "elio.simoni@vige.it",
-      "firstName": "Elio",
-      "lastName": "Simoni",
-      "income": "43242",
-      "room": "2C",
-      "school": "giovannixxiii",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AGIOVANNIXXIII3C",
-      "enabled": true,
-      "email": "vittorio.marchetti@vige.it",
-      "firstName": "Vittorio",
-      "lastName": "Marchetti",
-      "income": "534254",
-      "room": "3C",
-      "school": "giovannixxiii",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AGIOVANNIXXIII4C",
-      "enabled": true,
-      "email": "michele.alba@vige.it",
-      "firstName": "Michele",
-      "lastName": "Alba",
-      "income": "64553465",
-      "room": "4C",
-      "school": "giovannixxiii",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "AGIOVANNIXXIII5C",
-      "enabled": true,
-      "email": "stefania.dimarsilio@vige.it",
-      "firstName": "Stefania",
-      "lastName": "Di Marsilio",
-      "income": "230000",
-      "room": "5C",
-      "school": "giovannixxiii",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "EONARDODAVINCI0B",
-      "enabled": true,
-      "email": "antonio.scamolla@vige.it",
-      "firstName": "Antonio",
-      "lastName": "Scamolla",
-      "income": "1230000",
-      "room": "0B",
-      "school": "leonardodavinci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "EONARDODAVINCI0C",
-      "enabled": true,
-      "email": "alfredo.pensato@vige.it",
-      "firstName": "Alfredo",
-      "lastName": "Pensato",
-      "income": "2302000",
-      "room": "0C",
-      "school": "leonardodavinci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "EONARDODAVINCI0E",
-      "enabled": true,
-      "email": "serenella.divittorio@vige.it",
-      "firstName": "Serenella",
-      "lastName": "Di Vittorio",
-      "income": "2300",
-      "room": "0E",
-      "school": "leonardodavinci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "EONARDODAVINCI0F",
-      "enabled": true,
-      "email": "mario.morello@vige.it",
-      "firstName": "Mario",
-      "lastName": "Morello",
-      "income": "30000",
-      "room": "0F",
-      "school": "leonardodavinci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "EONARDODAVINCI0I",
-      "enabled": true,
-      "email": "stella.visconti@vige.it",
-      "firstName": "Stella",
-      "lastName": "Visconti",
-      "income": "234300",
-      "room": "0I",
-      "school": "leonardodavinci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "EONARDODAVINCI2C",
-      "enabled": true,
-      "email": "angelo.mortellaro@vige.it",
-      "firstName": "Angelo",
-      "lastName": "Mortellaro",
-      "income": "11200",
-      "room": "2C",
-      "school": "leonardodavinci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "EONARDODAVINCI4C",
-      "enabled": true,
-      "email": "eleonora.carrella@vige.it",
-      "firstName": "Eleonora",
-      "lastName": "Carrella",
-      "income": "26000",
-      "room": "4C",
-      "school": "leonardodavinci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "EONARDODAVINCI5C",
-      "enabled": true,
-      "email": "laura.passerini@vige.it",
-      "firstName": "Laura",
-      "lastName": "Passerini",
-      "income": "730000",
-      "room": "5C",
-      "school": "leonardodavinci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "EONARDODAVINCI1D",
-      "enabled": true,
-      "email": "massimo.massimi@vige.it",
-      "firstName": "Massimo",
-      "lastName": "Massimi",
-      "income": "8830000",
-      "room": "1D",
-      "school": "leonardodavinci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "EONARDODAVINCI2D",
-      "enabled": true,
-      "email": "laura.tramontana@vige.it",
-      "firstName": "Laura",
-      "lastName": "Tramontana",
-      "income": "9930000",
-      "room": "2D",
-      "school": "leonardodavinci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "EONARDODAVINCI3D",
-      "enabled": true,
-      "email": "alessandra.maiorino@vige.it",
-      "firstName": "Alessandra",
-      "lastName": "Maiorino",
-      "income": "43000",
-      "room": "3D",
-      "school": "leonardodavinci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "EONARDODAVINCI4D",
-      "enabled": true,
-      "email": "danilo.toninelli@vige.it",
-      "firstName": "Danilo",
-      "lastName": "Toninelli",
-      "income": "21000",
-      "room": "4D",
-      "school": "leonardodavinci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "EONARDODAVINCI5D",
-      "enabled": true,
-      "email": "nicola.acunzo@vige.it",
-      "firstName": "Nicola",
-      "lastName": "Acunzo",
-      "income": "23022",
-      "room": "5D",
-      "school": "leonardodavinci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "EONARDODAVINCI1E",
-      "enabled": true,
-      "email": "cosimo.adelizzi@vige.it",
-      "firstName": "Cosimo",
-      "lastName": "Adelizzi",
-      "income": "46000",
-      "room": "1E",
-      "school": "leonardodavinci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "EONARDODAVINCI2E",
-      "enabled": true,
-      "email": "davide.aiello@vige.it",
-      "firstName": "Davide",
-      "lastName": "Aiello",
-      "income": "56000",
-      "room": "2E",
-      "school": "leonardodavinci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "EONARDODAVINCI3E",
-      "enabled": true,
-      "email": "piera.aiello@vige.it",
-      "firstName": "Piera",
-      "lastName": "Aiello",
-      "income": "75000",
-      "room": "3E",
-      "school": "leonardodavinci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "EONARDODAVINCI4E",
-      "enabled": true,
-      "email": "maria.alemanno@vige.it",
-      "firstName": "Maria",
-      "lastName": "Alemanno",
-      "income": "3003",
-      "room": "4E",
-      "school": "leonardodavinci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "EONARDODAVINCI5E",
-      "enabled": true,
-      "email": "alessandro.amitrano@vige.it",
-      "firstName": "Alessandro",
-      "lastName": "Amitrano",
-      "income": "456000",
-      "room": "5E",
-      "school": "leonardodavinci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "EONARDODAVINCI1F",
-      "enabled": true,
-      "email": "nunzio.angiola@vige.it",
-      "firstName": "Nunzio",
-      "lastName": "Angiola",
-      "income": "76400",
-      "room": "1F",
-      "school": "leonardodavinci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "EONARDODAVINCI3F",
-      "enabled": true,
-      "email": "nadia.aprile@vige.it",
-      "firstName": "Nadia",
-      "lastName": "Aprile",
-      "income": "2000",
-      "room": "3F",
-      "school": "leonardodavinci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "CCCCCCCCCMANZI0D",
-      "enabled": true,
-      "email": "giovanni.aresta@vige.it",
-      "firstName": "Giovanni",
-      "lastName": "Aresta",
-      "income": "15000",
-      "room": "0D",
-      "school": "manzi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "CCCCCCCCCMANZI0E",
-      "enabled": true,
-      "email": "stefania.ascari@vige.it",
-      "firstName": "Stefania",
-      "lastName": "Ascari",
-      "income": "76000",
-      "room": "0E",
-      "school": "manzi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "CCCCCCCCCMANZI0G",
-      "enabled": true,
-      "email": "lucia.azzolina@vige.it",
-      "firstName": "Lucia",
-      "lastName": "Azzolina",
-      "income": "6000",
-      "room": "0G",
-      "school": "manzi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "CCCCCCCCCMANZI1D",
-      "enabled": true,
-      "email": "vittoria.baldino@vige.it",
-      "firstName": "Vittoria",
-      "lastName": "Baldino",
-      "income": "89900",
-      "room": "1D",
-      "school": "manzi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "CCCCCCCCCMANZI2D",
-      "enabled": true,
-      "email": "elisabetta.barbuto@vige.it",
-      "firstName": "Elisabetta",
-      "lastName": "Barbuto",
-      "income": "9880000",
-      "room": "2D",
-      "school": "manzi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "CCCCCCCCCMANZI3D",
-      "enabled": true,
-      "email": "massimo.baroni@vige.it",
-      "firstName": "Massimo",
-      "lastName": "Baroni",
-      "income": "955000",
-      "room": "3D",
-      "school": "manzi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "CCCCCCCCCMANZI4D",
-      "enabled": true,
-      "email": "valentina.barzotti@vige.it",
-      "firstName": "Valentina",
-      "lastName": "Barzotti",
-      "income": "643000",
-      "room": "4D",
-      "school": "manzi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "CCCCCCCCCMANZI5D",
-      "enabled": true,
-      "email": "sergio.battelli@vige.it",
-      "firstName": "Sergio",
-      "lastName": "Battelli",
-      "income": "732000",
-      "room": "5D",
-      "school": "manzi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "CCCCCCCCCMANZI1E",
-      "enabled": true,
-      "email": "marco.bella@vige.it",
-      "firstName": "Marco",
-      "lastName": "Bella",
-      "income": "87000",
-      "room": "1E",
-      "school": "manzi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "CCCCCCCCCMANZI2E",
-      "enabled": true,
-      "email": "fabio.berardini@vige.it",
-      "firstName": "Fabio",
-      "lastName": "Berardini",
-      "income": "8766000",
-      "room": "2E",
-      "school": "manzi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "CCCCCCCCCMANZI3E",
-      "enabled": true,
-      "email": "francesco.berti@vige.it",
-      "firstName": "Francesco",
-      "lastName": "Berti",
-      "income": "7000",
-      "room": "3E",
-      "school": "manzi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "CCCCCCCCCMANZI4E",
-      "enabled": true,
-      "email": "anna.bilotti@vige.it",
-      "firstName": "Anna",
-      "lastName": "Bilotti",
-      "income": "88000",
-      "room": "4E",
-      "school": "manzi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "CCCCCCCCCMANZI5E",
-      "enabled": true,
-      "email": "fabiola.bologna@vige.it",
-      "firstName": "Fabiola",
-      "lastName": "Bologna",
-      "income": "432000",
-      "room": "5E",
-      "school": "manzi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "CCCCMONTECELIO0A",
-      "enabled": true,
-      "email": "giuseppe.brescia@vige.it",
-      "firstName": "Giuseppe",
-      "lastName": "Brescia",
-      "income": "5345",
-      "room": "0A",
-      "school": "montecelio",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "CCCCMONTECELIO2B",
-      "enabled": true,
-      "email": "raffaele.bruno@vige.it",
-      "firstName": "Raffaele",
-      "lastName": "Bruno",
-      "income": "435435",
-      "room": "2B",
-      "school": "montecelio",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "CCCCMONTELUCCI0B",
-      "enabled": true,
-      "email": "stefano.buffagni@vige.it",
-      "firstName": "Stefano",
-      "lastName": "Buffagni",
-      "income": "543535",
-      "room": "0B",
-      "school": "montelucci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "CCCCMONTELUCCI0E",
-      "enabled": true,
-      "email": "giuseppe.buonpane@vige.it",
-      "firstName": "Giuseppe",
-      "lastName": "Buonpane",
-      "income": "5646464",
-      "room": "0E",
-      "school": "montelucci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "CCCCMONTELUCCI1C",
-      "enabled": true,
-      "email": "francesca.businarolo@vige.it",
-      "firstName": "Francesca",
-      "lastName": "Businarolo",
-      "income": "534553",
-      "room": "1C",
-      "school": "montelucci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "CCCCMONTELUCCI2C",
-      "enabled": true,
-      "email": "pino.cabras@vige.it",
-      "firstName": "Pino",
-      "lastName": "Cabras",
-      "income": "435435",
-      "room": "2C",
-      "school": "montelucci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "CCCCMONTELUCCI3C",
-      "enabled": true,
-      "email": "luciano.cadeddu@vige.it",
-      "firstName": "Luciano",
-      "lastName": "Cadeddu",
-      "income": "654654",
-      "room": "3C",
-      "school": "montelucci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "CCCCMONTELUCCI4C",
-      "enabled": true,
-      "email": "azzurra.cancelleri@vige.it",
-      "firstName": "Azzurra",
-      "lastName": "Cancelleri",
-      "income": "43535",
-      "room": "4C",
-      "school": "montelucci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "CCCCMONTELUCCI5C",
-      "enabled": true,
-      "email": "luciano.cantone@vige.it",
-      "firstName": "Luciano",
-      "lastName": "Cantone",
-      "income": "234234",
-      "room": "5C",
-      "school": "montelucci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "CCCCMONTELUCCI1D",
-      "enabled": true,
-      "email": "santi.cappellani@vige.it",
-      "firstName": "Santi",
-      "lastName": "Cappellani",
-      "income": "23026000",
-      "room": "1D",
-      "school": "montelucci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "CCCCMONTELUCCI2D",
-      "enabled": true,
-      "email": "luca.carabetta@vige.it",
-      "firstName": "Luca",
-      "lastName": "Carabetta",
-      "income": "623623",
-      "room": "2D",
-      "school": "montelucci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "CCCCMONTELUCCI3D",
-      "enabled": true,
-      "email": "emilio.carelli@vige.it",
-      "firstName": "Emilio",
-      "lastName": "Carelli",
-      "income": "26346",
-      "room": "3D",
-      "school": "montelucci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "CCCCMONTELUCCI4D",
-      "enabled": true,
-      "email": "paola.carinelli@vige.it",
-      "firstName": "Paola",
-      "lastName": "Carinelli",
-      "income": "2354",
-      "room": "4D",
-      "school": "montelucci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "CCCCMONTELUCCI5D",
-      "enabled": true,
-      "email": "vittoria.casa@vige.it",
-      "firstName": "Vittoria",
-      "lastName": "Casa",
-      "income": "230000",
-      "room": "5D",
-      "school": "montelucci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "teacher"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "DONLORENZOMILANI",
-      "enabled": true,
-      "email": "barbara.lezzi@vige.it",
-      "firstName": "Barbara",
-      "lastName": "Lezzi",
-      "income": "21000",
-      "school": "donlorenzomilani",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "schooloperator"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "EDOARDODEFILIPPO",
-      "enabled": true,
-      "email": "barbara.lezzi@vige.it",
-      "firstName": "Roberto",
-      "lastName": "Fico",
-      "income": "50000",
-      "school": "edoardodefilippo",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "schooloperator"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "GARIBALDIXXXXXXX",
-      "enabled": true,
-      "email": "barbara.lezzi@vige.it",
-      "firstName": "Gianfranco",
-      "lastName": "Gallè",
-      "income": "5000",
-      "school": "garibaldi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "schooloperator"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "GIOVANNIXXXIIIYY",
-      "enabled": true,
-      "email": "barbara.lezzi@vige.it",
-      "firstName": "Anna Maria",
-      "lastName": "Baldassarre",
-      "income": "230000",
-      "school": "giovannixxiii",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "schooloperator"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "LEONARDODAVINCIX",
-      "enabled": true,
-      "email": "elena.fattori@vige.it",
-      "firstName": "Elena",
-      "lastName": "Fattori",
-      "income": "90000",
-      "school": "leonardodavinci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "schooloperator"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "MANZIXXXXXXXXXXX",
-      "enabled": true,
-      "email": "ilaria.fontana@vige.it",
-      "firstName": "Ilaria",
-      "lastName": "Fontana",
-      "income": "239990",
-      "school": "manzi",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "schooloperator"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "MONTECELIOXXXXXX",
-      "enabled": true,
-      "email": "nunzia.catalfo@vige.it",
-      "firstName": "Nunzia",
-      "lastName": "Catalfo",
-      "income": "26700",
-      "school": "montecelio",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "schooloperator"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    },
-    {
-      "username": "MONTELUCCIXXXXXX",
-      "enabled": true,
-      "email": "vito.crimi@vige.it",
-      "firstName": "Vito",
-      "lastName": "Crimi",
-      "income": "277770",
-      "school": "montelucci",
-      "credentials": [
-        {
-          "type": "password",
-          "value": "gtn"
-        }
-      ],
-      "realmRoles": [
-        "schooloperator"
-      ],
-      "clientRoles": {
-        "account": [
-          "manage-account"
-        ]
-      }
-    }
-  ],
-  "roles": {
-    "realm": [
-      {
-        "name": "admin",
-        "description": "Administrator privileges"
-      },
-      {
-        "name": "schooloperator",
-        "description": "School Operator privileges"
-      },
-      {
-        "name": "teacher",
-        "description": "Teacher privileges"
-      },
-      {
-        "name": "pupil",
-        "description": "Pupil privileges"
-      }
-    ]
-  }
+	"realm": "school-domain",
+	"enabled": true,
+	"accessTokenLifespan": 60,
+	"accessCodeLifespan": 60,
+	"accessCodeLifespanUserAction": 300,
+	"ssoSessionIdleTimeout": 600,
+	"ssoSessionMaxLifespan": 36000,
+	"sslRequired": "external",
+	"registrationAllowed": true,"loginWithEmailAllowed":false,
+	"duplicateEmailsAllowed": true,
+	"privateKey": "MIICXAIBAAKBgQCrVrCuTtArbgaZzL1hvh0xtL5mc7o0NqPVnYXkLvgcwiC3BjLGw1tGEGoJaXDuSaRllobm53JBhjx33UNv+5z/UMG4kytBWxheNVKnL6GgqlNabMaFfPLPCF8kAgKnsi79NMo+n6KnSY8YeUmec/p2vjO2NjsSAVcWEQMVhJ31LwIDAQABAoGAfmO8gVhyBxdqlxmIuglbz8bcjQbhXJLR2EoS8ngTXmN1bo2L90M0mUKSdc7qF10LgETBzqL8jYlQIbt+e6TH8fcEpKCjUlyq0Mf/vVbfZSNaVycY13nTzo27iPyWQHK5NLuJzn1xvxxrUeXI6A2WFpGEBLbHjwpx5WQG9A+2scECQQDvdn9NE75HPTVPxBqsEd2z10TKkl9CZxu10Qby3iQQmWLEJ9LNmy3acvKrE3gMiYNWb6xHPKiIqOR1as7L24aTAkEAtyvQOlCvr5kAjVqrEKXalj0Tzewjweuxc0pskvArTI2Oo070h65GpoIKLc9jf+UA69cRtquwP93aZKtW06U8dQJAF2Y44ks/mK5+eyDqik3koCI08qaC8HYq2wVl7G2QkJ6sbAaILtcvD92ToOvyGyeE0flvmDZxMYlvaZnaQ0lcSQJBAKZU6umJi3/xeEbkJqMfeLclD27XGEFoPeNrmdx0q10Azp4NfJAY+Z8KRyQCR2BEG+oNitBOZ+YXF9KCpH3cdmECQHEigJhYg+ykOvr1aiZUMFT72HU0jnmQe2FVekuG+LJUt2Tm7GtMjTFoGpf0JwrVuZN39fOYAlo+nTixgeW7X8Y=",
+	"publicKey": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCrVrCuTtArbgaZzL1hvh0xtL5mc7o0NqPVnYXkLvgcwiC3BjLGw1tGEGoJaXDuSaRllobm53JBhjx33UNv+5z/UMG4kytBWxheNVKnL6GgqlNabMaFfPLPCF8kAgKnsi79NMo+n6KnSY8YeUmec/p2vjO2NjsSAVcWEQMVhJ31LwIDAQAB",
+	"requiredCredentials": [
+		"password"
+	],
+	"users": [
+		{
+			"username": "root",
+			"enabled": true,
+			"email": "lsflashboss62@gmail.com",
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"admin"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "STNLCU76E15H501X",
+			"enabled": true,
+			"email": "luca.stancapiano@vige.it",
+			"firstName": "Luca",
+			"lastName": "Stancapiano",
+			"attributes": {
+				"income": "230000",
+				"room": "1B",
+				"school": "donlorenzomilani"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "SANLCU76E15H501X",
+			"enabled": true,
+			"email": "davide.barillari@vige.it",
+			"firstName": "Davide",
+			"lastName": "Barillari",
+			"attributes": {
+				"income": "10000",
+				"room": "2B",
+				"school": "donlorenzomilani"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "STHLCU76E15H501X",
+			"enabled": true,
+			"email": "davide.barillari@vige.it",
+			"firstName": "Beppe",
+			"lastName": "Grillo",
+			"attributes": {
+				"income": "11000",
+				"room": "3B",
+				"school": "donlorenzomilani"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "STNLCO76E15H501X",
+			"enabled": true,
+			"email": "luca.stancapiano@vige.it",
+			"firstName": "Manlio",
+			"lastName": "Di Stefano",
+			"attributes": {
+				"income": "6000",
+				"room": "4B",
+				"school": "donlorenzomilani"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "STN9CU76E15H501X",
+			"enabled": true,
+			"email": "luca.stancapiano@vige.it",
+			"firstName": "Sebastiano",
+			"lastName": "Cubeddu",
+			"attributes": {
+				"income": "5000",
+				"room": "5B",
+				"school": "donlorenzomilani"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "STNMCU76E15H501X",
+			"enabled": true,
+			"email": "maurizio.celani@vige.it",
+			"firstName": "Maurizio",
+			"lastName": "Celani",
+			"attributes": {
+				"income": "1000",
+				"room": "1A",
+				"school": "donlorenzomilani"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "STNLCU76E15H601X",
+			"enabled": true,
+			"email": "domenico.gigliotti@vige.it",
+			"firstName": "Domenico",
+			"lastName": "Gigliotti",
+			"attributes": {
+				"income": "20000",
+				"room": "1A",
+				"school": "donlorenzomilani"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "STNLCU76E15U801X",
+			"enabled": true,
+			"email": "laura.spinella@vige.it",
+			"firstName": "Laura",
+			"lastName": "Spinella",
+			"attributes": {
+				"income": "12000",
+				"room": "1A",
+				"school": "donlorenzomilani"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "STNLCU99I15H501X",
+			"enabled": true,
+			"email": "laura.alessandrini@vige.it",
+			"firstName": "Laura",
+			"lastName": "Alessandrini",
+			"attributes": {
+				"income": "15000",
+				"room": "1A",
+				"school": "donlorenzomilani"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "STNLCY98E15H501X",
+			"enabled": true,
+			"email": "laura.santoni@vige.it",
+			"firstName": "Laura",
+			"lastName": "Santoni",
+			"attributes": {
+				"income": "60000",
+				"room": "5A",
+				"school": "donlorenzomilani"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "STNUQ786E15H501X",
+			"enabled": true,
+			"email": "giuliano.santoboni@vige.it",
+			"firstName": "Giuliano",
+			"lastName": "Santoboni",
+			"attributes": {
+				"income": "90000",
+				"room": "5C",
+				"school": "donlorenzomilani"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "STNLCU76E15H502Y",
+			"enabled": true,
+			"email": "maria.naimo@vige.it",
+			"firstName": "Maria",
+			"lastName": "Naimo",
+			"attributes": {
+				"income": "84000",
+				"room": "5C",
+				"school": "donlorenzomilani"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "STNLCU73T85H501X",
+			"enabled": true,
+			"email": "raffaele.bonaffini@vige.it",
+			"firstName": "Raffaele",
+			"lastName": "Bonaffini",
+			"attributes": {
+				"income": "12300",
+				"room": "5C",
+				"school": "donlorenzomilani"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "ABNLCU76E15H501X",
+			"enabled": true,
+			"email": "fabrizio.fossati@vige.it",
+			"firstName": "Fabrizio",
+			"lastName": "Fossati",
+			"attributes": {
+				"income": "100000",
+				"room": "5C",
+				"school": "donlorenzomilani"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "OPILCU76E15H501X",
+			"enabled": true,
+			"email": "patrizia.fontana@vige.it",
+			"firstName": "Patrizia",
+			"lastName": "Fontana",
+			"attributes": {
+				"income": "3400",
+				"room": "5C",
+				"school": "donlorenzomilani"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "BHJLCU76E15H501X",
+			"enabled": true,
+			"email": "gladys.carrizales@vige.it",
+			"firstName": "Gladys",
+			"lastName": "Carrizales",
+			"attributes": {
+				"income": "200000",
+				"room": "1D",
+				"school": "donlorenzomilani"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AQWLCU76E15H501X",
+			"enabled": true,
+			"email": "alessandro.toro@vige.it",
+			"firstName": "Alessandro",
+			"lastName": "Toro",
+			"attributes": {
+				"income": "10000",
+				"room": "1A",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "MLLLCU76E15H501X",
+			"enabled": true,
+			"email": "daniele.ronci@vige.it",
+			"firstName": "Daniele",
+			"lastName": "Ronci",
+			"attributes": {
+				"income": "11000",
+				"room": "2A",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "OOOLCU76E15H501X",
+			"enabled": true,
+			"email": "luigi.dimaio@vige.it",
+			"firstName": "Luigi",
+			"lastName": "Di Maio",
+			"attributes": {
+				"income": "14000",
+				"room": "3A",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "QWERCU76E15H501X",
+			"enabled": true,
+			"email": "claudio.cos@vige.it",
+			"firstName": "Claudio",
+			"lastName": "Cos",
+			"attributes": {
+				"income": "16000",
+				"room": "4A",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "MJKLCU76E15H501X",
+			"enabled": true,
+			"email": "antonino.briganti@vige.it",
+			"firstName": "Antonino",
+			"lastName": "Briganti",
+			"attributes": {
+				"income": "12300",
+				"room": "5A",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "YYTLCU76E15H501X",
+			"enabled": true,
+			"email": "luigi.briganti@vige.it",
+			"firstName": "Luigi",
+			"lastName": "Briganti",
+			"attributes": {
+				"income": "2000",
+				"room": "1C",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AQWLC576E15H501X",
+			"enabled": true,
+			"email": "matteo.castorino@vige.it",
+			"firstName": "Matteo",
+			"lastName": "Castorino",
+			"attributes": {
+				"income": "3000",
+				"room": "2C",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "NNBLCU76E15H501X",
+			"enabled": true,
+			"email": "stefano.bufalieri@vige.it",
+			"firstName": "Stefano",
+			"lastName": "Bufalieri",
+			"attributes": {
+				"income": "14000",
+				"room": "3C",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "NNJLCU76E15H501X",
+			"enabled": true,
+			"email": "giuseppe.conte@vige.it",
+			"firstName": "Giuseppe",
+			"lastName": "Conte",
+			"attributes": {
+				"income": "450000",
+				"room": "4C",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "SSALCU76E15H501X",
+			"enabled": true,
+			"email": "giulia.grillo@vige.it",
+			"firstName": "Giulia",
+			"lastName": "Grillo",
+			"attributes": {
+				"income": "45000",
+				"room": "4C",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "IIYLCU76E15H501X",
+			"enabled": true,
+			"email": "riccardo.fraccaro@vige.it",
+			"firstName": "Riccardo",
+			"lastName": "Fraccaro",
+			"attributes": {
+				"income": "45000",
+				"room": "4C",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "HJULCU76E15H501X",
+			"enabled": true,
+			"email": "alfonso.bonafede@vige.it",
+			"firstName": "Alfonso",
+			"lastName": "Bonafede",
+			"attributes": {
+				"income": "12000",
+				"room": "4C",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "IIVLCU76E15H501X",
+			"enabled": true,
+			"email": "valerio.novelli@vige.it",
+			"firstName": "Valerio",
+			"lastName": "Novelli",
+			"attributes": {
+				"income": "13000",
+				"room": "4C",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "STNLCU75SZ3H501X",
+			"enabled": true,
+			"email": "valentina.corrado@vige.it",
+			"firstName": "Valentina",
+			"lastName": "Corrado",
+			"attributes": {
+				"income": "6000",
+				"room": "4C",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AAAACU76E15H501X",
+			"enabled": true,
+			"email": "roberta.lombardi@vige.it",
+			"firstName": "Roberta",
+			"lastName": "Lombardi",
+			"attributes": {
+				"income": "8000",
+				"room": "4C",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "ABCLCU76E15H501X",
+			"enabled": true,
+			"email": "roberta.dellacasa@vige.it",
+			"firstName": "Roberta",
+			"lastName": "Della Casa",
+			"attributes": {
+				"income": "3400",
+				"room": "4C",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "GHYYCU76E15H501X",
+			"enabled": true,
+			"email": "virginia.raggi@vige.it",
+			"firstName": "Virginia",
+			"lastName": "Raggi",
+			"attributes": {
+				"income": "12000",
+				"room": "1C",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "DDSLCU76E15H501X",
+			"enabled": true,
+			"email": "marcello.devito@vige.it",
+			"firstName": "Marcello",
+			"lastName": "De Vito",
+			"attributes": {
+				"income": "1200",
+				"room": "1C",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "VVSLCU76E15H501X",
+			"enabled": true,
+			"email": "giuseppe.bonaventura@vige.it",
+			"firstName": "Giuseppe",
+			"lastName": "Bonaventura",
+			"attributes": {
+				"income": "45000",
+				"room": "1C",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "IIILCU76E15H501X",
+			"enabled": true,
+			"email": "alessandro.cocchiarella@vige.it",
+			"firstName": "Alessandro",
+			"lastName": "Cocchiarella",
+			"attributes": {
+				"income": "64000",
+				"room": "1C",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "NLORENZOMILANI0A",
+			"enabled": true,
+			"email": "michel.barbet@vige.it",
+			"firstName": "Michel",
+			"lastName": "Barbet",
+			"attributes": {
+				"income": "54632325",
+				"room": "0A",
+				"school": "donlorenzomilani"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "NLORENZOMILANI0B",
+			"enabled": true,
+			"email": "davide.russo@vige.it",
+			"firstName": "Davide",
+			"lastName": "Russo",
+			"attributes": {
+				"income": "43542354",
+				"room": "0B",
+				"school": "donlorenzomilani"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "NLORENZOMILANI0C",
+			"enabled": true,
+			"email": "salvatore.galletta@vige.it",
+			"firstName": "Salvatore",
+			"lastName": "Galletta",
+			"attributes": {
+				"income": "34543252",
+				"room": "0C",
+				"school": "donlorenzomilani"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "NLORENZOMILANI1A",
+			"enabled": true,
+			"email": "davide.casaleggio@vige.it",
+			"firstName": "Davide",
+			"lastName": "Casaleggio",
+			"attributes": {
+				"income": "43254325",
+				"room": "1A",
+				"school": "donlorenzomilani"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "NLORENZOMILANI2A",
+			"enabled": true,
+			"email": "devid.porrello@vige.it",
+			"firstName": "Devid",
+			"lastName": "Porrello",
+			"attributes": {
+				"income": "5454",
+				"room": "2A",
+				"school": "donlorenzomilani"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "NLORENZOMILANI3A",
+			"enabled": true,
+			"email": "zefferino.ridolfi@vige.it",
+			"firstName": "Zefferino",
+			"lastName": "Ridolfi",
+			"attributes": {
+				"income": "23341452",
+				"room": "3A",
+				"school": "donlorenzomilani"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "NLORENZOMILANI4A",
+			"enabled": true,
+			"email": "lamberto.cardellino@vige.it",
+			"firstName": "Lamberto",
+			"lastName": "Cardellino",
+			"attributes": {
+				"income": "3425325",
+				"room": "4A",
+				"school": "donlorenzomilani"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "NLORENZOMILANI5A",
+			"enabled": true,
+			"email": "fabrizio.fossati@vige.it",
+			"firstName": "Fabrizio",
+			"lastName": "Fossati",
+			"attributes": {
+				"income": "312431242",
+				"room": "5A",
+				"school": "donlorenzomilani"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "NLORENZOMILANI1B",
+			"enabled": true,
+			"email": "valerio.romanazzi@vige.it",
+			"firstName": "Valerio",
+			"lastName": "Romanazzi",
+			"attributes": {
+				"income": "453253254",
+				"room": "1B",
+				"school": "donlorenzomilani"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "NLORENZOMILANI2B",
+			"enabled": true,
+			"email": "claudio.zarro@vige.it",
+			"firstName": "Claudio",
+			"lastName": "Zarro",
+			"attributes": {
+				"income": "3424235",
+				"room": "2B",
+				"school": "donlorenzomilani"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "NLORENZOMILANI3B",
+			"enabled": true,
+			"email": "gaetano.cali@vige.it",
+			"firstName": "Gaetano",
+			"lastName": "Calì",
+			"attributes": {
+				"income": "345234562",
+				"room": "3B",
+				"school": "donlorenzomilani"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "NLORENZOMILANI4B",
+			"enabled": true,
+			"email": "mattia.marini@vige.it",
+			"firstName": "Mattia",
+			"lastName": "Marini",
+			"attributes": {
+				"income": "4325",
+				"room": "4B",
+				"school": "donlorenzomilani"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "NLORENZOMILANI5B",
+			"enabled": true,
+			"email": "armando.caponegro@vige.it",
+			"firstName": "Armando",
+			"lastName": "Caponegro",
+			"attributes": {
+				"income": "5463465",
+				"room": "5B",
+				"school": "donlorenzomilani"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "OARDODEFILIPPO0B",
+			"enabled": true,
+			"email": "tiziana.guida@vige.it",
+			"firstName": "Tiziana",
+			"lastName": "Guida",
+			"attributes": {
+				"income": "43235432",
+				"room": "0B",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "OARDODEFILIPPO0C",
+			"enabled": true,
+			"email": "marco.colazza@vige.it",
+			"firstName": "Marco",
+			"lastName": "Colazza",
+			"attributes": {
+				"income": "34254325",
+				"room": "0C",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "OARDODEFILIPPO0D",
+			"enabled": true,
+			"email": "ilaria.nicolella@vige.it",
+			"firstName": "Ilaria",
+			"lastName": "Nicolella",
+			"attributes": {
+				"income": "453523",
+				"room": "0D",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "OARDODEFILIPPO1A",
+			"enabled": true,
+			"email": "elisa.strani@vige.it",
+			"firstName": "Elisa",
+			"lastName": "Strani",
+			"attributes": {
+				"income": "6554",
+				"room": "1A",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "OARDODEFILIPPO2A",
+			"enabled": true,
+			"email": "rossana.santarelli@vige.it",
+			"firstName": "Rossana",
+			"lastName": "Santarelli",
+			"attributes": {
+				"income": "656745",
+				"room": "2A",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "OARDODEFILIPPO3A",
+			"enabled": true,
+			"email": "loredana.terzulli@vige.it",
+			"firstName": "Loredana",
+			"lastName": "Terzulli",
+			"attributes": {
+				"income": "654643",
+				"room": "3A",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "OARDODEFILIPPO4A",
+			"enabled": true,
+			"email": "anna.checchi@vige.it",
+			"firstName": "Anna",
+			"lastName": "Checchi",
+			"attributes": {
+				"income": "43543",
+				"room": "4A",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "OARDODEFILIPPO5A",
+			"enabled": true,
+			"email": "fabrizio.mastroddi@vige.it",
+			"firstName": "Fabrizio",
+			"lastName": "Mastroddi",
+			"attributes": {
+				"income": "56434634",
+				"room": "5A",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "OARDODEFILIPPO1C",
+			"enabled": true,
+			"email": "roberto.zilli@vige.it",
+			"firstName": "Roberto",
+			"lastName": "Zilli",
+			"attributes": {
+				"income": "54325432",
+				"room": "1C",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "OARDODEFILIPPO2C",
+			"enabled": true,
+			"email": "raffaella.fantegrossi@vige.it",
+			"firstName": "Raffaella",
+			"lastName": "Fantegrossi",
+			"attributes": {
+				"income": "4353253",
+				"room": "2C",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "OARDODEFILIPPO3C",
+			"enabled": true,
+			"email": "marina.cocchiarella@vige.it",
+			"firstName": "Marina",
+			"lastName": "Cocchiarella",
+			"attributes": {
+				"income": "4323",
+				"room": "3C",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "OARDODEFILIPPO4C",
+			"enabled": true,
+			"email": "alberto.airola@vige.it",
+			"firstName": "Alberto",
+			"lastName": "Airola",
+			"attributes": {
+				"income": "6565436",
+				"room": "4C",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "OARDODEFILIPPO5C",
+			"enabled": true,
+			"email": "angelo.scipioni@vige.it",
+			"firstName": "Angelo",
+			"lastName": "Scipioni",
+			"attributes": {
+				"income": "65436534",
+				"room": "5C",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "OARDODEFILIPPO2F",
+			"enabled": true,
+			"email": "emanuela.bivi@vige.it",
+			"firstName": "Emanuela",
+			"lastName": "Bivi",
+			"attributes": {
+				"income": "342",
+				"room": "2F",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "OARDODEFILIPPO3F",
+			"enabled": true,
+			"email": "antonio.iennaco@vige.it",
+			"firstName": "Antonio",
+			"lastName": "Iennaco",
+			"attributes": {
+				"income": "543252345",
+				"room": "3F",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "OARDODEFILIPPO4F",
+			"enabled": true,
+			"email": "cristian.falconi@vige.it",
+			"firstName": "Cristian",
+			"lastName": "Falconi",
+			"attributes": {
+				"income": "345325",
+				"room": "4F",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "OARDODEFILIPPO5F",
+			"enabled": true,
+			"email": "david.rossi@vige.it",
+			"firstName": "David",
+			"lastName": "Rossi",
+			"attributes": {
+				"income": "6546436",
+				"room": "5F",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "OARDODEFILIPPO5G",
+			"enabled": true,
+			"email": "tiziana.mastropietro@vige.it",
+			"firstName": "Tiziana",
+			"lastName": "Mastropietro",
+			"attributes": {
+				"income": "3455",
+				"room": "5G",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AAAAAGARIBALDI0A",
+			"enabled": true,
+			"email": "laura.baldassarre@vige.it",
+			"firstName": "Laura",
+			"lastName": "Baldassarre",
+			"attributes": {
+				"income": "54325",
+				"room": "0A",
+				"school": "garibaldi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AAAAAGARIBALDI0B",
+			"enabled": true,
+			"email": "fabrizio.santomaggio@vige.it",
+			"firstName": "Fabrizio",
+			"lastName": "Santomaggio",
+			"attributes": {
+				"income": "6757645",
+				"room": "0B",
+				"school": "garibaldi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AAAAAGARIBALDI0C",
+			"enabled": true,
+			"email": "russotto.vitale@vige.it",
+			"firstName": "Russotto",
+			"lastName": "Vitale",
+			"attributes": {
+				"income": "76574",
+				"room": "0C",
+				"school": "garibaldi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AAAAAGARIBALDI1A",
+			"enabled": true,
+			"email": "chiara.amati@vige.it",
+			"firstName": "Chiara",
+			"lastName": "Amati",
+			"attributes": {
+				"income": "76547654",
+				"room": "1A",
+				"school": "garibaldi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AAAAAGARIBALDI2A",
+			"enabled": true,
+			"email": "maria.dipalma@vige.it",
+			"firstName": "Maria",
+			"lastName": "Di Palma",
+			"attributes": {
+				"income": "543252",
+				"room": "2A",
+				"school": "garibaldi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AAAAAGARIBALDI3A",
+			"enabled": true,
+			"email": "claudio.ortenzi@vige.it",
+			"firstName": "Claudio",
+			"lastName": "Ortenzi",
+			"attributes": {
+				"income": "65543",
+				"room": "3A",
+				"school": "garibaldi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AAAAAGARIBALDI4A",
+			"enabled": true,
+			"email": "paolo.aprile@vige.it",
+			"firstName": "Paolo",
+			"lastName": "Aprile",
+			"attributes": {
+				"income": "64563",
+				"room": "4A",
+				"school": "garibaldi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AAAAAGARIBALDI5A",
+			"enabled": true,
+			"email": "lorena.roscetti@vige.it",
+			"firstName": "Lorena",
+			"lastName": "Roscetti",
+			"attributes": {
+				"income": "65754",
+				"room": "5A",
+				"school": "garibaldi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AAAAAGARIBALDI1G",
+			"enabled": true,
+			"email": "sonia.caregnato@vige.it",
+			"firstName": "Sonia",
+			"lastName": "Caregnato",
+			"attributes": {
+				"income": "5443",
+				"room": "1G",
+				"school": "garibaldi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AAAAAGARIBALDI2G",
+			"enabled": true,
+			"email": "michele.solimando@vige.it",
+			"firstName": "Michele",
+			"lastName": "Solimando",
+			"attributes": {
+				"income": "6546543",
+				"room": "2G",
+				"school": "garibaldi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AAAAAGARIBALDI3G",
+			"enabled": true,
+			"email": "stefania.cerqua@vige.it",
+			"firstName": "Stefania",
+			"lastName": "Cerqua",
+			"attributes": {
+				"income": "6575467",
+				"room": "3G",
+				"school": "garibaldi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AAAAAGARIBALDI1B",
+			"enabled": true,
+			"email": "vito.telesca@vige.it",
+			"firstName": "Vito",
+			"lastName": "Telesca",
+			"attributes": {
+				"income": "64356",
+				"room": "1B",
+				"school": "garibaldi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AAAAAGARIBALDI2B",
+			"enabled": true,
+			"email": "fabiana.carletti@vige.it",
+			"firstName": "Fabiana",
+			"lastName": "Carletti",
+			"attributes": {
+				"income": "3452",
+				"room": "2B",
+				"school": "garibaldi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AAAAAGARIBALDI3B",
+			"enabled": true,
+			"email": "massimo.nasini@vige.it",
+			"firstName": "Massimo",
+			"lastName": "Nasini",
+			"attributes": {
+				"income": "532523",
+				"room": "3B",
+				"school": "garibaldi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AAAAAGARIBALDI4B",
+			"enabled": true,
+			"email": "maurizio.brunetti@vige.it",
+			"firstName": "Maurizio",
+			"lastName": "Brunetti",
+			"attributes": {
+				"income": "6456534",
+				"room": "4B",
+				"school": "garibaldi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AAAAAGARIBALDI5B",
+			"enabled": true,
+			"email": "enrico.lanzo@vige.it",
+			"firstName": "Enrico",
+			"lastName": "Lanzo",
+			"attributes": {
+				"income": "3254",
+				"room": "5B",
+				"school": "garibaldi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AAAAAGARIBALDI1C",
+			"enabled": true,
+			"email": "carlo.proietti@vige.it",
+			"firstName": "Carlo",
+			"lastName": "Proietti",
+			"attributes": {
+				"income": "65463",
+				"room": "1C",
+				"school": "garibaldi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AAAAAGARIBALDI2C",
+			"enabled": true,
+			"email": "antonio.castellino@vige.it",
+			"firstName": "Antonio",
+			"lastName": "Castellino",
+			"attributes": {
+				"income": "543634",
+				"room": "2C",
+				"school": "garibaldi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AAAAAGARIBALDI3C",
+			"enabled": true,
+			"email": "elia.santori@vige.it",
+			"firstName": "Elia",
+			"lastName": "Santori",
+			"attributes": {
+				"income": "65463",
+				"room": "3C",
+				"school": "garibaldi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AAAAAGARIBALDI4C",
+			"enabled": true,
+			"email": "claudio.deriu@vige.it",
+			"firstName": "Claudio",
+			"lastName": "Deriu",
+			"attributes": {
+				"income": "3553532",
+				"room": "4C",
+				"school": "garibaldi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AAAAAGARIBALDI5C",
+			"enabled": true,
+			"email": "romina.polverini@vige.it",
+			"firstName": "Romina",
+			"lastName": "Polverini",
+			"attributes": {
+				"income": "64654356",
+				"room": "5C",
+				"school": "garibaldi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AGIOVANNIXXIII0A",
+			"enabled": true,
+			"email": "antonio.caridi@vige.it",
+			"firstName": "Antonio",
+			"lastName": "Caridi",
+			"attributes": {
+				"income": "6453456",
+				"room": "0A",
+				"school": "giovannixxiii"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AGIOVANNIXXIII0B",
+			"enabled": true,
+			"email": "roberto.lucia@vige.it",
+			"firstName": "Roberto",
+			"lastName": "Lucia",
+			"attributes": {
+				"income": "657465",
+				"room": "0B",
+				"school": "giovannixxiii"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AGIOVANNIXXIII1A",
+			"enabled": true,
+			"email": "claudio.caruso@vige.it",
+			"firstName": "Claudio",
+			"lastName": "Caruso",
+			"attributes": {
+				"income": "654456336",
+				"room": "1A",
+				"school": "giovannixxiii"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AGIOVANNIXXIII2A",
+			"enabled": true,
+			"email": "alessandra.sabatini@vige.it",
+			"firstName": "Alessandra",
+			"lastName": "Sabatini",
+			"attributes": {
+				"income": "542543",
+				"room": "2A",
+				"school": "giovannixxiii"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AGIOVANNIXXIII3A",
+			"enabled": true,
+			"email": "marco.spazziani@vige.it",
+			"firstName": "Marco",
+			"lastName": "Spazziani",
+			"attributes": {
+				"income": "2305342000",
+				"room": "3A",
+				"school": "giovannixxiii"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AGIOVANNIXXIII4A",
+			"enabled": true,
+			"email": "monia.felici@vige.it",
+			"firstName": "Monia",
+			"lastName": "Felici",
+			"attributes": {
+				"income": "3245655",
+				"room": "4A",
+				"school": "giovannixxiii"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AGIOVANNIXXIII5A",
+			"enabled": true,
+			"email": "umberto.brunelletti@vige.it",
+			"firstName": "Umberto",
+			"lastName": "Brunelletti",
+			"attributes": {
+				"income": "4365564",
+				"room": "5A",
+				"school": "giovannixxiii"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AGIOVANNIXXIII1C",
+			"enabled": true,
+			"email": "gianfranco.diroma@vige.it",
+			"firstName": "Gianfranco",
+			"lastName": "Di Roma",
+			"attributes": {
+				"income": "6453645",
+				"room": "1C",
+				"school": "giovannixxiii"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AGIOVANNIXXIII2C",
+			"enabled": true,
+			"email": "elio.simoni@vige.it",
+			"firstName": "Elio",
+			"lastName": "Simoni",
+			"attributes": {
+				"income": "43242",
+				"room": "2C",
+				"school": "giovannixxiii"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AGIOVANNIXXIII3C",
+			"enabled": true,
+			"email": "vittorio.marchetti@vige.it",
+			"firstName": "Vittorio",
+			"lastName": "Marchetti",
+			"attributes": {
+				"income": "534254",
+				"room": "3C",
+				"school": "giovannixxiii"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AGIOVANNIXXIII4C",
+			"enabled": true,
+			"email": "michele.alba@vige.it",
+			"firstName": "Michele",
+			"lastName": "Alba",
+			"attributes": {
+				"income": "64553465",
+				"room": "4C",
+				"school": "giovannixxiii"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "AGIOVANNIXXIII5C",
+			"enabled": true,
+			"email": "stefania.dimarsilio@vige.it",
+			"firstName": "Stefania",
+			"lastName": "Di Marsilio",
+			"attributes": {
+				"income": "230000",
+				"room": "5C",
+				"school": "giovannixxiii"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "EONARDODAVINCI0B",
+			"enabled": true,
+			"email": "antonio.scamolla@vige.it",
+			"firstName": "Antonio",
+			"lastName": "Scamolla",
+			"attributes": {
+				"income": "1230000",
+				"room": "0B",
+				"school": "leonardodavinci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "EONARDODAVINCI0C",
+			"enabled": true,
+			"email": "alfredo.pensato@vige.it",
+			"firstName": "Alfredo",
+			"lastName": "Pensato",
+			"attributes": {
+				"income": "2302000",
+				"room": "0C",
+				"school": "leonardodavinci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "EONARDODAVINCI0E",
+			"enabled": true,
+			"email": "serenella.divittorio@vige.it",
+			"firstName": "Serenella",
+			"lastName": "Di Vittorio",
+			"attributes": {
+				"income": "2300",
+				"room": "0E",
+				"school": "leonardodavinci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "EONARDODAVINCI0F",
+			"enabled": true,
+			"email": "mario.morello@vige.it",
+			"firstName": "Mario",
+			"lastName": "Morello",
+			"attributes": {
+				"income": "30000",
+				"room": "0F",
+				"school": "leonardodavinci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "EONARDODAVINCI0I",
+			"enabled": true,
+			"email": "stella.visconti@vige.it",
+			"firstName": "Stella",
+			"lastName": "Visconti",
+			"attributes": {
+				"income": "234300",
+				"room": "0I",
+				"school": "leonardodavinci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "EONARDODAVINCI2C",
+			"enabled": true,
+			"email": "angelo.mortellaro@vige.it",
+			"firstName": "Angelo",
+			"lastName": "Mortellaro",
+			"attributes": {
+				"income": "11200",
+				"room": "2C",
+				"school": "leonardodavinci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "EONARDODAVINCI4C",
+			"enabled": true,
+			"email": "eleonora.carrella@vige.it",
+			"firstName": "Eleonora",
+			"lastName": "Carrella",
+			"attributes": {
+				"income": "26000",
+				"room": "4C",
+				"school": "leonardodavinci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "EONARDODAVINCI5C",
+			"enabled": true,
+			"email": "laura.passerini@vige.it",
+			"firstName": "Laura",
+			"lastName": "Passerini",
+			"attributes": {
+				"income": "730000",
+				"room": "5C",
+				"school": "leonardodavinci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "EONARDODAVINCI1D",
+			"enabled": true,
+			"email": "massimo.massimi@vige.it",
+			"firstName": "Massimo",
+			"lastName": "Massimi",
+			"attributes": {
+				"income": "8830000",
+				"room": "1D",
+				"school": "leonardodavinci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "EONARDODAVINCI2D",
+			"enabled": true,
+			"email": "laura.tramontana@vige.it",
+			"firstName": "Laura",
+			"lastName": "Tramontana",
+			"attributes": {
+				"income": "9930000",
+				"room": "2D",
+				"school": "leonardodavinci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "EONARDODAVINCI3D",
+			"enabled": true,
+			"email": "alessandra.maiorino@vige.it",
+			"firstName": "Alessandra",
+			"lastName": "Maiorino",
+			"attributes": {
+				"income": "43000",
+				"room": "3D",
+				"school": "leonardodavinci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "EONARDODAVINCI4D",
+			"enabled": true,
+			"email": "danilo.toninelli@vige.it",
+			"firstName": "Danilo",
+			"lastName": "Toninelli",
+			"attributes": {
+				"income": "21000",
+				"room": "4D",
+				"school": "leonardodavinci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "EONARDODAVINCI5D",
+			"enabled": true,
+			"email": "nicola.acunzo@vige.it",
+			"firstName": "Nicola",
+			"lastName": "Acunzo",
+			"attributes": {
+				"income": "23022",
+				"room": "5D",
+				"school": "leonardodavinci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "EONARDODAVINCI1E",
+			"enabled": true,
+			"email": "cosimo.adelizzi@vige.it",
+			"firstName": "Cosimo",
+			"lastName": "Adelizzi",
+			"attributes": {
+				"income": "46000",
+				"room": "1E",
+				"school": "leonardodavinci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "EONARDODAVINCI2E",
+			"enabled": true,
+			"email": "davide.aiello@vige.it",
+			"firstName": "Davide",
+			"lastName": "Aiello",
+			"attributes": {
+				"income": "56000",
+				"room": "2E",
+				"school": "leonardodavinci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "EONARDODAVINCI3E",
+			"enabled": true,
+			"email": "piera.aiello@vige.it",
+			"firstName": "Piera",
+			"lastName": "Aiello",
+			"attributes": {
+				"income": "75000",
+				"room": "3E",
+				"school": "leonardodavinci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "EONARDODAVINCI4E",
+			"enabled": true,
+			"email": "maria.alemanno@vige.it",
+			"firstName": "Maria",
+			"lastName": "Alemanno",
+			"attributes": {
+				"income": "3003",
+				"room": "4E",
+				"school": "leonardodavinci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "EONARDODAVINCI5E",
+			"enabled": true,
+			"email": "alessandro.amitrano@vige.it",
+			"firstName": "Alessandro",
+			"lastName": "Amitrano",
+			"attributes": {
+				"income": "456000",
+				"room": "5E",
+				"school": "leonardodavinci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "EONARDODAVINCI1F",
+			"enabled": true,
+			"email": "nunzio.angiola@vige.it",
+			"firstName": "Nunzio",
+			"lastName": "Angiola",
+			"attributes": {
+				"income": "76400",
+				"room": "1F",
+				"school": "leonardodavinci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "EONARDODAVINCI3F",
+			"enabled": true,
+			"email": "nadia.aprile@vige.it",
+			"firstName": "Nadia",
+			"lastName": "Aprile",
+			"attributes": {
+				"income": "2000",
+				"room": "3F",
+				"school": "leonardodavinci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "CCCCCCCCCMANZI0D",
+			"enabled": true,
+			"email": "giovanni.aresta@vige.it",
+			"firstName": "Giovanni",
+			"lastName": "Aresta",
+			"attributes": {
+				"income": "15000",
+				"room": "0D",
+				"school": "manzi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "CCCCCCCCCMANZI0E",
+			"enabled": true,
+			"email": "stefania.ascari@vige.it",
+			"firstName": "Stefania",
+			"lastName": "Ascari",
+			"attributes": {
+				"income": "76000",
+				"room": "0E",
+				"school": "manzi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "CCCCCCCCCMANZI0G",
+			"enabled": true,
+			"email": "lucia.azzolina@vige.it",
+			"firstName": "Lucia",
+			"lastName": "Azzolina",
+			"attributes": {
+				"income": "6000",
+				"room": "0G",
+				"school": "manzi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "CCCCCCCCCMANZI1D",
+			"enabled": true,
+			"email": "vittoria.baldino@vige.it",
+			"firstName": "Vittoria",
+			"lastName": "Baldino",
+			"attributes": {
+				"income": "89900",
+				"room": "1D",
+				"school": "manzi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "CCCCCCCCCMANZI2D",
+			"enabled": true,
+			"email": "elisabetta.barbuto@vige.it",
+			"firstName": "Elisabetta",
+			"lastName": "Barbuto",
+			"attributes": {
+				"income": "9880000",
+				"room": "2D",
+				"school": "manzi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "CCCCCCCCCMANZI3D",
+			"enabled": true,
+			"email": "massimo.baroni@vige.it",
+			"firstName": "Massimo",
+			"lastName": "Baroni",
+			"attributes": {
+				"income": "955000",
+				"room": "3D",
+				"school": "manzi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "CCCCCCCCCMANZI4D",
+			"enabled": true,
+			"email": "valentina.barzotti@vige.it",
+			"firstName": "Valentina",
+			"lastName": "Barzotti",
+			"attributes": {
+				"income": "643000",
+				"room": "4D",
+				"school": "manzi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "CCCCCCCCCMANZI5D",
+			"enabled": true,
+			"email": "sergio.battelli@vige.it",
+			"firstName": "Sergio",
+			"lastName": "Battelli",
+			"attributes": {
+				"income": "732000",
+				"room": "5D",
+				"school": "manzi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "CCCCCCCCCMANZI1E",
+			"enabled": true,
+			"email": "marco.bella@vige.it",
+			"firstName": "Marco",
+			"lastName": "Bella",
+			"attributes": {
+				"income": "87000",
+				"room": "1E",
+				"school": "manzi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "CCCCCCCCCMANZI2E",
+			"enabled": true,
+			"email": "fabio.berardini@vige.it",
+			"firstName": "Fabio",
+			"lastName": "Berardini",
+			"attributes": {
+				"income": "8766000",
+				"room": "2E",
+				"school": "manzi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "CCCCCCCCCMANZI3E",
+			"enabled": true,
+			"email": "francesco.berti@vige.it",
+			"firstName": "Francesco",
+			"lastName": "Berti",
+			"attributes": {
+				"income": "7000",
+				"room": "3E",
+				"school": "manzi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "CCCCCCCCCMANZI4E",
+			"enabled": true,
+			"email": "anna.bilotti@vige.it",
+			"firstName": "Anna",
+			"lastName": "Bilotti",
+			"attributes": {
+				"income": "88000",
+				"room": "4E",
+				"school": "manzi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "CCCCCCCCCMANZI5E",
+			"enabled": true,
+			"email": "fabiola.bologna@vige.it",
+			"firstName": "Fabiola",
+			"lastName": "Bologna",
+			"attributes": {
+				"income": "432000",
+				"room": "5E",
+				"school": "manzi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "CCCCMONTECELIO0A",
+			"enabled": true,
+			"email": "giuseppe.brescia@vige.it",
+			"firstName": "Giuseppe",
+			"lastName": "Brescia",
+			"attributes": {
+				"income": "5345",
+				"room": "0A",
+				"school": "montecelio"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "CCCCMONTECELIO2B",
+			"enabled": true,
+			"email": "raffaele.bruno@vige.it",
+			"firstName": "Raffaele",
+			"lastName": "Bruno",
+			"attributes": {
+				"income": "435435",
+				"room": "2B",
+				"school": "montecelio"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "CCCCMONTELUCCI0B",
+			"enabled": true,
+			"email": "stefano.buffagni@vige.it",
+			"firstName": "Stefano",
+			"lastName": "Buffagni",
+			"attributes": {
+				"income": "543535",
+				"room": "0B",
+				"school": "montelucci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "CCCCMONTELUCCI0E",
+			"enabled": true,
+			"email": "giuseppe.buonpane@vige.it",
+			"firstName": "Giuseppe",
+			"lastName": "Buonpane",
+			"attributes": {
+				"income": "5646464",
+				"room": "0E",
+				"school": "montelucci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "CCCCMONTELUCCI1C",
+			"enabled": true,
+			"email": "francesca.businarolo@vige.it",
+			"firstName": "Francesca",
+			"lastName": "Businarolo",
+			"attributes": {
+				"income": "534553",
+				"room": "1C",
+				"school": "montelucci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "CCCCMONTELUCCI2C",
+			"enabled": true,
+			"email": "pino.cabras@vige.it",
+			"firstName": "Pino",
+			"lastName": "Cabras",
+			"attributes": {
+				"income": "435435",
+				"room": "2C",
+				"school": "montelucci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "CCCCMONTELUCCI3C",
+			"enabled": true,
+			"email": "luciano.cadeddu@vige.it",
+			"firstName": "Luciano",
+			"lastName": "Cadeddu",
+			"attributes": {
+				"income": "654654",
+				"room": "3C",
+				"school": "montelucci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "CCCCMONTELUCCI4C",
+			"enabled": true,
+			"email": "azzurra.cancelleri@vige.it",
+			"firstName": "Azzurra",
+			"lastName": "Cancelleri",
+			"attributes": {
+				"income": "43535",
+				"room": "4C",
+				"school": "montelucci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "CCCCMONTELUCCI5C",
+			"enabled": true,
+			"email": "luciano.cantone@vige.it",
+			"firstName": "Luciano",
+			"lastName": "Cantone",
+			"attributes": {
+				"income": "234234",
+				"room": "5C",
+				"school": "montelucci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "CCCCMONTELUCCI1D",
+			"enabled": true,
+			"email": "santi.cappellani@vige.it",
+			"firstName": "Santi",
+			"lastName": "Cappellani",
+			"attributes": {
+				"income": "23026000",
+				"room": "1D",
+				"school": "montelucci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "CCCCMONTELUCCI2D",
+			"enabled": true,
+			"email": "luca.carabetta@vige.it",
+			"firstName": "Luca",
+			"lastName": "Carabetta",
+			"attributes": {
+				"income": "623623",
+				"room": "2D",
+				"school": "montelucci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "CCCCMONTELUCCI3D",
+			"enabled": true,
+			"email": "emilio.carelli@vige.it",
+			"firstName": "Emilio",
+			"lastName": "Carelli",
+			"attributes": {
+				"income": "26346",
+				"room": "3D",
+				"school": "montelucci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "CCCCMONTELUCCI4D",
+			"enabled": true,
+			"email": "paola.carinelli@vige.it",
+			"firstName": "Paola",
+			"lastName": "Carinelli",
+			"attributes": {
+				"income": "2354",
+				"room": "4D",
+				"school": "montelucci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "CCCCMONTELUCCI5D",
+			"enabled": true,
+			"email": "vittoria.casa@vige.it",
+			"firstName": "Vittoria",
+			"lastName": "Casa",
+			"attributes": {
+				"income": "230000",
+				"room": "5D",
+				"school": "montelucci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "DONLORENZOMILANI",
+			"enabled": true,
+			"email": "barbara.lezzi@vige.it",
+			"firstName": "Barbara",
+			"lastName": "Lezzi",
+			"attributes": {
+				"income": "21000",
+				"school": "donlorenzomilani"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"schooloperator"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "EDOARDODEFILIPPO",
+			"enabled": true,
+			"email": "barbara.lezzi@vige.it",
+			"firstName": "Roberto",
+			"lastName": "Fico",
+			"attributes": {
+				"income": "50000",
+				"school": "edoardodefilippo"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"schooloperator"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "GARIBALDIXXXXXXX",
+			"enabled": true,
+			"email": "barbara.lezzi@vige.it",
+			"firstName": "Gianfranco",
+			"lastName": "Gallè",
+			"attributes": {
+				"income": "5000",
+				"school": "garibaldi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"schooloperator"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "GIOVANNIXXXIIIYY",
+			"enabled": true,
+			"email": "barbara.lezzi@vige.it",
+			"firstName": "Anna Maria",
+			"lastName": "Baldassarre",
+			"attributes": {
+				"income": "230000",
+				"school": "giovannixxiii"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"schooloperator"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "LEONARDODAVINCIX",
+			"enabled": true,
+			"email": "elena.fattori@vige.it",
+			"firstName": "Elena",
+			"lastName": "Fattori",
+			"attributes": {
+				"income": "90000",
+				"school": "leonardodavinci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"schooloperator"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "MANZIXXXXXXXXXXX",
+			"enabled": true,
+			"email": "ilaria.fontana@vige.it",
+			"firstName": "Ilaria",
+			"lastName": "Fontana",
+			"attributes": {
+				"income": "239990",
+				"school": "manzi"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"schooloperator"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "MONTECELIOXXXXXX",
+			"enabled": true,
+			"email": "nunzia.catalfo@vige.it",
+			"firstName": "Nunzia",
+			"lastName": "Catalfo",
+			"attributes": {
+				"income": "26700",
+				"school": "montecelio"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"schooloperator"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		},
+		{
+			"username": "MONTELUCCIXXXXXX",
+			"enabled": true,
+			"email": "vito.crimi@vige.it",
+			"firstName": "Vito",
+			"lastName": "Crimi",
+			"attributes": {
+				"income": "277770",
+				"school": "montelucci"
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"realmRoles": [
+				"schooloperator"
+			],
+			"clientRoles": {
+				"account": [
+					"manage-account"
+				]
+			}
+		}
+	],
+	"roles": {
+		"realm": [
+			{
+				"name": "admin",
+				"description": "Administrator privileges"
+			},
+			{
+				"name": "schooloperator",
+				"description": "School Operator privileges"
+			},
+			{
+				"name": "teacher",
+				"description": "Teacher privileges"
+			},
+			{
+				"name": "pupil",
+				"description": "Pupil privileges"
+			}
+		]
+	}
 }
