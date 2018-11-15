@@ -310,6 +310,21 @@
 								</goals>
 							</execution>
 							<execution>
+								<id>reload</id>
+								<phase>install</phase>
+								<goals>
+									<goal>execute-commands</goal>
+								</goals>
+								<configuration>
+									<executeCommands>
+										<commands>
+											<command>:reload
+											</command>
+										</commands>
+									</executeCommands>
+								</configuration>
+							</execution>
+							<execution>
 								<id>del-resources</id>
 								<phase>clean</phase>
 								<goals>
