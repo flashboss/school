@@ -1,6 +1,5 @@
 package it.vige.school.web;
 
-import static it.vige.school.Utils.getCurrentUser;
 import static java.lang.String.format;
 import static org.jboss.logging.Logger.getLogger;
 
@@ -40,7 +39,7 @@ public class Detail implements Serializable {
 	public void init() {
 		if (configuration.isPupil()) {
 			try {
-				String id = getCurrentUser();
+				String id = configuration.getUser();
 				create(id);
 			} catch (ModuleException me) {
 				log.error(me);

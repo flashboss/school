@@ -5,7 +5,6 @@ import static it.vige.school.Constants.PUPIL_ROLE;
 import static it.vige.school.Constants.SCHOOL_OPERATOR_ROLE;
 import static it.vige.school.Constants.TEACHER_ROLE;
 import static it.vige.school.Utils.getCalendarByDate;
-import static it.vige.school.Utils.getCurrentUser;
 import static it.vige.school.Utils.today;
 import static it.vige.school.web.ReportType.MONTH;
 import static it.vige.school.web.ReportType.YEAR;
@@ -26,6 +25,8 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 
 import org.jboss.logging.Logger;
 import org.primefaces.event.DateViewChangeEvent;
@@ -51,9 +52,13 @@ public class Configuration implements Serializable {
 
 	private String formattedDate = monthDateFormat.format(currentDate);
 
-	private String user = getCurrentUser();
-
 	private String currentLocale = getProperty("user.language");
+
+	private String user;
+	{
+		HttpServletRequest request = (HttpServletRequest) getCurrentInstance().getExternalContext().getRequest();
+		user = request.getUserPrincipal().getName();
+	}
 
 	@Inject
 	private Users users;
@@ -154,5 +159,13 @@ public class Configuration implements Serializable {
 		FacesContext facesContext = getCurrentInstance();
 		ExternalContext ec = facesContext.getExternalContext();
 		ec.redirect(ec.getRequestContextPath() + page);
+	}
+
+	public void logout() throws IOException, ServletException {
+		log.debug("logout");
+		ExternalContext ec = getCurrentInstance().getExternalContext();
+		HttpServletRequest request = (HttpServletRequest) ec.getRequest();
+		request.logout();
+		redirect("/views/index.xhtml");
 	}
 }

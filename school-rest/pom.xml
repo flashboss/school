@@ -318,6 +318,8 @@
 								<configuration>
 									<executeCommands>
 										<commands>
+											<command>/subsystem=undertow/application-security-domain=other:write-attribute(name=enable-jacc,value=true)
+											</command>
 											<command>:reload
 											</command>
 										</commands>
