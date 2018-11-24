@@ -262,15 +262,10 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 								<id>reload</id>
 								<phase>install</phase>
 								<goals>
-									<goal>execute-commands</goal>
+									<goal>shutdown</goal>
 								</goals>
 								<configuration>
-									<executeCommands>
-										<commands>
-											<command>:reload
-											</command>
-										</commands>
-									</executeCommands>
+									<reload>true</reload>
 								</configuration>
 							</execution>
 							<execution>

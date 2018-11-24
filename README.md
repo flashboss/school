@@ -58,11 +58,11 @@ As the same manner you can deploy the rest application instead of the jsf applic
     
 If you want to start a WildFly instance and execute the deploy of the JSF application:
 
-    mvn install -Pproduction,runtime-jsf,deploy-jsf
+    mvn install -Pproduction,runtime-school-jsf,deploy-jsf
     
 Or for the REST application:
 
-    mvn install -Pproduction,runtime-rest,deploy-rest
+    mvn install -Pproduction,runtime-school-rest,deploy-rest
 
 to deploy it with the shell command in WildFly:
 
