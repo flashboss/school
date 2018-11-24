@@ -12,6 +12,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.ws.rs.core.GenericType;
+import javax.ws.rs.core.Response;
 
 import org.jboss.logging.Logger;
 
@@ -21,9 +23,12 @@ import it.vige.school.model.PresenceEntity;
 import it.vige.school.model.UserEntity;
 
 @Stateless
-public class SchoolModuleImpl implements SchoolModule, Converters {
+public class SchoolModuleImpl extends RestCaller implements SchoolModule, Converters {
 
 	private static Logger log = getLogger(SchoolModuleImpl.class);
+
+	private final static String url = "http://localhost:8180/auth/school-domain/users";
+	private final static String authorization = "Basic cm9vdDpndG4=";
 
 	@PersistenceContext(unitName = "school")
 	private EntityManager em;
@@ -31,6 +36,11 @@ public class SchoolModuleImpl implements SchoolModule, Converters {
 	@Override
 	public List<User> findAllUsers() throws ModuleException {
 		try {
+			Response response = post(url, authorization, "{}");
+			List<User> users = response.readEntity(new GenericType<List<User>>() {
+			});
+			response.close();
+
 			TypedQuery<UserEntity> query = em.createNamedQuery("findAllUsers", UserEntity.class);
 			List<UserEntity> userList = query.getResultList();
 			log.debug("user found: " + userList);

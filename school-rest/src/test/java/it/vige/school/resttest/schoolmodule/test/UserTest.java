@@ -23,8 +23,8 @@ import javax.ws.rs.core.Response;
 
 import org.junit.jupiter.api.Test;
 
+import it.vige.school.RestCaller;
 import it.vige.school.dto.User;
-import it.vige.school.resttest.RestCaller;
 
 public class UserTest extends RestCaller {
 
