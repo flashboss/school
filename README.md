@@ -58,11 +58,11 @@ As the same manner you can deploy the rest application instead of the jsf applic
     
 If you want to start a WildFly instance and execute the deploy of the JSF application:
 
-    mvn install -Pproduction,runtime-jsf,deploy-jsf
+    mvn install -Pproduction,runtime-school-jsf,deploy-jsf
     
 Or for the REST application:
 
-    mvn install -Pproduction,runtime-rest,deploy-rest
+    mvn install -Pproduction,runtime-school-rest,deploy-rest
 
 to deploy it with the shell command in WildFly:
 
@@ -99,4 +99,4 @@ To debug the application using Eclipse you can put this parameter:
 
 It will start on the 5005 port.
 
-The tests are done using Chrome 69.0.3497.100 (64-bit) on WildFly 15.0.0.CR1
+The tests are done using Chrome 70.0.3538.102 (64-bit) on WildFly 15.0.0.CR1
