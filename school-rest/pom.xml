@@ -237,8 +237,8 @@
 						<artifactId>wildfly-maven-plugin</artifactId>
 						<version>${wildfly.maven.plugin.version}</version>
 						<configuration>
-							<jvm-args>${JAVA_OPTS} --add-modules=java.se
-							</jvm-args>
+							<java-opts>${JAVA_OPTS}
+							</java-opts>
 						</configuration>
 						<executions>
 							<execution>
@@ -313,17 +313,10 @@
 								<id>reload</id>
 								<phase>install</phase>
 								<goals>
-									<goal>execute-commands</goal>
+									<goal>shutdown</goal>
 								</goals>
 								<configuration>
-									<executeCommands>
-										<commands>
-											<command>/subsystem=undertow/application-security-domain=other:write-attribute(name=enable-jacc,value=true)
-											</command>
-											<command>:reload
-											</command>
-										</commands>
-									</executeCommands>
+									<reload>true</reload>
 								</configuration>
 							</execution>
 							<execution>

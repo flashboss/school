@@ -20,14 +20,13 @@ import org.jboss.logging.Logger;
 import it.vige.school.dto.Presence;
 import it.vige.school.dto.User;
 import it.vige.school.model.PresenceEntity;
-import it.vige.school.model.UserEntity;
 
 @Stateless
 public class SchoolModuleImpl extends RestCaller implements SchoolModule, Converters {
 
 	private static Logger log = getLogger(SchoolModuleImpl.class);
 
-	private final static String url = "http://localhost:8180/auth/school-domain/users";
+	private final static String url = "http://localhost:8180/auth/realms/school-domain/users";
 	private final static String authorization = "Basic cm9vdDpndG4=";
 
 	@PersistenceContext(unitName = "school")
@@ -37,14 +36,12 @@ public class SchoolModuleImpl extends RestCaller implements SchoolModule, Conver
 	public List<User> findAllUsers() throws ModuleException {
 		try {
 			Response response = post(url, authorization, "{}");
-			List<User> users = response.readEntity(new GenericType<List<User>>() {
+			List<User> userList = response.readEntity(new GenericType<List<User>>() {
 			});
 			response.close();
-
-			TypedQuery<UserEntity> query = em.createNamedQuery("findAllUsers", UserEntity.class);
-			List<UserEntity> userList = query.getResultList();
 			log.debug("user found: " + userList);
-			return userList.stream().map(t -> UserEntityToUser.apply(t)).collect(toList());
+
+			return userList;
 		} catch (Exception e) {
 			String message = "Cannot find user";
 			throw new ModuleException(message, e);
@@ -68,11 +65,9 @@ public class SchoolModuleImpl extends RestCaller implements SchoolModule, Conver
 	public List<User> findUsersByRoom(String room) throws ModuleException {
 		if (room != null) {
 			try {
-				TypedQuery<UserEntity> query = em.createNamedQuery("findUsersByRoom", UserEntity.class);
-				query.setParameter("room", room);
-				List<UserEntity> userList = query.getResultList();
+				List<User> userList = findAllUsers();
 				log.debug("user found: " + userList);
-				return userList.stream().map(t -> UserEntityToUser.apply(t)).collect(toList());
+				return userList.stream().filter(t -> room.equals(t.getRoom())).collect(toList());
 			} catch (Exception e) {
 				String message = "Cannot find user by room " + room;
 				throw new ModuleException(message, e);
@@ -86,11 +81,9 @@ public class SchoolModuleImpl extends RestCaller implements SchoolModule, Conver
 	public List<User> findUsersBySchool(String school) throws ModuleException {
 		if (school != null) {
 			try {
-				TypedQuery<UserEntity> query = em.createNamedQuery("findUsersBySchool", UserEntity.class);
-				query.setParameter("school", school);
-				List<UserEntity> userList = query.getResultList();
+				List<User> userList = findAllUsers();
 				log.debug("user found: " + userList);
-				return userList.stream().map(t -> UserEntityToUser.apply(t)).collect(toList());
+				return userList.stream().filter(t -> school.equals(t.getSchool())).collect(toList());
 			} catch (Exception e) {
 				String message = "Cannot find user by room " + school;
 				throw new ModuleException(message, e);
@@ -104,12 +97,10 @@ public class SchoolModuleImpl extends RestCaller implements SchoolModule, Conver
 	public List<User> findUsersBySchoolAndRoom(String school, String room) throws ModuleException {
 		if (school != null) {
 			try {
-				TypedQuery<UserEntity> query = em.createNamedQuery("findUsersBySchoolAndRoom", UserEntity.class);
-				query.setParameter("school", school);
-				query.setParameter("room", room);
-				List<UserEntity> userList = query.getResultList();
+				List<User> userList = findAllUsers();
 				log.debug("user found: " + userList);
-				return userList.stream().map(t -> UserEntityToUser.apply(t)).collect(toList());
+				return userList.stream().filter(t -> school.equals(t.getSchool()) && room.equals(t.getRoom()))
+						.collect(toList());
 			} catch (Exception e) {
 				String message = "Cannot find user by school " + school;
 				throw new ModuleException(message, e);
@@ -123,8 +114,12 @@ public class SchoolModuleImpl extends RestCaller implements SchoolModule, Conver
 	public User findUserById(String id) throws ModuleException {
 		if (id != null) {
 			try {
-				UserEntity userEntity = em.find(UserEntity.class, id);
-				return UserEntityToUser.apply(userEntity);
+				Response response = post(url + "/" + id, authorization, "{}");
+				User user = response.readEntity(User.class);
+				response.close();
+				log.debug("user found: " + user);
+
+				return user;
 			} catch (Exception e) {
 				String message = "Cannot find user by id " + id;
 				throw new ModuleException(message, e);
@@ -139,7 +134,7 @@ public class SchoolModuleImpl extends RestCaller implements SchoolModule, Conver
 		if (user != null) {
 			try {
 				TypedQuery<PresenceEntity> query = em.createNamedQuery("findPresencesByUser", PresenceEntity.class);
-				query.setParameter("user", em.find(UserEntity.class, user.getId()));
+				query.setParameter("user", user.getId());
 				List<PresenceEntity> presenceList = query.getResultList();
 				log.debug("user found: " + presenceList);
 				return presenceList.stream().map(t -> PresenceEntityToPresence.apply(t)).collect(toList());
@@ -220,7 +215,7 @@ public class SchoolModuleImpl extends RestCaller implements SchoolModule, Conver
 		if (presence != null) {
 			PresenceEntity presenceEntity = PresenceToPresenceEntity.apply(presence);
 			User user = presence.getUser();
-			presenceEntity.getId().setUser(em.find(UserEntity.class, user.getId()));
+			presenceEntity.getId().setUser(user.getId());
 			em.persist(presenceEntity);
 			log.debug("presence created: " + presenceEntity);
 			return PresenceEntityToPresence.apply(presenceEntity);
@@ -238,7 +233,7 @@ public class SchoolModuleImpl extends RestCaller implements SchoolModule, Conver
 
 	private PresenceEntity findPresenceEntityByUserAndDay(Presence presence) throws ModuleException {
 		TypedQuery<PresenceEntity> query = em.createNamedQuery("findPresenceByUserAndDay", PresenceEntity.class);
-		query.setParameter("user", em.find(UserEntity.class, presence.getUser().getId()));
+		query.setParameter("user", presence.getUser().getId());
 		query.setParameter("day", presence.getDay());
 		return query.getSingleResult();
 	}
