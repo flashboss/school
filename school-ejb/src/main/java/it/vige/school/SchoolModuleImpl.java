@@ -4,9 +4,14 @@ import static java.util.Calendar.MONTH;
 import static java.util.Calendar.YEAR;
 import static java.util.stream.Collectors.toList;
 import static org.jboss.logging.Logger.getLogger;
+import static org.keycloak.authorization.client.AuthzClient.create;
+import static org.keycloak.util.JsonSerialization.readValue;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -16,6 +21,9 @@ import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
 
 import org.jboss.logging.Logger;
+import org.keycloak.authorization.client.AuthzClient;
+import org.keycloak.authorization.client.Configuration;
+import org.keycloak.representations.AccessTokenResponse;
 
 import it.vige.school.dto.Presence;
 import it.vige.school.dto.User;
@@ -26,16 +34,19 @@ public class SchoolModuleImpl extends RestCaller implements SchoolModule, Conver
 
 	private static Logger log = getLogger(SchoolModuleImpl.class);
 
-	private final static String url = "http://localhost:8180/auth/realms/school-domain/users";
-	private final static String authorization = "Basic cm9vdDpndG4=";
+	private final static String url = "http://localhost:8180/auth/realms/school-domain/protocol/openid-connect/userinfo";
 
 	@PersistenceContext(unitName = "school")
 	private EntityManager em;
 
+	private String accessToken;
+
 	@Override
 	public List<User> findAllUsers() throws ModuleException {
 		try {
-			Response response = post(url, authorization, "{}");
+			Response response = get(accessToken, url);
+			Map<String, Object> map = response.readEntity(new GenericType<Map<String, Object>>() {
+			});
 			List<User> userList = response.readEntity(new GenericType<List<User>>() {
 			});
 			response.close();
@@ -114,7 +125,7 @@ public class SchoolModuleImpl extends RestCaller implements SchoolModule, Conver
 	public User findUserById(String id) throws ModuleException {
 		if (id != null) {
 			try {
-				Response response = post(url + "/" + id, authorization, "{}");
+				Response response = post(accessToken, url + "/" + id, "{}");
 				User user = response.readEntity(User.class);
 				response.close();
 				log.debug("user found: " + user);
@@ -236,6 +247,13 @@ public class SchoolModuleImpl extends RestCaller implements SchoolModule, Conver
 		query.setParameter("user", presence.getUser().getId());
 		query.setParameter("day", presence.getDay());
 		return query.getSingleResult();
+	}
+
+	@Override
+	public void setAccessToken(InputStream configuration) throws IOException {
+		AuthzClient authzClient = create(readValue(configuration, Configuration.class));
+		AccessTokenResponse accessTokenResponse = authzClient.obtainAccessToken();
+		accessToken = accessTokenResponse.getRefreshToken();
 	}
 
 }

@@ -14,6 +14,7 @@ import static javax.faces.context.FacesContext.getCurrentInstance;
 import static org.jboss.logging.Logger.getLogger;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -53,6 +54,9 @@ public class Configuration implements Serializable {
 	private String formattedDate = monthDateFormat.format(currentDate);
 
 	private String currentLocale = getProperty("user.language");
+
+	private InputStream keycloakConfiguration = getCurrentInstance().getExternalContext()
+			.getResourceAsStream("WEB-INF/keycloak.json");
 
 	private String user;
 	{
@@ -167,5 +171,9 @@ public class Configuration implements Serializable {
 		HttpServletRequest request = (HttpServletRequest) ec.getRequest();
 		request.logout();
 		redirect("/views/index.xhtml");
+	}
+
+	public InputStream getKeycloakConfiguration() {
+		return keycloakConfiguration;
 	}
 }

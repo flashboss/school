@@ -13,8 +13,11 @@
  ******************************************************************************/
 package it.vige.school.rest;
 
+import static java.lang.Thread.currentThread;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Calendar;
 import java.util.List;
 
@@ -37,10 +40,14 @@ public class RestSchoolModule {
 	@EJB
 	private SchoolModule schoolModule;
 
+	private InputStream keycloakConfiguration = currentThread().getContextClassLoader()
+			.getResourceAsStream("keycloak.json");
+
 	@GET
 	@Path("findAllUsers")
 	@Produces(APPLICATION_JSON)
-	public List<User> findAllUsers() throws ModuleException {
+	public List<User> findAllUsers() throws ModuleException, IOException {
+		schoolModule.setAccessToken(keycloakConfiguration);
 		return schoolModule.findAllUsers();
 	}
 
@@ -54,14 +61,16 @@ public class RestSchoolModule {
 	@GET
 	@Path("findUsersByRoom/{room}")
 	@Produces(APPLICATION_JSON)
-	public List<User> findUsersByRoom(@PathParam("room") String room) throws ModuleException {
+	public List<User> findUsersByRoom(@PathParam("room") String room) throws ModuleException, IOException {
+		schoolModule.setAccessToken(keycloakConfiguration);
 		return schoolModule.findUsersByRoom(room);
 	}
 
 	@GET
 	@Path("findUsersBySchool/{school}")
 	@Produces(APPLICATION_JSON)
-	public List<User> findUsersBySchool(@PathParam("school") String school) throws ModuleException {
+	public List<User> findUsersBySchool(@PathParam("school") String school) throws ModuleException, IOException {
+		schoolModule.setAccessToken(keycloakConfiguration);
 		return schoolModule.findUsersBySchool(school);
 	}
 
@@ -69,14 +78,16 @@ public class RestSchoolModule {
 	@Path("findUsersBySchoolAndRoom/{school}/{room}")
 	@Produces(APPLICATION_JSON)
 	public List<User> findUsersBySchoolAndRoom(@PathParam("school") String school, @PathParam("room") String room)
-			throws ModuleException {
+			throws ModuleException, IOException {
+		schoolModule.setAccessToken(keycloakConfiguration);
 		return schoolModule.findUsersBySchoolAndRoom(school, room);
 	}
 
 	@GET
 	@Path("findUserById/{id}")
 	@Produces(APPLICATION_JSON)
-	public User findUserById(@PathParam("id") String id) throws ModuleException {
+	public User findUserById(@PathParam("id") String id) throws ModuleException, IOException {
+		schoolModule.setAccessToken(keycloakConfiguration);
 		return schoolModule.findUserById(id);
 	}
 
