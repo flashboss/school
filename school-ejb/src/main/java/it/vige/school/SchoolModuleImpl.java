@@ -34,16 +34,19 @@ public class SchoolModuleImpl extends RestCaller implements SchoolModule, Conver
 
 	private static Logger log = getLogger(SchoolModuleImpl.class);
 
-	private final static String url = "http://localhost:8180/auth/realms/school-domain/protocol/openid-connect/userinfo";
-
 	@PersistenceContext(unitName = "school")
 	private EntityManager em;
 
 	private String accessToken;
 
+	private String authServerUrl;
+
+	private String realm;
+
 	@Override
 	public List<User> findAllUsers() throws ModuleException {
 		try {
+			String url = authServerUrl + "/admin/realms/" + realm + "/users";
 			Response response = get(accessToken, url);
 			Map<String, Object> map = response.readEntity(new GenericType<Map<String, Object>>() {
 			});
@@ -125,7 +128,8 @@ public class SchoolModuleImpl extends RestCaller implements SchoolModule, Conver
 	public User findUserById(String id) throws ModuleException {
 		if (id != null) {
 			try {
-				Response response = post(accessToken, url + "/" + id, "{}");
+				String url = authServerUrl + "/realms/" + realm + "/protocol/openid-connect/userinfo";
+				Response response = post(accessToken, authServerUrl + url + "/" + id, "{}");
 				User user = response.readEntity(User.class);
 				response.close();
 				log.debug("user found: " + user);
@@ -242,18 +246,20 @@ public class SchoolModuleImpl extends RestCaller implements SchoolModule, Conver
 		log.debug("presence removed: " + presenceEntity);
 	}
 
-	private PresenceEntity findPresenceEntityByUserAndDay(Presence presence) throws ModuleException {
-		TypedQuery<PresenceEntity> query = em.createNamedQuery("findPresenceByUserAndDay", PresenceEntity.class);
-		query.setParameter("user", presence.getUser().getId());
-		query.setParameter("day", presence.getDay());
-		return query.getSingleResult();
-	}
-
 	@Override
 	public void setAccessToken(InputStream configuration) throws IOException {
 		AuthzClient authzClient = create(readValue(configuration, Configuration.class));
 		AccessTokenResponse accessTokenResponse = authzClient.obtainAccessToken();
 		accessToken = accessTokenResponse.getRefreshToken();
+		authServerUrl = authzClient.getConfiguration().getAuthServerUrl();
+		realm = authzClient.getConfiguration().getRealm();
+	}
+
+	private PresenceEntity findPresenceEntityByUserAndDay(Presence presence) throws ModuleException {
+		TypedQuery<PresenceEntity> query = em.createNamedQuery("findPresenceByUserAndDay", PresenceEntity.class);
+		query.setParameter("user", presence.getUser().getId());
+		query.setParameter("day", presence.getDay());
+		return query.getSingleResult();
 	}
 
 }
