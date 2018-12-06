@@ -250,7 +250,7 @@ public class SchoolModuleImpl extends RestCaller implements SchoolModule, Conver
 	public void setAccessToken(InputStream configuration) throws IOException {
 		AuthzClient authzClient = create(readValue(configuration, Configuration.class));
 		AccessTokenResponse accessTokenResponse = authzClient.obtainAccessToken();
-		accessToken = accessTokenResponse.getRefreshToken();
+		accessToken = accessTokenResponse.getToken();
 		authServerUrl = authzClient.getConfiguration().getAuthServerUrl();
 		realm = authzClient.getConfiguration().getRealm();
 	}
