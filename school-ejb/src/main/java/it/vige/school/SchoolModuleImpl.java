@@ -21,6 +21,8 @@ import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
 
 import org.jboss.logging.Logger;
+import org.keycloak.admin.client.Keycloak;
+import org.keycloak.admin.client.resource.UsersResource;
 import org.keycloak.authorization.client.AuthzClient;
 import org.keycloak.authorization.client.Configuration;
 import org.keycloak.representations.AccessTokenResponse;
@@ -46,6 +48,11 @@ public class SchoolModuleImpl extends RestCaller implements SchoolModule, Conver
 	@Override
 	public List<User> findAllUsers() throws ModuleException {
 		try {
+/*
+			Keycloak keycloak = Keycloak.getInstance("http://localhost:8180/auth", "school-domain", "admin", "admin",
+					"admin-cli");
+			UsersResource users = keycloak.realm("school-domain").users();
+			users.count(); */
 			String url = authServerUrl + "/admin/realms/" + realm + "/users";
 			Response response = get(accessToken, url);
 			Map<String, Object> map = response.readEntity(new GenericType<Map<String, Object>>() {

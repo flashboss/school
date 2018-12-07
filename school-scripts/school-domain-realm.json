@@ -28,14 +28,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"admin"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "STNLCU76E15H501X",
@@ -54,14 +49,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "SANLCU76E15H501X",
@@ -80,14 +70,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "STHLCU76E15H501X",
@@ -106,14 +91,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "STNLCO76E15H501X",
@@ -132,14 +112,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "STN9CU76E15H501X",
@@ -158,14 +133,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "STNMCU76E15H501X",
@@ -184,14 +154,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "STNLCU76E15H601X",
@@ -210,14 +175,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "STNLCU76E15U801X",
@@ -236,14 +196,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "STNLCU99I15H501X",
@@ -262,14 +217,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "STNLCY98E15H501X",
@@ -288,14 +238,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "STNUQ786E15H501X",
@@ -314,14 +259,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "STNLCU76E15H502Y",
@@ -340,14 +280,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "STNLCU73T85H501X",
@@ -366,14 +301,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "ABNLCU76E15H501X",
@@ -392,14 +322,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "OPILCU76E15H501X",
@@ -418,14 +343,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "BHJLCU76E15H501X",
@@ -444,14 +364,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AQWLCU76E15H501X",
@@ -470,14 +385,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "MLLLCU76E15H501X",
@@ -496,14 +406,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "OOOLCU76E15H501X",
@@ -522,14 +427,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "QWERCU76E15H501X",
@@ -548,14 +448,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "MJKLCU76E15H501X",
@@ -574,14 +469,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "YYTLCU76E15H501X",
@@ -600,14 +490,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AQWLC576E15H501X",
@@ -626,14 +511,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "NNBLCU76E15H501X",
@@ -652,14 +532,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "NNJLCU76E15H501X",
@@ -678,14 +553,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "SSALCU76E15H501X",
@@ -704,14 +574,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "IIYLCU76E15H501X",
@@ -730,14 +595,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "HJULCU76E15H501X",
@@ -756,14 +616,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "IIVLCU76E15H501X",
@@ -782,14 +637,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "STNLCU75SZ3H501X",
@@ -808,14 +658,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AAAACU76E15H501X",
@@ -834,14 +679,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "ABCLCU76E15H501X",
@@ -860,14 +700,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "GHYYCU76E15H501X",
@@ -886,14 +721,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "DDSLCU76E15H501X",
@@ -912,14 +742,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "VVSLCU76E15H501X",
@@ -938,14 +763,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "IIILCU76E15H501X",
@@ -964,14 +784,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"pupil"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "NLORENZOMILANI0A",
@@ -990,14 +805,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "NLORENZOMILANI0B",
@@ -1016,14 +826,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "NLORENZOMILANI0C",
@@ -1042,14 +847,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "NLORENZOMILANI1A",
@@ -1068,14 +868,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "NLORENZOMILANI2A",
@@ -1094,14 +889,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "NLORENZOMILANI3A",
@@ -1120,14 +910,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "NLORENZOMILANI4A",
@@ -1146,14 +931,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "NLORENZOMILANI5A",
@@ -1172,14 +952,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "NLORENZOMILANI1B",
@@ -1198,14 +973,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "NLORENZOMILANI2B",
@@ -1224,14 +994,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "NLORENZOMILANI3B",
@@ -1250,14 +1015,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "NLORENZOMILANI4B",
@@ -1276,14 +1036,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "NLORENZOMILANI5B",
@@ -1302,14 +1057,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "OARDODEFILIPPO0B",
@@ -1328,14 +1078,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "OARDODEFILIPPO0C",
@@ -1354,14 +1099,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "OARDODEFILIPPO0D",
@@ -1380,14 +1120,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "OARDODEFILIPPO1A",
@@ -1406,14 +1141,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "OARDODEFILIPPO2A",
@@ -1432,14 +1162,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "OARDODEFILIPPO3A",
@@ -1458,14 +1183,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "OARDODEFILIPPO4A",
@@ -1484,14 +1204,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "OARDODEFILIPPO5A",
@@ -1510,14 +1225,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "OARDODEFILIPPO1C",
@@ -1536,14 +1246,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "OARDODEFILIPPO2C",
@@ -1562,14 +1267,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "OARDODEFILIPPO3C",
@@ -1588,14 +1288,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "OARDODEFILIPPO4C",
@@ -1614,14 +1309,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "OARDODEFILIPPO5C",
@@ -1640,14 +1330,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "OARDODEFILIPPO2F",
@@ -1666,14 +1351,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "OARDODEFILIPPO3F",
@@ -1692,14 +1372,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "OARDODEFILIPPO4F",
@@ -1718,14 +1393,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "OARDODEFILIPPO5F",
@@ -1744,14 +1414,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "OARDODEFILIPPO5G",
@@ -1770,14 +1435,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AAAAAGARIBALDI0A",
@@ -1796,14 +1456,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AAAAAGARIBALDI0B",
@@ -1822,14 +1477,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AAAAAGARIBALDI0C",
@@ -1848,14 +1498,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AAAAAGARIBALDI1A",
@@ -1874,14 +1519,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AAAAAGARIBALDI2A",
@@ -1900,14 +1540,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AAAAAGARIBALDI3A",
@@ -1926,14 +1561,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AAAAAGARIBALDI4A",
@@ -1952,14 +1582,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AAAAAGARIBALDI5A",
@@ -1978,14 +1603,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AAAAAGARIBALDI1G",
@@ -2004,14 +1624,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AAAAAGARIBALDI2G",
@@ -2030,14 +1645,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AAAAAGARIBALDI3G",
@@ -2056,14 +1666,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AAAAAGARIBALDI1B",
@@ -2082,14 +1687,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AAAAAGARIBALDI2B",
@@ -2108,14 +1708,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AAAAAGARIBALDI3B",
@@ -2134,14 +1729,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AAAAAGARIBALDI4B",
@@ -2160,14 +1750,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AAAAAGARIBALDI5B",
@@ -2186,14 +1771,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AAAAAGARIBALDI1C",
@@ -2212,14 +1792,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AAAAAGARIBALDI2C",
@@ -2238,14 +1813,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AAAAAGARIBALDI3C",
@@ -2264,14 +1834,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AAAAAGARIBALDI4C",
@@ -2290,14 +1855,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AAAAAGARIBALDI5C",
@@ -2316,14 +1876,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AGIOVANNIXXIII0A",
@@ -2342,14 +1897,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AGIOVANNIXXIII0B",
@@ -2368,14 +1918,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AGIOVANNIXXIII1A",
@@ -2394,14 +1939,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AGIOVANNIXXIII2A",
@@ -2420,14 +1960,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AGIOVANNIXXIII3A",
@@ -2446,14 +1981,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AGIOVANNIXXIII4A",
@@ -2472,14 +2002,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AGIOVANNIXXIII5A",
@@ -2498,14 +2023,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AGIOVANNIXXIII1C",
@@ -2524,14 +2044,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AGIOVANNIXXIII2C",
@@ -2550,14 +2065,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AGIOVANNIXXIII3C",
@@ -2576,14 +2086,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AGIOVANNIXXIII4C",
@@ -2602,14 +2107,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "AGIOVANNIXXIII5C",
@@ -2628,14 +2128,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "EONARDODAVINCI0B",
@@ -2654,14 +2149,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "EONARDODAVINCI0C",
@@ -2680,14 +2170,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "EONARDODAVINCI0E",
@@ -2706,14 +2191,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "EONARDODAVINCI0F",
@@ -2732,14 +2212,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "EONARDODAVINCI0I",
@@ -2758,14 +2233,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "EONARDODAVINCI2C",
@@ -2784,14 +2254,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "EONARDODAVINCI4C",
@@ -2810,14 +2275,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "EONARDODAVINCI5C",
@@ -2836,14 +2296,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "EONARDODAVINCI1D",
@@ -2862,14 +2317,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "EONARDODAVINCI2D",
@@ -2888,14 +2338,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "EONARDODAVINCI3D",
@@ -2914,14 +2359,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "EONARDODAVINCI4D",
@@ -2940,14 +2380,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "EONARDODAVINCI5D",
@@ -2966,14 +2401,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "EONARDODAVINCI1E",
@@ -2992,14 +2422,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "EONARDODAVINCI2E",
@@ -3018,14 +2443,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "EONARDODAVINCI3E",
@@ -3044,14 +2464,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "EONARDODAVINCI4E",
@@ -3070,14 +2485,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "EONARDODAVINCI5E",
@@ -3096,14 +2506,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "EONARDODAVINCI1F",
@@ -3122,14 +2527,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "EONARDODAVINCI3F",
@@ -3148,14 +2548,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "CCCCCCCCCMANZI0D",
@@ -3174,14 +2569,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "CCCCCCCCCMANZI0E",
@@ -3200,14 +2590,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "CCCCCCCCCMANZI0G",
@@ -3226,14 +2611,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "CCCCCCCCCMANZI1D",
@@ -3252,14 +2632,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "CCCCCCCCCMANZI2D",
@@ -3278,14 +2653,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "CCCCCCCCCMANZI3D",
@@ -3304,14 +2674,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "CCCCCCCCCMANZI4D",
@@ -3330,14 +2695,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "CCCCCCCCCMANZI5D",
@@ -3356,14 +2716,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "CCCCCCCCCMANZI1E",
@@ -3382,14 +2737,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "CCCCCCCCCMANZI2E",
@@ -3408,14 +2758,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "CCCCCCCCCMANZI3E",
@@ -3434,14 +2779,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "CCCCCCCCCMANZI4E",
@@ -3460,14 +2800,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "CCCCCCCCCMANZI5E",
@@ -3486,14 +2821,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "CCCCMONTECELIO0A",
@@ -3512,14 +2842,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "CCCCMONTECELIO2B",
@@ -3538,14 +2863,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "CCCCMONTELUCCI0B",
@@ -3564,14 +2884,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "CCCCMONTELUCCI0E",
@@ -3590,14 +2905,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "CCCCMONTELUCCI1C",
@@ -3616,14 +2926,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "CCCCMONTELUCCI2C",
@@ -3642,14 +2947,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "CCCCMONTELUCCI3C",
@@ -3668,14 +2968,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "CCCCMONTELUCCI4C",
@@ -3694,14 +2989,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "CCCCMONTELUCCI5C",
@@ -3720,14 +3010,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "CCCCMONTELUCCI1D",
@@ -3746,14 +3031,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "CCCCMONTELUCCI2D",
@@ -3772,14 +3052,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "CCCCMONTELUCCI3D",
@@ -3798,14 +3073,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "CCCCMONTELUCCI4D",
@@ -3824,14 +3094,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "CCCCMONTELUCCI5D",
@@ -3850,14 +3115,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"teacher"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "DONLORENZOMILANI",
@@ -3875,14 +3135,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"schooloperator"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "EDOARDODEFILIPPO",
@@ -3900,14 +3155,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"schooloperator"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "GARIBALDIXXXXXXX",
@@ -3925,14 +3175,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"schooloperator"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "GIOVANNIXXXIIIYY",
@@ -3950,14 +3195,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"schooloperator"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "LEONARDODAVINCIX",
@@ -3975,14 +3215,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"schooloperator"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "MANZIXXXXXXXXXXX",
@@ -4000,14 +3235,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"schooloperator"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "MONTECELIOXXXXXX",
@@ -4025,14 +3255,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"schooloperator"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		},
 		{
 			"username": "MONTELUCCIXXXXXX",
@@ -4050,14 +3275,9 @@
 					"value": "gtn"
 				}
 			],
-			"realmRoles": [
+			"groups": [
 				"schooloperator"
-			],
-			"clientRoles": {
-				"account": [
-					"manage-account"
-				]
-			}
+			]
 		}
 	],
 	"clients": [
@@ -4140,5 +3360,83 @@
 				"description": "Pupil privileges"
 			}
 		]
-	}
+	},
+	"groups": [
+		{
+			"name": "admin",
+			"path": "/admin",
+			"attributes": {
+				
+			},
+			"realmRoles": [
+				"admin"
+			],
+			"clientRoles": {
+				"realm-management": [
+					"query-users"
+				],
+				"account": [
+					"manage-account"
+				]
+			},
+			"subGroups": []
+		},
+		{
+			"name": "pupil",
+			"path": "/pupil",
+			"attributes": {
+				
+			},
+			"realmRoles": [
+				"pupil"
+			],
+			"clientRoles": {
+				"realm-management": [
+					"query-users"
+				],
+				"account": [
+					"manage-account"
+				]
+			},
+			"subGroups": []
+		},
+		{
+			"name": "schooloperator",
+			"path": "/schooloperator",
+			"attributes": {
+				
+			},
+			"realmRoles": [
+				"schooloperator"
+			],
+			"clientRoles": {
+				"realm-management": [
+					"query-users"
+				],
+				"account": [
+					"manage-account"
+				]
+			},
+			"subGroups": []
+		},
+		{
+			"name": "teacher",
+			"path": "/teacher",
+			"attributes": {
+				
+			},
+			"realmRoles": [
+				"teacher"
+			],
+			"clientRoles": {
+				"realm-management": [
+					"query-users"
+				],
+				"account": [
+					"manage-account"
+				]
+			},
+			"subGroups": []
+		}
+	]
 }
