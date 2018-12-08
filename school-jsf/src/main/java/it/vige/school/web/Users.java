@@ -54,6 +54,7 @@ public class Users implements Serializable {
 	public void init() {
 		boolean isAdmin = configuration.isAdmin();
 		try {
+			schoolModule.setAccessToken(configuration.getKeycloakConfiguration());
 			if (isAdmin) {
 				users = schoolModule.findAllUsers();
 			} else {
@@ -79,7 +80,7 @@ public class Users implements Serializable {
 				});
 			rooms = users.stream().map(x -> x.getRoom()).distinct().sorted().collect(toList());
 			schools = users.stream().map(x -> x.getSchool()).distinct().sorted().collect(toList());
-		} catch (ModuleException ex) {
+		} catch (ModuleException | IOException ex) {
 			FacesMessage message = new FacesMessage(SEVERITY_INFO, // severity
 					ERROR, ERROR);
 			getCurrentInstance().addMessage(ERROR, message);

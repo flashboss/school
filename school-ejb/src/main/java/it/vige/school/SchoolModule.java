@@ -1,5 +1,7 @@
 package it.vige.school;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Calendar;
 import java.util.List;
 
@@ -125,4 +127,12 @@ public interface SchoolModule {
 	 * @throws ModuleException DOCUMENT_ME
 	 */
 	void removePresence(Presence presence) throws ModuleException;
+
+	/**
+	 * set the keycloak access token passing the keycloak.json input stream.
+	 * 
+	 * @param configuration DOCUMENT_ME
+	 * @throws ModuleException DOCUMENT_ME
+	 */
+	void setAccessToken(InputStream configuration) throws IOException;
 }

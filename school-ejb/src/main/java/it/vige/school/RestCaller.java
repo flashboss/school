@@ -18,8 +18,13 @@ import static javax.ws.rs.client.ClientBuilder.newClient;
 import static javax.ws.rs.client.Entity.entity;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
+import java.io.IOException;
+import java.util.function.Supplier;
+
 import javax.json.bind.Jsonb;
 import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientRequestContext;
+import javax.ws.rs.client.ClientRequestFilter;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
@@ -28,16 +33,38 @@ public abstract class RestCaller {
 
 	private final static Client client = newClient();
 
-	protected Response get(String url, String authorization) {
+	protected Response get(String authorization, String url) {
+		Supplier<String> accessTokenProvider = () -> {
+			return authorization;
+		};
+		client.register(new KeycloakAuthRequestFilter(accessTokenProvider));
 		WebTarget target = client.target(url);
-		return target.request().header("Authorization", authorization).get();
+		return target.request().get();
 	}
 
-	protected Response post(String url, String authorization, Object entity) {
+	protected Response post(String authorization, String url, Object entity) {
 		Jsonb jsonb = create();
 		String json = jsonb.toJson(entity);
+		Supplier<String> accessTokenProvider = () -> {
+			return authorization;
+		};
+		client.register(new KeycloakAuthRequestFilter(accessTokenProvider));
 		WebTarget target = client.target(url);
 		Entity<String> restEntity = entity(json, APPLICATION_JSON);
-		return target.request().header("Authorization", authorization).post(restEntity);
+		return target.request().post(restEntity);
+	}
+
+	private static class KeycloakAuthRequestFilter implements ClientRequestFilter {
+
+		private final Supplier<String> accessTokenProvider;
+
+		public KeycloakAuthRequestFilter(Supplier<String> accessTokenProvider) {
+			this.accessTokenProvider = accessTokenProvider;
+		}
+
+		@Override
+		public void filter(ClientRequestContext requestContext) throws IOException {
+			requestContext.getHeaders().putSingle("Authorization", "Bearer " + accessTokenProvider.get());
+		}
 	}
 }

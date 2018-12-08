@@ -6,37 +6,22 @@ import it.vige.school.dto.Presence;
 import it.vige.school.dto.User;
 import it.vige.school.model.PresenceEntity;
 import it.vige.school.model.PresenceId;
-import it.vige.school.model.UserEntity;
 
 public interface Converters {
 
-	Function<UserEntity, User> UserEntityToUser = new Function<UserEntity, User>() {
+	Function<String, User> StringToUser = new Function<String, User>() {
 
-		public User apply(UserEntity t) {
+		public User apply(String t) {
 			User user = new User();
-			user.setId(t.getId());
-			user.setName(t.getName());
-			user.setSurname(t.getSurname());
-			user.setIncome(t.getIncome());
-			user.setRoom(t.getRoom());
-			user.setSchool(t.getSchool());
+			String[] splittedValue = t.split("-");
+			user.setId(splittedValue[0]);
+			user.setName(splittedValue[1]);
+			user.setSurname(splittedValue[2]);
+			user.setIncome(Integer.parseInt(splittedValue[3]));
+			user.setRoom(splittedValue[4]);
+			user.setSchool(splittedValue[5]);
 
 			return user;
-		}
-	};
-
-	Function<User, UserEntity> UserToUserEntity = new Function<User, UserEntity>() {
-
-		public UserEntity apply(User t) {
-			UserEntity userEntity = new UserEntity();
-			userEntity.setId(t.getId());
-			userEntity.setName(t.getName());
-			userEntity.setSurname(t.getSurname());
-			userEntity.setIncome(t.getIncome());
-			userEntity.setRoom(t.getRoom());
-			userEntity.setSchool(t.getSchool());
-
-			return userEntity;
 		}
 	};
 
@@ -45,7 +30,7 @@ public interface Converters {
 		public Presence apply(PresenceEntity t) {
 			Presence presence = new Presence();
 			presence.setDay(t.getId().getDay());
-			presence.setUser(UserEntityToUser.apply(t.getId().getUser()));
+			presence.setUser(StringToUser.apply(t.getId().getUser()));
 
 			return presence;
 		}
@@ -57,7 +42,7 @@ public interface Converters {
 			PresenceEntity presenceEntity = new PresenceEntity();
 			PresenceId presenceId = new PresenceId();
 			presenceId.setDay(t.getDay());
-			presenceId.setUser(UserToUserEntity.apply(t.getUser()));
+			presenceId.setUser(t.getUser().getId());
 			presenceEntity.setId(presenceId);
 
 			return presenceEntity;

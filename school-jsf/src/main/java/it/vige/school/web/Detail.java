@@ -41,7 +41,7 @@ public class Detail implements Serializable {
 			try {
 				String id = configuration.getUser();
 				create(id);
-			} catch (ModuleException me) {
+			} catch (ModuleException | IOException me) {
 				log.error(me);
 			}
 		}
@@ -76,7 +76,8 @@ public class Detail implements Serializable {
 		configuration.redirect("/views/detail.xhtml");
 	}
 
-	private void create(String id) throws ModuleException {
+	private void create(String id) throws ModuleException, IOException {
+		schoolModule.setAccessToken(configuration.getKeycloakConfiguration());
 		user = new ReportUser(schoolModule.findUserById(id));
 		update(user);
 	}

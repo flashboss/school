@@ -6,8 +6,6 @@ import java.io.Serializable;
 import java.util.Calendar;
 
 import javax.persistence.Embeddable;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
 @Embeddable
@@ -18,9 +16,7 @@ public class PresenceId implements Serializable {
 	@Temporal(DATE)
 	private Calendar day;
 
-	@ManyToOne
-	@JoinColumn(name = "user_id")
-	private UserEntity user;
+	private String user;
 
 	public Calendar getDay() {
 		return day;
@@ -30,11 +26,11 @@ public class PresenceId implements Serializable {
 		this.day = day;
 	}
 
-	public UserEntity getUser() {
+	public String getUser() {
 		return user;
 	}
 
-	public void setUser(UserEntity user) {
+	public void setUser(String user) {
 		this.user = user;
 	}
 
