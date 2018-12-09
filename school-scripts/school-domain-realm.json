@@ -3373,7 +3373,7 @@
 			],
 			"clientRoles": {
 				"realm-management": [
-					"query-users"
+					"view-users"
 				],
 				"account": [
 					"manage-account"
@@ -3392,7 +3392,7 @@
 			],
 			"clientRoles": {
 				"realm-management": [
-					"query-users"
+					"view-users"
 				],
 				"account": [
 					"manage-account"
@@ -3411,7 +3411,7 @@
 			],
 			"clientRoles": {
 				"realm-management": [
-					"query-users"
+					"view-users"
 				],
 				"account": [
 					"manage-account"
@@ -3430,7 +3430,7 @@
 			],
 			"clientRoles": {
 				"realm-management": [
-					"query-users"
+					"view-users"
 				],
 				"account": [
 					"manage-account"
