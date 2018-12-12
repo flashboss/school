@@ -4,70 +4,28 @@ import static java.util.Calendar.MONTH;
 import static java.util.Calendar.YEAR;
 import static java.util.stream.Collectors.toList;
 import static org.jboss.logging.Logger.getLogger;
-import static org.keycloak.authorization.client.AuthzClient.create;
-import static org.keycloak.util.JsonSerialization.readValue;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Map;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import javax.ws.rs.core.GenericType;
-import javax.ws.rs.core.Response;
 
 import org.jboss.logging.Logger;
-import org.keycloak.admin.client.Keycloak;
-import org.keycloak.admin.client.resource.UsersResource;
-import org.keycloak.authorization.client.AuthzClient;
-import org.keycloak.authorization.client.Configuration;
-import org.keycloak.representations.AccessTokenResponse;
 
 import it.vige.school.dto.Presence;
 import it.vige.school.dto.User;
 import it.vige.school.model.PresenceEntity;
 
 @Stateless
-public class SchoolModuleImpl extends RestCaller implements SchoolModule, Converters {
+public class SchoolModuleImpl implements SchoolModule, Converters {
 
 	private static Logger log = getLogger(SchoolModuleImpl.class);
 
 	@PersistenceContext(unitName = "school")
 	private EntityManager em;
-
-	private String accessToken;
-
-	private String authServerUrl;
-
-	private String realm;
-
-	@Override
-	public List<User> findAllUsers() throws ModuleException {
-		try {
-/*
-			Keycloak keycloak = Keycloak.getInstance("http://localhost:8180/auth", "school-domain", "admin", "admin",
-					"admin-cli");
-			UsersResource users = keycloak.realm("school-domain").users();
-			users.count(); */
-			String url = authServerUrl + "/admin/realms/" + realm + "/users";
-			Response response = get(accessToken, url);
-			Map<String, Object> map = response.readEntity(new GenericType<Map<String, Object>>() {
-			});
-			List<User> userList = response.readEntity(new GenericType<List<User>>() {
-			});
-			response.close();
-			log.debug("user found: " + userList);
-
-			return userList;
-		} catch (Exception e) {
-			String message = "Cannot find user";
-			throw new ModuleException(message, e);
-		}
-	}
 
 	@Override
 	public List<Presence> findAllPresences() throws ModuleException {
@@ -79,75 +37,6 @@ public class SchoolModuleImpl extends RestCaller implements SchoolModule, Conver
 		} catch (Exception e) {
 			String message = "Cannot find presence";
 			throw new ModuleException(message, e);
-		}
-	}
-
-	@Override
-	public List<User> findUsersByRoom(String room) throws ModuleException {
-		if (room != null) {
-			try {
-				List<User> userList = findAllUsers();
-				log.debug("user found: " + userList);
-				return userList.stream().filter(t -> room.equals(t.getRoom())).collect(toList());
-			} catch (Exception e) {
-				String message = "Cannot find user by room " + room;
-				throw new ModuleException(message, e);
-			}
-		} else {
-			throw new IllegalArgumentException("room cannot be null");
-		}
-	}
-
-	@Override
-	public List<User> findUsersBySchool(String school) throws ModuleException {
-		if (school != null) {
-			try {
-				List<User> userList = findAllUsers();
-				log.debug("user found: " + userList);
-				return userList.stream().filter(t -> school.equals(t.getSchool())).collect(toList());
-			} catch (Exception e) {
-				String message = "Cannot find user by room " + school;
-				throw new ModuleException(message, e);
-			}
-		} else {
-			throw new IllegalArgumentException("room cannot be null");
-		}
-	}
-
-	@Override
-	public List<User> findUsersBySchoolAndRoom(String school, String room) throws ModuleException {
-		if (school != null) {
-			try {
-				List<User> userList = findAllUsers();
-				log.debug("user found: " + userList);
-				return userList.stream().filter(t -> school.equals(t.getSchool()) && room.equals(t.getRoom()))
-						.collect(toList());
-			} catch (Exception e) {
-				String message = "Cannot find user by school " + school;
-				throw new ModuleException(message, e);
-			}
-		} else {
-			throw new IllegalArgumentException("room cannot be null");
-		}
-	}
-
-	@Override
-	public User findUserById(String id) throws ModuleException {
-		if (id != null) {
-			try {
-				String url = authServerUrl + "/realms/" + realm + "/protocol/openid-connect/userinfo";
-				Response response = post(accessToken, authServerUrl + url + "/" + id, "{}");
-				User user = response.readEntity(User.class);
-				response.close();
-				log.debug("user found: " + user);
-
-				return user;
-			} catch (Exception e) {
-				String message = "Cannot find user by id " + id;
-				throw new ModuleException(message, e);
-			}
-		} else {
-			throw new IllegalArgumentException("room cannot be null");
 		}
 	}
 
@@ -251,15 +140,6 @@ public class SchoolModuleImpl extends RestCaller implements SchoolModule, Conver
 		PresenceEntity presenceEntity = findPresenceEntityByUserAndDay(presence);
 		em.remove(presenceEntity);
 		log.debug("presence removed: " + presenceEntity);
-	}
-
-	@Override
-	public void setAccessToken(InputStream configuration) throws IOException {
-		AuthzClient authzClient = create(readValue(configuration, Configuration.class));
-		AccessTokenResponse accessTokenResponse = authzClient.obtainAccessToken();
-		accessToken = accessTokenResponse.getToken();
-		authServerUrl = authzClient.getConfiguration().getAuthServerUrl();
-		realm = authzClient.getConfiguration().getRealm();
 	}
 
 	private PresenceEntity findPresenceEntityByUserAndDay(Presence presence) throws ModuleException {

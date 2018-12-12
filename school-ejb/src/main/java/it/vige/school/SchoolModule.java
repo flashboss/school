@@ -1,7 +1,5 @@
 package it.vige.school;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Calendar;
 import java.util.List;
 
@@ -14,57 +12,12 @@ import it.vige.school.dto.User;
 public interface SchoolModule {
 
 	/**
-	 * Find all users
-	 * 
-	 * @return users
-	 * @throws ModuleException Throws an exception if the user cannot be found
-	 */
-	List<User> findAllUsers() throws ModuleException;
-
-	/**
 	 * Find all presences
 	 * 
 	 * @return presences
 	 * @throws ModuleException Throws an exception if the presence cannot be found
 	 */
 	List<Presence> findAllPresences() throws ModuleException;
-
-	/**
-	 * Find a users by specifying its room
-	 * 
-	 * @param room room of the users to retrieve
-	 * @return Users with specified room
-	 * @throws ModuleException Throws an exception if the user cannot be found
-	 */
-	List<User> findUsersByRoom(String room) throws ModuleException;
-
-	/**
-	 * Find a users by specifying its school
-	 * 
-	 * @param school school of the users to retrieve
-	 * @return Users with specified room
-	 * @throws ModuleException Throws an exception if the user cannot be found
-	 */
-	List<User> findUsersBySchool(String school) throws ModuleException;
-
-	/**
-	 * Find a users by specifying its school and room
-	 * 
-	 * @param school school of the users to retrieve
-	 * @param room   room of the users to retrieve
-	 * @return Users with specified room
-	 * @throws ModuleException Throws an exception if the user cannot be found
-	 */
-	List<User> findUsersBySchoolAndRoom(String school, String room) throws ModuleException;
-
-	/**
-	 * Find a user by specifying its id
-	 * 
-	 * @param id id of the user to retrieve
-	 * @return User with specified id
-	 * @throws ModuleException Throws an exception if the user cannot be found
-	 */
-	User findUserById(String id) throws ModuleException;
 
 	/**
 	 * Find a presences by specifying its user
@@ -127,12 +80,4 @@ public interface SchoolModule {
 	 * @throws ModuleException DOCUMENT_ME
 	 */
 	void removePresence(Presence presence) throws ModuleException;
-
-	/**
-	 * set the keycloak access token passing the keycloak.json input stream.
-	 * 
-	 * @param configuration DOCUMENT_ME
-	 * @throws ModuleException DOCUMENT_ME
-	 */
-	void setAccessToken(InputStream configuration) throws IOException;
 }

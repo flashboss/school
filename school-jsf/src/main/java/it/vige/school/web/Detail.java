@@ -33,6 +33,9 @@ public class Detail implements Serializable {
 	private SchoolModule schoolModule;
 
 	@Inject
+	private Users users;
+
+	@Inject
 	private Configuration configuration;
 
 	@PostConstruct
@@ -77,8 +80,7 @@ public class Detail implements Serializable {
 	}
 
 	private void create(String id) throws ModuleException, IOException {
-		schoolModule.setAccessToken(configuration.getKeycloakConfiguration());
-		user = new ReportUser(schoolModule.findUserById(id));
+		user = new ReportUser(users.findUserById(id));
 		update(user);
 	}
 

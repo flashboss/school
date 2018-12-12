@@ -305,5 +305,15 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 			<artifactId>primefaces</artifactId>
 			<version>${primefaces.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.keycloak</groupId>
+			<artifactId>keycloak-authz-client</artifactId>
+			<version>${keycloak.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.keycloak</groupId>
+    		<artifactId>keycloak-adapter-core</artifactId>
+			<version>${keycloak.version}</version>
+		</dependency>
 	</dependencies>
 </project>
