@@ -137,7 +137,7 @@ public class Configuration implements Serializable {
 
 	public void onDaySelect(SelectEvent event) {
 		setCurrentDay((Date) event.getObject());
-		users.init(null);
+		users.init(true);
 	}
 
 	public void onMonthSelect(DateViewChangeEvent event) {

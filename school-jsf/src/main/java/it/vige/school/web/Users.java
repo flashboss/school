@@ -17,7 +17,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
 
@@ -57,9 +56,9 @@ public class Users extends RestCaller implements Serializable, Converters {
 
 	boolean initialized;
 
-	public void init(HttpServletRequest request) {
+	public void init(boolean force) {
 		try {
-			if (!initialized || request == null) {
+			if (!initialized || force) {
 				boolean isAdmin = configuration.isAdmin();
 				if (isAdmin) {
 					users = findAllUsers();
@@ -162,19 +161,28 @@ public class Users extends RestCaller implements Serializable, Converters {
 
 	public User findUserById(String id) throws ModuleException {
 		if (id != null) {
+			UserRepresentation user = null;
 			try {
-				String url = configuration.getAuthServerUrl() + "/realms/" + configuration.getRealm()
-						+ "/protocol/openid-connect/userinfo";
-				Response response = post(configuration.getAccessToken(), url + "/" + id, "{}");
-				User user = response.readEntity(User.class);
+				String url = configuration.getAuthServerUrl() + "/admin/realms/" + configuration.getRealm() + "/users"
+						+ "?username=" + id;
+				Response response = get(configuration.getAccessToken(), url);
+				user = response.readEntity(new GenericType<List<UserRepresentation>>() {
+				}).get(0);
 				response.close();
-				log.debug("user found: " + user);
-
-				return user;
 			} catch (Exception e) {
-				String message = "Cannot find user by id " + id;
-				throw new ModuleException(message, e);
+				try {
+					String url = configuration.getAuthServerUrl() + "/admin/realms/" + configuration.getRealm()
+							+ "/users" + "/" + id;
+					Response response = get(configuration.getAccessToken(), url);
+					user = response.readEntity(UserRepresentation.class);
+					response.close();
+				} catch (Exception ex) {
+					String message = "Cannot find user by id " + id;
+					throw new ModuleException(message, ex);
+				}
 			}
+			log.debug("user found: " + user);
+			return UserRepresentationToUser.apply(user);
 		} else {
 			throw new IllegalArgumentException("room cannot be null");
 		}
@@ -203,7 +211,7 @@ public class Users extends RestCaller implements Serializable, Converters {
 	}
 
 	public void refresh() {
-		init(null);
+		init(true);
 	}
 
 	public void report() throws IOException {

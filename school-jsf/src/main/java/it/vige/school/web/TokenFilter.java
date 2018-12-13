@@ -41,7 +41,7 @@ public class TokenFilter extends HttpFilter {
 		configuration.setAccessToken(accessToken);
 		configuration.setRealm(keycloakSecurityContext.getRealm());
 		configuration.setAuthServerUrl(keycloakSecurityContext.getDeployment().getAuthServerBaseUrl());
-		users.init(request);
+		users.init(false);
 		chain.doFilter(request, response);
 	}
 
