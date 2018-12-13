@@ -13,13 +13,7 @@ public interface Converters {
 
 		public User apply(String t) {
 			User user = new User();
-			String[] splittedValue = t.split("-");
-			user.setId(splittedValue[0]);
-			user.setName(splittedValue[1]);
-			user.setSurname(splittedValue[2]);
-			user.setIncome(Integer.parseInt(splittedValue[3]));
-			user.setRoom(splittedValue[4]);
-			user.setSchool(splittedValue[5]);
+			user.setId(t);
 
 			return user;
 		}

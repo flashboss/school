@@ -17,8 +17,6 @@ import org.jboss.logging.Logger;
 import org.keycloak.KeycloakSecurityContext;
 import org.keycloak.adapters.RefreshableKeycloakSecurityContext;
 
-import it.vige.school.ModuleException;
-
 @WebFilter("/TokenFilter")
 public class TokenFilter extends HttpFilter {
 
@@ -35,6 +33,7 @@ public class TokenFilter extends HttpFilter {
 	@Override
 	public void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
+		log.debug("Started filter");
 		RefreshableKeycloakSecurityContext keycloakSecurityContext = getSession(request);
 		String accessToken = keycloakSecurityContext.getTokenString();
 		configuration.setUser(request.getUserPrincipal().getName());
@@ -42,11 +41,7 @@ public class TokenFilter extends HttpFilter {
 		configuration.setAccessToken(accessToken);
 		configuration.setRealm(keycloakSecurityContext.getRealm());
 		configuration.setAuthServerUrl(keycloakSecurityContext.getDeployment().getAuthServerBaseUrl());
-		try {
-			users.init();
-		} catch (ModuleException ex) {
-			log.error(ex);
-		}
+		users.init(request);
 		chain.doFilter(request, response);
 	}
 

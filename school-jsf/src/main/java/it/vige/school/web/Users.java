@@ -1,22 +1,28 @@
 package it.vige.school.web;
 
+import static it.vige.school.Constants.ERROR;
 import static it.vige.school.Utils.getCalendarByDate;
 import static java.util.stream.Collectors.toList;
+import static javax.faces.application.FacesMessage.SEVERITY_INFO;
+import static javax.faces.context.FacesContext.getCurrentInstance;
 import static org.jboss.logging.Logger.getLogger;
 
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Map;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
 
 import org.jboss.logging.Logger;
+import org.keycloak.representations.idm.UserRepresentation;
 
 import it.vige.school.ModuleException;
 import it.vige.school.RestCaller;
@@ -26,7 +32,7 @@ import it.vige.school.dto.User;
 
 @SessionScoped
 @Named
-public class Users extends RestCaller implements Serializable {
+public class Users extends RestCaller implements Serializable, Converters {
 
 	private static final long serialVersionUID = -2260430424205388307L;
 
@@ -51,35 +57,44 @@ public class Users extends RestCaller implements Serializable {
 
 	boolean initialized;
 
-	public void init() throws ModuleException {
-		if (!initialized) {
-			boolean isAdmin = configuration.isAdmin();
-			if (isAdmin) {
-				users = findAllUsers();
-			} else {
-				User currentUser = findUserById(configuration.getUser());
-				if (configuration.isSchoolOperator())
-					users = findUsersBySchool(currentUser.getSchool());
-				else {
-					users = findUsersBySchoolAndRoom(currentUser.getSchool(), currentUser.getRoom());
+	public void init(HttpServletRequest request) {
+		try {
+			if (!initialized || request == null) {
+				boolean isAdmin = configuration.isAdmin();
+				if (isAdmin) {
+					users = findAllUsers();
+				} else {
+					User currentUser = findUserById(configuration.getUser());
+					if (configuration.isSchoolOperator())
+						users = findUsersBySchool(currentUser.getSchool());
+					else {
+						users = findUsersBySchoolAndRoom(currentUser.getSchool(), currentUser.getRoom());
+					}
 				}
-			}
-			Calendar currentDay = getCalendarByDate(configuration.getCurrentDay());
-			List<Presence> presencesOfDay = schoolModule.findPresencesByDay(currentDay);
-			users.forEach(x -> {
-				for (Presence presence : presencesOfDay)
-					if (presence.getUser().equals(x) && presence.getDay().equals(currentDay))
-						x.setPresent(true);
-			});
-			if (filteredUsers != null)
-				filteredUsers.forEach(x -> {
-					for (User user : users)
-						if (user.getId() == x.getId())
-							x.setPresent(user.isPresent());
+				Calendar currentDay = getCalendarByDate(configuration.getCurrentDay());
+				List<Presence> presencesOfDay = schoolModule.findPresencesByDay(currentDay);
+				users.forEach(x -> {
+					for (Presence presence : presencesOfDay)
+						if (presence.getUser().equals(x) && presence.getDay().equals(currentDay))
+							x.setPresent(true);
 				});
-			rooms = users.stream().map(x -> x.getRoom()).distinct().sorted().collect(toList());
-			schools = users.stream().map(x -> x.getSchool()).distinct().sorted().collect(toList());
-			initialized = true;
+				if (filteredUsers != null)
+					filteredUsers.forEach(x -> {
+						for (User user : users)
+							if (user.getId() == x.getId())
+								x.setPresent(user.isPresent());
+					});
+				rooms = users.stream().map(x -> x.getRoom()).distinct().sorted().collect(toList());
+				schools = users.stream().map(x -> x.getSchool()).distinct().sorted().collect(toList());
+				initialized = true;
+			}
+		} catch (ModuleException ex) {
+			FacesContext currentInstance = getCurrentInstance();
+			if (currentInstance != null) {
+				FacesMessage message = new FacesMessage(SEVERITY_INFO, // severity
+						ERROR, ERROR);
+				currentInstance.addMessage(ERROR, message);
+			}
 		}
 	}
 
@@ -87,14 +102,12 @@ public class Users extends RestCaller implements Serializable {
 		try {
 			String url = configuration.getAuthServerUrl() + "/admin/realms/" + configuration.getRealm() + "/users";
 			Response response = get(configuration.getAccessToken(), url);
-			Map<String, Object> map = response.readEntity(new GenericType<Map<String, Object>>() {
-			});
-			List<User> userList = response.readEntity(new GenericType<List<User>>() {
+			List<UserRepresentation> userList = response.readEntity(new GenericType<List<UserRepresentation>>() {
 			});
 			response.close();
 			log.debug("user found: " + userList);
 
-			return userList;
+			return userList.stream().map(t -> UserRepresentationToUser.apply(t)).collect(toList());
 		} catch (Exception e) {
 			String message = "Cannot find user";
 			throw new ModuleException(message, e);
@@ -152,8 +165,7 @@ public class Users extends RestCaller implements Serializable {
 			try {
 				String url = configuration.getAuthServerUrl() + "/realms/" + configuration.getRealm()
 						+ "/protocol/openid-connect/userinfo";
-				Response response = post(configuration.getAccessToken(),
-						configuration.getAuthServerUrl() + url + "/" + id, "{}");
+				Response response = post(configuration.getAccessToken(), url + "/" + id, "{}");
 				User user = response.readEntity(User.class);
 				response.close();
 				log.debug("user found: " + user);
@@ -190,19 +202,8 @@ public class Users extends RestCaller implements Serializable {
 		return schools;
 	}
 
-	public void addPresence(User user) throws ModuleException {
-		Presence presence = new Presence();
-		presence.setDay(getCalendarByDate(configuration.getCurrentDay()));
-		presence.setUser(user);
-		if (user.isPresent())
-			schoolModule.createPresence(presence);
-		else
-			schoolModule.removePresence(presence);
-		log.debug("user: " + user);
-	}
-
-	public void refresh() throws ModuleException {
-		init();
+	public void refresh() {
+		init(null);
 	}
 
 	public void report() throws IOException {

@@ -32,8 +32,6 @@ import org.jboss.logging.Logger;
 import org.primefaces.event.DateViewChangeEvent;
 import org.primefaces.event.SelectEvent;
 
-import it.vige.school.ModuleException;
-
 @SessionScoped
 @Named
 public class Configuration implements Serializable {
@@ -137,9 +135,9 @@ public class Configuration implements Serializable {
 		return currentLocale;
 	}
 
-	public void onDaySelect(SelectEvent event) throws ModuleException {
+	public void onDaySelect(SelectEvent event) {
 		setCurrentDay((Date) event.getObject());
-		users.init();
+		users.init(null);
 	}
 
 	public void onMonthSelect(DateViewChangeEvent event) {
