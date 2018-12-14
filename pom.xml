@@ -94,6 +94,7 @@
 		<module>school-ejb</module>
 		<module>school-jsf</module>
 		<module>school-rest</module>
+		<module>school-keycloak</module>
 	</modules>
 
 	<profiles>
