@@ -70,7 +70,11 @@ to deploy it with the shell command in WildFly:
     connect localhost
     deploy /xxxx/school.war
    
- to create new users in WildFly:
+From the 1.2.0 version we need keycloak to manage the users. To start a keycloak standalone use the following command:
+
+    mvn install -Pruntime-keycloak
+    
+to create new users in WildFly:
 
 $JBOSS_HOME/bin/add_user.sh
 

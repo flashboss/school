@@ -3438,5 +3438,12 @@
 			},
 			"subGroups": []
 		}
-	]
+	],
+	"loginTheme": "school-theme",
+	"internationalizationEnabled": true,
+	"supportedLocales": [
+		"en",
+		"it"
+	],
+	"defaultLocale": "it"
 }
