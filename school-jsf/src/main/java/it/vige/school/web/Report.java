@@ -77,7 +77,7 @@ public class Report implements Serializable {
 								z.setPresences(z.getPresences() + 1);
 						});
 					}
-					if (oldUsers.stream().filter(j -> j.getId() == z.getId()).count() == 0)
+					if (oldUsers.stream().filter(j -> j.getId().equals(z.getId())).count() == 0)
 						toRemove.add(z);
 				});
 			});

@@ -14,7 +14,6 @@ import static javax.faces.context.FacesContext.getCurrentInstance;
 import static org.jboss.logging.Logger.getLogger;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -55,14 +54,15 @@ public class Configuration implements Serializable {
 
 	private String currentLocale = getProperty("user.language");
 
-	private InputStream keycloakConfiguration = getCurrentInstance().getExternalContext()
-			.getResourceAsStream("WEB-INF/keycloak.json");
-
 	private String user;
-	{
-		HttpServletRequest request = (HttpServletRequest) getCurrentInstance().getExternalContext().getRequest();
-		user = request.getUserPrincipal().getName();
-	}
+
+	private HttpServletRequest request;
+
+	private String accessToken;
+
+	private String authServerUrl;
+
+	private String realm;
 
 	@Inject
 	private Users users;
@@ -71,25 +71,21 @@ public class Configuration implements Serializable {
 	private Report report;
 
 	public boolean isAdmin() {
-		FacesContext facesContext = getCurrentInstance();
-		boolean isAdmin = facesContext.getExternalContext().isUserInRole(ADMIN_ROLE);
+		boolean isAdmin = request.isUserInRole(ADMIN_ROLE);
 		log.debug("isAdmin: " + isAdmin);
 		return isAdmin;
 	}
 
 	public boolean isSchoolOperator() {
-		FacesContext facesContext = getCurrentInstance();
-		return facesContext.getExternalContext().isUserInRole(SCHOOL_OPERATOR_ROLE);
+		return request.isUserInRole(SCHOOL_OPERATOR_ROLE);
 	}
 
 	public boolean isTeacher() {
-		FacesContext facesContext = getCurrentInstance();
-		return facesContext.getExternalContext().isUserInRole(TEACHER_ROLE);
+		return request.isUserInRole(TEACHER_ROLE);
 	}
 
 	public boolean isPupil() {
-		FacesContext facesContext = getCurrentInstance();
-		return facesContext.getExternalContext().isUserInRole(PUPIL_ROLE);
+		return request.isUserInRole(PUPIL_ROLE);
 	}
 
 	public String getFormattedDate() {
@@ -131,13 +127,17 @@ public class Configuration implements Serializable {
 		return user;
 	}
 
+	public void setUser(String user) {
+		this.user = user;
+	}
+
 	public String getCurrentLocale() {
 		return currentLocale;
 	}
 
 	public void onDaySelect(SelectEvent event) {
 		setCurrentDay((Date) event.getObject());
-		users.init();
+		users.init(true);
 	}
 
 	public void onMonthSelect(DateViewChangeEvent event) {
@@ -173,7 +173,35 @@ public class Configuration implements Serializable {
 		redirect("/views/index.xhtml");
 	}
 
-	public InputStream getKeycloakConfiguration() {
-		return keycloakConfiguration;
+	public HttpServletRequest getRequest() {
+		return request;
+	}
+
+	public void setRequest(HttpServletRequest request) {
+		this.request = request;
+	}
+
+	public String getAccessToken() {
+		return accessToken;
+	}
+
+	public void setAccessToken(String accessToken) {
+		this.accessToken = accessToken;
+	}
+
+	public String getAuthServerUrl() {
+		return authServerUrl;
+	}
+
+	public void setAuthServerUrl(String authServerUrl) {
+		this.authServerUrl = authServerUrl;
+	}
+
+	public String getRealm() {
+		return realm;
+	}
+
+	public void setRealm(String realm) {
+		this.realm = realm;
 	}
 }

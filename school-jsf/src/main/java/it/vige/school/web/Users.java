@@ -12,22 +12,26 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.ws.rs.core.GenericType;
+import javax.ws.rs.core.Response;
 
 import org.jboss.logging.Logger;
+import org.keycloak.representations.idm.UserRepresentation;
 
 import it.vige.school.ModuleException;
+import it.vige.school.RestCaller;
 import it.vige.school.SchoolModule;
 import it.vige.school.dto.Presence;
 import it.vige.school.dto.User;
 
 @SessionScoped
 @Named
-public class Users implements Serializable {
+public class Users extends RestCaller implements Serializable, Converters {
 
 	private static final long serialVersionUID = -2260430424205388307L;
 
@@ -50,40 +54,137 @@ public class Users implements Serializable {
 
 	private List<String> schools;
 
-	@PostConstruct
-	public void init() {
-		boolean isAdmin = configuration.isAdmin();
+	boolean initialized;
+
+	public void init(boolean force) {
 		try {
-			schoolModule.setAccessToken(configuration.getKeycloakConfiguration());
-			if (isAdmin) {
-				users = schoolModule.findAllUsers();
-			} else {
-				User currentUser = schoolModule.findUserById(configuration.getUser());
-				if (configuration.isSchoolOperator())
-					users = schoolModule.findUsersBySchool(currentUser.getSchool());
-				else {
-					users = schoolModule.findUsersBySchoolAndRoom(currentUser.getSchool(), currentUser.getRoom());
+			if (!initialized || force) {
+				boolean isAdmin = configuration.isAdmin();
+				if (isAdmin) {
+					users = findAllUsers();
+				} else {
+					User currentUser = findUserById(configuration.getUser());
+					if (configuration.isSchoolOperator())
+						users = findUsersBySchool(currentUser.getSchool());
+					else {
+						users = findUsersBySchoolAndRoom(currentUser.getSchool(), currentUser.getRoom());
+					}
+				}
+				Calendar currentDay = getCalendarByDate(configuration.getCurrentDay());
+				List<Presence> presencesOfDay = schoolModule.findPresencesByDay(currentDay);
+				users.forEach(x -> {
+					for (Presence presence : presencesOfDay)
+						if (presence.getUser().equals(x) && presence.getDay().equals(currentDay))
+							x.setPresent(true);
+				});
+				if (filteredUsers != null)
+					filteredUsers.forEach(x -> {
+						for (User user : users)
+							if (user.getId() == x.getId())
+								x.setPresent(user.isPresent());
+					});
+				rooms = users.stream().map(x -> x.getRoom()).distinct().sorted().collect(toList());
+				schools = users.stream().map(x -> x.getSchool()).distinct().sorted().collect(toList());
+				initialized = true;
+			}
+		} catch (ModuleException ex) {
+			FacesContext currentInstance = getCurrentInstance();
+			if (currentInstance != null) {
+				FacesMessage message = new FacesMessage(SEVERITY_INFO, // severity
+						ERROR, ERROR);
+				currentInstance.addMessage(ERROR, message);
+			}
+		}
+	}
+
+	public List<User> findAllUsers() throws ModuleException {
+		try {
+			String url = configuration.getAuthServerUrl() + "/admin/realms/" + configuration.getRealm() + "/users";
+			Response response = get(configuration.getAccessToken(), url);
+			List<UserRepresentation> userList = response.readEntity(new GenericType<List<UserRepresentation>>() {
+			});
+			response.close();
+			log.debug("user found: " + userList);
+
+			return userList.stream().map(t -> UserRepresentationToUser.apply(t)).collect(toList());
+		} catch (Exception e) {
+			String message = "Cannot find user";
+			throw new ModuleException(message, e);
+		}
+	}
+
+	public List<User> findUsersByRoom(String room) throws ModuleException {
+		if (room != null) {
+			try {
+				List<User> userList = findAllUsers();
+				log.debug("user found: " + userList);
+				return userList.stream().filter(t -> room.equals(t.getRoom())).collect(toList());
+			} catch (Exception e) {
+				String message = "Cannot find user by room " + room;
+				throw new ModuleException(message, e);
+			}
+		} else {
+			throw new IllegalArgumentException("room cannot be null");
+		}
+	}
+
+	public List<User> findUsersBySchool(String school) throws ModuleException {
+		if (school != null) {
+			try {
+				List<User> userList = findAllUsers();
+				log.debug("user found: " + userList);
+				return userList.stream().filter(t -> school.equals(t.getSchool())).collect(toList());
+			} catch (Exception e) {
+				String message = "Cannot find user by room " + school;
+				throw new ModuleException(message, e);
+			}
+		} else {
+			throw new IllegalArgumentException("room cannot be null");
+		}
+	}
+
+	public List<User> findUsersBySchoolAndRoom(String school, String room) throws ModuleException {
+		if (school != null) {
+			try {
+				List<User> userList = findAllUsers();
+				log.debug("user found: " + userList);
+				return userList.stream().filter(t -> school.equals(t.getSchool()) && room.equals(t.getRoom()))
+						.collect(toList());
+			} catch (Exception e) {
+				String message = "Cannot find user by school " + school;
+				throw new ModuleException(message, e);
+			}
+		} else {
+			throw new IllegalArgumentException("room cannot be null");
+		}
+	}
+
+	public User findUserById(String id) throws ModuleException {
+		if (id != null) {
+			UserRepresentation user = null;
+			try {
+				String url = configuration.getAuthServerUrl() + "/admin/realms/" + configuration.getRealm() + "/users"
+						+ "?username=" + id;
+				Response response = get(configuration.getAccessToken(), url);
+				user = response.readEntity(new GenericType<List<UserRepresentation>>() {
+				}).get(0);
+				response.close();
+			} catch (Exception e) {
+				try {
+					String url = configuration.getAuthServerUrl() + "/admin/realms/" + configuration.getRealm()
+							+ "/users" + "/" + id;
+					Response response = get(configuration.getAccessToken(), url);
+					user = response.readEntity(UserRepresentation.class);
+					response.close();
+				} catch (Exception ex) {
+					String message = "Cannot find user by id " + id;
+					throw new ModuleException(message, ex);
 				}
 			}
-			Calendar currentDay = getCalendarByDate(configuration.getCurrentDay());
-			List<Presence> presencesOfDay = schoolModule.findPresencesByDay(currentDay);
-			users.forEach(x -> {
-				for (Presence presence : presencesOfDay)
-					if (presence.getUser().equals(x) && presence.getDay().equals(currentDay))
-						x.setPresent(true);
-			});
-			if (filteredUsers != null)
-				filteredUsers.forEach(x -> {
-					for (User user : users)
-						if (user.getId() == x.getId())
-							x.setPresent(user.isPresent());
-				});
-			rooms = users.stream().map(x -> x.getRoom()).distinct().sorted().collect(toList());
-			schools = users.stream().map(x -> x.getSchool()).distinct().sorted().collect(toList());
-		} catch (ModuleException | IOException ex) {
-			FacesMessage message = new FacesMessage(SEVERITY_INFO, // severity
-					ERROR, ERROR);
-			getCurrentInstance().addMessage(ERROR, message);
+			log.debug("user found: " + user);
+			return UserRepresentationToUser.apply(user);
+		} else {
+			throw new IllegalArgumentException("room cannot be null");
 		}
 	}
 
@@ -109,19 +210,8 @@ public class Users implements Serializable {
 		return schools;
 	}
 
-	public void addPresence(User user) throws ModuleException {
-		Presence presence = new Presence();
-		presence.setDay(getCalendarByDate(configuration.getCurrentDay()));
-		presence.setUser(user);
-		if (user.isPresent())
-			schoolModule.createPresence(presence);
-		else
-			schoolModule.removePresence(presence);
-		log.debug("user: " + user);
-	}
-
 	public void refresh() {
-		init();
+		init(true);
 	}
 
 	public void report() throws IOException {

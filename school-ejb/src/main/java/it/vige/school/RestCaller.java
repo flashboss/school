@@ -31,34 +31,34 @@ import javax.ws.rs.core.Response;
 
 public abstract class RestCaller {
 
-	private final static Client client = newClient();
-
 	protected Response get(String authorization, String url) {
+		Client client = newClient();
 		Supplier<String> accessTokenProvider = () -> {
 			return authorization;
 		};
-		client.register(new KeycloakAuthRequestFilter(accessTokenProvider));
+		client.register(new BearerAuthRequestFilter(accessTokenProvider));
 		WebTarget target = client.target(url);
 		return target.request().get();
 	}
 
 	protected Response post(String authorization, String url, Object entity) {
+		Client client = newClient();
 		Jsonb jsonb = create();
 		String json = jsonb.toJson(entity);
 		Supplier<String> accessTokenProvider = () -> {
 			return authorization;
 		};
-		client.register(new KeycloakAuthRequestFilter(accessTokenProvider));
+		client.register(new BearerAuthRequestFilter(accessTokenProvider));
 		WebTarget target = client.target(url);
 		Entity<String> restEntity = entity(json, APPLICATION_JSON);
 		return target.request().post(restEntity);
 	}
 
-	private static class KeycloakAuthRequestFilter implements ClientRequestFilter {
+	private static class BearerAuthRequestFilter implements ClientRequestFilter {
 
 		private final Supplier<String> accessTokenProvider;
 
-		public KeycloakAuthRequestFilter(Supplier<String> accessTokenProvider) {
+		public BearerAuthRequestFilter(Supplier<String> accessTokenProvider) {
 			this.accessTokenProvider = accessTokenProvider;
 		}
 

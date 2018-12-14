@@ -1971,7 +1971,7 @@
 			"firstName": "Marco",
 			"lastName": "Spazziani",
 			"attributes": {
-				"income": "2305342000",
+				"income": "230534200",
 				"room": "3A",
 				"school": "giovannixxiii"
 			},
@@ -3373,7 +3373,7 @@
 			],
 			"clientRoles": {
 				"realm-management": [
-					"query-users"
+					"view-users"
 				],
 				"account": [
 					"manage-account"
@@ -3392,7 +3392,7 @@
 			],
 			"clientRoles": {
 				"realm-management": [
-					"query-users"
+					"view-users"
 				],
 				"account": [
 					"manage-account"
@@ -3411,7 +3411,7 @@
 			],
 			"clientRoles": {
 				"realm-management": [
-					"query-users"
+					"view-users"
 				],
 				"account": [
 					"manage-account"
@@ -3430,7 +3430,7 @@
 			],
 			"clientRoles": {
 				"realm-management": [
-					"query-users"
+					"view-users"
 				],
 				"account": [
 					"manage-account"
@@ -3438,5 +3438,12 @@
 			},
 			"subGroups": []
 		}
-	]
+	],
+	"loginTheme": "school-theme",
+	"internationalizationEnabled": true,
+	"supportedLocales": [
+		"en",
+		"it"
+	],
+	"defaultLocale": "it"
 }
