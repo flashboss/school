@@ -1,7 +1,7 @@
 <#import "template.ftl" as layout>
 <@layout.registrationLayout; section>
     <#if section = "header">
-        ${msg("registerTitle")}
+        ${msg("doRegister")}
     <#elseif section = "form">
         <form id="kc-register-form" class="${properties.kcFormClass!}" action="${url.registrationAction}" method="post">
             <div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('firstName',properties.kcFormGroupErrorClass!)}">
@@ -34,7 +34,7 @@
           	<#if !realm.registrationEmailAsUsername>
             <div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('username',properties.kcFormGroupErrorClass!)}">
                 <div class="${properties.kcLabelWrapperClass!}">
-                    <label for="username" class="${properties.kcLabelClass!}">${msg("username")}</label>
+                    <label for="username" class="${properties.kcLabelClass!}">${msg("fiscalCode")}</label>
                 </div>
                 <div class="${properties.kcInputWrapperClass!}">
                     <input type="text" id="username" class="${properties.kcInputClass!}" name="username" value="${(register.formData.username!'')}" autocomplete="username" />
@@ -46,8 +46,8 @@
    				<div class="${properties.kcLabelWrapperClass!} ${messagesPerField.printIfExists('user.attributes.school',properties.kcFormGroupErrorClass!)}">
        				<label for="user.attributes.school" class="${properties.kcLabelClass!}">${msg("school")}</label>
    				</div>
-   				<div class="col-sm-10 col-md-10">
-       				<input type="text" class="${properties.kcInputClass!}" id="user.attributes.school" name="user.attributes.school"/>
+   				<div class="${properties.kcInputWrapperClass!}">
+       				<input type="text" id="user.attributes.school" class="${properties.kcInputClass!}" name="user.attributes.school"/>
    				</div>
 			</div>
 			
@@ -55,8 +55,8 @@
    				<div class="${properties.kcLabelWrapperClass!} ${messagesPerField.printIfExists('user.attributes.room',properties.kcFormGroupErrorClass!)}">
        				<label for="user.attributes.room" class="${properties.kcLabelClass!}">${msg("room")}</label>
    				</div>
-   				<div class="col-sm-10 col-md-10">
-       				<input type="text" class="${properties.kcInputClass!}" id="user.attributes.room" name="user.attributes.room"/>
+   				<div class="${properties.kcInputWrapperClass!}">
+       				<input type="text" id="user.attributes.room" class="${properties.kcInputClass!}" name="user.attributes.room"/>
    				</div>
 			</div>
 			
@@ -64,8 +64,8 @@
    				<div class="${properties.kcLabelWrapperClass!} ${messagesPerField.printIfExists('user.attributes.income',properties.kcFormGroupErrorClass!)}">
        				<label for="user.attributes.income" class="${properties.kcLabelClass!}">${msg("income")}</label>
    				</div>
-   				<div class="col-sm-10 col-md-10">
-       				<input type="text" class="${properties.kcInputClass!}" id="user.attributes.income" name="user.attributes.income"/>
+   				<div class="${properties.kcInputWrapperClass!}">
+       				<input type="text" id="user.attributes.income" class="${properties.kcInputClass!}" name="user.attributes.income"/>
    				</div>
 			</div>
 
