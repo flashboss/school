@@ -9,7 +9,7 @@ It covers all the following features:
 - Browsing pupils and teachers.
 - Report the presences.
 
-This draft version has been tested on WildFly 15.0.0.CR1.
+This draft version has been tested on WildFly 15.0.0.Final.
 
 Requirements
 ------------
@@ -103,4 +103,4 @@ To debug the application using Eclipse you can put this parameter:
 
 It will start on the 5005 port.
 
-The tests are done using Chrome 70.0.3538.102 (64-bit) on WildFly 15.0.0.CR1
+The tests are done using Chrome 70.0.3538.102 (64-bit) on WildFly 15.0.0.Final
