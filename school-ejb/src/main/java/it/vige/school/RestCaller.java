@@ -19,6 +19,7 @@ import static javax.ws.rs.client.Entity.entity;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
 import java.io.IOException;
+import java.util.Map;
 import java.util.function.Supplier;
 
 import javax.json.bind.Jsonb;
@@ -31,13 +32,17 @@ import javax.ws.rs.core.Response;
 
 public abstract class RestCaller {
 
-	protected Response get(String authorization, String url) {
+	protected Response get(String authorization, String url, Map<String, Object> params) {
 		Client client = newClient();
 		Supplier<String> accessTokenProvider = () -> {
 			return authorization;
 		};
 		client.register(new BearerAuthRequestFilter(accessTokenProvider));
 		WebTarget target = client.target(url);
+		if (params != null) {
+			for (Map.Entry<String, Object> param : params.entrySet())
+				target = target.queryParam(param.getKey(), param.getValue());
+		}
 		return target.request().get();
 	}
 

@@ -16,7 +16,9 @@ package it.vige.school.resttest.schoolmodule.test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
@@ -33,25 +35,27 @@ public class UserTest extends RestCaller {
 
 	@Test
 	public void getUser() {
-		Response response = get(url + "findUsersBySchool/donlorenzomilani", authorization);
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("max", 100000);
+		Response response = get(url + "findUsersBySchool/donlorenzomilani", authorization, params);
 		List<User> users = response.readEntity(new GenericType<List<User>>() {
 		});
 		response.close();
 		assertNotNull(users, "The users from Maiorana are found");
 		assertEquals(29, users.size(), "The users from Maiorana are ok");
-		response = get(url + "findUsersByRoom/1A", authorization);
+		response = get(url + "findUsersByRoom/1A", authorization, params);
 		users = response.readEntity(new GenericType<List<User>>() {
 		});
 		response.close();
 		assertNotNull(response, "The users from 1A are found");
 		assertEquals(9, users.size(), "The users from 1A are ok");
-		response = get(url + "findUsersBySchoolAndRoom/donlorenzomilani/1A", authorization);
+		response = get(url + "findUsersBySchoolAndRoom/donlorenzomilani/1A", authorization, params);
 		users = response.readEntity(new GenericType<List<User>>() {
 		});
 		response.close();
 		assertNotNull(response, "The users from 1A are found");
 		assertEquals(5, users.size(), "The users from donlorenzomilani 1A are ok");
-		response = get(url + "findUserById/STNLCU76E15H501X", authorization);
+		response = get(url + "findUserById/STNLCU76E15H501X", authorization, null);
 		User user = response.readEntity(User.class);
 		assertEquals("Luca", user.getName(), "User by id received");
 		response.close();

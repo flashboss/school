@@ -19,7 +19,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
@@ -37,7 +39,9 @@ public class PresenceTest extends RestCaller {
 
 	@Test
 	public void setPresence() {
-		Response response = get(url + "findAllUsers", authorization);
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("max", 100000);
+		Response response = get(url + "findAllUsers", authorization, params);
 		List<User> users = response.readEntity(new GenericType<List<User>>() {
 		});
 		assertEquals(147, users.size(), "The users from are all");

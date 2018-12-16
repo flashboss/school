@@ -20,16 +20,23 @@ public interface Converters {
 			user.setName(t.getFirstName());
 			user.setSurname(t.getLastName());
 			Map<String, List<String>> attributes = t.getAttributes();
-			int income = parseInt(attributes.get("income").get(0));
-			List<String> rooms = attributes.get("room");
-			String room = "";
-			if (rooms != null)
-				room = rooms.get(0);
-			String school = attributes.get("school").get(0);
-			user.setIncome(income);
-			if (room != null)
-				user.setRoom(room);
-			user.setSchool(school);
+			if (attributes != null) {
+				List<String> incomes = attributes.get("income");
+				String incomeStr = "";
+				if (incomeStr != null) {
+					incomeStr = incomes.get(0);
+					int income = parseInt(incomeStr);
+					user.setIncome(income);
+				}
+				List<String> rooms = attributes.get("room");
+				String room = "";
+				if (rooms != null)
+					room = rooms.get(0);
+				String school = attributes.get("school").get(0);
+				if (room != null)
+					user.setRoom(room);
+				user.setSchool(school);
+			}
 
 			return user;
 		}

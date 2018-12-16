@@ -17,6 +17,9 @@
 	"requiredCredentials": [
 		"password"
 	],
+	"defaultGroups": [
+		"/pupil"
+	],
 	"users": [
 		{
 			"username": "root",
