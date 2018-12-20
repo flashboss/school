@@ -17,16 +17,16 @@ import static it.vige.school.Utils.getCalendarByDate;
 import static it.vige.school.Utils.today;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.keycloak.admin.client.Keycloak.getInstance;
 
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
 
 import org.junit.jupiter.api.Test;
+import org.keycloak.admin.client.Keycloak;
 
 import it.vige.school.RestCaller;
 import it.vige.school.dto.Presence;
@@ -35,56 +35,53 @@ import it.vige.school.dto.User;
 public class PresenceTest extends RestCaller {
 
 	private final static String url = "http://localhost:8080/school-rest/services/school/";
-	private final static String authorization = "Basic cm9vdDpndG4=";
+	
+	private final static String user = "root";
+	
+	private final static String password = "gtn";
 
 	@Test
 	public void setPresence() {
-		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("max", 100000);
-		Response response = get(url + "findAllUsers", authorization, params);
-		List<User> users = response.readEntity(new GenericType<List<User>>() {
-		});
-		assertEquals(147, users.size(), "The users from are all");
-		response.close();
-		User firstUser = users.get(0);
 		Calendar currentDay = getCalendarByDate(today());
 		Presence presence = new Presence();
 		presence.setDay(currentDay);
+		User firstUser = new User();
+		firstUser.setId("STNLCU76E15H501X");
 		presence.setUser(firstUser);
-		response = post(url + "createPresence", authorization, presence);
+		Response response = post(user, password, url + "createPresence", presence);
 		presence = response.readEntity(Presence.class);
 		assertNotNull(presence, "The presence was inserted");
 		response.close();
-		response = post(url + "findPresencesByUser", authorization, firstUser);
+		response = post(user, password, url + "findPresencesByUser", firstUser);
 		List<Presence> presences = response.readEntity(new GenericType<List<Presence>>() {
 		});
 		assertEquals(1, presences.size(), "The presence is found");
 		response.close();
-		response = post(url + "findPresencesByDay", authorization, currentDay);
+		response = post(user, password, url + "findPresencesByDay", currentDay);
 		presences = response.readEntity(new GenericType<List<Presence>>() {
 		});
 		assertEquals(1, presences.size(), "The presence is found");
 		response.close();
-		response = post(url + "findPresencesByMonth", authorization, currentDay);
+		response = post(user, password, url + "findPresencesByMonth", currentDay);
 		presences = response.readEntity(new GenericType<List<Presence>>() {
 		});
 		assertEquals(1, presences.size(), "The presence is found");
 		response.close();
-		response = post(url + "findPresencesByYear", authorization, currentDay);
+		response = post(user, password, url + "findPresencesByYear", currentDay);
 		presences = response.readEntity(new GenericType<List<Presence>>() {
 		});
 		assertEquals(1, presences.size(), "The presence is found");
 		response.close();
-		response = post(url + "findPresenceByUserAndDay", authorization, presence);
+		response = post(user, password, url + "findPresenceByUserAndDay", presence);
 		presence = response.readEntity(Presence.class);
 		assertNotNull(presence, "The presence was inserted");
 		response.close();
-		response = post(url + "createPresence", authorization, presence);
+		response = post(user, password, url + "createPresence", presence);
 		assertEquals(500, response.getStatus(), "We cannot insert duplicates presences");
 		response.close();
-		response = post(url + "removePresence", authorization, presence);
+		response = post(user, password, url + "removePresence", presence);
 		response.close();
-		response = post(url + "findPresencesByUser", authorization, firstUser);
+		response = post(user, password, url + "findPresencesByUser", firstUser);
 		presences = response.readEntity(new GenericType<List<Presence>>() {
 		});
 		assertEquals(0, presences.size(), "The presence is not found");
