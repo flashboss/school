@@ -59,14 +59,6 @@ public abstract class RestCaller {
 		return target.request().post(restEntity);
 	}
 
-	protected Response get(String user, String password, String url, Map<String, Object> params) {
-		return get("", url, params);
-	}
-
-	protected Response post(String user, String password, String url, Object entity) {
-		return post("", url, entity);
-	}
-
 	private static class BearerAuthRequestFilter implements ClientRequestFilter {
 
 		private final Supplier<String> accessTokenProvider;

@@ -17,7 +17,6 @@ import static it.vige.school.Utils.getCalendarByDate;
 import static it.vige.school.Utils.today;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.keycloak.admin.client.Keycloak.getInstance;
 
 import java.util.Calendar;
 import java.util.List;
@@ -26,7 +25,6 @@ import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
 
 import org.junit.jupiter.api.Test;
-import org.keycloak.admin.client.Keycloak;
 
 import it.vige.school.RestCaller;
 import it.vige.school.dto.Presence;
@@ -35,10 +33,8 @@ import it.vige.school.dto.User;
 public class PresenceTest extends RestCaller {
 
 	private final static String url = "http://localhost:8080/school-rest/services/school/";
-	
-	private final static String user = "root";
-	
-	private final static String password = "gtn";
+
+	private final static String authorization = "";
 
 	@Test
 	public void setPresence() {
@@ -48,40 +44,40 @@ public class PresenceTest extends RestCaller {
 		User firstUser = new User();
 		firstUser.setId("STNLCU76E15H501X");
 		presence.setUser(firstUser);
-		Response response = post(user, password, url + "createPresence", presence);
+		Response response = post(authorization, url + "createPresence", presence);
 		presence = response.readEntity(Presence.class);
 		assertNotNull(presence, "The presence was inserted");
 		response.close();
-		response = post(user, password, url + "findPresencesByUser", firstUser);
+		response = post(authorization, url + "findPresencesByUser", firstUser);
 		List<Presence> presences = response.readEntity(new GenericType<List<Presence>>() {
 		});
 		assertEquals(1, presences.size(), "The presence is found");
 		response.close();
-		response = post(user, password, url + "findPresencesByDay", currentDay);
+		response = post(authorization, url + "findPresencesByDay", currentDay);
 		presences = response.readEntity(new GenericType<List<Presence>>() {
 		});
 		assertEquals(1, presences.size(), "The presence is found");
 		response.close();
-		response = post(user, password, url + "findPresencesByMonth", currentDay);
+		response = post(authorization, url + "findPresencesByMonth", currentDay);
 		presences = response.readEntity(new GenericType<List<Presence>>() {
 		});
 		assertEquals(1, presences.size(), "The presence is found");
 		response.close();
-		response = post(user, password, url + "findPresencesByYear", currentDay);
+		response = post(authorization, url + "findPresencesByYear", currentDay);
 		presences = response.readEntity(new GenericType<List<Presence>>() {
 		});
 		assertEquals(1, presences.size(), "The presence is found");
 		response.close();
-		response = post(user, password, url + "findPresenceByUserAndDay", presence);
+		response = post(authorization, url + "findPresenceByUserAndDay", presence);
 		presence = response.readEntity(Presence.class);
 		assertNotNull(presence, "The presence was inserted");
 		response.close();
-		response = post(user, password, url + "createPresence", presence);
+		response = post(authorization, url + "createPresence", presence);
 		assertEquals(500, response.getStatus(), "We cannot insert duplicates presences");
 		response.close();
-		response = post(user, password, url + "removePresence", presence);
+		response = post(authorization, url + "removePresence", presence);
 		response.close();
-		response = post(user, password, url + "findPresencesByUser", firstUser);
+		response = post(authorization, url + "findPresencesByUser", firstUser);
 		presences = response.readEntity(new GenericType<List<Presence>>() {
 		});
 		assertEquals(0, presences.size(), "The presence is not found");
