@@ -15,16 +15,34 @@ package it.vige.school.resttest.schoolmodule.test;
 
 import static it.vige.school.Utils.getCalendarByDate;
 import static it.vige.school.Utils.today;
+import static javax.ws.rs.client.ClientBuilder.newClient;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.keycloak.OAuth2Constants.CLIENT_CREDENTIALS;
+import static org.keycloak.OAuth2Constants.GRANT_TYPE;
+import static org.keycloak.adapters.KeycloakDeploymentBuilder.build;
+import static org.keycloak.adapters.authentication.ClientCredentialsProviderUtils.setClientCredentials;
+import static org.keycloak.util.JsonSerialization.readValue;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.Invocation.Builder;
+import javax.ws.rs.core.Form;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
 
 import org.junit.jupiter.api.Test;
+import org.keycloak.adapters.KeycloakDeployment;
+import org.keycloak.common.VerificationException;
+import org.keycloak.representations.AccessTokenResponse;
 
 import it.vige.school.RestCaller;
 import it.vige.school.dto.Presence;
@@ -34,10 +52,9 @@ public class PresenceTest extends RestCaller {
 
 	private final static String url = "http://localhost:8080/school-rest/services/school/";
 
-	private final static String authorization = "";
-
 	@Test
-	public void setPresence() {
+	public void setPresence() throws IOException, VerificationException {
+		String authorization = authenticate().getToken();
 		Calendar currentDay = getCalendarByDate(today());
 		Presence presence = new Presence();
 		presence.setDay(currentDay);
@@ -82,5 +99,33 @@ public class PresenceTest extends RestCaller {
 		});
 		assertEquals(0, presences.size(), "The presence is not found");
 		response.close();
+	}
+
+	public AccessTokenResponse authenticate() throws IOException, VerificationException {
+
+		FileInputStream config = new FileInputStream("src/main/webapp/WEB-INF/keycloak.json");
+		KeycloakDeployment deployment = build(config);
+
+		Form params = new Form();
+		params.param(GRANT_TYPE, CLIENT_CREDENTIALS);
+		Map<String, String> reqHeaders = new HashMap<>();
+		Map<String, String> reqParams = new HashMap<>();
+		setClientCredentials(deployment, reqHeaders, reqParams);
+
+		Client client = newClient();
+		Builder request = client.target(deployment.getTokenUrl()).request();
+
+		for (Entry<String, String> header : reqHeaders.entrySet()) {
+			request.header(header.getKey(), header.getValue());
+		}
+		for (Entry<String, String> param : reqParams.entrySet()) {
+			params.param(param.getKey(), param.getValue());
+		}
+
+		String json = request.post(Entity.form(params), String.class);
+		AccessTokenResponse tokenResp = readValue(json, AccessTokenResponse.class);
+
+		return tokenResp;
+
 	}
 }
