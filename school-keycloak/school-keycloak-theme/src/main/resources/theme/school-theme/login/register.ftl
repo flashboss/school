@@ -2,9 +2,28 @@
 <@layout.registrationLayout; section>
     <#if section = "header">
         ${msg("doRegister")}
-    <#elseif section = "form">
-        <#assign rooms = ["0A", "0B", "0C", "0D", "0E", "0F", "0G", "0I", "1A", "2A", "3A", "4A", "5A", "1B", "2B", "3B", "4B", "5B", "1C", "2C", "3C", "4C", "5C", "1D", "2D", "3D", "4D", "5D", "1E", "2E", "3E", "4E", "5E", "1F", "2F", "3F", "4F", "5F", "1G", "2G", "3G", "5G"]>
+        <#assign donlorenzomilani = ["0A", "0B", "0C", "1A", "2A", "3A", "4A", "5A", "1B", "2B", "3B", "4B", "5B"]>
+        <#assign edoardodefilippo = ["0B", "0C", "0D", "1A", "2A", "3A", "4A", "5A", "1C", "2C", "3C", "4C", "5C", "2F", "3F", "4F", "5F", "5G"]>
+        <#assign garibaldi = ["0A", "0B", "0C", "1A", "2A", "3A", "4A", "5A", "1B", "2B", "3B", "4B", "5B", "1C", "2C", "3C", "4C", "5C", "1G", "2G", "3G"]>
+        <#assign giovannixxiii = ["0A", "0B", "1A", "2A", "3A", "4A", "5A", "1C", "2C", "3C", "4C", "5C"]>
+        <#assign leonardodavinci = ["0B", "0C", "0E", "0F", "0I", "2C", "4C", "5C", "1D", "2D", "3D", "4D", "5D", "1E", "2E", "3E", "4E", "5E", "1F", "3F"]>
+        <#assign manzi = ["0D", "0E", "0G", "1D", "2D", "3D", "4D", "5D", "1E", "2E", "3E", "4E", "5E"]>
+        <#assign montecelio = ["0A", "2B"]>
+        <#assign montelucci = ["0B", "0E", "1C", "2C", "3C", "4C", "5C", "1D", "2D", "3D", "4D", "5D"]>
         <#assign schools = ["donlorenzomilani", "edoardodefilippo", "garibaldi", "giovannixxiii", "leonardodavinci", "manzi", "montecelio", "montelucci"]>
+        <script>
+        	$(function() {
+    			$('#schoolsSelector').on('change', function() {
+        			var select_value = $('#instructorSelector').val();
+        			<#list schools as school>
+        				if (school == select_value){
+        					alert("buuuuuuuu");
+        				}
+        			</#list>
+    			});
+			});
+        </script>
+    <#elseif section = "form">
         <form id="kc-register-form" class="${properties.kcFormClass!}" action="${url.registrationAction}" method="post">
             <div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('firstName',properties.kcFormGroupErrorClass!)}">
                 <div class="${properties.kcLabelWrapperClass!}">
@@ -49,7 +68,7 @@
        				<label for="user.attributes.school" class="${properties.kcLabelClass!}">${msg("school")}</label>
    				</div>
    				<div class="${properties.kcInputWrapperClass!}">
-       				<select name="user.attributes.school">
+       				<select id="schoolsSelector" name="user.attributes.school">
         				<#list schools as school>
             				<option value="${school}">${school}</option>
         				</#list>
@@ -62,7 +81,7 @@
        				<label for="user.attributes.room" class="${properties.kcLabelClass!}">${msg("room")}</label>
    				</div>
    				<div class="${properties.kcInputWrapperClass!}">
-       				<select name="user.attributes.room">
+       				<select id="roomsSelector" name="user.attributes.room">
         				<#list rooms as room>
             				<option value="${room}">${room}</option>
         				</#list>
