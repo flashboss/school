@@ -43,6 +43,7 @@ import org.junit.jupiter.api.Test;
 import org.keycloak.adapters.KeycloakDeployment;
 import org.keycloak.common.VerificationException;
 import org.keycloak.representations.AccessTokenResponse;
+import org.keycloak.representations.idm.UserRepresentation;
 
 import it.vige.school.RestCaller;
 import it.vige.school.dto.Presence;
@@ -51,17 +52,22 @@ import it.vige.school.dto.User;
 public class PresenceTest extends RestCaller {
 
 	private final static String url = "http://localhost:8080/school-rest/services/school/";
+	private final static String url_users = "http://localhost:8180/auth/admin/realms/school-domain/users";
 
 	@Test
 	public void setPresence() throws IOException, VerificationException {
 		String authorization = authenticate().getToken();
+		Response response = get(authorization, url_users, null);
+		List<UserRepresentation> users = response.readEntity(new GenericType<List<UserRepresentation>>() {
+		});
+		assertEquals(100, users.size(), "The query finds the first 100 users ");
 		Calendar currentDay = getCalendarByDate(today());
 		Presence presence = new Presence();
 		presence.setDay(currentDay);
 		User firstUser = new User();
-		firstUser.setId("STNLCU76E15H501X");
+		firstUser.setId(users.get(0).getId());
 		presence.setUser(firstUser);
-		Response response = post(authorization, url + "createPresence", presence);
+		response = post(authorization, url + "createPresence", presence);
 		presence = response.readEntity(Presence.class);
 		assertNotNull(presence, "The presence was inserted");
 		response.close();
