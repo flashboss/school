@@ -272,5 +272,17 @@
 			<version>${resteasy.version}</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.keycloak</groupId>
+			<artifactId>keycloak-authz-client</artifactId>
+			<version>${keycloak.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.keycloak</groupId>
+			<artifactId>keycloak-adapter-core</artifactId>
+			<version>${keycloak.version}</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 </project>

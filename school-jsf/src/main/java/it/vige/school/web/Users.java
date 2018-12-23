@@ -10,7 +10,9 @@ import static org.jboss.logging.Logger.getLogger;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
@@ -54,7 +56,9 @@ public class Users extends RestCaller implements Serializable, Converters {
 
 	private List<String> schools;
 
-	boolean initialized;
+	private boolean initialized;
+
+	private final static int MAX_USERS = 100000;
 
 	public void init(boolean force) {
 		try {
@@ -83,8 +87,10 @@ public class Users extends RestCaller implements Serializable, Converters {
 							if (user.getId() == x.getId())
 								x.setPresent(user.isPresent());
 					});
-				rooms = users.stream().map(x -> x.getRoom()).distinct().sorted().collect(toList());
-				schools = users.stream().map(x -> x.getSchool()).distinct().sorted().collect(toList());
+				rooms = users.stream().filter(x -> x.getRoom() != null && !x.getRoom().isEmpty()).map(x -> x.getRoom())
+						.distinct().sorted().collect(toList());
+				schools = users.stream().filter(x -> x.getSchool() != null && !x.getSchool().isEmpty())
+						.map(x -> x.getSchool()).distinct().sorted().collect(toList());
 				initialized = true;
 			}
 		} catch (ModuleException ex) {
@@ -100,7 +106,9 @@ public class Users extends RestCaller implements Serializable, Converters {
 	public List<User> findAllUsers() throws ModuleException {
 		try {
 			String url = configuration.getAuthServerUrl() + "/admin/realms/" + configuration.getRealm() + "/users";
-			Response response = get(configuration.getAccessToken(), url);
+			Map<String, Object> params = new HashMap<String, Object>();
+			params.put("max", MAX_USERS);
+			Response response = get(configuration.getAccessToken(), url, params);
 			List<UserRepresentation> userList = response.readEntity(new GenericType<List<UserRepresentation>>() {
 			});
 			response.close();
@@ -165,7 +173,7 @@ public class Users extends RestCaller implements Serializable, Converters {
 			try {
 				String url = configuration.getAuthServerUrl() + "/admin/realms/" + configuration.getRealm() + "/users"
 						+ "?username=" + id;
-				Response response = get(configuration.getAccessToken(), url);
+				Response response = get(configuration.getAccessToken(), url, null);
 				user = response.readEntity(new GenericType<List<UserRepresentation>>() {
 				}).get(0);
 				response.close();
@@ -173,7 +181,7 @@ public class Users extends RestCaller implements Serializable, Converters {
 				try {
 					String url = configuration.getAuthServerUrl() + "/admin/realms/" + configuration.getRealm()
 							+ "/users" + "/" + id;
-					Response response = get(configuration.getAccessToken(), url);
+					Response response = get(configuration.getAccessToken(), url, null);
 					user = response.readEntity(UserRepresentation.class);
 					response.close();
 				} catch (Exception ex) {
