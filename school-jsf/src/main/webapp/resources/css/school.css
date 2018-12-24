@@ -33,26 +33,8 @@ body {
 	width: 12%;
 }
 
-.month {
-	left: 16%;
-	position: relative;
-	top: 94px;
-}
-
 .month .ui-datepicker-calendar {
 	display: none;
-}
-
-.yearlabel {
-	left: 41%;
-	position: relative;
-	top: 71px;
-}
-
-.year {
-	left: 51%;
-	position: relative;
-	top: 31px;
 }
 
 .year .ui-datepicker-calendar {
@@ -76,47 +58,6 @@ body {
 	bottom: 40px;
 }
 
-.refreshreport {
-	position: relative;
-	bottom: 49px;
-	left: 79.9%;
-}
-
-.refreshdetail {
-	position: relative;
-	bottom: 49px;
-	left: 75%;
-}
-
-.refreshuserdetail {
-	position: relative;
-	bottom: 49px;
-	left: 82.5%;
-}
-
-.subreportlabel {
-	position: relative;
-	top: 134px;
-}
-
-.pagereport {
-	position: relative;
-	bottom: 49px;
-	left: 80%;
-}
-
-.refreshinsert {
-	position: relative;
-	bottom: 48px;
-	left: 50.5%;
-}
-
-.pageinsert {
-	position: relative;
-	bottom: 48px;
-	left: 50.5%;
-}
-
 .pageinsertdetail {
 	position: relative;
 	bottom: 49px;
@@ -126,10 +67,4 @@ body {
 .reportform {
 	position: relative;
 	bottom: 125px;
-}
-
-.periodlabel {
-	position: absolute;
-	left: 76%;
-	top: 133.7px;
 }
