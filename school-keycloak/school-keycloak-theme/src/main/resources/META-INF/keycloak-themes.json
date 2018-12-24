@@ -3,7 +3,8 @@
 		{
 			"name": "school-theme",
 			"types": [
-				"login"
+				"login",
+				"account"
 			]
 		}
 	]
