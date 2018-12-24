@@ -32,75 +32,66 @@
   //]]>
 		</h:outputScript>
 		<h:outputScript library="js" name="custom_datepicker.js" />
-		<h:form>
-			<h:outputText value="#{resourcebundle.UserDetail}" />
-			<p:commandButton value="#{resourcebundle.Report}"
-				actionListener="#{users.report}"
-				styleClass="ui-priority-primary pageinsertdetail"
+		<h:outputText value="#{resourcebundle.UserDetail}" />
+		<p:menubar>
+			<p:menuitem value="#{resourcebundle.Report}"
+				actionListener="#{users.report}" icon="pi pi-save"
 				rendered="#{!configuration.pupil}" />
-			<p:commandButton value="#{resourcebundle.Refresh}"
-				actionListener="#{detail.refresh}"
-				styleClass="ui-priority-primary #{configuration.pupil ? 'refreshuserdetail' : 'refreshdetail'}" />
+			<p:menuitem value="#{resourcebundle.Refresh}"
+				actionListener="#{detail.refresh}" icon="pi pi-refresh" />
+			<p:menuitem value="#{resourcebundle.Account}"
+				url="#{configuration.authServerUrl}/realms/#{configuration.realm}/account?referrer=#{configuration.client}&amp;referrer_uri=#{configuration.request.requestURL}"
+				icon="pi pi-refresh" />
+			<p:menuitem value="#{resourcebundle.Logout}"
+				actionListener="#{configuration.logout}" icon="pi pi-refresh" />
+		</p:menubar>
 
-			<p:panelGrid columns="2" cellpadding="10">
-				<p:panelGrid columns="2" layout="tabular">
-					<h:outputLabel for="fiscalCode"
-						value="#{resourcebundle.FiscalCode}"
-						rendered="#{!configuration.teacher or configuration.user == detail.user.id}" />
-					<h:outputText id="fiscalCode"
-						rendered="#{!configuration.teacher or configuration.user == detail.user.id}"
-						value="${detail.user.id}" />
+		<p:panelGrid columns="2" cellpadding="10">
+			<p:panelGrid columns="2" layout="tabular">
+				<h:outputLabel for="fiscalCode" value="#{resourcebundle.FiscalCode}"
+					rendered="#{!configuration.teacher or configuration.user == detail.user.id}" />
+				<h:outputText id="fiscalCode"
+					rendered="#{!configuration.teacher or configuration.user == detail.user.id}"
+					value="${detail.user.id}" />
 
-					<h:outputLabel for="name" value="#{resourcebundle.Name}" />
-					<h:outputText id="name" value="#{detail.user.name}" />
+				<h:outputLabel for="name" value="#{resourcebundle.Name}" />
+				<h:outputText id="name" value="#{detail.user.name}" />
 
-					<h:outputLabel for="surname" value="#{resourcebundle.Surname}" />
-					<h:outputText id="surname" value="${detail.user.surname}" />
+				<h:outputLabel for="surname" value="#{resourcebundle.Surname}" />
+				<h:outputText id="surname" value="${detail.user.surname}" />
 
-					<h:outputLabel for="income" value="#{resourcebundle.Income}"
-						rendered="#{configuration.admin or configuration.pupil or configuration.user == detail.user.id}" />
-					<h:outputText id="income"
-						rendered="#{configuration.admin or configuration.pupil or configuration.user == detail.user.id}"
-						styleClass="income" value="${detail.user.income}" />
+				<h:outputLabel for="income" value="#{resourcebundle.Income}"
+					rendered="#{configuration.admin or configuration.pupil or configuration.user == detail.user.id}" />
+				<h:outputText id="income"
+					rendered="#{configuration.admin or configuration.pupil or configuration.user == detail.user.id}"
+					styleClass="income" value="${detail.user.income}" />
 
-					<h:outputLabel for="room" value="#{resourcebundle.Room}"
-						rendered="#{!configuration.teacher or configuration.user == detail.user.id}" />
-					<h:outputText id="room"
-						rendered="#{!configuration.teacher or configuration.user == detail.user.id}"
-						styleClass="room" value="${detail.user.room}" />
+				<h:outputLabel for="room" value="#{resourcebundle.Room}"
+					rendered="#{!configuration.teacher or configuration.user == detail.user.id}" />
+				<h:outputText id="room"
+					rendered="#{!configuration.teacher or configuration.user == detail.user.id}"
+					styleClass="room" value="${detail.user.room}" />
 
-					<h:outputLabel for="school" value="#{resourcebundle.School}"
-						rendered="#{configuration.admin or configuration.pupil or configuration.user == detail.user.id}" />
-					<h:outputText id="school"
-						rendered="#{configuration.admin or configuration.pupil or configuration.user == detail.user.id}"
-						styleClass="school" value="${detail.user.school}" />
+				<h:outputLabel for="school" value="#{resourcebundle.School}"
+					rendered="#{configuration.admin or configuration.pupil or configuration.user == detail.user.id}" />
+				<h:outputText id="school"
+					rendered="#{configuration.admin or configuration.pupil or configuration.user == detail.user.id}"
+					styleClass="school" value="${detail.user.school}" />
 
-					<h:outputLabel for="quote" value="#{resourcebundle.Quote}"
-						rendered="#{configuration.admin or configuration.pupil or configuration.user == detail.user.id}" />
-					<h:outputText id="quote"
-						rendered="#{configuration.admin or configuration.pupil or configuration.user == detail.user.id}"
-						styleClass="quote" value="#{detail.user.quote}" />
+				<h:outputLabel for="quote" value="#{resourcebundle.Quote}"
+					rendered="#{configuration.admin or configuration.pupil or configuration.user == detail.user.id}" />
+				<h:outputText id="quote"
+					rendered="#{configuration.admin or configuration.pupil or configuration.user == detail.user.id}"
+					styleClass="quote" value="#{detail.user.quote}" />
 
-					<h:outputLabel for="presences" value="#{resourcebundle.Presences}" />
-					<h:outputText id="presences" styleClass="present"
-						value="#{detail.user.presences}" />
-				</p:panelGrid>
-
-				<p:calendar id="calendarAdv" maxdate="#{configuration.maxDate}"
-					locale="#{configuration.currentLocale}" mode="inline" pages="3"
-					readonly="true" />
+				<h:outputLabel for="presences" value="#{resourcebundle.Presences}" />
+				<h:outputText id="presences" styleClass="present"
+					value="#{detail.user.presences}" />
 			</p:panelGrid>
 
-			<div id="footer">
-				<ui:insert name="footer">
-				#{resourcebundle.Project} <a
-						href="https://flashboss.github.io/school" target="_blank">School</a>
-                #{resourcebundle.Powered} <a href="http://www.vige.it"
-						target="_blank">Vige Community</a>
-				|	<p:commandLink value="#{resourcebundle.Logout}"
-						actionListener="#{configuration.logout}" />
-				</ui:insert>
-			</div>
-		</h:form>
+			<p:calendar id="calendarAdv" maxdate="#{configuration.maxDate}"
+				locale="#{configuration.currentLocale}" mode="inline" pages="3"
+				readonly="true" />
+		</p:panelGrid>
 	</ui:define>
 </ui:composition>

@@ -3443,6 +3443,7 @@
 		}
 	],
 	"loginTheme": "school-theme",
+	"accountTheme": "school-theme",
 	"internationalizationEnabled": true,
 	"supportedLocales": [
 		"en",

@@ -25,110 +25,99 @@
 		#{resourcebundle.Welcome} - #{resourcebundle.Report}
 	</ui:define>
 	<ui:define name="content">
-		<h:form styleClass="reportform">
-			<h:outputText value="#{resourcebundle.Subreport}"
-				styleClass="subreportlabel" />
-			<p:calendar id="inlinemonth" value="#{configuration.currentDate}"
-				maxdate="#{configuration.maxDate}"
-				locale="#{configuration.currentLocale}" navigator="true"
-				mode="inline" styleClass="month">
-				<p:ajax event="viewChange" listener="#{configuration.onMonthSelect}"
-					update="period,users" />
-			</p:calendar>
-			<h:outputText styleClass="yearlabel"
-				value="#{resourcebundle.Subreportyear}" />
-			<p:calendar id="inlineyear" value="#{configuration.currentDate}"
-				maxdate="#{configuration.maxDate}"
-				locale="#{configuration.currentLocale}" navigator="true"
-				mode="inline" styleClass="year">
-				<p:ajax event="viewChange" listener="#{configuration.onYearSelect}"
-					update="period,users" />
-			</p:calendar>
-			<h:outputText id="period" value="#{configuration.formattedDate}"
-				styleClass="periodlabel" />
-			<p:commandButton value="#{resourcebundle.Insert}"
-				actionListener="#{report.insert}"
-				styleClass="ui-priority-primary pagereport" />
-			<p:commandButton value="#{resourcebundle.Refresh}"
-				actionListener="#{report.refresh}"
-				styleClass="ui-priority-primary refreshreport"
+		<h:outputText value="#{resourcebundle.Subreport}" />
+		<p:calendar id="inlinemonth" value="#{configuration.currentDate}"
+			maxdate="#{configuration.maxDate}"
+			locale="#{configuration.currentLocale}" navigator="true"
+			mode="inline" styleClass="month">
+			<p:ajax event="viewChange" listener="#{configuration.onMonthSelect}"
+				update="period,users" />
+		</p:calendar>
+		<h:outputText value="#{resourcebundle.Subreportyear}" />
+		<p:calendar id="inlineyear" value="#{configuration.currentDate}"
+			maxdate="#{configuration.maxDate}"
+			locale="#{configuration.currentLocale}" navigator="true"
+			mode="inline" styleClass="year">
+			<p:ajax event="viewChange" listener="#{configuration.onYearSelect}"
+				update="period,users" />
+		</p:calendar>
+		<h:outputText id="period" value="#{configuration.formattedDate}" />
+		<p:menubar>
+			<p:menuitem value="#{resourcebundle.Insert}"
+				actionListener="#{report.insert}" icon="pi pi-save" />
+			<p:menuitem value="#{resourcebundle.Refresh}"
+				actionListener="#{report.refresh}" icon="pi pi-refresh"
 				update="users,inlineyear,inlinemonth,period" />
-			<p:dataTable id="users" value="#{report.reportUsers}"
-				filteredValue="#{report.filteredUsers}" var="user"
-				widgetVar="usersTable"
-				emptyMessage="#{resourcebundle.No_records_found}"
-				sortMode="multiple">
-				<p:growl id="msgs" />
-				<f:facet name="header">
-					<p:outputPanel>
-						<h:outputText value="#{resourcebundle.Search_all}:" />
-						<p:inputText id="globalFilter" onkeyup="PF('usersTable').filter()"
-							placeholder="#{resourcebundle.Enter_keyword}" />
-					</p:outputPanel>
+			<p:menuitem value="#{resourcebundle.Account}"
+				url="#{configuration.authServerUrl}/realms/#{configuration.realm}/account?referrer=#{configuration.client}&amp;referrer_uri=#{configuration.request.requestURL}"
+				icon="pi pi-refresh" />
+			<p:menuitem value="#{resourcebundle.Logout}"
+				actionListener="#{configuration.logout}" icon="pi pi-refresh" />
+		</p:menubar>
+		<p:dataTable id="users" value="#{report.reportUsers}"
+			filteredValue="#{report.filteredUsers}" var="user"
+			widgetVar="usersTable"
+			emptyMessage="#{resourcebundle.No_records_found}" sortMode="multiple">
+			<p:growl id="msgs" />
+			<f:facet name="header">
+				<p:outputPanel>
+					<h:outputText value="#{resourcebundle.Search_all}:" />
+					<p:inputText id="globalFilter" onkeyup="PF('usersTable').filter()"
+						placeholder="#{resourcebundle.Enter_keyword}" />
+				</p:outputPanel>
+			</f:facet>
+			<p:column rendered="#{!configuration.teacher}"
+				headerText="#{resourcebundle.FiscalCode}" sortBy="#{user.id}"
+				filterBy="#{user.id}" filterMatchMode="contains">${user.id}</p:column>
+			<p:column headerText="#{resourcebundle.Name}" sortBy="#{user.name}"
+				filterBy="#{user.name}" filterMatchMode="contains">${user.name}</p:column>
+			<p:column headerText="#{resourcebundle.Surname}"
+				sortBy="#{user.surname}" filterBy="#{user.surname}"
+				filterMatchMode="contains">${user.surname}</p:column>
+			<p:column rendered="#{configuration.admin}"
+				headerText="#{resourcebundle.Income}" sortBy="#{user.income}"
+				filterBy="#{user.income}" filterFunction="#{filters.filterByNumber}"
+				styleClass="income">${user.income}</p:column>
+			<p:column rendered="#{!configuration.teacher}"
+				headerText="#{resourcebundle.Room}" sortBy="#{user.room}"
+				filterBy="#{user.room}" filterMatchMode="in" styleClass="room">
+				<f:facet name="filter">
+					<p:selectCheckboxMenu label="#{resourcebundle.Rooms}"
+						onchange="PF('usersTable').filter()" scrollHeight="150">
+						<f:selectItems value="#{users.rooms}" />
+					</p:selectCheckboxMenu>
 				</f:facet>
-				<p:column rendered="#{!configuration.teacher}"
-					headerText="#{resourcebundle.FiscalCode}" sortBy="#{user.id}"
-					filterBy="#{user.id}" filterMatchMode="contains">${user.id}</p:column>
-				<p:column headerText="#{resourcebundle.Name}" sortBy="#{user.name}"
-					filterBy="#{user.name}" filterMatchMode="contains">${user.name}</p:column>
-				<p:column headerText="#{resourcebundle.Surname}"
-					sortBy="#{user.surname}" filterBy="#{user.surname}"
-					filterMatchMode="contains">${user.surname}</p:column>
-				<p:column rendered="#{configuration.admin}"
-					headerText="#{resourcebundle.Income}" sortBy="#{user.income}"
-					filterBy="#{user.income}"
-					filterFunction="#{filters.filterByNumber}" styleClass="income">${user.income}</p:column>
-				<p:column rendered="#{!configuration.teacher}"
-					headerText="#{resourcebundle.Room}" sortBy="#{user.room}"
-					filterBy="#{user.room}" filterMatchMode="in" styleClass="room">
-					<f:facet name="filter">
-						<p:selectCheckboxMenu label="#{resourcebundle.Rooms}"
-							onchange="PF('usersTable').filter()" scrollHeight="150">
-							<f:selectItems value="#{users.rooms}" />
-						</p:selectCheckboxMenu>
-					</f:facet>
 					${user.room}
 				</p:column>
-				<p:column rendered="#{configuration.admin}"
-					headerText="#{resourcebundle.School}" sortBy="#{user.school}"
-					filterBy="#{user.school}" filterMatchMode="in" styleClass="school">
-					<f:facet name="filter">
-						<p:selectCheckboxMenu label="#{resourcebundle.Schools}"
-							onchange="PF('usersTable').filter()" scrollHeight="150">
-							<f:selectItems value="#{users.schools}" />
-						</p:selectCheckboxMenu>
-					</f:facet>
+			<p:column rendered="#{configuration.admin}"
+				headerText="#{resourcebundle.School}" sortBy="#{user.school}"
+				filterBy="#{user.school}" filterMatchMode="in" styleClass="school">
+				<f:facet name="filter">
+					<p:selectCheckboxMenu label="#{resourcebundle.Schools}"
+						onchange="PF('usersTable').filter()" scrollHeight="150">
+						<f:selectItems value="#{users.schools}" />
+					</p:selectCheckboxMenu>
+				</f:facet>
 					${user.school}
 				</p:column>
-				<p:column rendered="#{configuration.admin}"
-					headerText="#{resourcebundle.Quote}" sortBy="#{user.quote}"
-					filterBy="#{user.quote}" filterFunction="#{filters.filterByQuote}"
-					styleClass="quote">
+			<p:column rendered="#{configuration.admin}"
+				headerText="#{resourcebundle.Quote}" sortBy="#{user.quote}"
+				filterBy="#{user.quote}" filterFunction="#{filters.filterByQuote}"
+				styleClass="quote">
 					#{user.quote}
 				</p:column>
-				<p:column headerText="#{resourcebundle.Presences}"
-					sortBy="#{user.presences}" filterBy="#{user.presences}"
-					filterFunction="#{filters.filterByNumber}" styleClass="present">
+			<p:column headerText="#{resourcebundle.Presences}"
+				sortBy="#{user.presences}" filterBy="#{user.presences}"
+				filterFunction="#{filters.filterByNumber}" styleClass="present">
 					#{user.presences}
 				</p:column>
-				<p:column styleClass="detail">
-					<p:commandLink actionListener="#{detail.page(user)}"
-						title="#{resourcebundle.Detail}">
-						<h:outputText styleClass="ui-icon icon-details"
-							style="margin:0 auto;" />
-					</p:commandLink>
-				</p:column>
-			</p:dataTable>
-			<div id="footer">
-				<ui:insert name="footer">
-				#{resourcebundle.Project} <a
-						href="https://flashboss.github.io/school" target="_blank">School</a>
-                #{resourcebundle.Powered} <a href="http://www.vige.it"
-						target="_blank">Vige Community</a>
-				|	<p:commandLink value="#{resourcebundle.Logout}"
-						actionListener="#{configuration.logout}" />
-				</ui:insert>
-			</div>
-		</h:form>
+			<p:column styleClass="detail">
+				<p:commandLink actionListener="#{detail.page(user)}"
+					title="#{resourcebundle.Detail}">
+					<h:outputText styleClass="ui-icon icon-details"
+						style="margin:0 auto;" />
+				</p:commandLink>
+			</p:column>
+		</p:dataTable>
 	</ui:define>
 </ui:composition>

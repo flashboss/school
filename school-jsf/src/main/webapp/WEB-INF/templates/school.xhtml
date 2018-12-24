@@ -37,7 +37,8 @@
 			<ui:insert name="header">
 				<h1>
 					#{resourcebundle.Welcome}
-					<h:outputText rendered="#{!configuration.admin and !configuration.user}"
+					<h:outputText
+						rendered="#{!configuration.admin and !configuration.user}"
 						value="#{users.schools}" />
 					<h:outputText rendered="#{configuration.teacher}"
 						value=" - #{users.rooms}" />
@@ -48,9 +49,19 @@
 		</div>
 
 		<div id="content">
-			<ui:insert name="content">
-                Content
-            </ui:insert>
+			<h:form>
+				<ui:insert name="content">
+                	Content
+            	</ui:insert>
+			</h:form>
+			<div id="footer">
+				<ui:insert name="footer">
+				#{resourcebundle.Project} <a
+						href="https://flashboss.github.io/school" target="_blank">School</a>
+                #{resourcebundle.Powered} <a href="http://www.vige.it"
+						target="_blank">Vige Community</a>
+				</ui:insert>
+			</div>
 		</div>
 	</div>
 </h:body>
