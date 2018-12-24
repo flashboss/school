@@ -36,6 +36,7 @@ public class TokenFilter extends HttpFilter {
 		log.debug("Started filter");
 		RefreshableKeycloakSecurityContext keycloakSecurityContext = getSession(request);
 		String accessToken = keycloakSecurityContext.getTokenString();
+		configuration.setClient(keycloakSecurityContext.getIdToken().getAudience()[0]);
 		configuration.setUser(request.getUserPrincipal().getName());
 		configuration.setRequest(request);
 		configuration.setAccessToken(accessToken);

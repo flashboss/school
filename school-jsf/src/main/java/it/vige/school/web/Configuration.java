@@ -64,6 +64,8 @@ public class Configuration implements Serializable {
 
 	private String realm;
 
+	private String client;
+
 	@Inject
 	private Users users;
 
@@ -203,5 +205,13 @@ public class Configuration implements Serializable {
 
 	public void setRealm(String realm) {
 		this.realm = realm;
+	}
+
+	public String getClient() {
+		return client;
+	}
+
+	public void setClient(String client) {
+		this.client = client;
 	}
 }

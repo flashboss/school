@@ -40,8 +40,8 @@
 			<p:menuitem value="#{resourcebundle.Refresh}"
 				actionListener="#{detail.refresh}" icon="pi pi-refresh" />
 			<p:menuitem value="#{resourcebundle.Account}"
-				url="#{configuration.authServerUrl}/realms/#{configuration.realm}/account"
-				target="_blank" icon="pi pi-refresh" />
+				url="#{configuration.authServerUrl}/realms/#{configuration.realm}/account?referrer=#{configuration.client}&amp;referrer_uri=#{configuration.request.requestURL}"
+				icon="pi pi-refresh" />
 			<p:menuitem value="#{resourcebundle.Logout}"
 				actionListener="#{configuration.logout}" icon="pi pi-refresh" />
 		</p:menubar>
