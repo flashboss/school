@@ -2,28 +2,7 @@
 <@layout.registrationLayout; section>
     <#if section = "header">
         ${msg("doRegister")}
-        <#assign none = []>
-        <#assign donlorenzomilani = ["0A", "0B", "0C", "1A", "2A", "3A", "4A", "5A", "1B", "2B", "3B", "4B", "5B"]>
-        <#assign edoardodefilippo = ["0B", "0C", "0D", "1A", "2A", "3A", "4A", "5A", "1C", "2C", "3C", "4C", "5C", "2F", "3F", "4F", "5F", "5G"]>
-        <#assign garibaldi = ["0A", "0B", "0C", "1A", "2A", "3A", "4A", "5A", "1B", "2B", "3B", "4B", "5B", "1C", "2C", "3C", "4C", "5C", "1G", "2G", "3G"]>
-        <#assign giovannixxiii = ["0A", "0B", "1A", "2A", "3A", "4A", "5A", "1C", "2C", "3C", "4C", "5C"]>
-        <#assign leonardodavinci = ["0B", "0C", "0E", "0F", "0I", "2C", "4C", "5C", "1D", "2D", "3D", "4D", "5D", "1E", "2E", "3E", "4E", "5E", "1F", "3F"]>
-        <#assign manzi = ["0D", "0E", "0G", "1D", "2D", "3D", "4D", "5D", "1E", "2E", "3E", "4E", "5E"]>
-        <#assign montecelio = ["0A", "2B"]>
-        <#assign montelucci = ["0B", "0E", "1C", "2C", "3C", "4C", "5C", "1D", "2D", "3D", "4D", "5D"]>
         <#assign schools = ["", "donlorenzomilani", "edoardodefilippo", "garibaldi", "giovannixxiii", "leonardodavinci", "manzi", "montecelio", "montelucci"]>
-        <script>
-        	(function() {
-    			$('#schoolsSelector').on('change', function() {
-        			var select_value = $('#instructorSelector').val();
-        			<#list schools as school>
-        				if (school == select_value){
-        					alert("buuuuuuuu");
-        				}
-        			</#list>
-    			});
-			})();
-        </script>
     <#elseif section = "form">
         <form id="kc-register-form" class="${properties.kcFormClass!}" action="${url.registrationAction}" method="post">
             <div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('firstName',properties.kcFormGroupErrorClass!)}">
@@ -83,9 +62,6 @@
    				</div>
    				<div class="${properties.kcInputWrapperClass!}">
        				<select id="roomsSelector" name="user.attributes.room">
-        				<#list none as room>
-            				<option value="${room}">${room}</option>
-        				</#list>
     				</select>
    				</div>
 			</div>
@@ -139,5 +115,43 @@
                 </div>
             </div>
         </form>
+    	<script>
+      		(function() {
+      	    	function roomsSelect(schoolselect) {
+      				var roomselect = document.getElementById("roomsSelector");
+      				roomselect.innerText = "";
+        			var select_value = schoolselect.value;
+        			var rooms = [];
+        			if ("donlorenzomilani" == select_value){
+        				rooms = ["0A", "0B", "0C", "1A", "2A", "3A", "4A", "5A", "1B", "2B", "3B", "4B", "5B"];
+        			} else if ("edoardodefilippo" == select_value){
+        				rooms = ["0B", "0C", "0D", "1A", "2A", "3A", "4A", "5A", "1C", "2C", "3C", "4C", "5C", "2F", "3F", "4F", "5F", "5G"];
+        			} else if ("garibaldi" == select_value){
+        				rooms = ["0A", "0B", "0C", "1A", "2A", "3A", "4A", "5A", "1B", "2B", "3B", "4B", "5B", "1C", "2C", "3C", "4C", "5C", "1G", "2G", "3G"];
+        			} else if ("giovannixxiii" == select_value){
+        				rooms = ["0A", "0B", "1A", "2A", "3A", "4A", "5A", "1C", "2C", "3C", "4C", "5C"];
+        			} else if ("leonardodavinci" == select_value){
+        				rooms = ["0B", "0C", "0E", "0F", "0I", "2C", "4C", "5C", "1D", "2D", "3D", "4D", "5D", "1E", "2E", "3E", "4E", "5E", "1F", "3F"];
+        			} else if ("manzi" == select_value){
+        				rooms = ["0D", "0E", "0G", "1D", "2D", "3D", "4D", "5D", "1E", "2E", "3E", "4E", "5E"];
+        			} else if ("montecelio" == select_value){
+        				rooms = ["0A", "2B"];
+        			} else if ("montelucci" == select_value){
+        				rooms = ["0B", "0E", "1C", "2C", "3C", "4C", "5C", "1D", "2D", "3D", "4D", "5D"];
+        			}
+					for(var i = 0; i < rooms.length; i++) {
+    					var opt = document.createElement('option');
+    					opt.innerHTML = rooms[i];
+    					opt.value = rooms[i];
+    					roomselect.appendChild(opt);
+					}
+      	    	}
+      			var schoolselect = document.getElementById("schoolsSelector");
+      	    	roomsSelect(schoolselect);
+  				schoolselect.onchange = function() {
+  					roomsSelect(schoolselect);
+    			};
+			})();
+    	</script>
     </#if>
 </@layout.registrationLayout>
