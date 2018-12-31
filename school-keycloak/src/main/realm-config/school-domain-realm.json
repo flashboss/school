@@ -3285,6 +3285,10 @@
 	],
 	"clients": [
 		{
+			"clientId": "realm-management",
+			"authorizationServicesEnabled": true
+		},
+		{
 			"clientId": "school",
 			"rootUrl": "http://localhost:8080/school",
 			"enabled": true,
@@ -3376,7 +3380,9 @@
 			],
 			"clientRoles": {
 				"realm-management": [
-					"view-users"
+					"realm-admin",
+					"manage-users",
+					"view-events"
 				],
 				"account": [
 					"manage-account"
@@ -3414,7 +3420,12 @@
 			],
 			"clientRoles": {
 				"realm-management": [
-					"view-users"
+					"view-realm",
+					"view-events",
+					"query-users",
+					"manage-users",
+					"manage-clients",
+					"manage-identity-providers"
 				],
 				"account": [
 					"manage-account"
