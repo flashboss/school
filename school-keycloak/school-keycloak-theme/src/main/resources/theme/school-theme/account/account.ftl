@@ -56,12 +56,12 @@
             </div>
         </div>
         
-        <div class="form-group ${messagesPerField.printIfExists('user.attributes.school','has-error')}">
-   			<div class="col-sm-2 col-md-2 ${messagesPerField.printIfExists('user.attributes.school',properties.kcFormGroupErrorClass!)}">
-       			<label for="user.attributes.school" class="control-label">${msg("school")}</label>
+        <div class="form-group ${messagesPerField.printIfExists('account.attributes.school','has-error')}">
+   			<div class="col-sm-2 col-md-2 ${messagesPerField.printIfExists('account.attributes.school',properties.kcFormGroupErrorClass!)}">
+       			<label for="account.attributes.school" class="control-label">${msg("school")}</label>
    			</div>
    			<div class="col-sm-10 col-md-10">
-       			<select id="schoolsSelector" name="user.attributes.school">
+       			<select id="schoolsSelector" name="account.attributes.school">
         			<#list schools as school>
             			<option value="${school}" <#if school == account.attributes.school!''>selected</#if>>${school}</option>
         			</#list>
@@ -69,22 +69,22 @@
        		</div>
 		</div>
         
-        <div class="form-group ${messagesPerField.printIfExists('user.attributes.room','has-error')}">
-   			<div class="col-sm-2 col-md-2 ${messagesPerField.printIfExists('user.attributes.room',properties.kcFormGroupErrorClass!)}">
-       			<label for="user.attributes.room" class="control-label">${msg("room")}</label>
+        <div class="form-group ${messagesPerField.printIfExists('account.attributes.room','has-error')}">
+   			<div class="col-sm-2 col-md-2 ${messagesPerField.printIfExists('account.attributes.room',properties.kcFormGroupErrorClass!)}">
+       			<label for="account.attributes.room" class="control-label">${msg("room")}</label>
    			</div>
    			<div class="col-sm-10 col-md-10">
-       			<select id="roomsSelector" name="user.attributes.room">
+       			<select id="roomsSelector" name="account.attributes.room">
     			</select>
        		</div>
 		</div>
         
-        <div class="form-group ${messagesPerField.printIfExists('user.attributes.income','has-error')}">
-   			<div class="col-sm-2 col-md-2 ${messagesPerField.printIfExists('user.attributes.income',properties.kcFormGroupErrorClass!)}">
-       			<label for="user.attributes.income" class="control-label">${msg("income")}</label>
+        <div class="form-group ${messagesPerField.printIfExists('account.attributes.income','has-error')}">
+   			<div class="col-sm-2 col-md-2 ${messagesPerField.printIfExists('account.attributes.income',properties.kcFormGroupErrorClass!)}">
+       			<label for="account.attributes.income" class="control-label">${msg("income")}</label>
    			</div>
    			<div class="col-sm-10 col-md-10">
-       			<input type="text" class="form-control" id="user.attributes.income" name="user.attributes.income" value="${(account.attributes.income!'')}"/>
+       			<input type="text" class="form-control" id="account.attributes.income" name="account.attributes.income" value="${(account.attributes.income!'')}"/>
    			</div>
 		</div>
 
@@ -104,23 +104,23 @@
       			var roomselect = document.getElementById("roomsSelector");
       			roomselect.innerText = "";
         		var select_value = schoolselect.value;
-        		var rooms = [];
+        		var rooms = [""];
         		if ("donlorenzomilani" == select_value){
-        			rooms = ["0A", "0B", "0C", "1A", "2A", "3A", "4A", "5A", "1B", "2B", "3B", "4B", "5B"];
+        			rooms = ["", "0A", "0B", "0C", "1A", "2A", "3A", "4A", "5A", "1B", "2B", "3B", "4B", "5B"];
         		} else if ("edoardodefilippo" == select_value){
-        			rooms = ["0B", "0C", "0D", "1A", "2A", "3A", "4A", "5A", "1C", "2C", "3C", "4C", "5C", "2F", "3F", "4F", "5F", "5G"];
+        			rooms = ["", "0B", "0C", "0D", "1A", "2A", "3A", "4A", "5A", "1C", "2C", "3C", "4C", "5C", "2F", "3F", "4F", "5F", "5G"];
         		} else if ("garibaldi" == select_value){
-        			rooms = ["0A", "0B", "0C", "1A", "2A", "3A", "4A", "5A", "1B", "2B", "3B", "4B", "5B", "1C", "2C", "3C", "4C", "5C", "1G", "2G", "3G"];
+        			rooms = ["", "0A", "0B", "0C", "1A", "2A", "3A", "4A", "5A", "1B", "2B", "3B", "4B", "5B", "1C", "2C", "3C", "4C", "5C", "1G", "2G", "3G"];
         		} else if ("giovannixxiii" == select_value){
-        			rooms = ["0A", "0B", "1A", "2A", "3A", "4A", "5A", "1C", "2C", "3C", "4C", "5C"];
+        			rooms = ["", "0A", "0B", "1A", "2A", "3A", "4A", "5A", "1C", "2C", "3C", "4C", "5C"];
         		} else if ("leonardodavinci" == select_value){
-        			rooms = ["0B", "0C", "0E", "0F", "0I", "2C", "4C", "5C", "1D", "2D", "3D", "4D", "5D", "1E", "2E", "3E", "4E", "5E", "1F", "3F"];
+        			rooms = ["", "0B", "0C", "0E", "0F", "0I", "2C", "4C", "5C", "1D", "2D", "3D", "4D", "5D", "1E", "2E", "3E", "4E", "5E", "1F", "3F"];
         		} else if ("manzi" == select_value){
-        			rooms = ["0D", "0E", "0G", "1D", "2D", "3D", "4D", "5D", "1E", "2E", "3E", "4E", "5E"];
+        			rooms = ["", "0D", "0E", "0G", "1D", "2D", "3D", "4D", "5D", "1E", "2E", "3E", "4E", "5E"];
         		} else if ("montecelio" == select_value){
-        			rooms = ["0A", "2B"];
+        			rooms = ["", "0A", "2B"];
         		} else if ("montelucci" == select_value){
-        			rooms = ["0B", "0E", "1C", "2C", "3C", "4C", "5C", "1D", "2D", "3D", "4D", "5D"];
+        			rooms = ["", "0B", "0E", "1C", "2C", "3C", "4C", "5C", "1D", "2D", "3D", "4D", "5D"];
         		}
 				for(var i = 0; i < rooms.length; i++) {
     				var opt = document.createElement('option');

@@ -25,6 +25,11 @@
 			"username": "root",
 			"enabled": true,
 			"email": "lsflashboss62@gmail.com",
+			"attributes": {
+				"income": "",
+				"room": "",
+				"school": ""
+			},
 			"credentials": [
 				{
 					"type": "password",
@@ -3130,6 +3135,7 @@
 			"lastName": "Lezzi",
 			"attributes": {
 				"income": "21000",
+				"room": "",
 				"school": "donlorenzomilani"
 			},
 			"credentials": [
@@ -3150,6 +3156,7 @@
 			"lastName": "Fico",
 			"attributes": {
 				"income": "50000",
+				"room": "",
 				"school": "edoardodefilippo"
 			},
 			"credentials": [
@@ -3170,6 +3177,7 @@
 			"lastName": "Gallè",
 			"attributes": {
 				"income": "5000",
+				"room": "",
 				"school": "garibaldi"
 			},
 			"credentials": [
@@ -3190,6 +3198,7 @@
 			"lastName": "Baldassarre",
 			"attributes": {
 				"income": "230000",
+				"room": "",
 				"school": "giovannixxiii"
 			},
 			"credentials": [
@@ -3210,6 +3219,7 @@
 			"lastName": "Fattori",
 			"attributes": {
 				"income": "90000",
+				"room": "",
 				"school": "leonardodavinci"
 			},
 			"credentials": [
@@ -3230,6 +3240,7 @@
 			"lastName": "Fontana",
 			"attributes": {
 				"income": "239990",
+				"room": "",
 				"school": "manzi"
 			},
 			"credentials": [
@@ -3250,6 +3261,7 @@
 			"lastName": "Catalfo",
 			"attributes": {
 				"income": "26700",
+				"room": "",
 				"school": "montecelio"
 			},
 			"credentials": [
@@ -3270,6 +3282,7 @@
 			"lastName": "Crimi",
 			"attributes": {
 				"income": "277770",
+				"room": "",
 				"school": "montelucci"
 			},
 			"credentials": [
