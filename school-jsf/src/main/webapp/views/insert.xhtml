@@ -34,8 +34,8 @@
 		</p:calendar>
 		<p:menubar>
 			<p:menuitem value="#{resourcebundle.Admin}"
-				url="#{configuration.authServerUrl}/admin/#{configuration.realm}/console?referrer=#{configuration.client}&amp;referrer_uri=#{configuration.request.requestURL}"
-				icon="pi pi-save"
+				url="#{configuration.authServerUrl}/admin/#{configuration.realm}/console/#/realms/#{configuration.realm}/users"
+				icon="pi pi-save" target="blank_"
 				rendered="#{configuration.admin || configuration.schoolOperator}" />
 			<p:menuitem value="#{resourcebundle.Report}"
 				actionListener="#{users.report}" icon="pi pi-save" />
