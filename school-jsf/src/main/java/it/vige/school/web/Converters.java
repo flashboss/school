@@ -23,18 +23,20 @@ public interface Converters {
 			if (attributes != null) {
 				List<String> incomes = attributes.get("income");
 				String incomeStr = "";
-				if (incomeStr != null) {
+				if (incomes != null) {
 					incomeStr = incomes.get(0);
-					int income = parseInt(incomeStr);
-					user.setIncome(income);
+					if (incomeStr != null && !incomeStr.isEmpty()) {
+						int income = parseInt(incomeStr);
+						user.setIncome(income);
+					}
 				}
 				List<String> rooms = attributes.get("room");
 				String room = "";
 				if (rooms != null)
 					room = rooms.get(0);
-				String school = attributes.get("school").get(0);
 				if (room != null)
 					user.setRoom(room);
+				String school = attributes.get("school").get(0);
 				user.setSchool(school);
 			}
 
