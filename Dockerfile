@@ -34,11 +34,10 @@ ENV TERM xterm
 
 ENV LANG it_IT.UTF-8
 WORKDIR /projects
+COPY / /projects/school
 RUN sudo chown -R user:user /projects && \
-	git clone --single-branch --branch master http://www.github.com/flashboss/school && \
 	cd school && \
-	mvn install -Pproduction,runtime-school-jsf,deploy-jsf && \
-	mvn install -Pruntime-keycloak
+	mvn install -Pproduction,runtime-school-jsf,deploy-jsf
 
 CMD sudo /usr/sbin/sshd -D && \
     tail -f /dev/null
