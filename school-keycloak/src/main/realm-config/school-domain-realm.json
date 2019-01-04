@@ -3394,9 +3394,9 @@
 			],
 			"clientRoles": {
 				"realm-management": [
-					"realm-admin",
 					"manage-users",
-					"view-events"
+					"view-clients",
+					"view-realm"
 				],
 				"account": [
 					"manage-account"
@@ -3434,9 +3434,7 @@
 			],
 			"clientRoles": {
 				"realm-management": [
-					"manage-users",
-					"view-clients",
-					"view-realm"
+					"view-users"
 				],
 				"account": [
 					"manage-account"

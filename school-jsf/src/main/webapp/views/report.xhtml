@@ -46,7 +46,7 @@
 			<p:menuitem value="#{resourcebundle.Admin}"
 				url="#{configuration.authServerUrl}/admin/#{configuration.realm}/console/#/realms/#{configuration.realm}/users"
 				icon="pi pi-save" target="blank_"
-				rendered="#{configuration.admin || configuration.schoolOperator}" />
+				rendered="#{configuration.admin}" />
 			<p:menuitem value="#{resourcebundle.Insert}"
 				actionListener="#{report.insert}" icon="pi pi-save" />
 			<p:menuitem value="#{resourcebundle.Refresh}"
