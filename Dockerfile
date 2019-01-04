@@ -7,7 +7,7 @@
 # Vige, Italy. - Docker images
 
 FROM openjdk
-EXPOSE 4403 8000 8080 9876 22
+EXPOSE 4403 8000 8080 8180 9876 22
 RUN apt-get update && \
 	apt-get -y install sudo openssh-server && \
     mkdir /var/run/sshd && \
@@ -24,22 +24,21 @@ USER user
 
 LABEL che:server:8080:ref=wildfly che:server:8080:protocol=http che:server:8000:ref=wildfly-debug che:server:8000:protocol=http che:server:9876:ref=codeserver che:server:9876:protocol=http
 
-ENV MAVEN_VERSION=3.6.0 \
-    JBOSS_HOME=/home/user/wildfly15 \
-    WILDFLY_VERSION=15.0.0.Final
-
+ENV MAVEN_VERSION=3.6.0
 ENV M2_HOME=/home/user/apache-maven-$MAVEN_VERSION
-
 ENV PATH=$M2_HOME/bin:$PATH
 
-RUN mkdir $JBOSS_HOME /home/user/apache-maven-$MAVEN_VERSION && \
+RUN mkdir /home/user/apache-maven-$MAVEN_VERSION && \
   wget -qO- "http://apache.ip-connect.vn.ua/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz" | tar -zx --strip-components=1 -C /home/user/apache-maven-$MAVEN_VERSION/
 ENV TERM xterm
 
-RUN wget -qO- "http://download.jboss.org/wildfly/$WILDFLY_VERSION/wildfly-$WILDFLY_VERSION.tar.gz" | tar -zx --strip-components=1 -C $JBOSS_HOME && $JBOSS_HOME/bin/standalone.sh &
-
 ENV LANG it_IT.UTF-8
 WORKDIR /projects
+RUN sudo chown -R user:user /projects && \
+	git clone --single-branch --branch 1.3.X-SNAPSHOT http://www.github.com/flashboss/school && \
+	cd school && \
+	mvn install -Pproduction,runtime-school-jsf,deploy-jsf && \
+	mvn install -Pruntime-keycloak
 
 CMD sudo /usr/sbin/sshd -D && \
     tail -f /dev/null
