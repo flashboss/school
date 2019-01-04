@@ -7,7 +7,7 @@
 # Vige, Italy. - Docker images
 
 FROM openjdk
-EXPOSE 4403 8000 8080 8180 9876 22
+EXPOSE 4403 8000 8080 9876 22
 RUN apt-get update && \
 	apt-get -y install sudo openssh-server && \
     mkdir /var/run/sshd && \
