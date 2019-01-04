@@ -35,7 +35,7 @@ ENV TERM xterm
 ENV LANG it_IT.UTF-8
 WORKDIR /projects
 RUN sudo chown -R user:user /projects && \
-	git clone --single-branch --branch 1.3.X-SNAPSHOT http://www.github.com/flashboss/school && \
+	git clone --single-branch --branch 1.2.X-SNAPSHOT http://www.github.com/flashboss/school && \
 	cd school && \
 	mvn install -Pproduction,runtime-school-jsf,deploy-jsf && \
 	mvn install -Pruntime-keycloak
