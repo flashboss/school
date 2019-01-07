@@ -204,6 +204,43 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 				</plugins>
 			</build>
 		</profile>
+
+		<profile>
+			<id>docker-school</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>io.fabric8</groupId>
+						<artifactId>docker-maven-plugin</artifactId>
+						<version>${maven.docker.plugin.version}</version>
+						<configuration>
+							<images>
+								<image>
+									<name>vige/school</name>
+									<alias>dockerfile</alias>
+									<run>
+										<ports>
+											<port>8080:8080</port>
+										</ports>
+									</run>
+								</image>
+							</images>
+						</configuration>
+						<executions>
+							<execution>
+								<inherited>false</inherited>
+								<id>start</id>
+								<phase>install</phase>
+								<goals>
+									<goal>build</goal>
+									<goal>start</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 	</profiles>
 
 	<dependencies>
