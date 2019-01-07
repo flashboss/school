@@ -7,7 +7,7 @@
 # Vige, Italy. - Docker images
 
 FROM openjdk
-EXPOSE 4403 8000 8080 8180 9876 22
+EXPOSE 4403 8000 8180 9876 22
 RUN apt-get update && \
 	apt-get -y install sudo openssh-server && \
     mkdir /var/run/sshd && \
@@ -21,8 +21,6 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 USER user
-
-LABEL che:server:8080:ref=wildfly che:server:8080:protocol=http che:server:8000:ref=wildfly-debug che:server:8000:protocol=http che:server:9876:ref=codeserver che:server:9876:protocol=http
 
 ENV MAVEN_VERSION=3.6.0
 ENV KEYCLOAK_VERSION=4.8.1.Final
@@ -38,12 +36,15 @@ ENV TERM xterm
 
 ENV LANG it_IT.UTF-8
 WORKDIR /projects
-COPY / /projects/school
+COPY / /projects/school-keycloak
 RUN sudo chown -R user:user /projects && \
-	cd school && \
-	mvn install -Pproduction,runtime-school-jsf,deploy-jsf
+	cd school-keycloak && \
+	mvn install
 
-CMD $KEYCLOAK_HOME/bin/standalone.sh -b 0.0.0.0 -Djboss.socket.binding.port-offset=100 && \
-	mvn install -Pproduction,runtime-school-jsf,deploy-jsf && \
+CMD export JAVA_OPTS="--add-modules java.se" && \
+	$KEYCLOAK_HOME/bin/add-user-keycloak.sh -r master -u admin -p admin && \
+	export JAVA_OPTS="" && \
+	cp school-keycloak/school-keycloak-theme/target/school-keycloak-theme-*.jar $KEYCLOAK_HOME/standalone/deployments && \
+	$KEYCLOAK_HOME/bin/standalone.sh -b 0.0.0.0 -Djboss.socket.binding.port-offset=100 -Dkeycloak.migration.action=import -Dkeycloak.migration.provider=dir -Dkeycloak.migration.dir=school/school-keycloak/src/main/realm-config -Dkeycloak.migration.strategy=OVERWRITE_EXISTING && \
 	sudo /usr/sbin/sshd -D && \
     tail -f /dev/null
