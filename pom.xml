@@ -20,7 +20,7 @@
 
 	<groupId>it.vige</groupId>
 	<artifactId>school</artifactId>
-	<version>1.2.2-SNAPSHOT</version>
+	<version>1.3.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>School Parent</name>
 	<description>School Web and Portlet Application Parent Aggregator</description>
@@ -39,7 +39,7 @@
 	<scm>
 		<connection>svn:git:https://github.com/flashboss/school.git</connection>
 		<developerConnection>svn:git:https://github.com/flashboss/school.git</developerConnection>
-		<tag>1.2.X-SNAPSHOT</tag>
+		<tag>1.3.X-SNAPSHOT</tag>
 		<url>svn:git:https://github.com/flashboss/school.git</url>
 	</scm>
 	<developers>
@@ -67,7 +67,7 @@
 		<maven.replacer.plugin.version>1.5.3</maven.replacer.plugin.version>
 		<maven.docker.plugin.version>0.28.0</maven.docker.plugin.version>
 		<ejb.version>3.2</ejb.version>
-		<wildfly.version>15.0.0.Final</wildfly.version>
+		<wildfly.version>16.0.0.Beta1-SNAPSHOT</wildfly.version>
 		<wildfly.maven.plugin.version>2.0.0.Final</wildfly.maven.plugin.version>
 		<jboss.logging.version>3.3.2.Final</jboss.logging.version>
 		<resteasy.version>3.6.2.Final</resteasy.version>
