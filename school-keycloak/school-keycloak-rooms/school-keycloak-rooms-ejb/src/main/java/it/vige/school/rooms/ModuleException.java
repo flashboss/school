@@ -1,4 +1,3 @@
-<!--
 /******************************************************************************
  * Vige, Home of Professional Open Source Copyright 2010, Vige, and           *
  * individual contributors by the @authors tag. See the copyright.txt in the  *
@@ -12,25 +11,21 @@
  * See the License for the specific language governing permissions and        *
  * limitations under the License.                                             *
  ******************************************************************************/
--->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	
-	<parent>
-		<groupId>it.vige</groupId>
-		<artifactId>school-keycloak</artifactId>
-		<version>1.3.0-SNAPSHOT</version>
-	</parent>
+package it.vige.school.rooms;
 
-	<artifactId>school-keycloak-rooms</artifactId>
-	<packaging>pom</packaging>
-	<name>School Keycloak Rooms</name>
-	<description>School Keycloak Rooms Configuration</description>
+public class ModuleException extends Exception {
 
-	<modules>
-		<module>school-keycloak-rooms-ejb</module>
-		<module>school-keycloak-rooms-rest</module>
-	</modules>
-	
-</project>
+	private static final long serialVersionUID = -8942393416113543982L;
+
+	public ModuleException() {
+		super();
+	}
+
+	public ModuleException(String message) {
+		super(message);
+	}
+
+	public ModuleException(String message, Exception e) {
+		super(message, e);
+	}
+}
