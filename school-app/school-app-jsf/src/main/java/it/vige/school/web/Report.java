@@ -14,6 +14,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.inject.Inject;
@@ -42,7 +43,7 @@ public class Report implements Serializable {
 
 	private List<User> filteredUsers;
 
-	@Inject
+	@EJB
 	private SchoolModule schoolModule;
 
 	@Inject

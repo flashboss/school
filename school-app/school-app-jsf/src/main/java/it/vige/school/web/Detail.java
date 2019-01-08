@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -29,7 +30,7 @@ public class Detail implements Serializable {
 
 	private String[] dates;
 
-	@Inject
+	@EJB
 	private SchoolModule schoolModule;
 
 	@Inject
