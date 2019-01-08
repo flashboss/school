@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -39,7 +40,7 @@ public class Users extends RestCaller implements Serializable, Converters {
 
 	private static Logger log = getLogger(Users.class);
 
-	@Inject
+	@EJB
 	private SchoolModule schoolModule;
 
 	@Inject
