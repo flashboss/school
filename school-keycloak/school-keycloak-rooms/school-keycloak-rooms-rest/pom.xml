@@ -82,7 +82,7 @@
 		</profile>
 
 		<profile>
-			<id>rest-test</id>
+			<id>rest-keycloak-test</id>
 			<build>
 				<plugins>
 					<plugin>

@@ -91,9 +91,7 @@
 	</dependencies>
 
 	<modules>
-		<module>school-ejb</module>
-		<module>school-jsf</module>
-		<module>school-rest</module>
+		<module>school-app</module>
 		<module>school-keycloak</module>
 	</modules>
 

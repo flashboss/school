@@ -84,7 +84,6 @@ insert into ROOMENTITY (clazz, section, school) values (2, 'D', 'leonardodavinci
 insert into ROOMENTITY (clazz, section, school) values (3, 'D', 'leonardodavinci');
 insert into ROOMENTITY (clazz, section, school) values (4, 'D', 'leonardodavinci');
 insert into ROOMENTITY (clazz, section, school) values (5, 'D', 'leonardodavinci');
-insert into ROOMENTITY (clazz, section, school) values (5, 'D', 'leonardodavinci');
 insert into ROOMENTITY (clazz, section, school) values (1, 'E', 'leonardodavinci');
 insert into ROOMENTITY (clazz, section, school) values (2, 'E', 'leonardodavinci');
 insert into ROOMENTITY (clazz, section, school) values (3, 'E', 'leonardodavinci');

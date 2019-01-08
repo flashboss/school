@@ -7,7 +7,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @NamedQueries({ @NamedQuery(name = "findAllSchools", query = "from SchoolEntity"),
-		@NamedQuery(name = "findSchoolById", query = "select s from SchoolEntity where " + "s.id = :school") })
+		@NamedQuery(name = "findSchoolById", query = "select s from SchoolEntity as s where " + "s.id = :school") })
 @Entity
 @Table
 public class SchoolEntity {

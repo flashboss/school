@@ -14,9 +14,9 @@ import javax.persistence.Table;
  */
 
 @NamedQueries({ @NamedQuery(name = "findAllRooms", query = "from RoomEntity"),
-		@NamedQuery(name = "findRoomsBySchool", query = "select p from RoomEntity as r where "
+		@NamedQuery(name = "findRoomsBySchool", query = "select r from RoomEntity as r where "
 				+ "r.id.school = :school " + "order by r.id.school asc"),
-		@NamedQuery(name = "findRoomByClazzSectionAndSchool", query = "select p from RoomEntity as r where "
+		@NamedQuery(name = "findRoomByClazzSectionAndSchool", query = "select r from RoomEntity as r where "
 				+ "r.id.clazz = :clazz and r.id.section = :section and r.id.school = :school "
 				+ "order by r.id.school asc") })
 @Entity

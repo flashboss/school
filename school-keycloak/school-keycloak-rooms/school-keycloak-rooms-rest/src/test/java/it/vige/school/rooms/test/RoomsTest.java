@@ -47,10 +47,10 @@ import it.vige.school.rooms.dto.School;
 
 public class RoomsTest extends RestCaller {
 
-	private final static String url = "http://localhost:8080/school-rest/services/school/";
+	private final static String url = "http://localhost:8180/school-rooms-rest/services/rooms/";
 
 	@Test
-	public void setPresence() throws IOException, VerificationException {
+	public void setRooms() throws IOException, VerificationException {
 		String authorization = authenticate().getToken();
 		School school = new School();
 		school.setId("schoolTest");
