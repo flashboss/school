@@ -5,6 +5,7 @@ import static org.jboss.logging.Logger.getLogger;
 
 import java.io.Serializable;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -24,7 +25,7 @@ public class Presences implements Serializable {
 
 	private static Logger log = getLogger(Presences.class);
 
-	@Inject
+	@EJB
 	private SchoolModule schoolModule;
 
 	@Inject
