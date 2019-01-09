@@ -19,7 +19,7 @@ public class RoomsJpaEntityProvider implements JpaEntityProvider {
 
     @Override
     public String getChangelogLocation() {
-    	return "META-INF/example-changelog.xml";
+    	return "META-INF/rooms-changelog.xml";
     }
     
     @Override
