@@ -6,13 +6,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-/**
- * Presences.
- * 
- * @author <a href="mailto:luca.stancapiano@vige.it">Luca Stancapiano </a>
- * @author <a href="mailto:toro.gm5s@gmail.com">Alessandro Toro </a>
- */
-
 @NamedQueries({ @NamedQuery(name = "findAllRooms", query = "from RoomEntity"),
 		@NamedQuery(name = "findRoomsBySchool", query = "select r from RoomEntity as r where "
 				+ "r.id.school = :school " + "order by r.id.school asc"),
