@@ -1,9 +1,9 @@
 package it.vige.school.rooms.jpa;
 
-import org.keycloak.connections.jpa.entityprovider.JpaEntityProvider;
-
 import java.util.Collections;
 import java.util.List;
+
+import org.keycloak.connections.jpa.entityprovider.JpaEntityProvider;
 
 /**
  * @author <a href="mailto:erik.mulder@docdatapayments.com">Erik Mulder</a>
@@ -14,7 +14,7 @@ public class RoomsJpaEntityProvider implements JpaEntityProvider {
 
     @Override
     public List<Class<?>> getEntities() {
-        return Collections.<Class<?>>singletonList(Company.class);
+        return Collections.<Class<?>>singletonList(Object.class);
     }
 
     @Override

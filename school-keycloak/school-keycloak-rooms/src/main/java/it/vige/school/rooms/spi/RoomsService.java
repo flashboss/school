@@ -4,17 +4,10 @@ import java.util.List;
 
 import org.keycloak.provider.Provider;
 
-import it.vige.school.rooms.CompanyRepresentation;
 import it.vige.school.rooms.Room;
 import it.vige.school.rooms.School;
 
 public interface RoomsService extends Provider {
-
-	List<CompanyRepresentation> listCompanies();
-
-	CompanyRepresentation findCompany(String id);
-
-	CompanyRepresentation addCompany(CompanyRepresentation company);
 
 	List<Room> findAllRooms();
 
@@ -24,7 +17,7 @@ public interface RoomsService extends Provider {
 
 	List<Room> findRoomsBySchool(School school);
 
-	Room createPresence(Room room);
+	Room createRoom(Room room);
 
 	School createSchool(School school);
 

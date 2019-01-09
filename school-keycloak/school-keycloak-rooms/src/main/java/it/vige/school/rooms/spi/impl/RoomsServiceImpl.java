@@ -2,7 +2,6 @@ package it.vige.school.rooms.spi.impl;
 
 import static java.util.stream.Collectors.toList;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -10,12 +9,9 @@ import javax.persistence.EntityManager;
 import org.keycloak.connections.jpa.JpaConnectionProvider;
 import org.keycloak.models.KeycloakSession;
 import org.keycloak.models.RealmModel;
-import org.keycloak.models.utils.KeycloakModelUtils;
 
-import it.vige.school.rooms.CompanyRepresentation;
 import it.vige.school.rooms.Room;
 import it.vige.school.rooms.School;
-import it.vige.school.rooms.jpa.Company;
 import it.vige.school.rooms.jpa.RoomEntity;
 import it.vige.school.rooms.jpa.SchoolEntity;
 import it.vige.school.rooms.spi.RoomsService;
@@ -37,37 +33,6 @@ public class RoomsServiceImpl implements RoomsService, Converters {
 
 	protected RealmModel getRealm() {
 		return session.getContext().getRealm();
-	}
-
-	@Override
-	public List<CompanyRepresentation> listCompanies() {
-		List<Company> companyEntities = getEntityManager().createNamedQuery("findByRealm", Company.class)
-				.setParameter("realmId", getRealm().getId()).getResultList();
-
-		List<CompanyRepresentation> result = new LinkedList<>();
-		for (Company entity : companyEntities) {
-			result.add(new CompanyRepresentation(entity));
-		}
-		return result;
-	}
-
-	@Override
-	public CompanyRepresentation findCompany(String id) {
-		Company entity = getEntityManager().find(Company.class, id);
-		return entity == null ? null : new CompanyRepresentation(entity);
-	}
-
-	@Override
-	public CompanyRepresentation addCompany(CompanyRepresentation company) {
-		Company entity = new Company();
-		String id = company.getId() == null ? KeycloakModelUtils.generateId() : company.getId();
-		entity.setId(id);
-		entity.setName(company.getName());
-		entity.setRealmId(getRealm().getId());
-		getEntityManager().persist(entity);
-
-		company.setId(id);
-		return company;
 	}
 
 	@Override
@@ -99,7 +64,7 @@ public class RoomsServiceImpl implements RoomsService, Converters {
 	}
 
 	@Override
-	public Room createPresence(Room room) {
+	public Room createRoom(Room room) {
 		RoomEntity entity = RoomToRoomEntity.apply(room);
 		getEntityManager().persist(entity);
 
