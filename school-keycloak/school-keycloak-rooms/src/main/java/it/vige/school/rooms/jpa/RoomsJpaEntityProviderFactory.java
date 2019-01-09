@@ -6,11 +6,6 @@ import org.keycloak.connections.jpa.entityprovider.JpaEntityProviderFactory;
 import org.keycloak.models.KeycloakSession;
 import org.keycloak.models.KeycloakSessionFactory;
 
-/**
- * @author <a href="mailto:erik.mulder@docdatapayments.com">Erik Mulder</a>
- * 
- * Example JpaEntityProviderFactory.
- */
 public class RoomsJpaEntityProviderFactory implements JpaEntityProviderFactory {
 
 	protected static final String ID = "rooms-entity-provider";
