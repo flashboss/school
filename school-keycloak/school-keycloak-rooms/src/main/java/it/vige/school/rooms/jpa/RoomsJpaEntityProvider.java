@@ -5,16 +5,11 @@ import java.util.List;
 
 import org.keycloak.connections.jpa.entityprovider.JpaEntityProvider;
 
-/**
- * @author <a href="mailto:erik.mulder@docdatapayments.com">Erik Mulder</a>
- * 
- * Example JpaEntityProvider.
- */
 public class RoomsJpaEntityProvider implements JpaEntityProvider {
 
     @Override
     public List<Class<?>> getEntities() {
-        return Collections.<Class<?>>singletonList(Object.class);
+        return Collections.<Class<?>>singletonList(RoomEntity.class);
     }
 
     @Override

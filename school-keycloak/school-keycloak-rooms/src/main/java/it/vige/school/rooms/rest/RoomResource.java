@@ -19,11 +19,11 @@ import it.vige.school.rooms.Room;
 import it.vige.school.rooms.School;
 import it.vige.school.rooms.spi.RoomsService;
 
-public class RoomsResource {
+public class RoomResource {
 
 	private final KeycloakSession session;
 
-	public RoomsResource(KeycloakSession session) {
+	public RoomResource(KeycloakSession session) {
 		this.session = session;
 	}
 
