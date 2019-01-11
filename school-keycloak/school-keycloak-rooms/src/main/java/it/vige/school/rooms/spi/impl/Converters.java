@@ -17,7 +17,8 @@ public interface Converters {
 			room.setClazz(t.getId().getClazz());
 			room.setSection(t.getId().getSection());
 			School school = new School();
-			school.setId(t.getId().getSchool());
+			school.setId(t.getId().getSchool().getId());
+			school.setDescription(t.getId().getSchool().getDescription());
 			room.setSchool(school);
 
 			return room;
@@ -31,7 +32,7 @@ public interface Converters {
 			RoomId roomId = new RoomId();
 			roomId.setClazz(t.getClazz());
 			roomId.setSection(t.getSection());
-			roomId.setSchool(t.getSchool().getId());
+			roomId.setSchool(SchoolToSchoolEntity.apply(t.getSchool()));
 			roomEntity.setId(roomId);
 
 			return roomEntity;
