@@ -1,8 +1,12 @@
 package it.vige.school.rooms.jpa;
 
+import static javax.persistence.FetchType.LAZY;
+
 import java.io.Serializable;
 
 import javax.persistence.Embeddable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Embeddable
 public class RoomId implements Serializable {
@@ -12,8 +16,10 @@ public class RoomId implements Serializable {
 	private int clazz;
 
 	private char section;
-	
-	private String school;
+
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "SCHOOL_ID")
+	private SchoolEntity school;
 
 	public int getClazz() {
 		return clazz;
@@ -31,11 +37,11 @@ public class RoomId implements Serializable {
 		this.section = section;
 	}
 
-	public String getSchool() {
+	public SchoolEntity getSchool() {
 		return school;
 	}
 
-	public void setSchool(String school) {
+	public void setSchool(SchoolEntity school) {
 		this.school = school;
 	}
 

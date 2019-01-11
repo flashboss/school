@@ -23,6 +23,11 @@ public class RoomsRestResource {
 		return new RoomResource(session);
 	}
 
+	@Path("schools")
+	public SchoolResource getSchoolResource() {
+		return new SchoolResource(session);
+	}
+
 	// Same like "rooms" endpoint, but REST endpoint is authenticated with
 	// Bearer token and user must be in realm role "admin"
 	// Just for illustration purposes
@@ -30,6 +35,15 @@ public class RoomsRestResource {
 	public RoomResource getRoomyResourceAuthenticated() {
 		checkRealmAdmin();
 		return new RoomResource(session);
+	}
+
+	// Same like "rooms" endpoint, but REST endpoint is authenticated with
+	// Bearer token and user must be in realm role "admin"
+	// Just for illustration purposes
+	@Path("schools-auth")
+	public SchoolResource getSchoolResourceAuthenticated() {
+		checkRealmAdmin();
+		return new SchoolResource(session);
 	}
 
 	private void checkRealmAdmin() {

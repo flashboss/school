@@ -24,7 +24,7 @@
             <column name="SECTION" type="CHAR(1)">
                 <constraints nullable="false"/>
             </column>
-            <column name="SCHOOL" type="VARCHAR(86)">
+            <column name="SCHOOL_ID" type="VARCHAR(86)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -32,7 +32,7 @@
         <addPrimaryKey
             constraintName="PK_ROOM"
             tableName="ROOMENTITY"
-            columnNames="CLAZZ,SECTION,SCHOOL"
+            columnNames="CLAZZ,SECTION,SCHOOL_ID"
         />
     </changeSet>
     
