@@ -9,6 +9,7 @@ import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
@@ -16,7 +17,6 @@ import org.jboss.resteasy.annotations.cache.NoCache;
 import org.keycloak.models.KeycloakSession;
 
 import it.vige.school.rooms.Room;
-import it.vige.school.rooms.School;
 import it.vige.school.rooms.spi.RoomsService;
 
 public class RoomResource {
@@ -35,11 +35,11 @@ public class RoomResource {
 		return session.getProvider(RoomsService.class).findAllRooms();
 	}
 
-	@POST
-	@Path("")
+	@GET
 	@NoCache
-	@Consumes(APPLICATION_JSON)
-	public List<Room> findRoomsBySchool(School school) {
+	@Path("{school}")
+	@Produces(APPLICATION_JSON)
+	public List<Room> findRoomsBySchool(@PathParam("school") final String school) {
 		return session.getProvider(RoomsService.class).findRoomsBySchool(school);
 	}
 

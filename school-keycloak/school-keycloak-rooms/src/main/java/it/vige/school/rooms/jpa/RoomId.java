@@ -17,8 +17,8 @@ public class RoomId implements Serializable {
 
 	private char section;
 
-    @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "SCHOOL_ID")
+	@ManyToOne(fetch = LAZY)
+	@JoinColumn(name = "SCHOOL_ID")
 	private SchoolEntity school;
 
 	public int getClazz() {
@@ -50,7 +50,7 @@ public class RoomId implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + clazz;
-		result = prime * result + ((school == null) ? 0 : school.hashCode());
+		result = prime * result + ((school.getId() == null) ? 0 : school.getId().hashCode());
 		result = prime * result + section;
 		return result;
 	}
@@ -66,10 +66,10 @@ public class RoomId implements Serializable {
 		RoomId other = (RoomId) obj;
 		if (clazz != other.clazz)
 			return false;
-		if (school == null) {
-			if (other.school != null)
+		if (school.getId() == null) {
+			if (other.school.getId() != null)
 				return false;
-		} else if (!school.equals(other.school))
+		} else if (!school.getId().equals(other.school.getId()))
 			return false;
 		if (section != other.section)
 			return false;
