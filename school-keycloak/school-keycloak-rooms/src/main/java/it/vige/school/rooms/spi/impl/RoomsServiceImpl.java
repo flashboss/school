@@ -56,7 +56,7 @@ public class RoomsServiceImpl implements RoomsService, Converters {
 	}
 
 	@Override
-	public List<Room> findRoomsBySchool(School school) {
+	public List<Room> findRoomsBySchool(String school) {
 		List<RoomEntity> roomEntities = getEntityManager().createNamedQuery("findRoomsBySchool", RoomEntity.class)
 				.setParameter("school", school).getResultList();
 
