@@ -8,10 +8,10 @@ import javax.persistence.Table;
 
 @NamedQueries({ @NamedQuery(name = "findAllRooms", query = "from RoomEntity"),
 		@NamedQuery(name = "findRoomsBySchool", query = "select r from RoomEntity as r where "
-				+ "r.id.school = :school " + "order by r.id.school asc"),
+				+ "r.id.school.id = :school " + "order by r.id.school.id asc"),
 		@NamedQuery(name = "findRoomByClazzSectionAndSchool", query = "select r from RoomEntity as r where "
-				+ "r.id.clazz = :clazz and r.id.section = :section and r.id.school = :school "
-				+ "order by r.id.school asc") })
+				+ "r.id.clazz = :clazz and r.id.section = :section and r.id.school.id = :school "
+				+ "order by r.id.school.id asc") })
 @Entity
 @Table
 public class RoomEntity {
