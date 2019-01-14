@@ -20,7 +20,7 @@
 
 	<parent>
 		<groupId>it.vige</groupId>
-		<artifactId>school</artifactId>
+		<artifactId>school-app</artifactId>
 		<version>1.2.2-SNAPSHOT</version>
 	</parent>
 
@@ -260,7 +260,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>it.vige</groupId>
-			<artifactId>school-ejb</artifactId>
+			<artifactId>school-app-ejb</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
