@@ -2,7 +2,6 @@
 <@layout.registrationLayout; section>
     <#if section = "header">
         ${msg("doRegister")}
-        <#assign schools = ["", "donlorenzomilani", "edoardodefilippo", "garibaldi", "giovannixxiii", "leonardodavinci", "manzi", "montecelio", "montelucci"]>
     <#elseif section = "form">
         <form id="kc-register-form" class="${properties.kcFormClass!}" action="${url.registrationAction}" method="post">
             <div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('firstName',properties.kcFormGroupErrorClass!)}">
@@ -49,8 +48,8 @@
    				</div>
    				<div class="${properties.kcInputWrapperClass!}">
        				<select id="schoolsSelector" name="user.attributes.school">
-        				<#list schools as school>
-            				<option value="${school}">${school}</option>
+        				<#list schools as key,value>
+            				<option value="${key}">${value}</option>
         				</#list>
     				</select>
    				</div>

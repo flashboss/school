@@ -1,6 +1,5 @@
 <#import "template.ftl" as layout>
 <@layout.mainLayout active='account' bodyClass='user'; section>
-    <#assign schools = ["", "donlorenzomilani", "edoardodefilippo", "garibaldi", "giovannixxiii", "leonardodavinci", "manzi", "montecelio", "montelucci"]>
     <div class="row">
         <div class="col-md-10">
             <h2>${msg("editAccountHtmlTitle")}</h2>
@@ -62,8 +61,8 @@
    			</div>
    			<div class="col-sm-10 col-md-10">
        			<select id="schoolsSelector" name="account.attributes.school">
-        			<#list schools as school>
-            			<option value="${school}" <#if school == account.attributes.school!''>selected</#if>>${school}</option>
+        			<#list schools as key,value>
+            			<option value="${key}" <#if key == account.attributes.school!''>selected</#if>>${value}</option>
         			</#list>
     			</select>
        		</div>
