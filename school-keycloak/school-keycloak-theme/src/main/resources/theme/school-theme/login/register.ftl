@@ -120,26 +120,17 @@
       				var roomselect = document.getElementById("roomsSelector");
       				roomselect.innerText = "";
         			var select_value = schoolselect.value;
-        			var rooms = [""];
-        			if ("donlorenzomilani" == select_value){
-        				rooms = ["", "0A", "0B", "0C", "1A", "2A", "3A", "4A", "5A", "1B", "2B", "3B", "4B", "5B"];
-        			} else if ("edoardodefilippo" == select_value){
-        				rooms = ["", "0B", "0C", "0D", "1A", "2A", "3A", "4A", "5A", "1C", "2C", "3C", "4C", "5C", "2F", "3F", "4F", "5F", "5G"];
-        			} else if ("garibaldi" == select_value){
-        				rooms = ["", "0A", "0B", "0C", "1A", "2A", "3A", "4A", "5A", "1B", "2B", "3B", "4B", "5B", "1C", "2C", "3C", "4C", "5C", "1G", "2G", "3G"];
-        			} else if ("giovannixxiii" == select_value){
-        				rooms = ["", "0A", "0B", "1A", "2A", "3A", "4A", "5A", "1C", "2C", "3C", "4C", "5C"];
-        			} else if ("leonardodavinci" == select_value){
-        				rooms = ["", "0B", "0C", "0E", "0F", "0I", "2C", "4C", "5C", "1D", "2D", "3D", "4D", "5D", "1E", "2E", "3E", "4E", "5E", "1F", "3F"];
-        			} else if ("manzi" == select_value){
-        				rooms = ["", "0D", "0E", "0G", "1D", "2D", "3D", "4D", "5D", "1E", "2E", "3E", "4E", "5E"];
-        			} else if ("montecelio" == select_value){
-        				rooms = ["", "0A", "2B"];
-        			} else if ("montelucci" == select_value){
-        				rooms = ["", "0B", "0E", "1C", "2C", "3C", "4C", "5C", "1D", "2D", "3D", "4D", "5D"];
-        			}
+        			var mapRooms = new Object();
+        			<#list rooms as key,values>
+        				var listRooms${key} = [];
+        				<#list values as value>
+        					listRooms${key}.push("${value}");
+            			</#list>
+            			mapRooms["${key}"] = listRooms${key};
+        			</#list>
+        			var rooms = mapRooms[select_value];
 					for(var i = 0; i < rooms.length; i++) {
-    					var opt = document.createElement('option');
+    					var opt = document.createElement("option");
     					opt.innerHTML = rooms[i];
     					opt.value = rooms[i];
     					roomselect.appendChild(opt);
