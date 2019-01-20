@@ -9,29 +9,28 @@ import it.vige.school.rooms.spi.RoomsServiceProviderFactory;
 
 public class RoomsServiceProviderFactoryImpl implements RoomsServiceProviderFactory {
 
-    @Override
-    public RoomsService create(KeycloakSession session) {
-        return new RoomsServiceImpl(session);
-    }
+	@Override
+	public RoomsService create(KeycloakSession session) {
+		return new RoomsServiceImpl(session);
+	}
 
-    @Override
-    public void init(Scope config) {
+	@Override
+	public void init(Scope config) {
 
-    }
+	}
 
-    @Override
-    public void postInit(KeycloakSessionFactory factory) {
+	@Override
+	public void postInit(KeycloakSessionFactory factory) {
+	}
 
-    }
+	@Override
+	public void close() {
 
-    @Override
-    public void close() {
+	}
 
-    }
-
-    @Override
-    public String getId() {
-        return "roomsServiceImpl";
-    }
+	@Override
+	public String getId() {
+		return "roomsServiceImpl";
+	}
 
 }
