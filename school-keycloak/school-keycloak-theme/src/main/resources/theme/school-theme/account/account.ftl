@@ -1,5 +1,6 @@
 <#import "template.ftl" as layout>
 <@layout.mainLayout active='account' bodyClass='user'; section>
+
     <div class="row">
         <div class="col-md-10">
             <h2>${msg("editAccountHtmlTitle")}</h2>
@@ -60,12 +61,8 @@
        			<label for="account.attributes.school" class="control-label">${msg("school")}</label>
    			</div>
    			<div class="col-sm-10 col-md-10">
-       			<select id="schoolsSelector" name="account.attributes.school">
-        			<#list schools as key,value>
-            			<option value="${key}" <#if key == account.attributes.school!''>selected</#if>>${value}</option>
-        			</#list>
-    			</select>
-       		</div>
+       			<input type="text" class="form-control" id="account.attributes.school" name="account.attributes.school" value="${(account.attributes.school!'')}"/>
+   			</div>
 		</div>
         
         <div class="form-group ${messagesPerField.printIfExists('account.attributes.room','has-error')}">
@@ -73,9 +70,8 @@
        			<label for="account.attributes.room" class="control-label">${msg("room")}</label>
    			</div>
    			<div class="col-sm-10 col-md-10">
-       			<select id="roomsSelector" name="account.attributes.room">
-    			</select>
-       		</div>
+       			<input type="text" class="form-control" id="account.attributes.room" name="account.attributes.room" value="${(account.attributes.room!'')}"/>
+   			</div>
 		</div>
         
         <div class="form-group ${messagesPerField.printIfExists('account.attributes.income','has-error')}">
@@ -97,36 +93,5 @@
             </div>
         </div>
     </form>
-    <script>
-      	(function() {
-      	    function roomsSelect(schoolselect) {
-      			var roomselect = document.getElementById("roomsSelector");
-      			roomselect.innerText = "";
-        		var select_value = schoolselect.value;
-        			var mapRooms = new Object();
-        			<#list rooms as key,values>
-        				var listRooms${key} = [];
-        				<#list values as value>
-        					listRooms${key}.push("${value}");
-            			</#list>
-            			mapRooms["${key}"] = listRooms${key};
-        			</#list>
-        			var rooms = mapRooms[select_value];
-				for(var i = 0; i < rooms.length; i++) {
-    				var opt = document.createElement("option");
-    				opt.innerHTML = rooms[i];
-    				opt.value = rooms[i];
-    				if ("${account.attributes.room}" == opt.value) {
-    					opt.selected = true;
-    				}
-    				roomselect.appendChild(opt);
-				}
-      	    }
-      		var schoolselect = document.getElementById("schoolsSelector");
-      	    roomsSelect(schoolselect);
-  			schoolselect.onchange = function() {
-  				roomsSelect(schoolselect);
-    		};
-		})();
-    </script>
+
 </@layout.mainLayout>
