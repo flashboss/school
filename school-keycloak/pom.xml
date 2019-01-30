@@ -39,6 +39,8 @@
 		<profile>
 			<id>runtime-keycloak</id>
 			<properties>
+				<maven.compiler.source>1.8</maven.compiler.source>
+				<maven.compiler.target>1.8</maven.compiler.target>
 
 				<!-- Docker settings -->
 				<docker.keepRunning>true</docker.keepRunning>
@@ -46,7 +48,7 @@
 				<docker.keycloak.password>admin</docker.keycloak.password>
 				<docker.keycloak.port.internal>8080</docker.keycloak.port.internal>
 				<docker.keycloak.port.external>8180</docker.keycloak.port.external>
-				<docker.keycloak.time.test>120000</docker.keycloak.time.test>
+				<docker.keycloak.time.test>1200000</docker.keycloak.time.test>
 				<docker.keycloak.db.vendor>H2</docker.keycloak.db.vendor>
 
 				<!-- Docker Arguments -->
@@ -67,11 +69,11 @@
 				<docker.keycloak.volume.internal.theme>/school-keycloak/school-keycloak-theme/target/school-keycloak-theme.jar</docker.keycloak.volume.internal.theme>
 				<docker.keycloak.volume.external.theme>/opt/jboss/keycloak/standalone/deployments/school-keycloak-theme.jar</docker.keycloak.volume.external.theme>
 
-				<!-- Keycloak Rooms -->
+				<!-- Keycloak Module Rooms -->
 				<docker.keycloak.volume.internal.rooms>/school-keycloak/school-keycloak-rooms/src/main/module/it/vige/school/rooms/main/module.xml</docker.keycloak.volume.internal.rooms>
 				<docker.keycloak.volume.external.rooms>/opt/jboss/keycloak/modules/it/vige/school/rooms/main/module.xml</docker.keycloak.volume.external.rooms>
 
-				<!-- Keycloak Provider -->
+				<!-- Keycloak Provider Rooms -->
 				<docker.keycloak.volume.provider.internal.rooms>/school-keycloak/school-keycloak-rooms/src/main/module/standalone.xml</docker.keycloak.volume.provider.internal.rooms>
 				<docker.keycloak.volume.provider.external.rooms>/opt/jboss/keycloak/standalone/configuration/standalone.xml</docker.keycloak.volume.provider.external.rooms>
 
@@ -121,7 +123,6 @@
 											<arg>${docker.keycloak.run.cmd.arg.5}</arg>
 											<arg>${docker.keycloak.run.cmd.arg.6}</arg>
 										</cmd>
-
 										<volumes>
 											<bind>
 												<volume>${docker.keycloak.bind.volume.realm-config}</volume>
