@@ -13,10 +13,11 @@
  * limitations under the License.                                             *
  ******************************************************************************/
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<parent>
 		<groupId>it.vige</groupId>
 		<artifactId>school-keycloak</artifactId>
@@ -26,7 +27,7 @@
 	<name>School Keycloak Theme</name>
 	<description />
 	<artifactId>school-keycloak-theme</artifactId>
-	
+
 	<build>
 		<plugins>
 			<plugin>
@@ -49,6 +50,15 @@
 			<plugin>
 				<groupId>io.fabric8</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
+				<version>${maven.docker.plugin.version}</version>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>${wildfly.maven.plugin.version}</version>
 				<configuration>
 					<skip>true</skip>
 				</configuration>

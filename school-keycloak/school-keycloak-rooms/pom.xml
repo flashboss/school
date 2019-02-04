@@ -27,6 +27,19 @@
 	<artifactId>school-keycloak-rooms</artifactId>
 	<name>School Keycloak Rooms</name>
 	<description>School Keycloak Rooms Configuration</description>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>${wildfly.maven.plugin.version}</version>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 	<dependencies>
 		<dependency>
