@@ -1,0 +1,2 @@
+embed-server --server-config=standalone.xml
+/subsystem=keycloak-server:write-attribute(name=providers,value=[classpath:${jboss.home.dir}/providers/*, module:it.vige.school.rooms])

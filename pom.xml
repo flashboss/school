@@ -65,12 +65,13 @@
 		<maven.surefire.plugin.version>3.0.0-M2</maven.surefire.plugin.version>
 		<maven.replacer.plugin.version>1.5.3</maven.replacer.plugin.version>
 		<maven.docker.plugin.version>0.28.0</maven.docker.plugin.version>
+		<maven.resources.plugin.version>3.1.0</maven.resources.plugin.version>
 		<ejb.version>3.2</ejb.version>
 		<wildfly.version>16.0.0.Beta1-SNAPSHOT</wildfly.version>
 		<wildfly.maven.plugin.version>2.0.0.Final</wildfly.maven.plugin.version>
 		<jboss.logging.version>3.3.2.Final</jboss.logging.version>
 		<resteasy.version>3.6.2.Final</resteasy.version>
-		<junit.version>5.4.0-M1</junit.version>
+		<junit.version>5.4.0-RC1</junit.version>
 		<keycloak.version>4.8.3.Final</keycloak.version>
 	</properties>
 
