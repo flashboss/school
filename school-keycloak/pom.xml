@@ -38,94 +38,130 @@
 
 		<profile>
 			<id>runtime-keycloak</id>
-			<properties>
-
-				<!-- Docker settings -->
-				<docker.keepRunning>true</docker.keepRunning>
-				<docker.keycloak.user>admin</docker.keycloak.user>
-				<docker.keycloak.password>admin</docker.keycloak.password>
-				<docker.keycloak.port.internal>8080</docker.keycloak.port.internal>
-				<docker.keycloak.port.external>8180</docker.keycloak.port.external>
-				<docker.keycloak.time.test>120000</docker.keycloak.time.test>
-				<docker.keycloak.db.vendor>H2</docker.keycloak.db.vendor>
-
-				<!-- Docker Arguments -->
-				<docker.keycloak.run.cmd.arg.1>-b</docker.keycloak.run.cmd.arg.1>
-				<docker.keycloak.run.cmd.arg.2>0.0.0.0</docker.keycloak.run.cmd.arg.2>
-				<docker.keycloak.run.cmd.arg.3>-Dkeycloak.migration.action=import</docker.keycloak.run.cmd.arg.3>
-				<docker.keycloak.run.cmd.arg.4>-Dkeycloak.migration.provider=dir</docker.keycloak.run.cmd.arg.4>
-				<docker.keycloak.run.cmd.arg.5>-Dkeycloak.migration.dir=/opt/jboss/keycloak/realm-config</docker.keycloak.run.cmd.arg.5>
-				<docker.keycloak.run.cmd.arg.6>-Dkeycloak.migration.strategy=OVERWRITE_EXISTING</docker.keycloak.run.cmd.arg.6>
-
-				<!-- Docker Volumes Building -->
-
-				<!-- Realm -->
-				<docker.keycloak.volume.internal.realm-config>/school-keycloak/src/main/realm-config</docker.keycloak.volume.internal.realm-config>
-				<docker.keycloak.volume.external.realm-config>/opt/jboss/keycloak/realm-config</docker.keycloak.volume.external.realm-config>
-
-				<!-- Keycloak Theme -->
-				<docker.keycloak.volume.internal.theme>/school-keycloak/school-keycloak-theme/target/school-keycloak-theme-${project.version}.jar</docker.keycloak.volume.internal.theme>
-				<docker.keycloak.volume.external.theme>/opt/jboss/keycloak/standalone/deployments/keycloak-theme-${project.version}.jar</docker.keycloak.volume.external.theme>
-
-				<!-- Docker - Binding volumes -->
-				<docker.keycloak.bind.volume.realm-config>${project.parent.basedir}${docker.keycloak.volume.internal.realm-config}:${docker.keycloak.volume.external.realm-config}</docker.keycloak.bind.volume.realm-config>
-				<docker.keycloak.bind.volume.theme>${project.parent.basedir}${docker.keycloak.volume.internal.theme}:${docker.keycloak.volume.external.theme}</docker.keycloak.bind.volume.theme>
-			</properties>
 			<build>
 				<plugins>
 					<plugin>
-						<groupId>io.fabric8</groupId>
-						<artifactId>docker-maven-plugin</artifactId>
-						<version>${maven.docker.plugin.version}</version>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>unpack-wildfly-adapter</id>
+								<phase>process-test-classes</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.wildfly</groupId>
+											<artifactId>wildfly-dist</artifactId>
+											<version>${wildfly.version}</version>
+											<type>zip</type>
+											<outputDirectory>target/keycloak-run/</outputDirectory>
+										</artifactItem>
+										<artifactItem>
+											<groupId>org.keycloak</groupId>
+											<artifactId>keycloak-server-overlay</artifactId>
+											<version>${keycloak.version}</version>
+											<type>zip</type>
+											<outputDirectory>target/keycloak-run/wildfly-${wildfly.version}</outputDirectory>
+										</artifactItem>
+									</artifactItems>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<artifactId>maven-resources-plugin</artifactId>
+						<version>${maven.resources.plugin.version}</version>
+						<executions>
+							<execution>
+								<id>copy-resources</id>
+								<phase>process-test-classes</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>${basedir}/target/keycloak-run/wildfly-${wildfly.version}/standalone/configuration</outputDirectory>
+									<resources>
+										<resource>
+											<directory>src/main/users</directory>
+											<filtering>true</filtering>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+							<execution>
+								<id>deploy-theme</id>
+								<phase>install</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>${basedir}/target/keycloak-run/wildfly-${wildfly.version}/standalone/deployments</outputDirectory>
+									<resources>
+										<resource>
+											<directory>school-keycloak-theme/target</directory>
+											<include>school-keycloak-theme.jar</include>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+							<execution>
+								<id>deploy-rooms</id>
+								<phase>install</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>${basedir}/target/keycloak-run/wildfly-${wildfly.version}/modules/it/vige/school/rooms/main</outputDirectory>
+									<resources>
+										<resource>
+											<directory>school-keycloak-rooms/target</directory>
+											<include>school-keycloak-rooms.jar</include>
+										</resource>
+										<resource>
+											<directory>school-keycloak-rooms/src/main/config/it/vige/school/rooms/main</directory>
+											<include>module.xml</include>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.wildfly.plugins</groupId>
+						<artifactId>wildfly-maven-plugin</artifactId>
+						<version>${wildfly.maven.plugin.version}</version>
 						<configuration>
-							<extensions>true</extensions>
-							<skip>false</skip>
-							<images>
-								<image>
-									<name>jboss/keycloak:${keycloak.version}</name>
-									<run>
-										<ports>
-											<port>${docker.keycloak.port.external}:${docker.keycloak.port.internal}</port>
-										</ports>
-										<env>
-											<KEYCLOAK_USER>${docker.keycloak.user}</KEYCLOAK_USER>
-											<KEYCLOAK_PASSWORD>${docker.keycloak.password}</KEYCLOAK_PASSWORD>
-											<DB_VENDOR>${docker.keycloak.db.vendor}</DB_VENDOR>
-										</env>
-										<wait>
-											<http>
-												<url>http://${docker.host.address}:${docker.keycloak.port.external}</url>
-											</http>
-											<time>${docker.keycloak.time.test}</time>
-										</wait>
-										<cmd>
-											<arg>${docker.keycloak.run.cmd.arg.1}</arg>
-											<arg>${docker.keycloak.run.cmd.arg.2}</arg>
-											<arg>${docker.keycloak.run.cmd.arg.3}</arg>
-											<arg>${docker.keycloak.run.cmd.arg.4}</arg>
-											<arg>${docker.keycloak.run.cmd.arg.5}</arg>
-											<arg>${docker.keycloak.run.cmd.arg.6}</arg>
-										</cmd>
-
-										<volumes>
-											<bind>
-												<volume>${docker.keycloak.bind.volume.realm-config}</volume>
-												<volume>${docker.keycloak.bind.volume.theme}</volume>
-											</bind>
-										</volumes>
-									</run>
-								</image>
-							</images>
+							<java-opts>${JAVA_OPTS}
+							</java-opts>
+							<server-args>
+								<server-arg>-b=0.0.0.0</server-arg>
+								<server-arg>-Djboss.socket.binding.port-offset=100</server-arg>
+								<server-arg>-Dkeycloak.migration.action=import</server-arg>
+								<server-arg>-Dkeycloak.migration.provider=dir</server-arg>
+								<server-arg>-Dkeycloak.migration.dir=src/main/realm-config</server-arg>
+								<server-arg>-Dkeycloak.migration.strategy=OVERWRITE_EXISTING</server-arg>
+							</server-args>
+							<offline>true</offline>
+							<scripts>
+								<script>${project.build.directory}/keycloak-run/wildfly-${wildfly.version}/bin/keycloak-install.cli</script>
+								<script>school-keycloak-rooms/src/main/config/add-provider.cli</script>
+							</scripts>
+							<startup-timeout>120</startup-timeout>
+							<timeout>120</timeout>
 						</configuration>
 						<executions>
 							<execution>
-								<inherited>false</inherited>
-								<id>start</id>
+								<id>run-wildfly</id>
 								<phase>install</phase>
 								<goals>
-									<goal>build</goal>
+									<goal>execute-commands</goal>
 									<goal>start</goal>
 								</goals>
+								<configuration>
+									<jbossHome>${project.build.directory}/keycloak-run/wildfly-${wildfly.version}</jbossHome>
+								</configuration>
 							</execution>
 						</executions>
 					</plugin>

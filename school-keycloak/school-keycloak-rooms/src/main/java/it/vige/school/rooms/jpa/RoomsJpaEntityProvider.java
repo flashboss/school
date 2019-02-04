@@ -1,5 +1,7 @@
 package it.vige.school.rooms.jpa;
 
+import static it.vige.school.rooms.jpa.RoomsJpaEntityProviderFactory.ID;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +31,6 @@ public class RoomsJpaEntityProvider implements JpaEntityProvider {
 
 	@Override
 	public String getFactoryId() {
-		return RoomsJpaEntityProviderFactory.ID;
+		return ID;
 	}
 }

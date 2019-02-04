@@ -3872,7 +3872,7 @@
 					"autheticatorFlow": false
 				},
 				{
-					"authenticator": "registration-user-creation",
+					"authenticator": "rooms-schools-creation",
 					"requirement": "REQUIRED",
 					"priority": 61,
 					"userSetupAllowed": false,
