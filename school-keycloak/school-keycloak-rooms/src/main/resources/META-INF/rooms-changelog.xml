@@ -32,8 +32,9 @@
 		<addPrimaryKey constraintName="PK_ROOM"
 			tableName="ROOMENTITY" columnNames="CLAZZ,SECTION,SCHOOL_ID" />
 
-		<sqlFile encoding="utf8" path="rooms.import.sql"
+		<sqlFile encoding="utf8" path="MAVEN_REPLACER_IMPORT_SQL"
 			relativeToChangelogFile="true" />
+		
 	</changeSet>
 
 </databaseChangeLog>
