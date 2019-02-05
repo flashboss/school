@@ -41,6 +41,9 @@
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
+			<properties>
+				<realm.config.environment>dev</realm.config.environment>
+			</properties>
 			<build>
 				<plugins>
 					<plugin>
@@ -65,60 +68,15 @@
 							</execution>
 						</executions>
 					</plugin>
-					<plugin>
-						<groupId>com.google.code.maven-replacer-plugin</groupId>
-						<artifactId>replacer</artifactId>
-						<version>${maven.replacer.plugin.version}</version>
-						<executions>
-							<execution>
-								<phase>prepare-package</phase>
-								<goals>
-									<goal>replace</goal>
-								</goals>
-							</execution>
-						</executions>
-						<configuration>
-							<file>school-keycloak-rooms/target/classes/META-INF/rooms-changelog.xml</file>
-							<replacements>
-								<replacement>
-									<token>MAVEN_REPLACER_IMPORT_SQL</token>
-									<value>rooms.import.sql</value>
-								</replacement>
-							</replacements>
-						</configuration>
-					</plugin>
 				</plugins>
 			</build>
 		</profile>
 
 		<profile>
 			<id>production</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>com.google.code.maven-replacer-plugin</groupId>
-						<artifactId>replacer</artifactId>
-						<version>${maven.replacer.plugin.version}</version>
-						<executions>
-							<execution>
-								<phase>prepare-package</phase>
-								<goals>
-									<goal>replace</goal>
-								</goals>
-							</execution>
-						</executions>
-						<configuration>
-							<file>school-keycloak-rooms/target/classes/META-INF/rooms-changelog.xml</file>
-							<replacements>
-								<replacement>
-									<token>MAVEN_REPLACER_IMPORT_SQL</token>
-									<value>empty.import.sql</value>
-								</replacement>
-							</replacements>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
+			<properties>
+				<realm.config.environment>prod</realm.config.environment>
+			</properties>
 		</profile>
 
 		<profile>
@@ -214,7 +172,7 @@
 								<server-arg>-Djboss.socket.binding.port-offset=100</server-arg>
 								<server-arg>-Dkeycloak.migration.action=import</server-arg>
 								<server-arg>-Dkeycloak.migration.provider=dir</server-arg>
-								<server-arg>-Dkeycloak.migration.dir=src/main/realm-config</server-arg>
+								<server-arg>-Dkeycloak.migration.dir=src/main/realm-config-${realm.config.environment}</server-arg>
 								<server-arg>-Dkeycloak.migration.strategy=OVERWRITE_EXISTING</server-arg>
 							</server-args>
 							<offline>true</offline>
