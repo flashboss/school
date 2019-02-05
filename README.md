@@ -72,7 +72,11 @@ to deploy it with the shell command in WildFly:
    
 From the 1.2.0 version we need keycloak to manage the users. To start a keycloak standalone use the following command. Important, it must be executed after the install of the school project because it must import the installed keycloak theme:
 
-    mvn install -Pruntime-keycloak
+    mvn install -Pdevelopment,runtime-keycloak
+    
+This command import default users and development configurations. To start keycloak in a clean production environment you can use:
+
+    mvn install -Pproduction,runtime-keycloak
     
 to create new users in WildFly:
 
