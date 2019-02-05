@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
-    <changeSet author="luca.stancapiano@vige.it" id="rooms-1.0">
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+	<changeSet author="luca.stancapiano@vige.it" id="rooms-1.0">
 
-        <createTable tableName="SCHOOLENTITY">
-            <column name="ID" type="VARCHAR(86)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="DESCRIPTION" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
+		<createTable tableName="SCHOOLENTITY">
+			<column name="ID" type="VARCHAR(86)">
+				<constraints nullable="false" />
+			</column>
+			<column name="DESCRIPTION" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
 
-        <addPrimaryKey
-            constraintName="PK_SCHOOL"
-            tableName="SCHOOLENTITY"
-            columnNames="ID"
-        />
-        
-        <createTable tableName="ROOMENTITY">
-            <column name="CLAZZ" type="INT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="SECTION" type="CHAR(1)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="SCHOOL_ID" type="VARCHAR(86)">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
+		<addPrimaryKey constraintName="PK_SCHOOL"
+			tableName="SCHOOLENTITY" columnNames="ID" />
 
-        <addPrimaryKey
-            constraintName="PK_ROOM"
-            tableName="ROOMENTITY"
-            columnNames="CLAZZ,SECTION,SCHOOL_ID"
-        />
-    </changeSet>
-    
+		<createTable tableName="ROOMENTITY">
+			<column name="CLAZZ" type="INT">
+				<constraints nullable="false" />
+			</column>
+			<column name="SECTION" type="CHAR(1)">
+				<constraints nullable="false" />
+			</column>
+			<column name="SCHOOL_ID" type="VARCHAR(86)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+
+		<addPrimaryKey constraintName="PK_ROOM"
+			tableName="ROOMENTITY" columnNames="CLAZZ,SECTION,SCHOOL_ID" />
+
+		<sqlFile encoding="utf8" path="rooms.import.sql"
+			relativeToChangelogFile="true" />
+	</changeSet>
+
 </databaseChangeLog>
