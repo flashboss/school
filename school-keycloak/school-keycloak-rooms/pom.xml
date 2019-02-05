@@ -27,7 +27,7 @@
 	<artifactId>school-keycloak-rooms</artifactId>
 	<name>School Keycloak Rooms</name>
 	<description>School Keycloak Rooms Configuration</description>
-	
+
 	<build>
 		<plugins>
 			<plugin>
@@ -36,6 +36,28 @@
 				<version>${wildfly.maven.plugin.version}</version>
 				<configuration>
 					<skip>true</skip>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.google.code.maven-replacer-plugin</groupId>
+				<artifactId>replacer</artifactId>
+				<version>${maven.replacer.plugin.version}</version>
+				<executions>
+					<execution>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>replace</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<file>${project.build.directory}/classes/META-INF/rooms-changelog.xml</file>
+					<replacements>
+						<replacement>
+							<token>MAVEN_REPLACER_IMPORT_SQL</token>
+							<value>rooms.import.${realm.config.environment}.sql</value>
+						</replacement>
+					</replacements>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -79,5 +101,4 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
 </project>
