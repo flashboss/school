@@ -44,7 +44,7 @@
 						<artifactId>maven-dependency-plugin</artifactId>
 						<executions>
 							<execution>
-								<id>unpack-wildfly-adapter</id>
+								<id>unpack-keycloak-server</id>
 								<phase>process-test-classes</phase>
 								<goals>
 									<goal>unpack</goal>
@@ -64,6 +64,31 @@
 											<version>${keycloak.version}</version>
 											<type>zip</type>
 											<outputDirectory>target/keycloak-run/wildfly-${wildfly.version}</outputDirectory>
+										</artifactItem>
+									</artifactItems>
+								</configuration>
+							</execution>
+							<execution>
+								<id>deploy-applications</id>
+								<phase>install</phase>
+								<goals>
+									<goal>copy</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>it.vige</groupId>
+											<artifactId>school-keycloak-theme</artifactId>
+											<version>${project.version}</version>
+											<destFileName>school-keycloak-theme.jar</destFileName>
+											<outputDirectory>target/keycloak-run/wildfly-${wildfly.version}/standalone/deployments</outputDirectory>
+										</artifactItem>
+										<artifactItem>
+											<groupId>it.vige</groupId>
+											<artifactId>school-keycloak-rooms</artifactId>
+											<version>${project.version}</version>
+											<destFileName>school-keycloak-rooms.jar</destFileName>
+											<outputDirectory>target/keycloak-run/wildfly-${wildfly.version}/modules/it/vige/school/rooms/main</outputDirectory>
 										</artifactItem>
 									</artifactItems>
 								</configuration>
@@ -91,22 +116,6 @@
 								</configuration>
 							</execution>
 							<execution>
-								<id>deploy-theme</id>
-								<phase>install</phase>
-								<goals>
-									<goal>copy-resources</goal>
-								</goals>
-								<configuration>
-									<outputDirectory>${basedir}/target/keycloak-run/wildfly-${wildfly.version}/standalone/deployments</outputDirectory>
-									<resources>
-										<resource>
-											<directory>school-keycloak-theme/target</directory>
-											<include>school-keycloak-theme.jar</include>
-										</resource>
-									</resources>
-								</configuration>
-							</execution>
-							<execution>
 								<id>deploy-rooms</id>
 								<phase>install</phase>
 								<goals>
@@ -115,10 +124,6 @@
 								<configuration>
 									<outputDirectory>${basedir}/target/keycloak-run/wildfly-${wildfly.version}/modules/it/vige/school/rooms/main</outputDirectory>
 									<resources>
-										<resource>
-											<directory>school-keycloak-rooms/target</directory>
-											<include>school-keycloak-rooms.jar</include>
-										</resource>
 										<resource>
 											<directory>school-keycloak-rooms/src/main/config/it/vige/school/rooms/main</directory>
 											<include>module.xml</include>
@@ -148,8 +153,6 @@
 								<script>${project.build.directory}/keycloak-run/wildfly-${wildfly.version}/bin/keycloak-install.cli</script>
 								<script>school-keycloak-rooms/src/main/config/add-provider.cli</script>
 							</scripts>
-							<startup-timeout>120</startup-timeout>
-							<timeout>120</timeout>
 						</configuration>
 						<executions>
 							<execution>
@@ -161,6 +164,7 @@
 								</goals>
 								<configuration>
 									<jbossHome>${project.build.directory}/keycloak-run/wildfly-${wildfly.version}</jbossHome>
+									<port>10090</port>
 								</configuration>
 							</execution>
 						</executions>
