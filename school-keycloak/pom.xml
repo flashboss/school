@@ -144,7 +144,7 @@
 						<executions>
 							<execution>
 								<id>deploy-rooms</id>
-								<phase>install</phase>
+								<phase>process-test-classes</phase>
 								<goals>
 									<goal>copy-resources</goal>
 								</goals>
