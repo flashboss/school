@@ -97,6 +97,8 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 						<configuration>
 							<java-opts>${JAVA_OPTS}
 							</java-opts>
+							<timeout>6000</timeout>
+							<startup-timeout>6000</startup-timeout>
 							<server-args>
 								<server-arg>-b=0.0.0.0</server-arg>
 							</server-args>
