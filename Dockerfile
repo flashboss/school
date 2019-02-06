@@ -32,10 +32,10 @@ ENV TERM xterm
 
 ENV LANG it_IT.UTF-8
 WORKDIR /projects
-COPY / /projects/school-keycloak
+COPY / /projects/school
 RUN sudo chown -R user:user /projects && \
-	cd school-keycloak && \
-	mvn install
+	cd school && \
+	mvn install -Pproduction
 
 CMD mvn install -Pproduction,runtime-keycloak,runtime-school-jsf,deploy-jsf && \
 	sudo /usr/sbin/sshd -D && \
