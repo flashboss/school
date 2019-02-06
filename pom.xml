@@ -173,7 +173,7 @@
 						<configuration>
 							<images>
 								<image>
-									<name>vige/keycloak</name>
+									<name>vige/school</name>
 									<alias>dockerfile</alias>
 									<run>
 										<ports>
