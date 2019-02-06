@@ -23,7 +23,6 @@ RUN apt-get update && \
 USER user
 
 ENV MAVEN_VERSION=3.6.0
-ENV KEYCLOAK_VERSION=4.8.1.Final
 ENV M2_HOME=/home/user/apache-maven-$MAVEN_VERSION
 ENV PATH=$M2_HOME/bin:$PATH
 
