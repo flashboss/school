@@ -95,8 +95,8 @@
 	</dependencies>
 
 	<modules>
-		<module>school-app</module>
 		<module>school-keycloak</module>
+		<module>school-app</module>
 	</modules>
 
 	<profiles>
@@ -159,6 +159,43 @@
 					<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 				</repository>
 			</distributionManagement>
+		</profile>
+
+		<profile>
+			<id>docker-school</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>io.fabric8</groupId>
+						<artifactId>docker-maven-plugin</artifactId>
+						<version>${maven.docker.plugin.version}</version>
+						<configuration>
+							<images>
+								<image>
+									<name>vige/keycloak</name>
+									<alias>dockerfile</alias>
+									<run>
+										<ports>
+											<port>8180:8180</port>
+										</ports>
+									</run>
+								</image>
+							</images>
+						</configuration>
+						<executions>
+							<execution>
+								<inherited>false</inherited>
+								<id>start</id>
+								<phase>install</phase>
+								<goals>
+									<goal>build</goal>
+									<goal>start</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 	</profiles>
 </project>

@@ -34,45 +34,4 @@
 		<module>school-app-jsf</module>
 		<module>school-app-rest</module>
 	</modules>
-
-	<profiles>
-
-		<profile>
-			<id>docker-school</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>io.fabric8</groupId>
-						<artifactId>docker-maven-plugin</artifactId>
-						<version>${maven.docker.plugin.version}</version>
-						<configuration>
-							<images>
-								<image>
-									<name>vige/school</name>
-									<alias>dockerfile</alias>
-									<run>
-										<ports>
-											<port>8180:8180</port>
-											<port>8080:8080</port>
-										</ports>
-									</run>
-								</image>
-							</images>
-						</configuration>
-						<executions>
-							<execution>
-								<inherited>false</inherited>
-								<id>start</id>
-								<phase>install</phase>
-								<goals>
-									<goal>build</goal>
-									<goal>start</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
 </project>
