@@ -57,7 +57,7 @@
 									<goal>copy-resources</goal>
 								</goals>
 								<configuration>
-									<outputDirectory>${basedir}/target/keycloak-run/wildfly-${wildfly.version}/standalone/configuration</outputDirectory>
+									<outputDirectory>${project.build.directory}/keycloak-run/wildfly-${wildfly.version}/standalone/configuration</outputDirectory>
 									<resources>
 										<resource>
 											<directory>src/main/users</directory>
@@ -99,14 +99,14 @@
 											<artifactId>wildfly-dist</artifactId>
 											<version>${wildfly.version}</version>
 											<type>zip</type>
-											<outputDirectory>target/keycloak-run/</outputDirectory>
+											<outputDirectory>${project.build.directory}/keycloak-run/</outputDirectory>
 										</artifactItem>
 										<artifactItem>
 											<groupId>org.keycloak</groupId>
 											<artifactId>keycloak-server-overlay</artifactId>
 											<version>${keycloak.version}</version>
 											<type>zip</type>
-											<outputDirectory>target/keycloak-run/wildfly-${wildfly.version}</outputDirectory>
+											<outputDirectory>${project.build.directory}/keycloak-run/wildfly-${wildfly.version}</outputDirectory>
 										</artifactItem>
 									</artifactItems>
 								</configuration>
@@ -124,14 +124,14 @@
 											<artifactId>school-keycloak-theme</artifactId>
 											<version>${project.version}</version>
 											<destFileName>school-keycloak-theme.jar</destFileName>
-											<outputDirectory>target/keycloak-run/wildfly-${wildfly.version}/standalone/deployments</outputDirectory>
+											<outputDirectory>${project.build.directory}/keycloak-run/wildfly-${wildfly.version}/standalone/deployments</outputDirectory>
 										</artifactItem>
 										<artifactItem>
 											<groupId>it.vige</groupId>
 											<artifactId>school-keycloak-rooms</artifactId>
 											<version>${project.version}</version>
 											<destFileName>school-keycloak-rooms.jar</destFileName>
-											<outputDirectory>target/keycloak-run/wildfly-${wildfly.version}/modules/it/vige/school/rooms/main</outputDirectory>
+											<outputDirectory>${project.build.directory}/keycloak-run/wildfly-${wildfly.version}/modules/it/vige/school/rooms/main</outputDirectory>
 										</artifactItem>
 									</artifactItems>
 								</configuration>
@@ -149,7 +149,7 @@
 									<goal>copy-resources</goal>
 								</goals>
 								<configuration>
-									<outputDirectory>${basedir}/target/keycloak-run/wildfly-${wildfly.version}/modules/it/vige/school/rooms/main</outputDirectory>
+									<outputDirectory>${project.build.directory}/keycloak-run/wildfly-${wildfly.version}/modules/it/vige/school/rooms/main</outputDirectory>
 									<resources>
 										<resource>
 											<directory>school-keycloak-rooms/src/main/config/it/vige/school/rooms/main</directory>
@@ -172,7 +172,7 @@
 								<server-arg>-Djboss.socket.binding.port-offset=100</server-arg>
 								<server-arg>-Dkeycloak.migration.action=import</server-arg>
 								<server-arg>-Dkeycloak.migration.provider=dir</server-arg>
-								<server-arg>-Dkeycloak.migration.dir=src/main/realm-config-${realm.config.environment}</server-arg>
+								<server-arg>-Dkeycloak.migration.dir=${basedir}/src/main/realm-config-${realm.config.environment}</server-arg>
 								<server-arg>-Dkeycloak.migration.strategy=OVERWRITE_EXISTING</server-arg>
 							</server-args>
 							<offline>true</offline>
@@ -193,43 +193,6 @@
 									<jbossHome>${project.build.directory}/keycloak-run/wildfly-${wildfly.version}</jbossHome>
 									<port>10090</port>
 								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-
-		<profile>
-			<id>docker-keycloak</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>io.fabric8</groupId>
-						<artifactId>docker-maven-plugin</artifactId>
-						<version>${maven.docker.plugin.version}</version>
-						<configuration>
-							<images>
-								<image>
-									<name>vige/keycloak</name>
-									<alias>dockerfile</alias>
-									<run>
-										<ports>
-											<port>8180:8180</port>
-										</ports>
-									</run>
-								</image>
-							</images>
-						</configuration>
-						<executions>
-							<execution>
-								<inherited>false</inherited>
-								<id>start</id>
-								<phase>install</phase>
-								<goals>
-									<goal>build</goal>
-									<goal>start</goal>
-								</goals>
 							</execution>
 						</executions>
 					</plugin>
