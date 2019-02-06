@@ -35,9 +35,9 @@ WORKDIR /projects
 COPY / /projects/school
 RUN sudo chown -R user:user /projects && \
 	cd school && \
-	mvn install -Pproduction
+	mvn install -Pproduction,runtime-keycloak,runtime-school-jsf
 
 CMD cd school && \
-	mvn install -Pproduction,runtime-keycloak,runtime-school-jsf,deploy-jsf && \
+	mvn install -o -Pproduction,runtime-keycloak,runtime-school-jsf,deploy-jsf && \
 	sudo /usr/sbin/sshd -D && \
     tail -f /dev/null
