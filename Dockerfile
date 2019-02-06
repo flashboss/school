@@ -37,6 +37,7 @@ RUN sudo chown -R user:user /projects && \
 	cd school && \
 	mvn install -Pproduction
 
-CMD mvn install -Pproduction,runtime-keycloak,runtime-school-jsf,deploy-jsf && \
+CMD cd school && \
+	mvn install -Pproduction,runtime-keycloak,runtime-school-jsf,deploy-jsf && \
 	sudo /usr/sbin/sshd -D && \
     tail -f /dev/null
