@@ -35,6 +35,7 @@ WORKDIR /projects
 COPY / /projects/school
 RUN sudo chown -R user:user /projects && \
 	cd school && \
+	mvn install -Pproduction && \
 	mvn package -Pproduction,runtime-keycloak,runtime-school-jsf
 
 CMD cd school && \

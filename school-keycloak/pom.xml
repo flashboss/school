@@ -167,8 +167,6 @@
 						<configuration>
 							<java-opts>${JAVA_OPTS}
 							</java-opts>
-							<timeout>6000</timeout>
-							<startup-timeout>6000</startup-timeout>
 							<server-args>
 								<server-arg>-b=0.0.0.0</server-arg>
 								<server-arg>-Djboss.socket.binding.port-offset=100</server-arg>
