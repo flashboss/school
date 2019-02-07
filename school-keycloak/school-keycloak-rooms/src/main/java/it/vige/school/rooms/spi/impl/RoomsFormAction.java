@@ -57,7 +57,7 @@ public class RoomsFormAction implements FormAction, FormActionFactory {
 
 	@Override
 	public void validate(ValidationContext context) {
-
+		context.success();
 	}
 
 	@Override
