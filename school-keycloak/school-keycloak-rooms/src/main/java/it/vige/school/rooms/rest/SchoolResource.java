@@ -1,5 +1,6 @@
 package it.vige.school.rooms.rest;
 
+import static it.vige.school.rooms.rest.RoomsRestResource.checkRealmAdmin;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import javax.ws.rs.core.Response;
 
 import org.jboss.resteasy.annotations.cache.NoCache;
 import org.keycloak.models.KeycloakSession;
+import org.keycloak.services.managers.AuthenticationManager.AuthResult;
 
 import it.vige.school.rooms.School;
 import it.vige.school.rooms.spi.RoomsService;
@@ -22,9 +24,11 @@ import it.vige.school.rooms.spi.RoomsService;
 public class SchoolResource {
 
 	private final KeycloakSession session;
+	private final AuthResult auth;
 
-	public SchoolResource(KeycloakSession session) {
+	public SchoolResource(KeycloakSession session, AuthResult auth) {
 		this.session = session;
+		this.auth = auth;
 	}
 
 	@GET
@@ -41,6 +45,7 @@ public class SchoolResource {
 	@Consumes(APPLICATION_JSON)
 	@Produces(APPLICATION_JSON)
 	public School createSchool(School school) {
+		checkRealmAdmin(auth);
 		return session.getProvider(RoomsService.class).createSchool(school);
 	}
 
@@ -49,6 +54,7 @@ public class SchoolResource {
 	@NoCache
 	@Consumes(APPLICATION_JSON)
 	public Response removeSchool(School school) {
+		checkRealmAdmin(auth);
 		session.getProvider(RoomsService.class).removeSchool(school);
 		return Response.created(session.getContext().getUri().getAbsolutePathBuilder().path(school.getId()).build())
 				.build();
