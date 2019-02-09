@@ -11,7 +11,7 @@
 # limitations under the License.
 
 FROM openjdk
-EXPOSE 8000 8080 8180 9990 10090
+EXPOSE 8000 8080 8180 9990 10090 22
 RUN apt-get update && \
 	apt-get -y install sudo openssh-server && \
     mkdir /var/run/sshd && \
