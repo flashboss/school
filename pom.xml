@@ -172,7 +172,7 @@
 						<configuration>
 							<images>
 								<image>
-									<name>vige/school</name>
+									<name>vige/school:${project.version}</name>
 									<alias>dockerfile</alias>
 									<run>
 										<ports>

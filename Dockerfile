@@ -8,10 +8,10 @@
 # distributed under the License is distributed on an "AS IS" BASIS,          
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   
 # See the License for the specific language governing permissions and        
-# limitations under the License.  
+# limitations under the License.
 
 FROM openjdk
-EXPOSE 4403 8000 8180 9876 22
+EXPOSE 8000 8080 8180 9990 10090
 RUN apt-get update && \
 	apt-get -y install sudo openssh-server && \
     mkdir /var/run/sshd && \
