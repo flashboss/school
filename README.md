@@ -108,3 +108,14 @@ To debug the application using Eclipse you can put this parameter:
 It will start on the 5005 port.
 
 The tests are done using Chrome 71.0.3578.98 (64-bit) on WildFly 15.0.1.Final
+
+Docker image
+------------
+
+To install the docker image run the command:
+
+    docker pull vige/school
+    
+To run the image run the command:
+
+    docker run -p 8080:8080 -p 8180:8180 vige/school
