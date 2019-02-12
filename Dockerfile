@@ -17,33 +17,39 @@ RUN apt-get update && \
     mkdir /var/run/sshd && \
     sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd && \
     echo "%sudo ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
-    useradd -u 1000 -G users,sudo -d /home/user --shell /bin/bash -m user && \
-    echo "user:secret" | chpasswd && \
+    useradd -u 1000 -G users,sudo -d /home/wildfly --shell /bin/bash -m wildfly && \
+    echo "wildfly:secret" | chpasswd && \
     apt-get update && \
     apt-get clean && \
     apt-get -y autoremove && \
     rm -rf /var/lib/apt/lists/*
 
-USER user
+USER wildfly
 
 ENV MAVEN_VERSION=3.6.0
-ENV M2_HOME=/home/user/apache-maven-$MAVEN_VERSION
-ENV PATH=$M2_HOME/bin:$PATH
 
-RUN mkdir $M2_HOME && \
-  	wget -qO- "http://apache.ip-connect.vn.ua/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz" | tar -zx --strip-components=1 -C /home/user/apache-maven-$MAVEN_VERSION/
+RUN mkdir /home/wildfly/apache-maven-$MAVEN_VERSION && \
+  	wget -qO- "http://apache.ip-connect.vn.ua/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz" | tar -zx --strip-components=1 -C /home/wildfly/apache-maven-$MAVEN_VERSION/
 ENV TERM xterm
 
 ENV LANG it_IT.UTF-8
-WORKDIR /projects
-COPY / /projects/school
-RUN sudo chown -R user:user /projects && \
-	cd school && \
-	mvn install -Pproduction,runtime-school-jsf && \
-	mvn clean && \
-	mvn package -Pproduction,runtime-keycloak,runtime-school-jsf
-
-CMD cd school && \
-	mvn install -o -Pproduction,runtime-keycloak,runtime-school-jsf,deploy-jsf && \
-	sudo /usr/sbin/sshd -D && \
-    tail -f /dev/null
+WORKDIR /workspace
+COPY / /workspace/school
+RUN sudo chown -R wildfly:wildfly /workspace
+RUN cd school && /home/wildfly/apache-maven-$MAVEN_VERSION/bin/mvn install -Pproduction,runtime-school-jsf,deploy-jsf
+RUN cd school && /home/wildfly/apache-maven-$MAVEN_VERSION/bin/mvn install -Pproduction,runtime-keycloak
+RUN rm -Rf /home/wildfly/.m2 && \
+	rm -Rf /home/wildfly/apache-maven-$MAVEN_VERSION && \
+	sudo mv /workspace/school/school-keycloak/target/keycloak-run/wildfly* /opt/keycloak && \
+	sudo mv /workspace/school/school-app/school-app-jsf/target/school-run/wildfly* /opt/school && \
+	sudo chown -R wildfly:wildfly /opt/keycloak && \
+	sudo chown -R wildfly:wildfly /opt/school && \
+	sudo echo "export JBOSS_OPTS=\"-b 0.0.0.0 -Djboss.socket.binding.port-offset=100\"" > /workspace/school/keycloak && \
+	sudo mv /workspace/school/keycloak /etc/default/keycloak && \
+	sudo echo "export JBOSS_OPTS=\"-b 0.0.0.0\"" > /workspace/school/school && \
+	sudo mv /workspace/school/school /etc/default/school && \
+	sudo cp /opt/keycloak/docs/contrib/scripts/init.d/wildfly-init-debian.sh /etc/init.d/keycloak && \
+	sudo cp /opt/keycloak/docs/contrib/scripts/init.d/wildfly-init-debian.sh /etc/init.d/school && \
+	sudo update-rc.d keycloak defaults && \
+	sudo update-rc.d school defaults && \
+	rm -Rf /workspace/school
