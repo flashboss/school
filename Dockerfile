@@ -36,7 +36,7 @@ ENV LANG it_IT.UTF-8
 WORKDIR /workspace
 COPY / /workspace/school
 RUN sudo chown -R wildfly:wildfly /workspace
-RUN cd school && /home/wildfly/apache-maven-$MAVEN_VERSION/bin/mvn install -Pproduction,prepare-school-jsf
+RUN cd school && /home/wildfly/apache-maven-$MAVEN_VERSION/bin/mvn install -Pproduction
 RUN cd school && /home/wildfly/apache-maven-$MAVEN_VERSION/bin/mvn package -Pproduction,prepare-school-jsf
 RUN cd school && /home/wildfly/apache-maven-$MAVEN_VERSION/bin/mvn package -Pproduction,prepare-keycloak
 RUN rm -Rf /home/wildfly/.m2 && \
