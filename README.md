@@ -40,29 +40,29 @@ Or simply:
 
     mvn clean install
     
-If you want automatically install and deploy the jsf application in a local active WildFly server:
+If you want automatically prepare a local active WildFly server with the JSF application:
 
-    mvn install -Pproduction,deploy-jsf
+    mvn install -Pproduction,prepare-school-jsf
     
-If you want automatically uninstall and undeploy the application in a local active WildFly server:
+If you want automatically prepare a local active WildFly server with the REST application:
 
-    mvn clean -Pproduction,deploy-jsf
+    mvn install -Pproduction,prepare-school-rest
     
-If you want automatically reinstall and redeploy the application in a local active WildFly server:
+If you want automatically prepare a local active Keycloak server:
 
-    mvn clean install -Pproduction,deploy-jsf
+    mvn clean -Pproduction,prepare-keycloak
     
-As the same manner you can deploy the rest application instead of the jsf application using the goal deploy-rest. Here a sample:
+If you want to start the WildFly prepared instance and execute the JSF application:
 
-    mvn clean install -Pproduction,deploy-rest
-    
-If you want to start a WildFly instance and execute the deploy of the JSF application:
-
-    mvn install -Pproduction,runtime-school-jsf,deploy-jsf
+    mvn install -Pproduction,runtime-school-jsf
     
 Or for the REST application:
 
-    mvn install -Pproduction,runtime-school-rest,deploy-rest
+    mvn install -Pproduction,runtime-school-rest
+    
+Or for the Keycloak server:
+
+    mvn install -Pproduction,runtime-keycloak
 
 to deploy it with the shell command in WildFly:
 

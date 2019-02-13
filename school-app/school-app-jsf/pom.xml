@@ -57,7 +57,7 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 		</profile>
 
 		<profile>
-			<id>runtime-school-jsf</id>
+			<id>prepare-school-jsf</id>
 			<build>
 				<plugins>
 					<plugin>
@@ -76,14 +76,33 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 											<artifactId>wildfly-dist</artifactId>
 											<version>${wildfly.version}</version>
 											<type>zip</type>
-											<outputDirectory>target/school-run/</outputDirectory>
+											<outputDirectory>${project.build.directory}/school-run/</outputDirectory>
 										</artifactItem>
 										<artifactItem>
 											<groupId>org.keycloak</groupId>
 											<artifactId>keycloak-wildfly-adapter-dist</artifactId>
 											<version>${keycloak.version}</version>
 											<type>zip</type>
-											<outputDirectory>target/school-run/wildfly-${wildfly.version}</outputDirectory>
+											<outputDirectory>${project.build.directory}/school-run/wildfly-${wildfly.version}</outputDirectory>
+										</artifactItem>
+									</artifactItems>
+								</configuration>
+							</execution>
+							<execution>
+								<id>copy</id>
+								<phase>package</phase>
+								<goals>
+									<goal>copy</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>${project.groupId}</groupId>
+											<artifactId>${project.artifactId}</artifactId>
+											<version>${project.version}</version>
+											<type>war</type>
+											<destFileName>school.war</destFileName>
+											<outputDirectory>${project.build.directory}/school-run/wildfly-${wildfly.version}/standalone/deployments</outputDirectory>
 										</artifactItem>
 									</artifactItems>
 								</configuration>
@@ -94,22 +113,25 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 						<groupId>org.wildfly.plugins</groupId>
 						<artifactId>wildfly-maven-plugin</artifactId>
 						<version>${wildfly.maven.plugin.version}</version>
-						<configuration>
-							<java-opts>${JAVA_OPTS}
-							</java-opts>
-							<server-args>
-								<server-arg>-b=0.0.0.0</server-arg>
-							</server-args>
-						</configuration>
 						<executions>
 							<execution>
-								<id>run-wildfly</id>
-								<phase>install</phase>
+								<id>start_environment</id>
+								<phase>process-test-classes</phase>
 								<goals>
-									<goal>start</goal>
+									<goal>execute-commands</goal>
 								</goals>
 								<configuration>
-									<jbossHome>${project.build.directory}/school-run/wildfly-${wildfly.version}</jbossHome>
+									<offline>true</offline>
+									<jboss-home>${project.build.directory}/school-run/wildfly-${wildfly.version}</jboss-home>
+									<scripts>
+										<script>${project.build.directory}/school-run/wildfly-${wildfly.version}/bin/adapter-elytron-install-offline.cli</script>
+									</scripts>
+									<commands>
+										<command>embed-server --server-config=${server.config:standalone.xml}
+										</command>
+										<command>/subsystem=datasources/data-source="java:jdbc/school_mdefault":add(jndi-name=java:/jdbc/school_mdefault,driver-name=h2,connection-url="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1",user-name=sa,min-pool-size=5, max-pool-size=20,enabled=true)
+										</command>
+									</commands>
 								</configuration>
 							</execution>
 						</executions>
@@ -119,84 +141,29 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 		</profile>
 
 		<profile>
-			<id>deploy-jsf</id>
+			<id>runtime-school-jsf</id>
 			<build>
 				<plugins>
 					<plugin>
 						<groupId>org.wildfly.plugins</groupId>
 						<artifactId>wildfly-maven-plugin</artifactId>
 						<version>${wildfly.maven.plugin.version}</version>
+						<configuration>
+							<java-opts>${JAVA_OPTS}
+							</java-opts>
+						</configuration>
 						<executions>
 							<execution>
-								<id>start_environment</id>
+								<id>run-wildfly</id>
 								<phase>install</phase>
 								<goals>
-									<goal>execute-commands</goal>
+									<goal>start</goal>
 								</goals>
 								<configuration>
-									<scripts>
-										<script>target/school-run/wildfly-${wildfly.version}/bin/adapter-elytron-install.cli</script>
-									</scripts>
-								</configuration>
-							</execution>
-							<execution>
-								<id>add-school-datasource</id>
-								<phase>install</phase>
-								<goals>
-									<goal>add-resource</goal>
-								</goals>
-								<configuration>
-									<address>subsystem=datasources,data-source=java:jdbc/school_mdefault</address>
-									<resources>
-										<resource>
-											<properties>
-												<jndi-name>java:/jdbc/school_mdefault</jndi-name>
-												<enabled>true</enabled>
-												<enable>true</enable>
-												<connection-url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1</connection-url>
-												<driver-name>h2</driver-name>
-												<user-name>sa</user-name>
-												<min-pool-size>5</min-pool-size>
-												<max-pool-size>20</max-pool-size>
-											</properties>
-										</resource>
-									</resources>
-								</configuration>
-							</execution>
-							<execution>
-								<id>deploy-application</id>
-								<phase>install</phase>
-								<goals>
-									<goal>deploy</goal>
-								</goals>
-							</execution>
-							<execution>
-								<id>reload</id>
-								<phase>install</phase>
-								<goals>
-									<goal>shutdown</goal>
-								</goals>
-								<configuration>
-									<reload>true</reload>
-								</configuration>
-							</execution>
-							<execution>
-								<id>del-resources</id>
-								<phase>clean</phase>
-								<goals>
-									<goal>undeploy</goal>
-								</goals>
-								<configuration>
-									<afterDeployment>
-										<commands>
-											<command>/subsystem=datasources/data-source="java:jdbc/school_mdefault":remove
-												{ "outcome" => "failed", "failure-description" =>
-												"JBAS014749: Operation
-												handler failed: null", "rolled-back"
-												=> true }
-											</command>
-										</commands>
-									</afterDeployment>
+									<server-args>
+										<server-arg>-b=0.0.0.0</server-arg>
+									</server-args>
+									<jbossHome>${project.build.directory}/school-run/wildfly-${wildfly.version}</jbossHome>
 								</configuration>
 							</execution>
 						</executions>
@@ -224,7 +191,7 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 		</dependency>
 		<dependency>
 			<groupId>org.keycloak</groupId>
-    		<artifactId>keycloak-adapter-core</artifactId>
+			<artifactId>keycloak-adapter-core</artifactId>
 			<version>${keycloak.version}</version>
 		</dependency>
 	</dependencies>

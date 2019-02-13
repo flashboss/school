@@ -80,7 +80,7 @@
 		</profile>
 
 		<profile>
-			<id>runtime-keycloak</id>
+			<id>prepare-keycloak</id>
 			<build>
 				<plugins>
 					<plugin>
@@ -99,21 +99,21 @@
 											<artifactId>wildfly-dist</artifactId>
 											<version>${wildfly.version}</version>
 											<type>zip</type>
-											<outputDirectory>${project.build.directory}/keycloak-run/</outputDirectory>
+											<outputDirectory>target/keycloak-run/</outputDirectory>
 										</artifactItem>
 										<artifactItem>
 											<groupId>org.keycloak</groupId>
 											<artifactId>keycloak-server-overlay</artifactId>
 											<version>${keycloak.version}</version>
 											<type>zip</type>
-											<outputDirectory>${project.build.directory}/keycloak-run/wildfly-${wildfly.version}</outputDirectory>
+											<outputDirectory>target/keycloak-run/wildfly-${wildfly.version}</outputDirectory>
 										</artifactItem>
 									</artifactItems>
 								</configuration>
 							</execution>
 							<execution>
 								<id>deploy-applications</id>
-								<phase>install</phase>
+								<phase>package</phase>
 								<goals>
 									<goal>copy</goal>
 								</goals>
@@ -165,6 +165,49 @@
 						<artifactId>wildfly-maven-plugin</artifactId>
 						<version>${wildfly.maven.plugin.version}</version>
 						<configuration>
+							<offline>true</offline>
+							<scripts>
+								<script>${project.build.directory}/keycloak-run/wildfly-${wildfly.version}/bin/keycloak-install.cli</script>
+								<script>school-keycloak-rooms/src/main/config/add-provider.cli</script>
+							</scripts>
+						</configuration>
+						<executions>
+							<execution>
+								<id>run-scripts</id>
+								<phase>package</phase>
+								<goals>
+									<goal>execute-commands</goal>
+								</goals>
+								<configuration>
+									<jbossHome>${project.build.directory}/keycloak-run/wildfly-${wildfly.version}</jbossHome>
+								</configuration>
+							</execution>
+							<execution>
+								<id>run-wildfly</id>
+								<phase>install</phase>
+								<goals>
+									<goal>start</goal>
+								</goals>
+								<configuration>
+									<jbossHome>${project.build.directory}/keycloak-run/wildfly-${wildfly.version}</jbossHome>
+									<port>10090</port>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		
+		<profile>
+			<id>runtime-keycloak</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.wildfly.plugins</groupId>
+						<artifactId>wildfly-maven-plugin</artifactId>
+						<version>${wildfly.maven.plugin.version}</version>
+						<configuration>
 							<java-opts>${JAVA_OPTS}
 							</java-opts>
 							<server-args>
@@ -175,18 +218,12 @@
 								<server-arg>-Dkeycloak.migration.dir=${basedir}/src/main/realm-config-${realm.config.environment}</server-arg>
 								<server-arg>-Dkeycloak.migration.strategy=OVERWRITE_EXISTING</server-arg>
 							</server-args>
-							<offline>true</offline>
-							<scripts>
-								<script>${project.build.directory}/keycloak-run/wildfly-${wildfly.version}/bin/keycloak-install.cli</script>
-								<script>school-keycloak-rooms/src/main/config/add-provider.cli</script>
-							</scripts>
 						</configuration>
 						<executions>
 							<execution>
 								<id>run-wildfly</id>
 								<phase>install</phase>
 								<goals>
-									<goal>execute-commands</goal>
 									<goal>start</goal>
 								</goals>
 								<configuration>
