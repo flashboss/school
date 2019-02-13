@@ -36,8 +36,12 @@ public interface Converters {
 					room = rooms.get(0);
 				if (room != null)
 					user.setRoom(room);
-				String school = attributes.get("school").get(0);
-				user.setSchool(school);
+				List<String> schools = attributes.get("school");
+				String school = "";
+				if (schools != null)
+					school = schools.get(0);
+				if (school != null)
+					user.setSchool(school);
 			}
 
 			return user;
