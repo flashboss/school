@@ -36,15 +36,16 @@ ENV LANG it_IT.UTF-8
 WORKDIR /workspace
 COPY / /workspace/school
 RUN sudo chown -R wildfly:wildfly /workspace
-RUN cd school && /home/wildfly/apache-maven-$MAVEN_VERSION/bin/mvn install -Pproduction,runtime-school-jsf,deploy-jsf
-RUN cd school && /home/wildfly/apache-maven-$MAVEN_VERSION/bin/mvn install -Pproduction,runtime-keycloak
+RUN cd school && /home/wildfly/apache-maven-$MAVEN_VERSION/bin/mvn package -Pproduction,prepare-school-jsf
+RUN cd school && /home/wildfly/apache-maven-$MAVEN_VERSION/bin/mvn package -Pproduction,prepare-keycloak
 RUN rm -Rf /home/wildfly/.m2 && \
 	rm -Rf /home/wildfly/apache-maven-$MAVEN_VERSION && \
 	sudo mv /workspace/school/school-keycloak/target/keycloak-run/wildfly* /opt/keycloak && \
 	sudo mv /workspace/school/school-app/school-app-jsf/target/school-run/wildfly* /opt/school && \
 	sudo chown -R wildfly:wildfly /opt/keycloak && \
 	sudo chown -R wildfly:wildfly /opt/school && \
-	sudo echo "export JBOSS_OPTS=\"-b 0.0.0.0 -Djboss.socket.binding.port-offset=100\"" > /workspace/school/keycloak && \
+	cp -R school/school-keycloak/src/main/realm-config-prod /opt/keycloak/bin && \
+	sudo echo "export JBOSS_OPTS=\"-b 0.0.0.0 -Djboss.socket.binding.port-offset=100 -Dkeycloak.migration.action=import -Dkeycloak.migration.provider=dir -Dkeycloak.migration.dir=/opt/keycloak/bin/realm-config-prod -Dkeycloak.migration.strategy=OVERWRITE_EXISTING\"" > /workspace/school/keycloak && \
 	sudo mv /workspace/school/keycloak /etc/default/keycloak && \
 	sudo echo "export JBOSS_OPTS=\"-b 0.0.0.0\"" > /workspace/school/school && \
 	sudo mv /workspace/school/school /etc/default/school && \
