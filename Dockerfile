@@ -55,3 +55,6 @@ RUN rm -Rf /home/wildfly/.m2 && \
 	sudo update-rc.d keycloak defaults && \
 	sudo update-rc.d school defaults && \
 	rm -Rf /workspace/school
+	
+CMD sudo /usr/sbin/sshd -D && \
+    tail -f /dev/null
