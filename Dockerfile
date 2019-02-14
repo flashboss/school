@@ -55,4 +55,6 @@ RUN rm -Rf /home/wildfly/.m2 && \
 	rm -Rf /workspace/school
 	
 CMD sudo service keycloak start && \
-	sudo service school start
+	sudo service school start && \
+	sudo /usr/sbin/sshd -D && \
+    tail -f /dev/null
