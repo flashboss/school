@@ -121,6 +121,8 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 									<goal>execute-commands</goal>
 								</goals>
 								<configuration>
+									<java-opts>--add-modules=java.se
+									</java-opts>
 									<offline>true</offline>
 									<jboss-home>${project.build.directory}/school-run/wildfly-${wildfly.version}</jboss-home>
 									<scripts>
