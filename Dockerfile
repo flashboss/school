@@ -52,9 +52,7 @@ RUN rm -Rf /home/wildfly/.m2 && \
 	sudo mv /workspace/school/school /etc/default/school && \
 	sudo cp /opt/keycloak/docs/contrib/scripts/init.d/wildfly-init-debian.sh /etc/init.d/keycloak && \
 	sudo cp /opt/keycloak/docs/contrib/scripts/init.d/wildfly-init-debian.sh /etc/init.d/school && \
-	sudo update-rc.d keycloak defaults && \
-	sudo update-rc.d school defaults && \
 	rm -Rf /workspace/school
 	
-CMD sudo /usr/sbin/sshd -D && \
-    tail -f /dev/null
+CMD sudo service keycloak start && \
+	sudo service school start

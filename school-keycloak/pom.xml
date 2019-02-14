@@ -77,6 +77,32 @@
 			<properties>
 				<realm.config.environment>prod</realm.config.environment>
 			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-resources-plugin</artifactId>
+						<version>${maven.resources.plugin.version}</version>
+						<executions>
+							<execution>
+								<id>copy-resources</id>
+								<phase>process-test-classes</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>${project.build.directory}/keycloak-run/wildfly-${wildfly.version}/standalone/configuration</outputDirectory>
+									<resources>
+										<resource>
+											<directory>src/main/users</directory>
+											<filtering>true</filtering>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 
 		<profile>
