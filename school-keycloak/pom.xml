@@ -43,6 +43,7 @@
 			</activation>
 			<properties>
 				<realm.config.environment>dev</realm.config.environment>
+				<realm.migration>OVERWRITE_EXISTING</realm.migration>
 			</properties>
 			<build>
 				<plugins>
@@ -76,6 +77,7 @@
 			<id>production</id>
 			<properties>
 				<realm.config.environment>prod</realm.config.environment>
+				<realm.migration>IGNORE_EXISTING</realm.migration>
 			</properties>
 			<build>
 				<plugins>
@@ -208,17 +210,6 @@
 									<jbossHome>${project.build.directory}/keycloak-run/wildfly-${wildfly.version}</jbossHome>
 								</configuration>
 							</execution>
-							<execution>
-								<id>run-wildfly</id>
-								<phase>install</phase>
-								<goals>
-									<goal>start</goal>
-								</goals>
-								<configuration>
-									<jbossHome>${project.build.directory}/keycloak-run/wildfly-${wildfly.version}</jbossHome>
-									<port>10090</port>
-								</configuration>
-							</execution>
 						</executions>
 					</plugin>
 				</plugins>
@@ -242,7 +233,7 @@
 								<server-arg>-Dkeycloak.migration.action=import</server-arg>
 								<server-arg>-Dkeycloak.migration.provider=dir</server-arg>
 								<server-arg>-Dkeycloak.migration.dir=${basedir}/src/main/realm-config-${realm.config.environment}</server-arg>
-								<server-arg>-Dkeycloak.migration.strategy=OVERWRITE_EXISTING</server-arg>
+								<server-arg>-Dkeycloak.migration.strategy=${realm.migration}</server-arg>
 							</server-args>
 						</configuration>
 						<executions>

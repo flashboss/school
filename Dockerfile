@@ -46,7 +46,7 @@ RUN rm -Rf /home/wildfly/.m2 && \
 	sudo chown -R wildfly:wildfly /opt/keycloak && \
 	sudo chown -R wildfly:wildfly /opt/school && \
 	cp -R school/school-keycloak/src/main/realm-config-prod /opt/keycloak/bin && \
-	sudo echo "export JBOSS_OPTS=\"-b 0.0.0.0 -Djboss.socket.binding.port-offset=100 -Dkeycloak.migration.action=import -Dkeycloak.migration.provider=dir -Dkeycloak.migration.dir=/opt/keycloak/bin/realm-config-prod -Dkeycloak.migration.strategy=OVERWRITE_EXISTING\"" > /workspace/school/keycloak && \
+	sudo echo "export JBOSS_OPTS=\"-b 0.0.0.0 -Djboss.socket.binding.port-offset=100 -Dkeycloak.migration.action=import -Dkeycloak.migration.provider=dir -Dkeycloak.migration.dir=/opt/keycloak/bin/realm-config-prod -Dkeycloak.migration.strategy=IGNORE_EXISTING\"" > /workspace/school/keycloak && \
 	sudo mv /workspace/school/keycloak /etc/default/keycloak && \
 	sudo echo "export JBOSS_OPTS=\"-b 0.0.0.0\"" > /workspace/school/school && \
 	sudo mv /workspace/school/school /etc/default/school && \
