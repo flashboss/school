@@ -72,11 +72,11 @@ to deploy it with the shell command in WildFly:
    
 From the 1.2.0 version we need keycloak to manage the users. To start a keycloak standalone use the following command. Important, it must be executed after the install of the school project because it must import the installed keycloak theme:
 
-    mvn install -Pdevelopment,runtime-keycloak
+    mvn install -Pdevelopment,prepare-keycloak,runtime-keycloak
     
 This command import default users and development configurations. To start keycloak in a clean production environment you can use:
 
-    mvn install -Pproduction,runtime-keycloak
+    mvn install -Pproduction,prepare-keycloak,runtime-keycloak
     
 to create new users in WildFly:
 
@@ -119,3 +119,7 @@ To install the docker image run the command:
 To run the image run the command:
 
     docker run -p 8080:8080 -p 8180:8180 vige/school
+    
+If you want start it in background mode:
+
+    docker run -p 8080:8080 -p 8180:8180 -d vige/school
