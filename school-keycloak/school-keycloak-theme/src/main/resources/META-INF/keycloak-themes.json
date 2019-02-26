@@ -3,6 +3,7 @@
 		{
 			"name": "school-theme",
 			"types": [
+				"admin",
 				"login",
 				"account"
 			]

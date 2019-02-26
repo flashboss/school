@@ -1,0 +1,63 @@
+<div class="col-sm-9 col-md-10 col-sm-push-3 col-md-push-2" ng-init="init()">
+
+    <kc-tabs-rooms></kc-tabs-rooms>
+
+    <table class="table table-striped table-bordered" id="school-table">
+        <caption data-ng-show="users" class="hidden">{{:: 'table-of-realm-schools' | translate}}</caption>
+        <thead>
+        <tr>
+            <th colspan="{{access.impersonation == true ? '8' : '7'}}">
+                <div class="form-inline">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" placeholder="{{:: 'search.placeholder' | translate}}" data-ng-model="query.search" class="form-control search" onkeydown="if (event.keyCode == 13) document.getElementById('userSearch').click()">
+                            <div class="input-group-addon">
+                                    <i class="fa fa-search" id="schoolSearch" data-ng-click="firstPage()"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="viewAllSchools" class="btn btn-default" ng-click="query.search = null; firstPage()">{{:: 'view-all-schools' | translate}}</button>
+
+                    <div class="pull-right" data-ng-show="access.manageUsers">
+                        <a id="createSchool" class="btn btn-default" href="#/create/school/{{realm.realm}}">{{:: 'add-school' | translate}}</a>
+                    </div>
+                </div>
+            </th>
+        </tr>
+        <tr>
+        <tr data-ng-show="searchLoaded && users.length > 0">
+            <th class="w-20">{{:: 'id' | translate}}</th>
+            <th class="w-20">{{:: 'name' | translate}}</th>
+            <th class="w-40">{{:: 'rooms' | translate}}</th>
+            <th colspan="2">{{:: 'actions' | translate}}</th>
+        </tr>
+        </thead>
+        <tfoot data-ng-show="users && (users.length >= query.max || query.first > 0)">
+        <tr>
+            <td colspan="7">
+                <div class="table-nav">
+                    <button data-ng-click="firstPage()" class="first" ng-disabled="query.first == 0">{{:: 'first-page' | translate}}</button>
+                    <button data-ng-click="previousPage()" class="prev" ng-disabled="query.first == 0">{{:: 'previous-page' | translate}}</button>
+                    <button data-ng-click="nextPage()" class="next" ng-disabled="users.length < query.max">{{:: 'next-page' | translate}}</button>
+                </div>
+            </td>
+        </tr>
+        </tfoot>
+        <tbody>
+        <tr ng-repeat="user in users">
+            <td class="clip"><a href="#/realms/{{realm.realm}}/rooms/{{user.id}}">{{user.id}}</a></td>
+            <td class="clip">{{user.username}}</td>
+            <td class="clip">{{user.email}}</td>
+            <td class="kc-action-cell" kc-open="/realms/{{realm.realm}}/rooms/{{user.id}}">{{:: 'edit' | translate}}</td>
+            <td data-ng-show="user.access.manage" class="kc-action-cell" data-ng-click="removeSchool(user)">{{:: 'delete' | translate}}</td>
+        </tr>
+        <tr data-ng-show="!users || users.length == 0">
+            <td class="text-muted" data-ng-show="!users">{{:: 'schools.instruction' | translate}}</td>
+            <td class="text-muted" data-ng-show="searchLoaded && users.length == 0 && lastSearch != null">{{:: 'no-results' | translate}}</td>
+            <td class="text-muted" data-ng-show="searchLoaded && users.length == 0 && lastSearch == null">{{:: 'no-school-available' | translate}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<kc-menu></kc-menu>

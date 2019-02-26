@@ -637,6 +637,7 @@
 	],
 	"loginTheme": "school-theme",
 	"accountTheme": "school-theme",
+	"adminTheme": "school-theme",
 	"registrationFlow": "rooms",
 	"internationalizationEnabled": true,
 	"supportedLocales": [
