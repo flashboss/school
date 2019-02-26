@@ -2577,6 +2577,15 @@ module.directive('kcTabsUsers', function () {
     }
 });
 
+module.directive('kcTabsRooms', function () {
+    return {
+        scope: true,
+        restrict: 'E',
+        replace: true,
+        templateUrl: resourceUrl + '/templates/kc-tabs-rooms.html'
+    }
+});
+
 module.directive('kcTabsClients', function () {
     return {
         scope: true,
