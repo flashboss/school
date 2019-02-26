@@ -595,6 +595,18 @@ module.config([ '$routeProvider', function($routeProvider) {
             },
             controller : 'UserDetailCtrl'
         })
+        .when('/create/school/:realm', {
+            templateUrl : resourceUrl + '/partials/school-detail.html',
+            resolve : {
+                realm : function(RealmLoader) {
+                    return RealmLoader();
+                },
+                user : function() {
+                    return {};
+                }
+            },
+            controller : 'SchoolDetailCtrl'
+        })
         .when('/realms/:realm/users/:user', {
             templateUrl : resourceUrl + '/partials/user-detail.html',
             resolve : {
@@ -606,6 +618,18 @@ module.config([ '$routeProvider', function($routeProvider) {
                 }
             },
             controller : 'UserDetailCtrl'
+        })
+        .when('/realms/:realm/rooms/:user', {
+            templateUrl : resourceUrl + '/partials/school-detail.html',
+            resolve : {
+                realm : function(RealmLoader) {
+                    return RealmLoader();
+                },
+                user : function(UserLoader) {
+                    return UserLoader();
+                }
+            },
+            controller : 'SchoolDetailCtrl'
         })
         .when('/realms/:realm/users/:user/user-attributes', {
             templateUrl : resourceUrl + '/partials/user-attributes.html',
@@ -619,8 +643,8 @@ module.config([ '$routeProvider', function($routeProvider) {
             },
             controller : 'UserDetailCtrl'
         })
-        .when('/realms/:realm/users/:user/user-credentials', {
-            templateUrl : resourceUrl + '/partials/user-credentials.html',
+        .when('/realms/:realm/rooms/:user/school-attributes', {
+            templateUrl : resourceUrl + '/partials/school-attributes.html',
             resolve : {
                 realm : function(RealmLoader) {
                     return RealmLoader();
@@ -629,115 +653,7 @@ module.config([ '$routeProvider', function($routeProvider) {
                     return UserLoader();
                 }
             },
-            controller : 'UserCredentialsCtrl'
-        })
-        .when('/realms/:realm/users/:user/role-mappings', {
-            templateUrl : resourceUrl + '/partials/role-mappings.html',
-            resolve : {
-                realm : function(RealmLoader) {
-                    return RealmLoader();
-                },
-                user : function(UserLoader) {
-                    return UserLoader();
-                },
-                clients : function(ClientListLoader) {
-                    return ClientListLoader();
-                },
-                client : function() {
-                    return {};
-                }
-            },
-            controller : 'UserRoleMappingCtrl'
-        })
-        .when('/realms/:realm/users/:user/groups', {
-            templateUrl : resourceUrl + '/partials/user-group-membership.html',
-            resolve : {
-                realm : function(RealmLoader) {
-                    return RealmLoader();
-                },
-                user : function(UserLoader) {
-                    return UserLoader();
-                }
-            },
-            controller : 'UserGroupMembershipCtrl'
-        })
-        .when('/realms/:realm/users/:user/sessions', {
-            templateUrl : resourceUrl + '/partials/user-sessions.html',
-            resolve : {
-                realm : function(RealmLoader) {
-                    return RealmLoader();
-                },
-                user : function(UserLoader) {
-                    return UserLoader();
-                },
-                sessions : function(UserSessionsLoader) {
-                    return UserSessionsLoader();
-                }
-            },
-            controller : 'UserSessionsCtrl'
-        })
-        .when('/realms/:realm/users/:user/federated-identity', {
-            templateUrl : resourceUrl + '/partials/user-federated-identity-list.html',
-            resolve : {
-                realm : function(RealmLoader) {
-                    return RealmLoader();
-                },
-                user : function(UserLoader) {
-                    return UserLoader();
-                },
-                federatedIdentities : function(UserFederatedIdentityLoader) {
-                    return UserFederatedIdentityLoader();
-                }
-            },
-            controller : 'UserFederatedIdentityCtrl'
-        })
-        .when('/create/federated-identity/:realm/:user', {
-            templateUrl : resourceUrl + '/partials/user-federated-identity-detail.html',
-            resolve : {
-                realm : function(RealmLoader) {
-                    return RealmLoader();
-                },
-                user : function(UserLoader) {
-                    return UserLoader();
-                },
-                federatedIdentities : function(UserFederatedIdentityLoader) {
-                    return UserFederatedIdentityLoader();
-                }
-            },
-            controller : 'UserFederatedIdentityAddCtrl'
-        })
-        .when('/realms/:realm/users/:user/consents', {
-            templateUrl : resourceUrl + '/partials/user-consents.html',
-            resolve : {
-                realm : function(RealmLoader) {
-                    return RealmLoader();
-                },
-                user : function(UserLoader) {
-                    return UserLoader();
-                },
-                userConsents : function(UserConsentsLoader) {
-                    return UserConsentsLoader();
-                }
-            },
-            controller : 'UserConsentsCtrl'
-        })
-        .when('/realms/:realm/users/:user/offline-sessions/:client', {
-            templateUrl : resourceUrl + '/partials/user-offline-sessions.html',
-            resolve : {
-                realm : function(RealmLoader) {
-                    return RealmLoader();
-                },
-                user : function(UserLoader) {
-                    return UserLoader();
-                },
-                client : function(ClientLoader) {
-                    return ClientLoader();
-                },
-                offlineSessions : function(UserOfflineSessionsLoader) {
-                    return UserOfflineSessionsLoader();
-                }
-            },
-            controller : 'UserOfflineSessionsCtrl'
+            controller : 'SchoolDetailCtrl'
         })
         .when('/realms/:realm/users', {
             templateUrl : resourceUrl + '/partials/user-list.html',
@@ -2565,6 +2481,15 @@ module.directive('kcTabsUser', function () {
         restrict: 'E',
         replace: true,
         templateUrl: resourceUrl + '/templates/kc-tabs-user.html'
+    }
+});
+
+module.directive('kcTabsSchool', function () {
+    return {
+        scope: true,
+        restrict: 'E',
+        replace: true,
+        templateUrl: resourceUrl + '/templates/kc-tabs-school.html'
     }
 });
 

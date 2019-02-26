@@ -19,7 +19,7 @@
                     <button id="viewAllSchools" class="btn btn-default" ng-click="query.search = null; firstPage()">{{:: 'view-all-schools' | translate}}</button>
 
                     <div class="pull-right" data-ng-show="access.manageUsers">
-                        <a id="createSchool" class="btn btn-default" href="#/create/user/{{realm.realm}}">{{:: 'add-school' | translate}}</a>
+                        <a id="createSchool" class="btn btn-default" href="#/create/school/{{realm.realm}}">{{:: 'add-school' | translate}}</a>
                     </div>
                 </div>
             </th>
@@ -45,10 +45,10 @@
         </tfoot>
         <tbody>
         <tr ng-repeat="user in users">
-            <td class="clip"><a href="#/realms/{{realm.realm}}/users/{{user.id}}">{{user.id}}</a></td>
+            <td class="clip"><a href="#/realms/{{realm.realm}}/rooms/{{user.id}}">{{user.id}}</a></td>
             <td class="clip">{{user.username}}</td>
             <td class="clip">{{user.email}}</td>
-            <td class="kc-action-cell" kc-open="/realms/{{realm.realm}}/users/{{user.id}}">{{:: 'edit' | translate}}</td>
+            <td class="kc-action-cell" kc-open="/realms/{{realm.realm}}/rooms/{{user.id}}">{{:: 'edit' | translate}}</td>
             <td data-ng-show="user.access.manage" class="kc-action-cell" data-ng-click="removeUser(user)">{{:: 'delete' | translate}}</td>
         </tr>
         <tr data-ng-show="!users || users.length == 0">

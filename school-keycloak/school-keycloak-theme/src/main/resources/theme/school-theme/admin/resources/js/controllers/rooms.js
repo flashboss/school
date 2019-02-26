@@ -61,14 +61,14 @@ module.controller('RoomListCtrl', function($scope, realm, User, UserSearchState,
 });
 
 
-module.controller('UserTabCtrl', function($scope, $location, Dialog, Notifications, Current) {
+module.controller('SchoolTabCtrl', function($scope, $location, Dialog, Notifications, Current) {
     $scope.removeUser = function() {
         Dialog.confirmDelete($scope.user.id, 'user', function() {
             $scope.user.$remove({
                 realm : Current.realm.realm,
                 userId : $scope.user.id
             }, function() {
-                $location.url("/realms/" + Current.realm.realm + "/users");
+                $location.url("/realms/" + Current.realm.realm + "/rooms");
                 Notifications.success("The user has been deleted.");
             }, function() {
                 Notifications.error("User couldn't be deleted");
@@ -77,7 +77,7 @@ module.controller('UserTabCtrl', function($scope, $location, Dialog, Notificatio
     };
 });
 
-module.controller('UserDetailCtrl', function($scope, realm, user, BruteForceUser, User,
+module.controller('SchoolDetailCtrl', function($scope, realm, user, BruteForceUser, User,
                                              Components,
                                              UserImpersonation, RequiredActions,
                                              UserStorageOperations,
@@ -247,7 +247,7 @@ module.controller('UserDetailCtrl', function($scope, realm, user, BruteForceUser
     };
 
     $scope.cancel = function() {
-        $location.url("/realms/" + realm.realm + "/users");
+        $location.url("/realms/" + realm.realm + "/rooms");
     };
 
     $scope.addAttribute = function() {
