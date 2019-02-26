@@ -49,7 +49,7 @@
             <td class="clip">{{user.username}}</td>
             <td class="clip">{{user.email}}</td>
             <td class="kc-action-cell" kc-open="/realms/{{realm.realm}}/rooms/{{user.id}}">{{:: 'edit' | translate}}</td>
-            <td data-ng-show="user.access.manage" class="kc-action-cell" data-ng-click="removeUser(user)">{{:: 'delete' | translate}}</td>
+            <td data-ng-show="user.access.manage" class="kc-action-cell" data-ng-click="removeSchool(user)">{{:: 'delete' | translate}}</td>
         </tr>
         <tr data-ng-show="!users || users.length == 0">
             <td class="text-muted" data-ng-show="!users">{{:: 'schools.instruction' | translate}}</td>

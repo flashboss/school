@@ -40,8 +40,8 @@ module.controller('RoomListCtrl', function($scope, realm, User, UserSearchState,
         });
     };
 
-    $scope.removeUser = function(user) {
-        Dialog.confirmDelete(user.id, 'user', function() {
+    $scope.removeSchool = function(user) {
+        Dialog.confirmDelete(user.id, 'school', function() {
             user.$remove({
                 realm : realm.realm,
                 userId : user.id
@@ -52,9 +52,9 @@ module.controller('RoomListCtrl', function($scope, realm, User, UserSearchState,
                     $scope.previousPage();
                 } 
                 
-                Notifications.success("The user has been deleted.");
+                Notifications.success("The school has been deleted.");
             }, function() {
-                Notifications.error("User couldn't be deleted");
+                Notifications.error("School couldn't be deleted");
             });
         });
     };
@@ -62,16 +62,16 @@ module.controller('RoomListCtrl', function($scope, realm, User, UserSearchState,
 
 
 module.controller('SchoolTabCtrl', function($scope, $location, Dialog, Notifications, Current) {
-    $scope.removeUser = function() {
-        Dialog.confirmDelete($scope.user.id, 'user', function() {
+    $scope.removeSchool = function() {
+        Dialog.confirmDelete($scope.user.id, 'school', function() {
             $scope.user.$remove({
                 realm : Current.realm.realm,
                 userId : $scope.user.id
             }, function() {
                 $location.url("/realms/" + Current.realm.realm + "/rooms");
-                Notifications.success("The user has been deleted.");
+                Notifications.success("The school has been deleted.");
             }, function() {
-                Notifications.error("User couldn't be deleted");
+                Notifications.error("School couldn't be deleted");
             });
         });
     };
