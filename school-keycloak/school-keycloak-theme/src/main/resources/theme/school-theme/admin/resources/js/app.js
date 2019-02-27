@@ -654,7 +654,8 @@ module.config([ '$routeProvider', function($routeProvider) {
                 }
             },
             controller : 'SchoolDetailCtrl'
-        })        .when('/realms/:realm/users/:user/user-credentials', {
+        })        
+        .when('/realms/:realm/users/:user/user-credentials', {
             templateUrl : resourceUrl + '/partials/user-credentials.html',
             resolve : {
                 realm : function(RealmLoader) {
