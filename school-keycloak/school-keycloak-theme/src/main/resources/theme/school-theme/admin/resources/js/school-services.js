@@ -11,9 +11,9 @@ module.service('SchoolSearchState', function() {
 });
 
 module.factory('School', function($resource) {
-    return $resource(authUrl + '/admin/realms/:realm/users/:userId', {
+    return $resource(authUrl + '/admin/realms/:realm/users/:schoolId', {
         realm : '@realm',
-        userId : '@userId'
+        schoolId : '@schoolId'
     }, {
         update : {
             method : 'PUT'

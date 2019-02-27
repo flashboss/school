@@ -44,7 +44,7 @@ module.controller('RoomListCtrl', function($scope, realm, School, SchoolSearchSt
         Dialog.confirmDelete(user.id, 'school', function() {
             user.$remove({
                 realm : realm.realm,
-                userId : user.id
+                schoolId : user.id
             }, function() {
                 $route.reload();
                 
@@ -66,7 +66,7 @@ module.controller('SchoolTabCtrl', function($scope, $location, Dialog, Notificat
         Dialog.confirmDelete($scope.user.id, 'school', function() {
             $scope.user.$remove({
                 realm : Current.realm.realm,
-                userId : $scope.user.id
+                schoolId : $scope.user.id
             }, function() {
                 $location.url("/realms/" + Current.realm.realm + "/rooms");
                 Notifications.success("The school has been deleted.");
@@ -161,13 +161,13 @@ module.controller('SchoolDetailCtrl', function($scope, realm, user, School,
                 var id = l.substring(l.lastIndexOf("/") + 1);
 
 
-                $location.url("/realms/" + realm.realm + "/users/" + id);
-                Notifications.success("The user has been created.");
+                $location.url("/realms/" + realm.realm + "/rooms/" + id);
+                Notifications.success("The school has been created.");
             });
         } else {
         	School.update({
                 realm: realm.realm,
-                userId: $scope.user.id
+                schoolId: $scope.user.id
             }, $scope.user, function () {
                 $scope.changed = false;
                 convertAttributeValuesToString($scope.user);
