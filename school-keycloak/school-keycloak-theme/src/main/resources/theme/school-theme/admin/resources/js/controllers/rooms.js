@@ -1,13 +1,13 @@
-module.controller('RoomListCtrl', function($scope, realm, User, UserSearchState, UserImpersonation, BruteForce, Notifications, $route, Dialog) {
+module.controller('RoomListCtrl', function($scope, realm, User, SchoolSearchState, UserImpersonation, BruteForce, Notifications, $route, Dialog) {
     
     $scope.init = function() {
         $scope.realm = realm;
         
-        UserSearchState.query.realm = realm.realm;
-        $scope.query = UserSearchState.query;
+        SchoolSearchState.query.realm = realm.realm;
+        $scope.query = SchoolSearchState.query;
         $scope.query.briefRepresentation = 'true';
         
-        if (!UserSearchState.isFirstSearch) $scope.searchQuery();
+        if (!SchoolSearchState.isFirstSearch) $scope.searchQuery();
     };
 
 
@@ -36,7 +36,7 @@ module.controller('RoomListCtrl', function($scope, realm, User, UserSearchState,
         $scope.users = User.query($scope.query, function() {
             $scope.searchLoaded = true;
             $scope.lastSearch = $scope.query.search;
-            UserSearchState.isFirstSearch = false;
+            SchoolSearchState.isFirstSearch = false;
         });
     };
 

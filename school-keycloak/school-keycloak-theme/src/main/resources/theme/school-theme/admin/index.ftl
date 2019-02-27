@@ -70,6 +70,7 @@
     <script src="${resourceUrl}/js/controllers/roles.js" type="text/javascript"></script>
     <script src="${resourceUrl}/js/loaders.js" type="text/javascript"></script>
     <script src="${resourceUrl}/js/services.js" type="text/javascript"></script>
+    <script src="${resourceUrl}/js/school-services.js" type="text/javascript"></script>
 
     <!-- Authorization -->
     <script src="${resourceUrl}/js/authz/authz-app.js" type="text/javascript"></script>
