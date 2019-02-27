@@ -1,4 +1,4 @@
-module.controller('RoomListCtrl', function($scope, realm, User, SchoolSearchState, UserImpersonation, BruteForce, Notifications, $route, Dialog) {
+module.controller('RoomListCtrl', function($scope, realm, School, SchoolSearchState, Notifications, $route, Dialog) {
     
     $scope.init = function() {
         $scope.realm = realm;
@@ -33,7 +33,7 @@ module.controller('RoomListCtrl', function($scope, realm, User, SchoolSearchStat
         console.log("query.search: " + $scope.query.search);
         $scope.searchLoaded = false;
 
-        $scope.users = User.query($scope.query, function() {
+        $scope.users = School.query($scope.query, function() {
             $scope.searchLoaded = true;
             $scope.lastSearch = $scope.query.search;
             SchoolSearchState.isFirstSearch = false;
@@ -77,9 +77,9 @@ module.controller('SchoolTabCtrl', function($scope, $location, Dialog, Notificat
     };
 });
 
-module.controller('SchoolDetailCtrl', function($scope, realm, user, BruteForceUser, User,
+module.controller('SchoolDetailCtrl', function($scope, realm, user, School,
                                              Components,
-                                             UserImpersonation, RequiredActions,
+                                             RequiredActions,
                                              UserStorageOperations,
                                              $location, $http, Dialog, Notifications) {
     $scope.realm = realm;
@@ -96,15 +96,6 @@ module.controller('SchoolDetailCtrl', function($scope, realm, user, BruteForceUs
 
 
         $scope.user = angular.copy(user);
-        $scope.impersonate = function() {
-            UserImpersonation.save({realm : realm.realm, user: $scope.user.id}, function (data) {
-                if (data.sameRealm) {
-                    window.location = data.redirect;
-                } else {
-                    window.open(data.redirect, "_blank");
-                }
-            });
-        };
         if(user.federationLink) {
             console.log("federationLink is not null. It is " + user.federationLink);
 
@@ -142,22 +133,6 @@ module.controller('SchoolDetailCtrl', function($scope, realm, user, BruteForceUs
             console.log("origin is null");
         }
         console.log('realm brute force? ' + realm.bruteForceProtected)
-        $scope.temporarilyDisabled = false;
-        var isDisabled = function () {
-            BruteForceUser.get({realm: realm.realm, userId: user.id}, function(data) {
-                console.log('here in isDisabled ' + data.disabled);
-                $scope.temporarilyDisabled = data.disabled;
-            });
-        };
-
-        console.log("check if disabled");
-        isDisabled();
-
-        $scope.unlockUser = function() {
-            BruteForceUser.delete({realm: realm.realm, userId: user.id}, function(data) {
-                isDisabled();
-            });
-        }
     }
 
     $scope.changed = false; // $scope.create;
@@ -192,7 +167,7 @@ module.controller('SchoolDetailCtrl', function($scope, realm, user, BruteForceUs
         convertAttributeValuesToLists();
 
         if ($scope.create) {
-            User.save({
+            School.save({
                 realm: realm.realm
             }, $scope.user, function (data, headers) {
                 $scope.changed = false;
@@ -209,7 +184,7 @@ module.controller('SchoolDetailCtrl', function($scope, realm, user, BruteForceUs
                 Notifications.success("The user has been created.");
             });
         } else {
-            User.update({
+        	School.update({
                 realm: realm.realm,
                 userId: $scope.user.id
             }, $scope.user, function () {

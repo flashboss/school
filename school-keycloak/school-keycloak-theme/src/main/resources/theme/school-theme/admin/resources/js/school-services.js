@@ -9,3 +9,14 @@ module.service('SchoolSearchState', function() {
         first : 0
     };
 });
+
+module.factory('School', function($resource) {
+    return $resource(authUrl + '/admin/realms/:realm/users/:userId', {
+        realm : '@realm',
+        userId : '@userId'
+    }, {
+        update : {
+            method : 'PUT'
+        }
+    });
+});
