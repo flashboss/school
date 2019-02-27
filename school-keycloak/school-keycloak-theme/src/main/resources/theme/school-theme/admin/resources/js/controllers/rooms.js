@@ -96,25 +96,6 @@ module.controller('SchoolDetailCtrl', function($scope, realm, user, School,
 
 
         $scope.user = angular.copy(user);
-        if(user.federationLink) {
-            console.log("federationLink is not null. It is " + user.federationLink);
-
-            if ($scope.access.viewRealm) {
-                Components.get({realm: realm.realm, componentId: user.federationLink}, function (link) {
-                    $scope.federationLinkName = link.name;
-                    $scope.federationLink = "#/realms/" + realm.realm + "/user-storage/providers/" + link.providerId + "/" + link.id;
-                });
-            } else {
-                // KEYCLOAK-4328
-                UserStorageOperations.simpleName.get({realm: realm.realm, componentId: user.federationLink}, function (link) {
-                    $scope.federationLinkName = link.name;
-                    $scope.federationLink = $location.absUrl();
-                })
-            }
-
-        } else {
-            console.log("federationLink is null");
-        }
         if(user.origin) {
             if ($scope.access.viewRealm) {
                 Components.get({realm: realm.realm, componentId: user.origin}, function (link) {
