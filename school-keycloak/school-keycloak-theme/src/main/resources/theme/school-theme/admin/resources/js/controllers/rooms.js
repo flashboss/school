@@ -40,11 +40,11 @@ module.controller('RoomListCtrl', function($scope, realm, School, SchoolSearchSt
         });
     };
 
-    $scope.removeSchool = function(user) {
-        Dialog.confirmDelete(user.id, 'school', function() {
+    $scope.removeSchool = function(school) {
+        Dialog.confirmDelete(school.id, 'school', function() {
             user.$remove({
                 realm : realm.realm,
-                schoolId : user.id
+                schoolId : school.id
             }, function() {
                 $route.reload();
                 
@@ -187,8 +187,8 @@ module.controller('SchoolDetailCtrl', function($scope, realm, user, School,
         }
     }
 
-    function convertAttributeValuesToString(user) {
-        var attrs = user.attributes;
+    function convertAttributeValuesToString(school) {
+        var attrs = school.attributes;
         for (var attribute in attrs) {
             if (typeof attrs[attribute] === "object") {
                 var attrVals = attrs[attribute].join("##");
