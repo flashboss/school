@@ -10,7 +10,7 @@
                 <div class="form-inline">
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="text" placeholder="{{:: 'search.placeholder' | translate}}" data-ng-model="query.search" class="form-control search" onkeydown="if (event.keyCode == 13) document.getElementById('userSearch').click()">
+                            <input type="text" placeholder="{{:: 'search.placeholder' | translate}}" data-ng-model="query.search" class="form-control search" onkeydown="if (event.keyCode == 13) document.getElementById('schoolSearch').click()">
                             <div class="input-group-addon">
                                     <i class="fa fa-search" id="schoolSearch" data-ng-click="firstPage()"></i>
                             </div>
@@ -44,12 +44,12 @@
         </tr>
         </tfoot>
         <tbody>
-        <tr ng-repeat="user in schools">
-            <td class="clip"><a href="#/realms/{{realm.realm}}/rooms/{{user.id}}">{{user.id}}</a></td>
-            <td class="clip">{{user.username}}</td>
-            <td class="clip">{{user.email}}</td>
-            <td class="kc-action-cell" kc-open="/realms/{{realm.realm}}/rooms/{{user.id}}">{{:: 'edit' | translate}}</td>
-            <td data-ng-show="user.access.manage" class="kc-action-cell" data-ng-click="removeSchool(user)">{{:: 'delete' | translate}}</td>
+        <tr ng-repeat="school in schools">
+            <td class="clip"><a href="#/realms/{{realm.realm}}/rooms/{{school.id}}">{{school.id}}</a></td>
+            <td class="clip">{{school.username}}</td>
+            <td class="clip">{{school.email}}</td>
+            <td class="kc-action-cell" kc-open="/realms/{{realm.realm}}/rooms/{{school.id}}">{{:: 'edit' | translate}}</td>
+            <td data-ng-show="school.access.manage" class="kc-action-cell" data-ng-click="removeSchool(school)">{{:: 'delete' | translate}}</td>
         </tr>
         <tr data-ng-show="!schools || schools.length == 0">
             <td class="text-muted" data-ng-show="!schools">{{:: 'schools.instruction' | translate}}</td>

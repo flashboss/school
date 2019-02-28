@@ -66,7 +66,7 @@ module.controller('SchoolTabCtrl', function($scope, $location, Dialog, Notificat
         Dialog.confirmDelete($scope.user.id, 'school', function() {
             $scope.user.$remove({
                 realm : Current.realm.realm,
-                schoolId : $scope.user.id
+                userId : $scope.user.id
             }, function() {
                 $location.url("/realms/" + Current.realm.realm + "/rooms");
                 Notifications.success("The school has been deleted.");
