@@ -42,7 +42,7 @@ module.controller('RoomListCtrl', function($scope, realm, School, SchoolSearchSt
 
     $scope.removeSchool = function(school) {
         Dialog.confirmDelete(school.id, 'school', function() {
-            user.$remove({
+        	school.$remove({
                 realm : realm.realm,
                 schoolId : school.id
             }, function() {
