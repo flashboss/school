@@ -33,7 +33,7 @@ module.controller('RoomListCtrl', function($scope, realm, School, SchoolSearchSt
         console.log("query.search: " + $scope.query.search);
         $scope.searchLoaded = false;
 
-        $scope.users = School.query($scope.query, function() {
+        $scope.schools = School.query($scope.query, function() {
             $scope.searchLoaded = true;
             $scope.lastSearch = $scope.query.search;
             SchoolSearchState.isFirstSearch = false;
@@ -48,7 +48,7 @@ module.controller('RoomListCtrl', function($scope, realm, School, SchoolSearchSt
             }, function() {
                 $route.reload();
                 
-                if ($scope.users.length === 1 && $scope.query.first > 0) {
+                if ($scope.schools.length === 1 && $scope.query.first > 0) {
                     $scope.previousPage();
                 } 
                 

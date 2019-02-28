@@ -3,7 +3,7 @@
     <kc-tabs-rooms></kc-tabs-rooms>
 
     <table class="table table-striped table-bordered" id="school-table">
-        <caption data-ng-show="users" class="hidden">{{:: 'table-of-realm-schools' | translate}}</caption>
+        <caption data-ng-show="schools" class="hidden">{{:: 'table-of-realm-schools' | translate}}</caption>
         <thead>
         <tr>
             <th colspan="{{access.impersonation == true ? '8' : '7'}}">
@@ -25,36 +25,36 @@
             </th>
         </tr>
         <tr>
-        <tr data-ng-show="searchLoaded && users.length > 0">
+        <tr data-ng-show="searchLoaded && schools.length > 0">
             <th class="w-20">{{:: 'id' | translate}}</th>
             <th class="w-20">{{:: 'name' | translate}}</th>
             <th class="w-40">{{:: 'rooms' | translate}}</th>
             <th colspan="2">{{:: 'actions' | translate}}</th>
         </tr>
         </thead>
-        <tfoot data-ng-show="users && (users.length >= query.max || query.first > 0)">
+        <tfoot data-ng-show="schools && (schools.length >= query.max || query.first > 0)">
         <tr>
             <td colspan="7">
                 <div class="table-nav">
                     <button data-ng-click="firstPage()" class="first" ng-disabled="query.first == 0">{{:: 'first-page' | translate}}</button>
                     <button data-ng-click="previousPage()" class="prev" ng-disabled="query.first == 0">{{:: 'previous-page' | translate}}</button>
-                    <button data-ng-click="nextPage()" class="next" ng-disabled="users.length < query.max">{{:: 'next-page' | translate}}</button>
+                    <button data-ng-click="nextPage()" class="next" ng-disabled="schools.length < query.max">{{:: 'next-page' | translate}}</button>
                 </div>
             </td>
         </tr>
         </tfoot>
         <tbody>
-        <tr ng-repeat="user in users">
+        <tr ng-repeat="user in schools">
             <td class="clip"><a href="#/realms/{{realm.realm}}/rooms/{{user.id}}">{{user.id}}</a></td>
             <td class="clip">{{user.username}}</td>
             <td class="clip">{{user.email}}</td>
             <td class="kc-action-cell" kc-open="/realms/{{realm.realm}}/rooms/{{user.id}}">{{:: 'edit' | translate}}</td>
             <td data-ng-show="user.access.manage" class="kc-action-cell" data-ng-click="removeSchool(user)">{{:: 'delete' | translate}}</td>
         </tr>
-        <tr data-ng-show="!users || users.length == 0">
-            <td class="text-muted" data-ng-show="!users">{{:: 'schools.instruction' | translate}}</td>
-            <td class="text-muted" data-ng-show="searchLoaded && users.length == 0 && lastSearch != null">{{:: 'no-results' | translate}}</td>
-            <td class="text-muted" data-ng-show="searchLoaded && users.length == 0 && lastSearch == null">{{:: 'no-school-available' | translate}}</td>
+        <tr data-ng-show="!schools || schools.length == 0">
+            <td class="text-muted" data-ng-show="!schools">{{:: 'schools.instruction' | translate}}</td>
+            <td class="text-muted" data-ng-show="searchLoaded && schools.length == 0 && lastSearch != null">{{:: 'no-results' | translate}}</td>
+            <td class="text-muted" data-ng-show="searchLoaded && schools.length == 0 && lastSearch == null">{{:: 'no-school-available' | translate}}</td>
         </tr>
         </tbody>
     </table>
