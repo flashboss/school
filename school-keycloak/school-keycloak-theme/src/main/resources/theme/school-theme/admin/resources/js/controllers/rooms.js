@@ -63,10 +63,10 @@ module.controller('RoomListCtrl', function($scope, realm, School, SchoolSearchSt
 
 module.controller('SchoolTabCtrl', function($scope, $location, Dialog, Notifications, Current) {
     $scope.removeSchool = function() {
-        Dialog.confirmDelete($scope.user.id, 'school', function() {
-            $scope.user.$remove({
+        Dialog.confirmDelete($scope.school.id, 'school', function() {
+            $scope.school.$remove({
                 realm : Current.realm.realm,
-                userId : $scope.user.id
+                userId : $scope.school.id
             }, function() {
                 $location.url("/realms/" + Current.realm.realm + "/rooms");
                 Notifications.success("The school has been deleted.");
@@ -86,7 +86,7 @@ module.controller('SchoolDetailCtrl', function($scope, realm, school, School,
     $scope.editUsername = $scope.create || $scope.realm.editUsernameAllowed;
 
     if ($scope.create) {
-        $scope.user = { enabled: true, attributes: {} }
+        $scope.school = { enabled: true, attributes: {} }
     } else {
         if (!school.attributes) {
         	school.attributes = {}
@@ -94,7 +94,7 @@ module.controller('SchoolDetailCtrl', function($scope, realm, school, School,
         convertAttributeValuesToString(school);
 
 
-        $scope.user = angular.copy(school);
+        $scope.school = angular.copy(school);
         console.log('realm brute force? ' + realm.bruteForceProtected)
     }
 
@@ -106,22 +106,22 @@ module.controller('SchoolDetailCtrl', function($scope, realm, school, School,
     }
     // ID - Name map for required actions. IDs are enum names.
     RequiredActions.query({realm: realm.realm}, function(data) {
-        $scope.userReqActionList = [];
+        $scope.schoolReqActionList = [];
         for (var i = 0; i < data.length; i++) {
             console.log("listed required action: " + data[i].name);
             if (data[i].enabled) {
                 var item = data[i];
-                $scope.userReqActionList.push(item);
+                $scope.schoolReqActionList.push(item);
             }
         }
     console.log("---------------------");
-    console.log("ng-model: user.requiredActions=" + JSON.stringify($scope.user.requiredActions));
+    console.log("ng-model: school.requiredActions=" + JSON.stringify($scope.school.requiredActions));
     console.log("---------------------");
-    console.log("ng-repeat: userReqActionList=" + JSON.stringify($scope.userReqActionList));
+    console.log("ng-repeat: schoolReqActionList=" + JSON.stringify($scope.schoolReqActionList));
     console.log("---------------------");
     });
-    $scope.$watch('user', function() {
-        if (!angular.equals($scope.user, school)) {
+    $scope.$watch('school', function() {
+        if (!angular.equals($scope.school, school)) {
             $scope.changed = true;
         }
     }, true);
@@ -132,10 +132,10 @@ module.controller('SchoolDetailCtrl', function($scope, realm, school, School,
         if ($scope.create) {
             School.save({
                 realm: realm.realm
-            }, $scope.user, function (data, headers) {
+            }, $scope.school, function (data, headers) {
                 $scope.changed = false;
-                convertAttributeValuesToString($scope.user);
-                school = angular.copy($scope.user);
+                convertAttributeValuesToString($scope.school);
+                school = angular.copy($scope.school);
                 var l = headers().location;
 
                 console.debug("Location == " + l);
@@ -149,18 +149,18 @@ module.controller('SchoolDetailCtrl', function($scope, realm, school, School,
         } else {
         	School.update({
                 realm: realm.realm,
-                schoolId: $scope.user.id
-            }, $scope.user, function () {
+                schoolId: $scope.school.id
+            }, $scope.school, function () {
                 $scope.changed = false;
-                convertAttributeValuesToString($scope.user);
-                school = angular.copy($scope.user);
+                convertAttributeValuesToString($scope.school);
+                school = angular.copy($scope.school);
                 Notifications.success("Your changes have been saved to the school.");
             });
         }
     };
 
     function convertAttributeValuesToLists() {
-        var attrs = $scope.user.attributes;
+        var attrs = $scope.school.attributes;
         for (var attribute in attrs) {
             if (typeof attrs[attribute] === "string") {
                 var attrVals = attrs[attribute].split("##");
@@ -180,7 +180,7 @@ module.controller('SchoolDetailCtrl', function($scope, realm, school, School,
     }
 
     $scope.reset = function() {
-        $scope.user = angular.copy(school);
+        $scope.school = angular.copy(school);
         $scope.changed = false;
     };
 
@@ -189,11 +189,11 @@ module.controller('SchoolDetailCtrl', function($scope, realm, school, School,
     };
 
     $scope.addAttribute = function() {
-        $scope.user.attributes[$scope.newAttribute.key] = $scope.newAttribute.value;
+        $scope.school.attributes[$scope.newAttribute.key] = $scope.newAttribute.value;
         delete $scope.newAttribute;
     }
 
     $scope.removeAttribute = function(key) {
-        delete $scope.user.attributes[key];
+        delete $scope.school.attributes[key];
     }
 });
