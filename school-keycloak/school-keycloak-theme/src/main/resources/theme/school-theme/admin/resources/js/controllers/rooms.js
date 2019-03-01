@@ -154,7 +154,7 @@ module.controller('SchoolDetailCtrl', function($scope, realm, user, School,
                 $scope.changed = false;
                 convertAttributeValuesToString($scope.user);
                 user = angular.copy($scope.user);
-                Notifications.success("Your changes have been saved to the user.");
+                Notifications.success("Your changes have been saved to the school.");
             });
         }
     };
