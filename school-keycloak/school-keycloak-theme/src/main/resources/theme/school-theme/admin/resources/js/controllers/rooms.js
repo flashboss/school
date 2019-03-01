@@ -80,7 +80,6 @@ module.controller('SchoolTabCtrl', function($scope, $location, Dialog, Notificat
 module.controller('SchoolDetailCtrl', function($scope, realm, user, School,
                                              Components,
                                              RequiredActions,
-                                             UserStorageOperations,
                                              $location, $http, Dialog, Notifications) {
     $scope.realm = realm;
     $scope.create = !user.id;
@@ -96,23 +95,6 @@ module.controller('SchoolDetailCtrl', function($scope, realm, user, School,
 
 
         $scope.user = angular.copy(user);
-        if(user.origin) {
-            if ($scope.access.viewRealm) {
-                Components.get({realm: realm.realm, componentId: user.origin}, function (link) {
-                    $scope.originName = link.name;
-                    $scope.originLink = "#/realms/" + realm.realm + "/user-storage/providers/" + link.providerId + "/" + link.id;
-                })
-            }
-            else {
-                // KEYCLOAK-4328
-                UserStorageOperations.simpleName.get({realm: realm.realm, componentId: user.origin}, function (link) {
-                    $scope.originName = link.name;
-                    $scope.originLink = $location.absUrl();
-                })
-             }
-        } else {
-            console.log("origin is null");
-        }
         console.log('realm brute force? ' + realm.bruteForceProtected)
     }
 
