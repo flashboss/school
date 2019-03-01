@@ -601,7 +601,7 @@ module.config([ '$routeProvider', function($routeProvider) {
                 realm : function(RealmLoader) {
                     return RealmLoader();
                 },
-                user : function() {
+                school : function() {
                     return {};
                 }
             },
@@ -625,7 +625,7 @@ module.config([ '$routeProvider', function($routeProvider) {
                 realm : function(RealmLoader) {
                     return RealmLoader();
                 },
-                user : function(UserLoader) {
+                school : function(UserLoader) {
                     return UserLoader();
                 }
             },
@@ -649,7 +649,7 @@ module.config([ '$routeProvider', function($routeProvider) {
                 realm : function(RealmLoader) {
                     return RealmLoader();
                 },
-                user : function(UserLoader) {
+                school : function(UserLoader) {
                     return UserLoader();
                 }
             },

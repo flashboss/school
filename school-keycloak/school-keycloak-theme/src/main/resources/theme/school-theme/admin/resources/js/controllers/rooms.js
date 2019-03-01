@@ -77,31 +77,31 @@ module.controller('SchoolTabCtrl', function($scope, $location, Dialog, Notificat
     };
 });
 
-module.controller('SchoolDetailCtrl', function($scope, realm, user, School,
+module.controller('SchoolDetailCtrl', function($scope, realm, school, School,
                                              Components,
                                              RequiredActions,
                                              $location, $http, Dialog, Notifications) {
     $scope.realm = realm;
-    $scope.create = !user.id;
+    $scope.create = !school.id;
     $scope.editUsername = $scope.create || $scope.realm.editUsernameAllowed;
 
     if ($scope.create) {
         $scope.user = { enabled: true, attributes: {} }
     } else {
-        if (!user.attributes) {
-            user.attributes = {}
+        if (!school.attributes) {
+        	school.attributes = {}
         }
-        convertAttributeValuesToString(user);
+        convertAttributeValuesToString(school);
 
 
-        $scope.user = angular.copy(user);
+        $scope.user = angular.copy(school);
         console.log('realm brute force? ' + realm.bruteForceProtected)
     }
 
     $scope.changed = false; // $scope.create;
-    if (user.requiredActions) {
-        for (var i = 0; i < user.requiredActions.length; i++) {
-            console.log("user require action: " + user.requiredActions[i]);
+    if (school.requiredActions) {
+        for (var i = 0; i < school.requiredActions.length; i++) {
+            console.log("school require action: " + school.requiredActions[i]);
         }
     }
     // ID - Name map for required actions. IDs are enum names.
@@ -121,7 +121,7 @@ module.controller('SchoolDetailCtrl', function($scope, realm, user, School,
     console.log("---------------------");
     });
     $scope.$watch('user', function() {
-        if (!angular.equals($scope.user, user)) {
+        if (!angular.equals($scope.user, school)) {
             $scope.changed = true;
         }
     }, true);
@@ -135,7 +135,7 @@ module.controller('SchoolDetailCtrl', function($scope, realm, user, School,
             }, $scope.user, function (data, headers) {
                 $scope.changed = false;
                 convertAttributeValuesToString($scope.user);
-                user = angular.copy($scope.user);
+                school = angular.copy($scope.user);
                 var l = headers().location;
 
                 console.debug("Location == " + l);
@@ -153,7 +153,7 @@ module.controller('SchoolDetailCtrl', function($scope, realm, user, School,
             }, $scope.user, function () {
                 $scope.changed = false;
                 convertAttributeValuesToString($scope.user);
-                user = angular.copy($scope.user);
+                school = angular.copy($scope.user);
                 Notifications.success("Your changes have been saved to the school.");
             });
         }
@@ -180,7 +180,7 @@ module.controller('SchoolDetailCtrl', function($scope, realm, user, School,
     }
 
     $scope.reset = function() {
-        $scope.user = angular.copy(user);
+        $scope.user = angular.copy(school);
         $scope.changed = false;
     };
 
