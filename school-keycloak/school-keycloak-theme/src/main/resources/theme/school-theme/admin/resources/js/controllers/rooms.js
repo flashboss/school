@@ -83,7 +83,7 @@ module.controller('SchoolDetailCtrl', function($scope, realm, school, School,
                                              $location, $http, Dialog, Notifications) {
     $scope.realm = realm;
     $scope.create = !school.id;
-    $scope.editUsername = $scope.create || $scope.realm.editUsernameAllowed;
+    $scope.editName = $scope.create || $scope.realm.editUsernameAllowed;
 
     if ($scope.create) {
         $scope.school = { enabled: true, attributes: {} }

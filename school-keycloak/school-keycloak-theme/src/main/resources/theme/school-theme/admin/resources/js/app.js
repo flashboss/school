@@ -625,8 +625,8 @@ module.config([ '$routeProvider', function($routeProvider) {
                 realm : function(RealmLoader) {
                     return RealmLoader();
                 },
-                school : function(UserLoader) {
-                    return UserLoader();
+                school : function(SchoolLoader) {
+                    return SchoolLoader();
                 }
             },
             controller : 'SchoolDetailCtrl'
@@ -649,8 +649,8 @@ module.config([ '$routeProvider', function($routeProvider) {
                 realm : function(RealmLoader) {
                     return RealmLoader();
                 },
-                school : function(UserLoader) {
-                    return UserLoader();
+                school : function(SchoolLoader) {
+                    return SchoolLoader();
                 }
             },
             controller : 'SchoolDetailCtrl'
