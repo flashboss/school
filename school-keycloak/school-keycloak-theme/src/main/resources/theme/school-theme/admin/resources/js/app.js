@@ -619,7 +619,7 @@ module.config([ '$routeProvider', function($routeProvider) {
             },
             controller : 'UserDetailCtrl'
         })
-        .when('/realms/:realm/rooms/:user', {
+        .when('/realms/:realm/rooms/:school', {
             templateUrl : resourceUrl + '/partials/school-detail.html',
             resolve : {
                 realm : function(RealmLoader) {
@@ -643,7 +643,7 @@ module.config([ '$routeProvider', function($routeProvider) {
             },
             controller : 'UserDetailCtrl'
         })
-        .when('/realms/:realm/rooms/:user/school-attributes', {
+        .when('/realms/:realm/rooms/:school/school-attributes', {
             templateUrl : resourceUrl + '/partials/school-attributes.html',
             resolve : {
                 realm : function(RealmLoader) {
