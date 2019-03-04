@@ -86,10 +86,10 @@ module.controller('SchoolDetailCtrl', function($scope, realm, school, School,
     $scope.editName = $scope.create || $scope.realm.editUsernameAllowed;
 
     if ($scope.create) {
-        $scope.school = { enabled: true, attributes: {} }
+        $scope.school = { rooms: {} }
     } else {
-        if (!school.attributes) {
-        	school.attributes = {}
+        if (!school.rooms) {
+        	school.rooms = {}
         }
         convertAttributeValuesToString(school);
 
@@ -109,10 +109,8 @@ module.controller('SchoolDetailCtrl', function($scope, realm, school, School,
         $scope.schoolReqActionList = [];
         for (var i = 0; i < data.length; i++) {
             console.log("listed required action: " + data[i].name);
-            if (data[i].enabled) {
-                var item = data[i];
-                $scope.schoolReqActionList.push(item);
-            }
+            var item = data[i];
+            $scope.schoolReqActionList.push(item);
         }
     console.log("---------------------");
     console.log("ng-model: school.requiredActions=" + JSON.stringify($scope.school.requiredActions));
@@ -160,7 +158,7 @@ module.controller('SchoolDetailCtrl', function($scope, realm, school, School,
     };
 
     function convertAttributeValuesToLists() {
-        var attrs = $scope.school.attributes;
+        var attrs = $scope.school.rooms;
         for (var attribute in attrs) {
             if (typeof attrs[attribute] === "string") {
                 var attrVals = attrs[attribute].split("##");
@@ -170,7 +168,7 @@ module.controller('SchoolDetailCtrl', function($scope, realm, school, School,
     }
 
     function convertAttributeValuesToString(school) {
-        var attrs = school.attributes;
+        var attrs = school.rooms;
         for (var attribute in attrs) {
             if (typeof attrs[attribute] === "object") {
                 var attrVals = attrs[attribute].join("##");
@@ -189,11 +187,11 @@ module.controller('SchoolDetailCtrl', function($scope, realm, school, School,
     };
 
     $scope.addAttribute = function() {
-        $scope.school.attributes[$scope.newAttribute.key] = $scope.newAttribute.value;
+        $scope.school.rooms[$scope.newAttribute.key] = $scope.newAttribute.value;
         delete $scope.newAttribute;
     }
 
     $scope.removeAttribute = function(key) {
-        delete $scope.school.attributes[key];
+        delete $scope.school.rooms[key];
     }
 });

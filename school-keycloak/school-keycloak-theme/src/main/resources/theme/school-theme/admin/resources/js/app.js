@@ -643,8 +643,8 @@ module.config([ '$routeProvider', function($routeProvider) {
             },
             controller : 'UserDetailCtrl'
         })
-        .when('/realms/:realm/rooms/:school/school-attributes', {
-            templateUrl : resourceUrl + '/partials/school-attributes.html',
+        .when('/realms/:realm/rooms/:school/school-rooms', {
+            templateUrl : resourceUrl + '/partials/school-rooms.html',
             resolve : {
                 realm : function(RealmLoader) {
                     return RealmLoader();

@@ -11,7 +11,7 @@ module.service('SchoolSearchState', function() {
 });
 
 module.factory('School', function($resource) {
-    return $resource(authUrl + '/admin/realms/:realm/users/:schoolId', {
+    return $resource(authUrl + '/realms/:realm/rooms/schools/:schoolId', {
         realm : '@realm',
         schoolId : '@schoolId'
     }, {

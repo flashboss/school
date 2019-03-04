@@ -26,9 +26,8 @@
         </tr>
         <tr>
         <tr data-ng-show="searchLoaded && schools.length > 0">
-            <th class="w-20">{{:: 'id' | translate}}</th>
-            <th class="w-20">{{:: 'name' | translate}}</th>
-            <th class="w-40">{{:: 'rooms' | translate}}</th>
+            <th class="w-40">{{:: 'id' | translate}}</th>
+            <th class="w-40">{{:: 'name' | translate}}</th>
             <th colspan="2">{{:: 'actions' | translate}}</th>
         </tr>
         </thead>
@@ -46,10 +45,9 @@
         <tbody>
         <tr ng-repeat="school in schools">
             <td class="clip"><a href="#/realms/{{realm.realm}}/rooms/{{school.id}}">{{school.id}}</a></td>
-            <td class="clip">{{school.username}}</td>
-            <td class="clip">{{school.email}}</td>
+            <td class="clip">{{school.description}}</td>
             <td class="kc-action-cell" kc-open="/realms/{{realm.realm}}/rooms/{{school.id}}">{{:: 'edit' | translate}}</td>
-            <td data-ng-show="school.access.manage" class="kc-action-cell" data-ng-click="removeSchool(school)">{{:: 'delete' | translate}}</td>
+            <td data-ng-show="true" class="kc-action-cell" data-ng-click="removeSchool(school)">{{:: 'delete' | translate}}</td>
         </tr>
         <tr data-ng-show="!schools || schools.length == 0">
             <td class="text-muted" data-ng-show="!schools">{{:: 'schools.instruction' | translate}}</td>

@@ -80,6 +80,14 @@ public class RoomsServiceImpl implements RoomsService, Converters {
 	}
 
 	@Override
+	public School updateSchool(School school) {
+		SchoolEntity entity = getEntityManager().find(SchoolEntity.class, school.getId());
+		entity.setDescription(school.getDescription());
+
+		return SchoolEntityToSchool.apply(entity);
+	}
+
+	@Override
 	public void removeRoom(Room room) {
 		EntityManager em = getEntityManager();
 		RoomEntity entity = em.createNamedQuery("findRoomByClazzSectionAndSchool", RoomEntity.class)
