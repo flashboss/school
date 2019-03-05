@@ -1,8 +1,10 @@
 package it.vige.school.rooms.spi.impl;
 
+import static java.lang.Integer.parseInt;
 import static java.util.stream.Collectors.toList;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 
@@ -83,6 +85,18 @@ public class RoomsServiceImpl implements RoomsService, Converters {
 	public School updateSchool(School school) {
 		SchoolEntity entity = getEntityManager().find(SchoolEntity.class, school.getId());
 		entity.setDescription(school.getDescription());
+		Map<String, List<String>> rooms = school.getRooms();
+		entity.getRooms().clear();
+		for (String section : rooms.keySet()) {
+			List<String> classes = rooms.get(section);
+			for (String clazz : classes) {
+				Room room = new Room();
+				room.setSection(section.charAt(0));
+				room.setClazz(parseInt(clazz));
+				room.setSchool(school);
+				entity.getRooms().add(RoomToRoomEntity.apply(room));
+			}
+		}
 
 		return SchoolEntityToSchool.apply(entity);
 	}

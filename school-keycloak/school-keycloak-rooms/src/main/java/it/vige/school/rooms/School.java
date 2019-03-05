@@ -1,6 +1,7 @@
 package it.vige.school.rooms;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,9 +16,9 @@ public class School implements Serializable {
 	private String id;
 
 	private String description;
-	
-    @JsonDeserialize(using = StringListMapDeserializer.class)
-    protected Map<String, List<String>> rooms;
+
+	@JsonDeserialize(using = StringListMapDeserializer.class)
+	protected Map<String, List<String>> rooms = new HashMap<String, List<String>>();
 
 	public String getId() {
 		return id;
@@ -35,13 +36,13 @@ public class School implements Serializable {
 		this.description = description;
 	}
 
-    public Map<String, List<String>> getRooms() {
-        return rooms;
-    }
+	public Map<String, List<String>> getRooms() {
+		return rooms;
+	}
 
-    public void setRooms(Map<String, List<String>> rooms) {
-        this.rooms = rooms;
-    }
+	public void setRooms(Map<String, List<String>> rooms) {
+		this.rooms = rooms;
+	}
 
 	@Override
 	public int hashCode() {
@@ -73,5 +74,5 @@ public class School implements Serializable {
 			return false;
 		return true;
 	}
-	
+
 }
