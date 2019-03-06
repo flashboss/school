@@ -1,5 +1,8 @@
 package it.vige.school.rooms.spi.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
 
 import it.vige.school.rooms.Room;
@@ -45,6 +48,14 @@ public interface Converters {
 			School school = new School();
 			school.setId(t.getId());
 			school.setDescription(t.getDescription());
+			Map<String, List<String>> rooms = school.getRooms();
+			for (RoomEntity room : t.getRooms()) {
+				List<String> classes = school.getRooms().get(room.getId().getSection() + "");
+				if (classes == null)
+					classes = new ArrayList<String>();
+				classes.add(room.getId().getClazz() + "");
+				rooms.put(room.getId().getSection() + "", classes);
+			}
 
 			return school;
 		}

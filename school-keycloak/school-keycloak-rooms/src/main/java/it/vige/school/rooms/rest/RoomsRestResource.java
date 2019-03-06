@@ -31,8 +31,8 @@ public class RoomsRestResource {
 	public static void checkRealmAdmin(AuthResult auth) {
 		if (auth == null) {
 			throw new NotAuthorizedException("Bearer");
-		} else if (auth.getToken().getRealmAccess() == null
-				|| !auth.getToken().getRealmAccess().isUserInRole("admin")) {
+		} else if (auth.getUser().getGroups() == null
+				|| auth.getUser().getGroups().stream().filter(x -> x.getName().equals("admin")).count() == 0) {
 			throw new ForbiddenException("Does not have realm admin role");
 		}
 	}
