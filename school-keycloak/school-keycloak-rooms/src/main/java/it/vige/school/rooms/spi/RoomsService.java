@@ -21,6 +21,8 @@ public interface RoomsService extends Provider {
 
 	School createSchool(School school);
 
+	School updateSchool(School school);
+
 	void removeRoom(Room room);
 
 	void removeSchool(School school);

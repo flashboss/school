@@ -1,19 +1,19 @@
 <div class="col-sm-9 col-md-10 col-sm-push-3 col-md-push-2">
     <ol class="breadcrumb">
         <li><a href="#/realms/{{realm.realm}}/rooms">{{:: 'rooms' | translate}}</a></li>
-        <li data-ng-hide="create">{{user.username}}</li>
+        <li data-ng-hide="create">{{school.description}}</li>
         <li data-ng-show="create">{{:: 'add-school' | translate}}</li>
     </ol>
 
     <kc-tabs-school></kc-tabs-school>
 
-    <form class="form-horizontal" name="schoolForm" novalidate kc-read-only="!create && !user.access.manage">
+    <form class="form-horizontal" name="schoolForm" novalidate kc-read-only="!create && false">
 
         <fieldset class="border-top">
             <div class="form-group">
                 <label class="col-md-2 control-label"for="id">{{:: 'id' | translate}}</label>
                 <div class="col-md-6">
-                    <input class="form-control" type="text" id="id" name="id" data-ng-model="user.id" autofocus data-ng-readonly="true">
+                    <input class="form-control" type="text" id="id" name="id" data-ng-model="school.id" autofocus data-ng-readonly="true">
                 </div>
             </div>
             
@@ -21,11 +21,11 @@
             </div>
 
             <div class="form-group">
-                <label class="col-md-2 control-label"for="username">{{:: 'name' | translate}} <span class="required" data-ng-show="create">*</span></label>
+                <label class="col-md-2 control-label"for="name">{{:: 'name' | translate}} <span class="required" data-ng-show="create">*</span></label>
                 <div class="col-md-6">
                     <!-- Characters >,<,/,\ are forbidden in name -->
-                    <input class="form-control" type="text" id="username" name="username" data-ng-model="user.username" autofocus
-                           required ng-pattern="/^[^\<\>\\\/]*$/" data-ng-readonly="!editUsername">
+                    <input class="form-control" type="text" id="name" name="name" data-ng-model="school.description" autofocus
+                           required ng-pattern="/^[^\<\>\\\/]*$/" data-ng-readonly="!editName">
                 </div>
             </div>
 
@@ -37,7 +37,7 @@
                 <button kc-cancel data-ng-click="cancel()">{{:: 'cancel' | translate}}</button>
             </div>
 
-            <div class="col-md-10 col-md-offset-2" data-ng-show="!create && user.access.manage">
+            <div class="col-md-10 col-md-offset-2" data-ng-show="!create && true">
                 <button kc-save  data-ng-disabled="!changed">{{:: 'save' | translate}}</button>
                 <button kc-reset data-ng-disabled="!changed">{{:: 'cancel' | translate}}</button>
             </div>

@@ -1,13 +1,13 @@
-module.controller('RoomListCtrl', function($scope, realm, User, UserSearchState, UserImpersonation, BruteForce, Notifications, $route, Dialog) {
+module.controller('RoomListCtrl', function($scope, realm, School, SchoolSearchState, Notifications, $route, Dialog) {
     
     $scope.init = function() {
         $scope.realm = realm;
         
-        UserSearchState.query.realm = realm.realm;
-        $scope.query = UserSearchState.query;
+        SchoolSearchState.query.realm = realm.realm;
+        $scope.query = SchoolSearchState.query;
         $scope.query.briefRepresentation = 'true';
         
-        if (!UserSearchState.isFirstSearch) $scope.searchQuery();
+        if (!SchoolSearchState.isFirstSearch) $scope.searchQuery();
     };
 
 
@@ -33,22 +33,22 @@ module.controller('RoomListCtrl', function($scope, realm, User, UserSearchState,
         console.log("query.search: " + $scope.query.search);
         $scope.searchLoaded = false;
 
-        $scope.users = User.query($scope.query, function() {
+        $scope.schools = School.query($scope.query, function() {
             $scope.searchLoaded = true;
             $scope.lastSearch = $scope.query.search;
-            UserSearchState.isFirstSearch = false;
+            SchoolSearchState.isFirstSearch = false;
         });
     };
 
-    $scope.removeSchool = function(user) {
-        Dialog.confirmDelete(user.id, 'school', function() {
-            user.$remove({
+    $scope.removeSchool = function(school) {
+        Dialog.confirmDelete(school.id, 'school', function() {
+        	school.$remove({
                 realm : realm.realm,
-                userId : user.id
+                schoolId : school.id
             }, function() {
                 $route.reload();
                 
-                if ($scope.users.length === 1 && $scope.query.first > 0) {
+                if ($scope.schools.length === 1 && $scope.query.first > 0) {
                     $scope.previousPage();
                 } 
                 
@@ -63,10 +63,10 @@ module.controller('RoomListCtrl', function($scope, realm, User, UserSearchState,
 
 module.controller('SchoolTabCtrl', function($scope, $location, Dialog, Notifications, Current) {
     $scope.removeSchool = function() {
-        Dialog.confirmDelete($scope.user.id, 'school', function() {
-            $scope.user.$remove({
+        Dialog.confirmDelete($scope.school.id, 'school', function() {
+            $scope.school.$remove({
                 realm : Current.realm.realm,
-                userId : $scope.user.id
+                schoolId : $scope.school.id
             }, function() {
                 $location.url("/realms/" + Current.realm.realm + "/rooms");
                 Notifications.success("The school has been deleted.");
@@ -77,113 +77,49 @@ module.controller('SchoolTabCtrl', function($scope, $location, Dialog, Notificat
     };
 });
 
-module.controller('SchoolDetailCtrl', function($scope, realm, user, BruteForceUser, User,
+module.controller('SchoolDetailCtrl', function($scope, realm, school, School,
                                              Components,
-                                             UserImpersonation, RequiredActions,
-                                             UserStorageOperations,
+                                             RequiredActions,
                                              $location, $http, Dialog, Notifications) {
     $scope.realm = realm;
-    $scope.create = !user.id;
-    $scope.editUsername = $scope.create || $scope.realm.editUsernameAllowed;
+    $scope.create = !school.id;
+    $scope.editName = $scope.create || $scope.realm.editUsernameAllowed;
 
     if ($scope.create) {
-        $scope.user = { enabled: true, attributes: {} }
+        $scope.school = { rooms: {} }
     } else {
-        if (!user.attributes) {
-            user.attributes = {}
+        if (!school.rooms) {
+        	school.rooms = {}
         }
-        convertAttributeValuesToString(user);
+        convertAttributeValuesToString(school);
 
 
-        $scope.user = angular.copy(user);
-        $scope.impersonate = function() {
-            UserImpersonation.save({realm : realm.realm, user: $scope.user.id}, function (data) {
-                if (data.sameRealm) {
-                    window.location = data.redirect;
-                } else {
-                    window.open(data.redirect, "_blank");
-                }
-            });
-        };
-        if(user.federationLink) {
-            console.log("federationLink is not null. It is " + user.federationLink);
-
-            if ($scope.access.viewRealm) {
-                Components.get({realm: realm.realm, componentId: user.federationLink}, function (link) {
-                    $scope.federationLinkName = link.name;
-                    $scope.federationLink = "#/realms/" + realm.realm + "/user-storage/providers/" + link.providerId + "/" + link.id;
-                });
-            } else {
-                // KEYCLOAK-4328
-                UserStorageOperations.simpleName.get({realm: realm.realm, componentId: user.federationLink}, function (link) {
-                    $scope.federationLinkName = link.name;
-                    $scope.federationLink = $location.absUrl();
-                })
-            }
-
-        } else {
-            console.log("federationLink is null");
-        }
-        if(user.origin) {
-            if ($scope.access.viewRealm) {
-                Components.get({realm: realm.realm, componentId: user.origin}, function (link) {
-                    $scope.originName = link.name;
-                    $scope.originLink = "#/realms/" + realm.realm + "/user-storage/providers/" + link.providerId + "/" + link.id;
-                })
-            }
-            else {
-                // KEYCLOAK-4328
-                UserStorageOperations.simpleName.get({realm: realm.realm, componentId: user.origin}, function (link) {
-                    $scope.originName = link.name;
-                    $scope.originLink = $location.absUrl();
-                })
-             }
-        } else {
-            console.log("origin is null");
-        }
+        $scope.school = angular.copy(school);
         console.log('realm brute force? ' + realm.bruteForceProtected)
-        $scope.temporarilyDisabled = false;
-        var isDisabled = function () {
-            BruteForceUser.get({realm: realm.realm, userId: user.id}, function(data) {
-                console.log('here in isDisabled ' + data.disabled);
-                $scope.temporarilyDisabled = data.disabled;
-            });
-        };
-
-        console.log("check if disabled");
-        isDisabled();
-
-        $scope.unlockUser = function() {
-            BruteForceUser.delete({realm: realm.realm, userId: user.id}, function(data) {
-                isDisabled();
-            });
-        }
     }
 
     $scope.changed = false; // $scope.create;
-    if (user.requiredActions) {
-        for (var i = 0; i < user.requiredActions.length; i++) {
-            console.log("user require action: " + user.requiredActions[i]);
+    if (school.requiredActions) {
+        for (var i = 0; i < school.requiredActions.length; i++) {
+            console.log("school require action: " + school.requiredActions[i]);
         }
     }
     // ID - Name map for required actions. IDs are enum names.
     RequiredActions.query({realm: realm.realm}, function(data) {
-        $scope.userReqActionList = [];
+        $scope.schoolReqActionList = [];
         for (var i = 0; i < data.length; i++) {
             console.log("listed required action: " + data[i].name);
-            if (data[i].enabled) {
-                var item = data[i];
-                $scope.userReqActionList.push(item);
-            }
+            var item = data[i];
+            $scope.schoolReqActionList.push(item);
         }
     console.log("---------------------");
-    console.log("ng-model: user.requiredActions=" + JSON.stringify($scope.user.requiredActions));
+    console.log("ng-model: school.requiredActions=" + JSON.stringify($scope.school.requiredActions));
     console.log("---------------------");
-    console.log("ng-repeat: userReqActionList=" + JSON.stringify($scope.userReqActionList));
+    console.log("ng-repeat: schoolReqActionList=" + JSON.stringify($scope.schoolReqActionList));
     console.log("---------------------");
     });
-    $scope.$watch('user', function() {
-        if (!angular.equals($scope.user, user)) {
+    $scope.$watch('school', function() {
+        if (!angular.equals($scope.school, school)) {
             $scope.changed = true;
         }
     }, true);
@@ -192,12 +128,12 @@ module.controller('SchoolDetailCtrl', function($scope, realm, user, BruteForceUs
         convertAttributeValuesToLists();
 
         if ($scope.create) {
-            User.save({
+            School.save({
                 realm: realm.realm
-            }, $scope.user, function (data, headers) {
+            }, $scope.school, function (data, headers) {
                 $scope.changed = false;
-                convertAttributeValuesToString($scope.user);
-                user = angular.copy($scope.user);
+                convertAttributeValuesToString($scope.school);
+                school = angular.copy($scope.school);
                 var l = headers().location;
 
                 console.debug("Location == " + l);
@@ -205,24 +141,24 @@ module.controller('SchoolDetailCtrl', function($scope, realm, user, BruteForceUs
                 var id = l.substring(l.lastIndexOf("/") + 1);
 
 
-                $location.url("/realms/" + realm.realm + "/users/" + id);
-                Notifications.success("The user has been created.");
+                $location.url("/realms/" + realm.realm + "/rooms/" + id);
+                Notifications.success("The school has been created.");
             });
         } else {
-            User.update({
+        	School.update({
                 realm: realm.realm,
-                userId: $scope.user.id
-            }, $scope.user, function () {
+                schoolId: $scope.school.id
+            }, $scope.school, function () {
                 $scope.changed = false;
-                convertAttributeValuesToString($scope.user);
-                user = angular.copy($scope.user);
-                Notifications.success("Your changes have been saved to the user.");
+                convertAttributeValuesToString($scope.school);
+                school = angular.copy($scope.school);
+                Notifications.success("Your changes have been saved to the school.");
             });
         }
     };
 
     function convertAttributeValuesToLists() {
-        var attrs = $scope.user.attributes;
+        var attrs = $scope.school.rooms;
         for (var attribute in attrs) {
             if (typeof attrs[attribute] === "string") {
                 var attrVals = attrs[attribute].split("##");
@@ -231,8 +167,8 @@ module.controller('SchoolDetailCtrl', function($scope, realm, user, BruteForceUs
         }
     }
 
-    function convertAttributeValuesToString(user) {
-        var attrs = user.attributes;
+    function convertAttributeValuesToString(school) {
+        var attrs = school.rooms;
         for (var attribute in attrs) {
             if (typeof attrs[attribute] === "object") {
                 var attrVals = attrs[attribute].join("##");
@@ -242,7 +178,7 @@ module.controller('SchoolDetailCtrl', function($scope, realm, user, BruteForceUs
     }
 
     $scope.reset = function() {
-        $scope.user = angular.copy(user);
+        $scope.school = angular.copy(school);
         $scope.changed = false;
     };
 
@@ -251,11 +187,11 @@ module.controller('SchoolDetailCtrl', function($scope, realm, user, BruteForceUs
     };
 
     $scope.addAttribute = function() {
-        $scope.user.attributes[$scope.newAttribute.key] = $scope.newAttribute.value;
+        $scope.school.rooms[$scope.newAttribute.key] = $scope.newAttribute.value;
         delete $scope.newAttribute;
     }
 
     $scope.removeAttribute = function(key) {
-        delete $scope.user.attributes[key];
+        delete $scope.school.rooms[key];
     }
 });
