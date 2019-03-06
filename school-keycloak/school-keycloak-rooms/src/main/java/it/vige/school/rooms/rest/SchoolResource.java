@@ -4,7 +4,6 @@ import static it.vige.school.rooms.rest.RoomsRestResource.checkRealmAdmin;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.Response.created;
 import static javax.ws.rs.core.Response.noContent;
-import static org.keycloak.models.utils.KeycloakModelUtils.generateId;
 import static org.keycloak.services.ErrorResponse.exists;
 
 import java.util.List;
@@ -53,7 +52,7 @@ public class SchoolResource {
 		try {
 			checkRealmAdmin(auth);
 			if (school.getId() == null)
-				school.setId(generateId());
+				school.setId(generateId(school.getDescription()));
 			School createdSchool = session.getProvider(RoomsService.class).createSchool(school);
 
 			if (session.getTransactionManager().isActive()) {
@@ -112,6 +111,10 @@ public class SchoolResource {
 	@Produces(APPLICATION_JSON)
 	public School findSchoolById(@PathParam("school") final String school) {
 		return session.getProvider(RoomsService.class).findSchoolById(school);
+	}
+	
+	private String generateId(String description) {
+		return description.replaceAll("[-+.^ :,']","").toLowerCase();
 	}
 
 }
