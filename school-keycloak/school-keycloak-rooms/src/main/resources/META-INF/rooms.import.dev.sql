@@ -4,8 +4,8 @@ insert into SCHOOLENTITY (id, description) values ('edoardodefilippo', 'Edoardo 
 insert into SCHOOLENTITY (id, description) values ('garibaldi', 'Garibaldi');
 insert into SCHOOLENTITY (id, description) values ('giovannixxiii', 'Giovanni XXIII');
 insert into SCHOOLENTITY (id, description) values ('leonardodavinci', 'Leonardo Da Vinci');
-insert into SCHOOLENTITY (id, description) values ('manzi', 'Don Lorenzo Milani');
-insert into SCHOOLENTITY (id, description) values ('montecelio', 'Manzi');
+insert into SCHOOLENTITY (id, description) values ('manzi', 'Manzi');
+insert into SCHOOLENTITY (id, description) values ('montecelio', 'Montecelio');
 insert into SCHOOLENTITY (id, description) values ('montelucci', 'Montelucci');
 insert into ROOMENTITY (clazz, section, school_id) values (0, 'A', 'donlorenzomilani');
 insert into ROOMENTITY (clazz, section, school_id) values (0, 'B', 'donlorenzomilani');
