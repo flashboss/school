@@ -86,6 +86,9 @@ public class RoomsServiceImpl implements RoomsService, Converters {
 		SchoolEntity entity = getEntityManager().find(SchoolEntity.class, school.getId());
 		entity.setDescription(school.getDescription());
 		Map<String, List<String>> rooms = school.getRooms();
+		entity.getRooms().forEach(x -> {
+			getEntityManager().remove(x);
+		});
 		entity.getRooms().clear();
 		for (String section : rooms.keySet()) {
 			List<String> classes = rooms.get(section);
@@ -94,7 +97,9 @@ public class RoomsServiceImpl implements RoomsService, Converters {
 				room.setSection(section.charAt(0));
 				room.setClazz(parseInt(clazz));
 				room.setSchool(school);
-				entity.getRooms().add(RoomToRoomEntity.apply(room));
+				RoomEntity roomEntity = RoomToRoomEntity.apply(room);
+				getEntityManager().persist(roomEntity);
+				entity.getRooms().add(roomEntity);
 			}
 		}
 
