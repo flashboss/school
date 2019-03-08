@@ -40,6 +40,30 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 				<configuration>
 					<outputFileNameMapping>@{artifactId}@.@{extension}@</outputFileNameMapping>
 				</configuration>
+    			<executions>
+        			<execution>
+            			<!-- explode the future war content for pre-package processing -->
+            			<id>prepare-war</id>
+            			<phase>prepare-package</phase>
+            			<goals>
+                			<goal>exploded</goal>
+            			</goals>
+            			<configuration>
+                			<webappDirectory>${project.build.directory}/${project.build.finalName}-tmp</webappDirectory>
+            			</configuration>
+        			</execution>
+        			<execution>
+            			<!-- use the same execution id to further configure the default binding and execution -->
+            			<id>default-war</id>
+            			<phase>package</phase>
+            			<goals>
+                			<goal>war</goal>
+            			</goals>
+            			<configuration>
+                			<warSourceDirectory>${project.build.directory}/${project.build.finalName}-tmp</warSourceDirectory>
+            			</configuration>
+        			</execution>
+    			</executions>
 			</plugin>
 		</plugins>
 	</build>
@@ -50,16 +74,44 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
+			<properties>
+				<maven.replacer.value>localhost</maven.replacer.value>
+			</properties>
 		</profile>
 
 		<profile>
 			<id>production</id>
+			<properties>
+				<maven.replacer.value>${keycloak.url}</maven.replacer.value>
+			</properties>
 		</profile>
 
 		<profile>
 			<id>prepare-school-jsf</id>
 			<build>
 				<plugins>
+					<plugin>
+						<groupId>com.google.code.maven-replacer-plugin</groupId>
+						<artifactId>replacer</artifactId>
+						<version>${maven.replacer.plugin.version}</version>
+						<executions>
+							<execution>
+								<phase>prepare-package</phase>
+								<goals>
+									<goal>replace</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<file>${project.build.directory}/${project.build.finalName}/WEB-INF/keycloak.json</file>
+							<replacements>
+								<replacement>
+									<token>MAVEN_REPLACER_AUTH_SERVER_URL</token>
+									<value>${maven.replacer.value}</value>
+								</replacement>
+							</replacements>
+						</configuration>
+					</plugin>
 					<plugin>
 						<artifactId>maven-dependency-plugin</artifactId>
 						<executions>
