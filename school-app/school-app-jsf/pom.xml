@@ -50,10 +50,16 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
+			<properties>
+				<maven.replacer.value>localhost</maven.replacer.value>
+			</properties>
 		</profile>
 
 		<profile>
 			<id>production</id>
+			<properties>
+				<maven.replacer.value>${keycloak.url}</maven.replacer.value>
+			</properties>
 		</profile>
 
 		<profile>
@@ -92,7 +98,7 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 								<id>copy</id>
 								<phase>package</phase>
 								<goals>
-									<goal>copy</goal>
+									<goal>unpack</goal>
 								</goals>
 								<configuration>
 									<artifactItems>
@@ -101,8 +107,7 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 											<artifactId>${project.artifactId}</artifactId>
 											<version>${project.version}</version>
 											<type>war</type>
-											<destFileName>school.war</destFileName>
-											<outputDirectory>${project.build.directory}/school-run/wildfly-${wildfly.version}/standalone/deployments</outputDirectory>
+											<outputDirectory>${project.build.directory}/school-run/wildfly-${wildfly.version}/standalone/deployments/${project.build.finalName}.war</outputDirectory>
 										</artifactItem>
 									</artifactItems>
 								</configuration>
@@ -138,6 +143,46 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 							</execution>
 						</executions>
 					</plugin>
+					<plugin>
+						<artifactId>maven-resources-plugin</artifactId>
+						<version>${maven.resources.plugin.version}</version>
+						<inherited>false</inherited>
+						<executions>
+							<execution>
+								<id>copy-deployments</id>
+								<phase>process-test-classes</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>${project.build.directory}/school-run/wildfly-${wildfly.version}/standalone/deployments</outputDirectory>
+									<resources>
+										<resource>
+											<directory>${basedir}/src/deployments</directory>
+											<filtering>true</filtering>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+							<execution>
+								<id>copy-resources</id>
+								<phase>process-test-classes</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>${project.build.directory}/school-run/wildfly-${wildfly.version}/keycloak</outputDirectory>
+									<resources>
+										<resource>
+											<directory>${basedir}/src/main/webapp/WEB-INF</directory>
+											<include>keycloak.json</include>
+											<filtering>true</filtering>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
 				</plugins>
 			</build>
 		</profile>
@@ -146,6 +191,51 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 			<id>runtime-school-jsf</id>
 			<build>
 				<plugins>
+					<plugin>
+						<artifactId>maven-resources-plugin</artifactId>
+						<version>${maven.resources.plugin.version}</version>
+						<inherited>false</inherited>
+						<executions>
+							<execution>
+								<id>copy-keycloak</id>
+								<phase>process-test-classes</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>${project.build.directory}/school-run/wildfly-${wildfly.version}/standalone/deployments/${project.build.finalName}.war/WEB-INF</outputDirectory>
+									<resources>
+										<resource>
+											<directory>${project.build.directory}/school-run/wildfly-${wildfly.version}/keycloak</directory>
+											<filtering>true</filtering>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>com.google.code.maven-replacer-plugin</groupId>
+						<artifactId>replacer</artifactId>
+						<version>${maven.replacer.plugin.version}</version>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>replace</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<file>${project.build.directory}/school-run/wildfly-${wildfly.version}/standalone/deployments/${project.build.finalName}.war/WEB-INF/keycloak.json</file>
+							<replacements>
+								<replacement>
+									<token>MAVEN_REPLACER_AUTH_SERVER_URL</token>
+									<value>${maven.replacer.value}</value>
+								</replacement>
+							</replacements>
+						</configuration>
+					</plugin>
 					<plugin>
 						<groupId>org.wildfly.plugins</groupId>
 						<artifactId>wildfly-maven-plugin</artifactId>

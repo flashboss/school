@@ -45,32 +45,6 @@
 				<realm.config.environment>dev</realm.config.environment>
 				<realm.migration>OVERWRITE_EXISTING</realm.migration>
 			</properties>
-			<build>
-				<plugins>
-					<plugin>
-						<artifactId>maven-resources-plugin</artifactId>
-						<version>${maven.resources.plugin.version}</version>
-						<executions>
-							<execution>
-								<id>copy-resources</id>
-								<phase>process-test-classes</phase>
-								<goals>
-									<goal>copy-resources</goal>
-								</goals>
-								<configuration>
-									<outputDirectory>${project.build.directory}/keycloak-run/wildfly-${wildfly.version}/standalone/configuration</outputDirectory>
-									<resources>
-										<resource>
-											<directory>src/main/users</directory>
-											<filtering>true</filtering>
-										</resource>
-									</resources>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
 		</profile>
 
 		<profile>
@@ -79,32 +53,6 @@
 				<realm.config.environment>prod</realm.config.environment>
 				<realm.migration>IGNORE_EXISTING</realm.migration>
 			</properties>
-			<build>
-				<plugins>
-					<plugin>
-						<artifactId>maven-resources-plugin</artifactId>
-						<version>${maven.resources.plugin.version}</version>
-						<executions>
-							<execution>
-								<id>copy-resources</id>
-								<phase>process-test-classes</phase>
-								<goals>
-									<goal>copy-resources</goal>
-								</goals>
-								<configuration>
-									<outputDirectory>${project.build.directory}/keycloak-run/wildfly-${wildfly.version}/standalone/configuration</outputDirectory>
-									<resources>
-										<resource>
-											<directory>src/main/users</directory>
-											<filtering>true</filtering>
-										</resource>
-									</resources>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
 		</profile>
 
 		<profile>
@@ -186,12 +134,45 @@
 									</resources>
 								</configuration>
 							</execution>
+							<execution>
+								<id>copy-admin-user</id>
+								<phase>process-test-classes</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>${project.build.directory}/keycloak-run/wildfly-${wildfly.version}/standalone/configuration</outputDirectory>
+									<resources>
+										<resource>
+											<directory>src/main/users</directory>
+											<filtering>true</filtering>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+							<execution>
+								<id>copy-resources</id>
+								<phase>process-test-classes</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>${project.build.directory}/keycloak-run/wildfly-${wildfly.version}/realm-config</outputDirectory>
+									<resources>
+										<resource>
+											<directory>src/main/realm-config-${realm.config.environment}</directory>
+											<filtering>true</filtering>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
 						</executions>
 					</plugin>
 					<plugin>
 						<groupId>org.wildfly.plugins</groupId>
 						<artifactId>wildfly-maven-plugin</artifactId>
 						<version>${wildfly.maven.plugin.version}</version>
+						<inherited>false</inherited>
 						<configuration>
 							<offline>true</offline>
 							<scripts>
@@ -221,9 +202,56 @@
 			<build>
 				<plugins>
 					<plugin>
+						<artifactId>maven-resources-plugin</artifactId>
+						<version>${maven.resources.plugin.version}</version>
+						<inherited>false</inherited>
+						<executions>
+							<execution>
+								<id>copy-resources</id>
+								<phase>process-test-classes</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>${project.build.directory}/keycloak-run/wildfly-${wildfly.version}/realm-config/execution</outputDirectory>
+									<resources>
+										<resource>
+											<directory>${project.build.directory}/keycloak-run/wildfly-${wildfly.version}/realm-config</directory>
+											<filtering>true</filtering>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>com.google.code.maven-replacer-plugin</groupId>
+						<artifactId>replacer</artifactId>
+						<version>${maven.replacer.plugin.version}</version>
+						<inherited>false</inherited>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>replace</goal>
+								</goals>
+								<configuration>
+									<file>${project.build.directory}/keycloak-run/wildfly-${wildfly.version}/realm-config/execution/school-domain-realm.json</file>
+									<replacements>
+										<replacement>
+											<token>MAVEN_REPLACER_SCHOOL_SERVER_URL</token>
+											<value>${school.url}</value>
+										</replacement>
+									</replacements>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
 						<groupId>org.wildfly.plugins</groupId>
 						<artifactId>wildfly-maven-plugin</artifactId>
 						<version>${wildfly.maven.plugin.version}</version>
+						<inherited>false</inherited>
 						<configuration>
 							<java-opts>${JAVA_OPTS}
 							</java-opts>
@@ -232,7 +260,7 @@
 								<server-arg>-Djboss.socket.binding.port-offset=100</server-arg>
 								<server-arg>-Dkeycloak.migration.action=import</server-arg>
 								<server-arg>-Dkeycloak.migration.provider=dir</server-arg>
-								<server-arg>-Dkeycloak.migration.dir=${basedir}/src/main/realm-config-${realm.config.environment}</server-arg>
+								<server-arg>-Dkeycloak.migration.dir=${project.build.directory}/keycloak-run/wildfly-${wildfly.version}/realm-config/execution</server-arg>
 								<server-arg>-Dkeycloak.migration.strategy=${realm.migration}</server-arg>
 							</server-args>
 						</configuration>

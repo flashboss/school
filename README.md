@@ -54,11 +54,11 @@ If you want automatically prepare a local active Keycloak server:
     
 If you want to start the WildFly prepared instance and execute the JSF application:
 
-    mvn install -Pproduction,runtime-school-jsf
+    mvn install -Pproduction,runtime-school-jsf -Dkeycloak.url=${keycloak.url}
     
-Or for the REST application:
+Where ${keycloak.url} is the host name of the keycloak server shown in the below guide. Or for the REST application:
 
-    mvn install -Pproduction,runtime-school-rest
+    mvn install -Pproduction,runtime-school-rest -Dkeycloak.url=${keycloak.url}
     
 Or for the Keycloak server:
 
@@ -70,15 +70,23 @@ to deploy it with the shell command in WildFly:
     connect localhost
     deploy /xxxx/school.war
    
-From the 1.2.0 version we need keycloak to manage the users. To start a keycloak standalone use the following command. Important, it must be executed after the install of the school project because it must import the installed keycloak theme:
+From the 1.2.0 version we need keycloak to manage the users. To prepare a keycloak standalone use the following command:
 
-    mvn install -Pdevelopment,prepare-keycloak,runtime-keycloak
+    mvn install -Pdevelopment,prepare-keycloak
     
-This command import default users and development configurations. To start keycloak in a clean production environment you can use:
+and to start the prepared keycloak instance:
 
-    mvn install -Pproduction,prepare-keycloak,runtime-keycloak
+    mvn install -Pdevelopment,runtime-keycloak
     
-to create new users in WildFly:
+This command import default users and development configurations. To prepare keycloak in a clean production environment you can use:
+
+    mvn install -Pproduction,prepare-keycloak
+    
+and to start the prepared keycloak instance:
+
+    mvn install -Pproduction,runtime-keycloak -Dschool.url=${school.url}
+    
+Where ${school.url} is the host name of the app server to connect. If you start with the developer profile you must not specify the host names because the default host name localhost is used. To create new users in WildFly:
 
 $JBOSS_HOME/bin/add_user.sh
 
