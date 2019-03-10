@@ -3304,13 +3304,13 @@
 		},
 		{
 			"clientId": "school",
-			"rootUrl": "http://MAVEN_REPLACER_SCHOOL_SERVER_URL:8080/school",
+			"rootUrl": "http://localhost:8080/school",
 			"enabled": true,
 			"redirectUris": [
-				"http://MAVEN_REPLACER_SCHOOL_SERVER_URL:8080/school/*"
+				"http://localhost:8080/school/*"
 			],
 			"webOrigins": [
-				"http://MAVEN_REPLACER_SCHOOL_SERVER_URL:8080"
+				"http://localhost:8080"
 			],
 			"publicClient": false,
 			"secret": "bce5816d-98c4-404f-a18d-bcc5cb005c79",

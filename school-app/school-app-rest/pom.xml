@@ -39,30 +39,6 @@
 				<configuration>
 					<outputFileNameMapping>@{artifactId}@.@{extension}@</outputFileNameMapping>
 				</configuration>
-    			<executions>
-        			<execution>
-            			<!-- explode the future war content for pre-package processing -->
-            			<id>prepare-war</id>
-            			<phase>prepare-package</phase>
-            			<goals>
-                			<goal>exploded</goal>
-            			</goals>
-            			<configuration>
-                			<webappDirectory>${project.build.directory}/${project.build.finalName}-tmp</webappDirectory>
-            			</configuration>
-        			</execution>
-        			<execution>
-            			<!-- use the same execution id to further configure the default binding and execution -->
-            			<id>default-war</id>
-            			<phase>package</phase>
-            			<goals>
-                			<goal>war</goal>
-            			</goals>
-            			<configuration>
-                			<warSourceDirectory>${project.build.directory}/${project.build.finalName}-tmp</warSourceDirectory>
-            			</configuration>
-        			</execution>
-    			</executions>
 			</plugin>
 		</plugins>
 	</build>
@@ -142,28 +118,6 @@
 			<build>
 				<plugins>
 					<plugin>
-						<groupId>com.google.code.maven-replacer-plugin</groupId>
-						<artifactId>replacer</artifactId>
-						<version>${maven.replacer.plugin.version}</version>
-						<executions>
-							<execution>
-								<phase>prepare-package</phase>
-								<goals>
-									<goal>replace</goal>
-								</goals>
-							</execution>
-						</executions>
-						<configuration>
-							<file>${project.build.directory}/${project.build.finalName}/WEB-INF/keycloak.json</file>
-							<replacements>
-								<replacement>
-									<token>MAVEN_REPLACER_AUTH_SERVER_URL</token>
-									<value>${maven.replacer.value}</value>
-								</replacement>
-							</replacements>
-						</configuration>
-					</plugin>
-					<plugin>
 						<artifactId>maven-dependency-plugin</artifactId>
 						<executions>
 							<execution>
@@ -195,7 +149,7 @@
 								<id>copy</id>
 								<phase>package</phase>
 								<goals>
-									<goal>copy</goal>
+									<goal>unpack</goal>
 								</goals>
 								<configuration>
 									<artifactItems>
@@ -204,8 +158,7 @@
 											<artifactId>${project.artifactId}</artifactId>
 											<version>${project.version}</version>
 											<type>war</type>
-											<destFileName>school-rest.war</destFileName>
-											<outputDirectory>${project.build.directory}/school-run/wildfly-${wildfly.version}/standalone/deployments</outputDirectory>
+											<outputDirectory>${project.build.directory}/school-run/wildfly-${wildfly.version}/standalone/deployments/${project.build.finalName}.war</outputDirectory>
 										</artifactItem>
 									</artifactItems>
 								</configuration>
@@ -239,6 +192,29 @@
 							</execution>
 						</executions>
 					</plugin>
+					<plugin>
+						<artifactId>maven-resources-plugin</artifactId>
+						<version>${maven.resources.plugin.version}</version>
+						<inherited>false</inherited>
+						<executions>
+							<execution>
+								<id>copy-resources</id>
+								<phase>process-test-classes</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>${project.build.directory}/school-run/wildfly-${wildfly.version}/standalone/deployments</outputDirectory>
+									<resources>
+										<resource>
+											<directory>${basedir}/src/deployments</directory>
+											<filtering>true</filtering>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
 				</plugins>
 			</build>
 		</profile>
@@ -247,6 +223,28 @@
 			<id>runtime-school-rest</id>
 			<build>
 				<plugins>
+					<plugin>
+						<groupId>com.google.code.maven-replacer-plugin</groupId>
+						<artifactId>replacer</artifactId>
+						<version>${maven.replacer.plugin.version}</version>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>replace</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<file>${project.build.directory}/school-run/wildfly-${wildfly.version}/standalone/deployments/${project.build.finalName}.warWEB-INF//keycloak.json</file>
+							<replacements>
+								<replacement>
+									<token>MAVEN_REPLACER_AUTH_SERVER_URL</token>
+									<value>${maven.replacer.value}</value>
+								</replacement>
+							</replacements>
+						</configuration>
+					</plugin>
 					<plugin>
 						<groupId>org.wildfly.plugins</groupId>
 						<artifactId>wildfly-maven-plugin</artifactId>
