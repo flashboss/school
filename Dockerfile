@@ -46,7 +46,7 @@ RUN rm -Rf /home/wildfly/.m2 && \
 	sudo chown -R wildfly:wildfly /opt/keycloak && \
 	sudo chown -R wildfly:wildfly /opt/school && \
 	cp -R school/school-keycloak/src/main/realm-config-prod /opt/keycloak/bin && \
-	sudo echo "export JBOSS_OPTS=\"-b 0.0.0.0 -Djboss.socket.binding.port-offset=100 -Dkeycloak.migration.action=import -Dkeycloak.migration.provider=dir -Dkeycloak.migration.dir=/opt/keycloak/bin/realm-config-prod -Dkeycloak.migration.strategy=IGNORE_EXISTING\"" > /workspace/school/keycloak && \
+	sudo echo "export JBOSS_OPTS=\"-b 0.0.0.0 -Djboss.socket.binding.port-offset=100 -Dkeycloak.migration.action=import -Dkeycloak.migration.provider=dir -Dkeycloak.migration.dir=/opt/keycloak/bin/realm-config-prod/execution -Dkeycloak.migration.strategy=IGNORE_EXISTING\"" > /workspace/school/keycloak && \
 	sudo mv /workspace/school/keycloak /etc/default/keycloak && \
 	sudo echo "export JBOSS_OPTS=\"-b 0.0.0.0\"" > /workspace/school/school && \
 	sudo mv /workspace/school/school /etc/default/school && \
@@ -54,7 +54,9 @@ RUN rm -Rf /home/wildfly/.m2 && \
 	sudo cp /opt/keycloak/docs/contrib/scripts/init.d/wildfly-init-debian.sh /etc/init.d/school && \
 	rm -Rf /workspace/school
 	
-CMD sudo service keycloak start && \
+CMD cp /opt/keycloak/bin/realm-config-prod/school-domain-realm.json /opt/keycloak/bin/realm-config-prod/execution && \
+	sed -i -e 's/MAVEN_REPLACER_SCHOOL_SERVER_URL/$SCHOOL-URL/g' /opt/keycloak/bin/realm-config-prod/execution/school-domain-realm.json
+	sudo service keycloak start && \
 	sudo service school start && \
 	sudo /usr/sbin/sshd -D && \
     tail -f /dev/null

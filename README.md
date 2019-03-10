@@ -70,13 +70,21 @@ to deploy it with the shell command in WildFly:
     connect localhost
     deploy /xxxx/school.war
    
-From the 1.2.0 version we need keycloak to manage the users. To start a keycloak standalone use the following command. Important, it must be executed after the install of the school project because it must import the installed keycloak theme:
+From the 1.2.0 version we need keycloak to manage the users. To prepare a keycloak standalone use the following command:
 
-    mvn install -Pdevelopment,prepare-keycloak,runtime-keycloak
+    mvn install -Pdevelopment,prepare-keycloak
     
-This command import default users and development configurations. To start keycloak in a clean production environment you can use:
+and to start the prepared keycloak instance:
 
-    mvn install -Pproduction,prepare-keycloak,runtime-keycloak
+    mvn install -Pdevelopment,runtime-keycloak
+    
+This command import default users and development configurations. To prepare keycloak in a clean production environment you can use:
+
+    mvn install -Pproduction,prepare-keycloak
+    
+and to start the prepared keycloak instance:
+
+    mvn install -Pproduction,runtime-keycloak
     
 to create new users in WildFly:
 

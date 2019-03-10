@@ -1,6 +1,6 @@
 {
   "realm": "school-domain",
-  "auth-server-url": "http://localhost:8180/auth",
+  "auth-server-url": "http://MAVEN_REPLACER_AUTH_SERVER_URL:8180/auth",
   "ssl-required": "external",
   "resource": "school",
   "verify-token-audience": true,
