@@ -68,7 +68,7 @@
 		<maven.docker.plugin.version>0.28.0</maven.docker.plugin.version>
 		<maven.resources.plugin.version>3.1.0</maven.resources.plugin.version>
 		<ejb.version>3.2</ejb.version>
-		<wildfly.version>16.0.0.CR1-SNAPSHOT</wildfly.version>
+		<wildfly.version>16.0.0.Final</wildfly.version>
 		<wildfly.maven.plugin.version>2.0.1.Final</wildfly.maven.plugin.version>
 		<jboss.logging.version>3.3.2.Final</jboss.logging.version>
 		<resteasy.version>3.6.3.Final</resteasy.version>
