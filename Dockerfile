@@ -54,7 +54,8 @@ RUN rm -Rf /home/wildfly/.m2 && \
 	sudo cp /opt/keycloak/docs/contrib/scripts/init.d/wildfly-init-debian.sh /etc/init.d/school && \
 	rm -Rf /workspace/school
 	
-CMD cp /opt/keycloak/bin/realm-config-prod/school-domain-realm.json /opt/keycloak/bin/realm-config-prod/execution && \
+CMD mkdir -p /opt/keycloak/bin/realm-config-prod/execution && \
+	cp /opt/keycloak/bin/realm-config-prod/school-domain-realm.json /opt/keycloak/bin/realm-config-prod/execution && \
 	sed -i -e 's/MAVEN_REPLACER_SCHOOL_SERVER_URL/$SCHOOL-URL/g' /opt/keycloak/bin/realm-config-prod/execution/school-domain-realm.json && \
 	sudo service keycloak start && \
 	cp /opt/school/keycloak/keycloak.json /opt/school/standalone/deployments/school.war/WEB-INF && \
