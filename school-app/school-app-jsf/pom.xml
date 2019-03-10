@@ -149,7 +149,7 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 						<inherited>false</inherited>
 						<executions>
 							<execution>
-								<id>copy-resources</id>
+								<id>copy-deployments</id>
 								<phase>process-test-classes</phase>
 								<goals>
 									<goal>copy-resources</goal>
@@ -159,6 +159,23 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 									<resources>
 										<resource>
 											<directory>${basedir}/src/deployments</directory>
+											<filtering>true</filtering>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+							<execution>
+								<id>copy-resources</id>
+								<phase>process-test-classes</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>${project.build.directory}/school-run/wildfly-${wildfly.version}/keycloak</outputDirectory>
+									<resources>
+										<resource>
+											<directory>${basedir}/src/main/webapp/WEB-INF</directory>
+											<include>keycloak.json</include>
 											<filtering>true</filtering>
 										</resource>
 									</resources>
@@ -174,6 +191,29 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 			<id>runtime-school-jsf</id>
 			<build>
 				<plugins>
+					<plugin>
+						<artifactId>maven-resources-plugin</artifactId>
+						<version>${maven.resources.plugin.version}</version>
+						<inherited>false</inherited>
+						<executions>
+							<execution>
+								<id>copy-keycloak</id>
+								<phase>process-test-classes</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>${project.build.directory}/school-run/wildfly-${wildfly.version}/standalone/deployments/${project.build.finalName}.war/WEB-INF</outputDirectory>
+									<resources>
+										<resource>
+											<directory>${project.build.directory}/school-run/wildfly-${wildfly.version}/keycloak</directory>
+											<filtering>true</filtering>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
 					<plugin>
 						<groupId>com.google.code.maven-replacer-plugin</groupId>
 						<artifactId>replacer</artifactId>
