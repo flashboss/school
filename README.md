@@ -54,11 +54,11 @@ If you want automatically prepare a local active Keycloak server:
     
 If you want to start the WildFly prepared instance and execute the JSF application:
 
-    mvn install -Pproduction,runtime-school-jsf
+    mvn install -Pproduction,runtime-school-jsf -Dkeycloak.url=${keycloak.url}
     
-Or for the REST application:
+Where ${keycloak.url} is the host name of the keycloak server shown in the below guide. Or for the REST application:
 
-    mvn install -Pproduction,runtime-school-rest
+    mvn install -Pproduction,runtime-school-rest -Dkeycloak.url=${keycloak.url}
     
 Or for the Keycloak server:
 
@@ -84,9 +84,9 @@ This command import default users and development configurations. To prepare key
     
 and to start the prepared keycloak instance:
 
-    mvn install -Pproduction,runtime-keycloak
+    mvn install -Pproduction,runtime-keycloak -Dschool.url=${school.url}
     
-to create new users in WildFly:
+Where ${school.url} is the host name of the app server to connect. If you start with the developer profile you must not specify the host names because the default host name localhost is used. To create new users in WildFly:
 
 $JBOSS_HOME/bin/add_user.sh
 
