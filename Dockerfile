@@ -31,6 +31,8 @@ ENV MAVEN_VERSION=3.6.0
 RUN mkdir /home/wildfly/apache-maven-$MAVEN_VERSION && \
   	wget -qO- "http://apache.ip-connect.vn.ua/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz" | tar -zx --strip-components=1 -C /home/wildfly/apache-maven-$MAVEN_VERSION/
 ENV TERM xterm
+ENV SCHOOL-URL
+ENV KEYCLOAK-URL
 
 ENV LANG it_IT.UTF-8
 WORKDIR /workspace
