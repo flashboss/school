@@ -86,7 +86,8 @@ and to start the prepared keycloak instance:
 
     mvn install -Pproduction,runtime-keycloak -Dschool.url=${school.url}
     
-Where ${school.url} is the host name of the app server to connect. If you start with the developer profile you must not specify the host names because the default host name localhost is used. To create new users in WildFly:
+Where ${school.url} is the host name of the app server to connect. If you start with the developer profile you must not specify the host names because the default host name localhost is used. If you don't declare the url variables in the mode production, the default will be localhost.
+To create new users in WildFly:
 
 $JBOSS_HOME/bin/add_user.sh
 
