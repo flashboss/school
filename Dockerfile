@@ -47,8 +47,7 @@ RUN rm -Rf /home/wildfly/.m2 && \
 	sudo mv /workspace/school/school-app/school-app-jsf/target/school-run/wildfly* /opt/school && \
 	sudo chown -R wildfly:wildfly /opt/keycloak && \
 	sudo chown -R wildfly:wildfly /opt/school && \
-	cp -R school/school-keycloak/src/main/realm-config-prod /opt/keycloak/bin && \
-	sudo echo "export JBOSS_OPTS=\"-b 0.0.0.0 -Djboss.socket.binding.port-offset=100 -Dkeycloak.migration.action=import -Dkeycloak.migration.provider=dir -Dkeycloak.migration.dir=/opt/keycloak/bin/realm-config-prod/execution -Dkeycloak.migration.strategy=IGNORE_EXISTING\"" > /workspace/school/keycloak && \
+	sudo echo "export JBOSS_OPTS=\"-b 0.0.0.0 -Djboss.socket.binding.port-offset=100 -Dkeycloak.migration.action=import -Dkeycloak.migration.provider=dir -Dkeycloak.migration.dir=/opt/keycloak/realm-config/execution -Dkeycloak.migration.strategy=IGNORE_EXISTING\"" > /workspace/school/keycloak && \
 	sudo mv /workspace/school/keycloak /etc/default/keycloak && \
 	sudo echo "export JBOSS_OPTS=\"-b 0.0.0.0\"" > /workspace/school/school && \
 	sudo mv /workspace/school/school /etc/default/school && \
@@ -56,9 +55,9 @@ RUN rm -Rf /home/wildfly/.m2 && \
 	sudo cp /opt/keycloak/docs/contrib/scripts/init.d/wildfly-init-debian.sh /etc/init.d/school && \
 	rm -Rf /workspace/school
 	
-CMD mkdir -p /opt/keycloak/bin/realm-config-prod/execution && \
-	cp /opt/keycloak/bin/realm-config-prod/school-domain-realm.json /opt/keycloak/bin/realm-config-prod/execution && \
-	sed -i -e 's/MAVEN_REPLACER_SCHOOL_SERVER_URL/'"$SCHOOL_URL"'/g' /opt/keycloak/bin/realm-config-prod/execution/school-domain-realm.json && \
+CMD mkdir -p /opt/keycloak/realm-config/execution && \
+	cp /opt/keycloak/realm-config/school-domain-realm.json /opt/keycloak/realm-config/execution && \
+	sed -i -e 's/MAVEN_REPLACER_SCHOOL_SERVER_URL/'"$SCHOOL_URL"'/g' /opt/keycloak/realm-config/execution/school-domain-realm.json && \
 	sudo service keycloak start && \
 	cp /opt/school/keycloak/keycloak.json /opt/school/standalone/deployments/school.war/WEB-INF && \
 	sed -i -e 's/MAVEN_REPLACER_AUTH_SERVER_URL/'"$KEYCLOAK_URL"'/g' /opt/school/standalone/deployments/school.war/WEB-INF/keycloak.json && \
