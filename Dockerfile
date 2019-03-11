@@ -31,8 +31,8 @@ ENV MAVEN_VERSION=3.6.0
 RUN mkdir /home/wildfly/apache-maven-$MAVEN_VERSION && \
   	wget -qO- "http://apache.ip-connect.vn.ua/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz" | tar -zx --strip-components=1 -C /home/wildfly/apache-maven-$MAVEN_VERSION/
 ENV TERM xterm
-ENV SCHOOL-URL=localhost
-ENV KEYCLOAK-URL=localhost
+ENV SCHOOL_URL=localhost
+ENV KEYCLOAK_URL=localhost
 
 ENV LANG it_IT.UTF-8
 WORKDIR /workspace
@@ -58,10 +58,10 @@ RUN rm -Rf /home/wildfly/.m2 && \
 	
 CMD mkdir -p /opt/keycloak/bin/realm-config-prod/execution && \
 	cp /opt/keycloak/bin/realm-config-prod/school-domain-realm.json /opt/keycloak/bin/realm-config-prod/execution && \
-	sed -i -e 's/MAVEN_REPLACER_SCHOOL_SERVER_URL/$SCHOOL-URL/g' /opt/keycloak/bin/realm-config-prod/execution/school-domain-realm.json && \
+	sed -i -e 's/MAVEN_REPLACER_SCHOOL_SERVER_URL/$SCHOOL_URL/g' /opt/keycloak/bin/realm-config-prod/execution/school-domain-realm.json && \
 	sudo service keycloak start && \
 	cp /opt/school/keycloak/keycloak.json /opt/school/standalone/deployments/school.war/WEB-INF && \
-	sed -i -e 's/MAVEN_REPLACER_AUTH_SERVER_URL/$KEYCLOAK-URL/g' /opt/school/standalone/deployments/school.war/WEB-INF/keycloak.json && \
+	sed -i -e 's/MAVEN_REPLACER_AUTH_SERVER_URL/$KEYCLOAK_URL/g' /opt/school/standalone/deployments/school.war/WEB-INF/keycloak.json && \
 	sudo service school start && \
 	sudo /usr/sbin/sshd -D && \
     tail -f /dev/null
