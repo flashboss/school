@@ -58,10 +58,10 @@ RUN rm -Rf /home/wildfly/.m2 && \
 	
 CMD mkdir -p /opt/keycloak/bin/realm-config-prod/execution && \
 	cp /opt/keycloak/bin/realm-config-prod/school-domain-realm.json /opt/keycloak/bin/realm-config-prod/execution && \
-	sed -i -e 's/MAVEN_REPLACER_SCHOOL_SERVER_URL/$SCHOOL_URL/g' /opt/keycloak/bin/realm-config-prod/execution/school-domain-realm.json && \
+	sed -i -e 's/MAVEN_REPLACER_SCHOOL_SERVER_URL/'"$SCHOOL_URL"'/g' /opt/keycloak/bin/realm-config-prod/execution/school-domain-realm.json && \
 	sudo service keycloak start && \
 	cp /opt/school/keycloak/keycloak.json /opt/school/standalone/deployments/school.war/WEB-INF && \
-	sed -i -e 's/MAVEN_REPLACER_AUTH_SERVER_URL/$KEYCLOAK_URL/g' /opt/school/standalone/deployments/school.war/WEB-INF/keycloak.json && \
+	sed -i -e 's/MAVEN_REPLACER_AUTH_SERVER_URL/'"$KEYCLOAK_URL"'/g' /opt/school/standalone/deployments/school.war/WEB-INF/keycloak.json && \
 	sudo service school start && \
 	sudo /usr/sbin/sshd -D && \
     tail -f /dev/null
