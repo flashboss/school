@@ -39,6 +39,7 @@
 	<scm>
 		<connection>svn:git:https://github.com/flashboss/school.git</connection>
 		<developerConnection>svn:git:https://github.com/flashboss/school.git</developerConnection>
+		<tag>1.4.X-SNAPSHOT</tag>
 		<url>svn:git:https://github.com/flashboss/school.git</url>
 	</scm>
 	<developers>
@@ -72,7 +73,7 @@
 		<jboss.logging.version>3.3.2.Final</jboss.logging.version>
 		<resteasy.version>3.6.3.Final</resteasy.version>
 		<junit.version>5.4.0</junit.version>
-		<keycloak.version>4.8.3.Final</keycloak.version>
+		<keycloak.version>5.0.0</keycloak.version>
 	</properties>
 
 	<build>

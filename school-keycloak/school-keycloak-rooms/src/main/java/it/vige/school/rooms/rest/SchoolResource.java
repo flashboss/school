@@ -16,6 +16,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 
 import org.jboss.resteasy.annotations.cache.NoCache;
@@ -39,8 +40,11 @@ public class SchoolResource {
 	@Path("")
 	@NoCache
 	@Produces(APPLICATION_JSON)
-	public List<School> findAllSchools() {
-		return session.getProvider(RoomsService.class).findAllSchools();
+	public List<School> findSchools(@QueryParam("search") String search,
+            @QueryParam("first") Integer firstResult,
+            @QueryParam("max") Integer maxResults,
+            @QueryParam("briefRepresentation") Boolean briefRepresentation) {
+		return session.getProvider(RoomsService.class).findSchools(search, firstResult, maxResults, briefRepresentation);
 	}
 
 	@POST
