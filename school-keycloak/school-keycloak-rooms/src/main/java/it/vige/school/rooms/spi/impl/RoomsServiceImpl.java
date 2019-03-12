@@ -67,6 +67,10 @@ public class RoomsServiceImpl implements RoomsService, Converters {
 			}
 		} else {
 			query = em.createNamedQuery("findAllSchools", SchoolEntity.class);
+			if (firstResult != null)
+				query.setFirstResult(firstResult);
+			if (maxResults != null)
+				query.setMaxResults(maxResults);
 		}
 		List<SchoolEntity> schoolEntities = query.getResultList();
 		return schoolEntities.stream().map(t -> SchoolEntityToSchool.apply(t)).collect(toList());
