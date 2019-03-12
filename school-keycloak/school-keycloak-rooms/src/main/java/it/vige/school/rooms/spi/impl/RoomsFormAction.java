@@ -40,7 +40,7 @@ public class RoomsFormAction implements FormAction, FormActionFactory {
 	@Override
 	public void buildPage(FormContext context, LoginFormsProvider form) {
 		RoomsService roomsService = context.getSession().getProvider(RoomsService.class);
-		List<School> schools = roomsService.findAllSchools();
+		List<School> schools = roomsService.findSchools(null, null, null, null);
 		Map<String, String> mapSchools = schools.stream().collect(toMap(School::getId, School::getDescription));
 		Map<String, List<String>> mapRooms = new HashMap<String, List<String>>();
 		for (School school : schools) {

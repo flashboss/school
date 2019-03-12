@@ -11,7 +11,7 @@ public interface RoomsService extends Provider {
 
 	List<Room> findAllRooms();
 
-	List<School> findAllSchools();
+	List<School> findSchools(String search, Integer firstResult, Integer maxResults, Boolean briefRepresentation);
 
 	School findSchoolById(String school);
 

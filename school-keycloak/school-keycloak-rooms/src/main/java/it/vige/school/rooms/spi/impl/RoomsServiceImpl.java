@@ -1,12 +1,14 @@
 package it.vige.school.rooms.spi.impl;
 
 import static java.lang.Integer.parseInt;
+import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
 
 import java.util.List;
 import java.util.Map;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import org.keycloak.connections.jpa.JpaConnectionProvider;
 import org.keycloak.models.KeycloakSession;
@@ -21,6 +23,7 @@ import it.vige.school.rooms.spi.RoomsService;
 public class RoomsServiceImpl implements RoomsService, Converters {
 
 	private final KeycloakSession session;
+	private static final String SEARCH_ID_PARAMETER = "id:";
 
 	public RoomsServiceImpl(KeycloakSession session) {
 		this.session = session;
@@ -45,9 +48,31 @@ public class RoomsServiceImpl implements RoomsService, Converters {
 	}
 
 	@Override
-	public List<School> findAllSchools() {
-		List<SchoolEntity> schoolEntities = getEntityManager().createNamedQuery("findAllSchools", SchoolEntity.class)
-				.getResultList();
+	public List<School> findSchools(String search, Integer firstResult, Integer maxResults,
+			Boolean briefRepresentation) {
+		EntityManager em = getEntityManager();
+		TypedQuery<SchoolEntity> query = null;
+		if (search != null) {
+			if (search.startsWith(SEARCH_ID_PARAMETER)) {
+				School school = findSchoolById(search.substring(SEARCH_ID_PARAMETER.length()).trim());
+				if (school != null) {
+					return asList(school);
+				}
+			} else {
+				query = em.createNamedQuery("findSchools", SchoolEntity.class);
+				query.setFirstResult(firstResult);
+				query.setMaxResults(maxResults);
+				query.setParameter("id", search);
+				query.setParameter("description", search);
+			}
+		} else {
+			query = em.createNamedQuery("findAllSchools", SchoolEntity.class);
+			if (firstResult != null)
+				query.setFirstResult(firstResult);
+			if (maxResults != null)
+				query.setMaxResults(maxResults);
+		}
+		List<SchoolEntity> schoolEntities = query.getResultList();
 		return schoolEntities.stream().map(t -> SchoolEntityToSchool.apply(t)).collect(toList());
 	}
 
