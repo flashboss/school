@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @NamedQueries({ @NamedQuery(name = "findAllSchools", query = "from SchoolEntity"),
+		@NamedQuery(name = "findSchools", query = "from SchoolEntity as s where "
+				+ "s.id like CONCAT('%',:id,'%') or s.description like CONCAT('%',:description,'%')"),
 		@NamedQuery(name = "findSchoolById", query = "select s from SchoolEntity as s where " + "s.id = :school") })
 @Entity
 @Table
