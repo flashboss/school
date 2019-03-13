@@ -21,6 +21,27 @@
 	"defaultGroups": [
 		"/pupil"
 	],
+	"users": [
+		{
+			"username": "root",
+			"enabled": true,
+			"email": "school@vige.it",
+			"attributes": {
+				"income": "",
+				"room": "",
+				"school": ""
+			},
+			"credentials": [
+				{
+					"type": "password",
+					"value": "gtn"
+				}
+			],
+			"groups": [
+				"admin"
+			]
+		}
+	],
 	"clients": [
 		{
 			"clientId": "realm-management",
