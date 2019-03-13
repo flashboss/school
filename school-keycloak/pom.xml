@@ -217,6 +217,7 @@
 									<resources>
 										<resource>
 											<directory>${project.build.directory}/keycloak-run/wildfly-${wildfly.version}/realm-config</directory>
+											<include>school-domain-realm.json</include>
 											<filtering>true</filtering>
 										</resource>
 									</resources>
