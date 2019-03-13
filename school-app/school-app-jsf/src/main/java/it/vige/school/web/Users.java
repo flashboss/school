@@ -115,7 +115,8 @@ public class Users extends RestCaller implements Serializable, Converters {
 			response.close();
 			log.debug("user found: " + userList);
 
-			return userList.stream().map(t -> UserRepresentationToUser.apply(t)).collect(toList());
+			return userList.stream().map(t -> UserRepresentationToUser.apply(t))
+					.filter(z -> z.getRoom() != null && !z.getRoom().isBlank()).collect(toList());
 		} catch (Exception e) {
 			String message = "Cannot find user";
 			throw new ModuleException(message, e);
