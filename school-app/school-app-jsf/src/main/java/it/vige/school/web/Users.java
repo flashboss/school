@@ -1,6 +1,7 @@
 package it.vige.school.web;
 
 import static it.vige.school.Constants.ERROR;
+import static it.vige.school.Constants.MAX_USERS;
 import static it.vige.school.Utils.getCalendarByDate;
 import static java.util.stream.Collectors.toList;
 import static javax.faces.application.FacesMessage.SEVERITY_INFO;
@@ -61,8 +62,6 @@ public class Users extends RestCaller implements Serializable, Converters {
 
 	private boolean initialized;
 
-	private final static int MAX_USERS = 100000;
-
 	public void init(boolean force) {
 		try {
 			if (!initialized || force) {
@@ -74,7 +73,7 @@ public class Users extends RestCaller implements Serializable, Converters {
 				});
 				response.close();
 				log.debug("school found: " + allSchools);
-				
+
 				boolean isAdmin = configuration.isAdmin();
 				if (isAdmin) {
 					users = findAllUsers();
