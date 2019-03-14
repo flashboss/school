@@ -57,6 +57,8 @@ public class Users extends RestCaller implements Serializable, Converters {
 
 	private List<String> schools;
 
+	private List<School> allSchools;
+
 	private boolean initialized;
 
 	private final static int MAX_USERS = 100000;
@@ -64,6 +66,15 @@ public class Users extends RestCaller implements Serializable, Converters {
 	public void init(boolean force) {
 		try {
 			if (!initialized || force) {
+
+				String url = configuration.getAuthServerUrl() + "/realms/" + configuration.getRealm()
+						+ "/rooms/schools";
+				Response response = get(configuration.getAccessToken(), url, null);
+				allSchools = response.readEntity(new GenericType<List<School>>() {
+				});
+				response.close();
+				log.debug("school found: " + allSchools);
+				
 				boolean isAdmin = configuration.isAdmin();
 				if (isAdmin) {
 					users = findAllUsers();
@@ -92,6 +103,7 @@ public class Users extends RestCaller implements Serializable, Converters {
 						.distinct().sorted().collect(toList());
 				schools = users.stream().filter(x -> x.getSchool() != null && !x.getSchool().isEmpty())
 						.map(x -> x.getSchool()).distinct().sorted().collect(toList());
+
 				initialized = true;
 			}
 		} catch (ModuleException ex) {
@@ -110,13 +122,19 @@ public class Users extends RestCaller implements Serializable, Converters {
 			Map<String, Object> params = new HashMap<String, Object>();
 			params.put("max", MAX_USERS);
 			Response response = get(configuration.getAccessToken(), url, params);
-			List<UserRepresentation> userList = response.readEntity(new GenericType<List<UserRepresentation>>() {
-			});
+			List<UserRepresentation> userRepresentationList = response
+					.readEntity(new GenericType<List<UserRepresentation>>() {
+					});
 			response.close();
-			log.debug("user found: " + userList);
+			log.debug("user found: " + userRepresentationList);
 
-			return userList.stream().map(t -> UserRepresentationToUser.apply(t))
+			List<User> userList = userRepresentationList.stream().map(t -> UserRepresentationToUser.apply(t))
 					.filter(z -> z.getRoom() != null && !z.getRoom().isBlank()).collect(toList());
+			userList.forEach(x -> {
+				addSchoolDescription(x);
+			});
+
+			return userList;
 		} catch (Exception e) {
 			String message = "Cannot find user";
 			throw new ModuleException(message, e);
@@ -192,7 +210,10 @@ public class Users extends RestCaller implements Serializable, Converters {
 				}
 			}
 			log.debug("user found: " + user);
-			return UserRepresentationToUser.apply(user);
+			User result = UserRepresentationToUser.apply(user);
+
+			addSchoolDescription(result);
+			return result;
 		} else {
 			throw new IllegalArgumentException("room cannot be null");
 		}
@@ -229,5 +250,12 @@ public class Users extends RestCaller implements Serializable, Converters {
 		report.init();
 		report.setFilteredUsers(null);
 		configuration.redirect("/views/report.xhtml");
+	}
+
+	private void addSchoolDescription(User user) {
+		if (allSchools != null)
+			for (School school : allSchools)
+				if (school.getId().equals(user.getSchool()))
+					user.setSchool(school.getDescription());
 	}
 }
