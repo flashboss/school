@@ -18,6 +18,7 @@ RUN apt-get update && \
     sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd && \
     echo "%sudo ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
     useradd -u 1000 -G users,sudo -d /home/wildfly --shell /bin/bash -m wildfly && \
+	echo "273 274 275" | sudo dpkg-reconfigure locales -fnoninteractive && \
     echo "wildfly:secret" | chpasswd && \
     apt-get update && \
     apt-get clean && \
