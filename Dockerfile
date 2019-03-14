@@ -55,9 +55,7 @@ RUN rm -Rf /home/wildfly/.m2 && \
 	sudo cp /opt/keycloak/docs/contrib/scripts/init.d/wildfly-init-debian.sh /etc/init.d/school && \
 	rm -Rf /workspace/school
 	
-CMD sudo sed -i '/^#.* '"$INST_LANG"'.* /s/^#//' /etc/locale.gen && \
-	sudo locale-gen && \
-	mkdir -p /opt/keycloak/realm-config/execution && \
+CMD mkdir -p /opt/keycloak/realm-config/execution && \
 	cp /opt/keycloak/realm-config/school-domain-realm.json /opt/keycloak/realm-config/execution && \
 	sed -i -e 's/MAVEN_REPLACER_SCHOOL_SERVER_URL/'"$SCHOOL_URL"'/g' /opt/keycloak/realm-config/execution/school-domain-realm.json && \
 	sudo service keycloak start && \
