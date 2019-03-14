@@ -18,8 +18,6 @@ RUN apt-get update && \
     sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd && \
     echo "%sudo ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
     useradd -u 1000 -G users,sudo -d /home/wildfly --shell /bin/bash -m wildfly && \
-	sudo sed -i '/^#.* it_IT.* /s/^#//' /etc/locale.gen && \
-	sudo locale-gen && \
     echo "wildfly:secret" | chpasswd && \
     apt-get update && \
     apt-get clean && \
@@ -36,7 +34,7 @@ ENV TERM xterm
 ENV SCHOOL_URL=localhost
 ENV KEYCLOAK_URL=localhost
 
-ENV LANG it_IT.UTF-8
+ENV INST_LANG en_EN
 WORKDIR /workspace
 COPY / /workspace/school
 RUN sudo chown -R wildfly:wildfly /workspace
@@ -57,7 +55,9 @@ RUN rm -Rf /home/wildfly/.m2 && \
 	sudo cp /opt/keycloak/docs/contrib/scripts/init.d/wildfly-init-debian.sh /etc/init.d/school && \
 	rm -Rf /workspace/school
 	
-CMD mkdir -p /opt/keycloak/realm-config/execution && \
+CMD sudo sed -i '/^#.* '"$INST_LANG"'.* /s/^#//' /etc/locale.gen && \
+	sudo locale-gen && \
+	mkdir -p /opt/keycloak/realm-config/execution && \
 	cp /opt/keycloak/realm-config/school-domain-realm.json /opt/keycloak/realm-config/execution && \
 	sed -i -e 's/MAVEN_REPLACER_SCHOOL_SERVER_URL/'"$SCHOOL_URL"'/g' /opt/keycloak/realm-config/execution/school-domain-realm.json && \
 	sudo service keycloak start && \
