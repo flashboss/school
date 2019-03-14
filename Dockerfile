@@ -39,6 +39,29 @@ ENV LANG it_IT.UTF-8
 WORKDIR /workspace
 COPY / /workspace/school
 RUN sudo chown -R wildfly:wildfly /workspace
+RUN cd school && /home/wildfly/apache-maven-$MAVEN_VERSION/bin/mvn install -Pproduction
+RUN cd school && /home/wildfly/apache-maven-$MAVEN_VERSION/bin/mvn package -Pproduction,prepare-school-jsf
+RUN cd school && /home/wildfly/apache-maven-$MAVEN_VERSION/bin/mvn package -Pproduction,prepare-keycloak
+RUN rm -Rf /home/wildfly/.m2 && \
+	rm -Rf /home/wildfly/apache-maven-$MAVEN_VERSION && \
+	sudo mv /workspace/school/school-keycloak/target/keycloak-run/wildfly* /opt/keycloak && \
+	sudo mv /workspace/school/school-app/school-app-jsf/target/school-run/wildfly* /opt/school && \
+	sudo chown -R wildfly:wildfly /opt/keycloak && \
+	sudo chown -R wildfly:wildfly /opt/school && \
+	sudo echo "export JBOSS_OPTS=\"-b 0.0.0.0 -Djboss.socket.binding.port-offset=100 -Dkeycloak.migration.action=import -Dkeycloak.migration.provider=dir -Dkeycloak.migration.dir=/opt/keycloak/realm-config/execution -Dkeycloak.migration.strategy=IGNORE_EXISTING\"" > /workspace/school/keycloak && \
+	sudo mv /workspace/school/keycloak /etc/default/keycloak && \
+	sudo echo "export JBOSS_OPTS=\"-b 0.0.0.0\"" > /workspace/school/school && \
+	sudo mv /workspace/school/school /etc/default/school && \
+	sudo cp /opt/keycloak/docs/contrib/scripts/init.d/wildfly-init-debian.sh /etc/init.d/keycloak && \
+	sudo cp /opt/keycloak/docs/contrib/scripts/init.d/wildfly-init-debian.sh /etc/init.d/school && \
+	rm -Rf /workspace/school
 	
-CMD sudo /usr/sbin/sshd -D && \
+CMD mkdir -p /opt/keycloak/realm-config/execution && \
+	cp /opt/keycloak/realm-config/school-domain-realm.json /opt/keycloak/realm-config/execution && \
+	sed -i -e 's/MAVEN_REPLACER_SCHOOL_SERVER_URL/'"$SCHOOL_URL"'/g' /opt/keycloak/realm-config/execution/school-domain-realm.json && \
+	sudo service keycloak start && \
+	cp /opt/school/keycloak/keycloak.json /opt/school/standalone/deployments/school.war/WEB-INF && \
+	sed -i -e 's/MAVEN_REPLACER_AUTH_SERVER_URL/'"$KEYCLOAK_URL"'/g' /opt/school/standalone/deployments/school.war/WEB-INF/keycloak.json && \
+	sudo service school start && \
+	sudo /usr/sbin/sshd -D && \
     tail -f /dev/null
