@@ -12,6 +12,8 @@ public interface Constants {
 
 	String ERROR = "error";
 
+	int MAX_USERS = 100000;
+
 	default double calculateQuote(int income) {
 		double quote = 0.0;
 		if (income > 60000) {
