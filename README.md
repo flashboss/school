@@ -136,3 +136,7 @@ If you want start it in background mode:
 Both the executions will run using localhost as host connection name. If you need to specify a different host, for example if you are in a remote cloud, you must specify the hosts for keycloak and the school app so:
 
     docker run -p 8080:8080 -p 8180:8180 -e SCHOOL_URL=${school.url} -e KEYCLOAK_URL=${keycloak.url} -d vige/school
+    
+If you need a different language by the english you can set the i18 variable. A sample to start the docker container with a italian language:
+
+    docker run -p 8080:8080 -p 8180:8180 -e INST_LANG=it_IT -d vige/school
