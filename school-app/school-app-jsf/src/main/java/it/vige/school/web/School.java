@@ -1,11 +1,6 @@
 package it.vige.school.web;
 
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class School implements Serializable {
 
