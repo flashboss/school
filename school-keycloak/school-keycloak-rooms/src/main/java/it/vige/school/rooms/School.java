@@ -1,13 +1,6 @@
 package it.vige.school.rooms;
 
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.keycloak.json.StringListMapDeserializer;
-
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 public class School implements Serializable {
 
@@ -16,9 +9,6 @@ public class School implements Serializable {
 	private String id;
 
 	private String description;
-
-	@JsonDeserialize(using = StringListMapDeserializer.class)
-	protected Map<String, List<String>> rooms = new HashMap<String, List<String>>();
 
 	public String getId() {
 		return id;
@@ -34,14 +24,6 @@ public class School implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public Map<String, List<String>> getRooms() {
-		return rooms;
-	}
-
-	public void setRooms(Map<String, List<String>> rooms) {
-		this.rooms = rooms;
 	}
 
 	@Override
