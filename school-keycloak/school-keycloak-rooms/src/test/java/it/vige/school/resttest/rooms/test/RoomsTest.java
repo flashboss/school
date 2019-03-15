@@ -34,6 +34,9 @@ import org.keycloak.authorization.client.Configuration;
 import org.keycloak.common.VerificationException;
 import org.keycloak.representations.AccessTokenResponse;
 
+import com.mashape.unirest.http.JsonNode;
+import com.mashape.unirest.http.Unirest;
+
 import it.vige.school.RestCaller;
 import it.vige.school.rooms.Room;
 import it.vige.school.rooms.School;
@@ -79,6 +82,23 @@ public class RoomsTest extends RestCaller {
 	}
 
 	public AccessTokenResponse authenticate() throws IOException, VerificationException {
+
+
+		try {
+			String code = Unirest.get(
+					"http://localhost:8180/auth/realms/school-domain/protocol/openid-connect/auth?scope=appointments%20contacts&audience=appointments:api&response_type=code&client_id=school&callback_uri=http://localhost:8080/school")
+					.asString().getBody();
+
+			JsonNode jsonResponse = Unirest
+					.post("http://localhost:8180/auth/realms/school-domain/protocol/openid-connect/token")
+					.field("client_id", "school").field("grant_type", "authorization_code").field("username", "root")
+					.field("password", "gtn").field("client_secret", "bce5816d-98c4-404f-a18d-bcc5cb005c79")
+					.field("callback_url", "http://localhost:8080/school")
+					.field("auth_url", "http://localhost:8180/auth/realms/school-domain/protocol/openid-connect/auth")
+					.field("code", code).asJson().getBody();
+		} catch (Exception ex) {
+
+		}
 
 		InputStream configStream = currentThread().getContextClassLoader().getResourceAsStream("keycloak.json");
 		AuthzClient authzClient = create(readValue(configStream, Configuration.class));
