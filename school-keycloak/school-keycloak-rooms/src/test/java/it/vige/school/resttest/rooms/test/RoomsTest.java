@@ -13,33 +13,24 @@
  ******************************************************************************/
 package it.vige.school.resttest.rooms.test;
 
+import static java.lang.Thread.currentThread;
 import static java.util.Arrays.asList;
-import static javax.ws.rs.client.ClientBuilder.newClient;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.keycloak.OAuth2Constants.CLIENT_CREDENTIALS;
-import static org.keycloak.OAuth2Constants.GRANT_TYPE;
-import static org.keycloak.adapters.KeycloakDeploymentBuilder.build;
-import static org.keycloak.adapters.authentication.ClientCredentialsProviderUtils.setClientCredentials;
+import static org.keycloak.authorization.client.AuthzClient.create;
 import static org.keycloak.util.JsonSerialization.readValue;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.HashMap;
+import java.io.InputStream;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.client.Invocation.Builder;
-import javax.ws.rs.core.Form;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
 
 import org.junit.jupiter.api.Test;
-import org.keycloak.adapters.KeycloakDeployment;
+import org.keycloak.authorization.client.AuthzClient;
+import org.keycloak.authorization.client.Configuration;
 import org.keycloak.common.VerificationException;
 import org.keycloak.representations.AccessTokenResponse;
 
@@ -64,7 +55,7 @@ public class RoomsTest extends RestCaller {
 		Room firstRoom = rooms.get(0);
 		school.getRooms().put("myschool", asList("" + firstRoom.getClazz() + firstRoom.getSection()));
 		String authorization = authenticate().getToken();
-		response = post(authorization, url_schools + "createSchool", school);
+		response = post(authorization, url_schools, school);
 		school = response.readEntity(School.class);
 		assertNotNull(school, "The school was inserted");
 		response.close();
@@ -89,27 +80,12 @@ public class RoomsTest extends RestCaller {
 
 	public AccessTokenResponse authenticate() throws IOException, VerificationException {
 
-		FileInputStream config = new FileInputStream("src/test/resources/keycloak.json");
-		KeycloakDeployment deployment = build(config);
+		InputStream configStream = currentThread().getContextClassLoader().getResourceAsStream("keycloak.json");
+		AuthzClient authzClient = create(readValue(configStream, Configuration.class));
+		// send the authorization request to the server in order to
+		// obtain an access token granted to the user
 
-		Form params = new Form();
-		params.param(GRANT_TYPE, CLIENT_CREDENTIALS);
-		Map<String, String> reqHeaders = new HashMap<>();
-		Map<String, String> reqParams = new HashMap<>();
-		setClientCredentials(deployment, reqHeaders, reqParams);
-
-		Client client = newClient();
-		Builder request = client.target(deployment.getTokenUrl()).request();
-
-		for (Entry<String, String> header : reqHeaders.entrySet()) {
-			request.header(header.getKey(), header.getValue());
-		}
-		for (Entry<String, String> param : reqParams.entrySet()) {
-			params.param(param.getKey(), param.getValue());
-		}
-
-		String json = request.post(Entity.form(params), String.class);
-		AccessTokenResponse tokenResp = readValue(json, AccessTokenResponse.class);
+		AccessTokenResponse tokenResp = authzClient.obtainAccessToken("root", "gtn");
 
 		return tokenResp;
 
