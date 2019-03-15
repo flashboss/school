@@ -61,6 +61,7 @@ public class PresenceTest extends RestCaller {
 		List<UserRepresentation> users = response.readEntity(new GenericType<List<UserRepresentation>>() {
 		});
 		assertEquals(100, users.size(), "The query finds the first 100 users ");
+		
 		Calendar currentDay = getCalendarByDate(today());
 		Presence presence = new Presence();
 		presence.setDay(currentDay);
@@ -71,26 +72,31 @@ public class PresenceTest extends RestCaller {
 		presence = response.readEntity(Presence.class);
 		assertNotNull(presence, "The presence was inserted");
 		response.close();
+		
 		response = post(authorization, url + "findPresencesByUser", firstUser);
 		List<Presence> presences = response.readEntity(new GenericType<List<Presence>>() {
 		});
 		assertEquals(1, presences.size(), "The presence is found");
 		response.close();
+		
 		response = post(authorization, url + "findPresencesByDay", currentDay);
 		presences = response.readEntity(new GenericType<List<Presence>>() {
 		});
 		assertEquals(1, presences.size(), "The presence is found");
 		response.close();
+		
 		response = post(authorization, url + "findPresencesByMonth", currentDay);
 		presences = response.readEntity(new GenericType<List<Presence>>() {
 		});
 		assertEquals(1, presences.size(), "The presence is found");
 		response.close();
+		
 		response = post(authorization, url + "findPresencesByYear", currentDay);
 		presences = response.readEntity(new GenericType<List<Presence>>() {
 		});
 		assertEquals(1, presences.size(), "The presence is found");
 		response.close();
+		
 		response = post(authorization, url + "findPresenceByUserAndDay", presence);
 		presence = response.readEntity(Presence.class);
 		assertNotNull(presence, "The presence was inserted");
@@ -98,8 +104,10 @@ public class PresenceTest extends RestCaller {
 		response = post(authorization, url + "createPresence", presence);
 		assertEquals(500, response.getStatus(), "We cannot insert duplicates presences");
 		response.close();
+		
 		response = post(authorization, url + "removePresence", presence);
 		response.close();
+		
 		response = post(authorization, url + "findPresencesByUser", firstUser);
 		presences = response.readEntity(new GenericType<List<Presence>>() {
 		});
@@ -109,7 +117,7 @@ public class PresenceTest extends RestCaller {
 
 	public AccessTokenResponse authenticate() throws IOException, VerificationException {
 
-		FileInputStream config = new FileInputStream("src/main/webapp/WEB-INF/keycloak.json");
+		FileInputStream config = new FileInputStream("src/test/resources/keycloak.json");
 		KeycloakDeployment deployment = build(config);
 
 		Form params = new Form();

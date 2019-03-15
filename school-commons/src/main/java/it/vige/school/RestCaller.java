@@ -59,6 +59,33 @@ public abstract class RestCaller {
 		return target.request().post(restEntity);
 	}
 
+	protected Response put(String authorization, String url, Object entity) {
+		Client client = newClient();
+		Jsonb jsonb = create();
+		String json = jsonb.toJson(entity);
+		Supplier<String> accessTokenProvider = () -> {
+			return authorization;
+		};
+		client.register(new BearerAuthRequestFilter(accessTokenProvider));
+		WebTarget target = client.target(url);
+		Entity<String> restEntity = entity(json, APPLICATION_JSON);
+		return target.request().put(restEntity);
+	}
+
+	protected Response delete(String authorization, String url, Map<String, Object> params) {
+		Client client = newClient();
+		Supplier<String> accessTokenProvider = () -> {
+			return authorization;
+		};
+		client.register(new BearerAuthRequestFilter(accessTokenProvider));
+		WebTarget target = client.target(url);
+		if (params != null) {
+			for (Map.Entry<String, Object> param : params.entrySet())
+				target = target.queryParam(param.getKey(), param.getValue());
+		}
+		return target.request().delete();
+	}
+
 	private static class BearerAuthRequestFilter implements ClientRequestFilter {
 
 		private final Supplier<String> accessTokenProvider;

@@ -52,19 +52,6 @@
 			<properties>
 				<maven.replacer.value>localhost</maven.replacer.value>
 			</properties>
-			<build>
-				<plugins>
-					<plugin>
-						<artifactId>maven-surefire-plugin</artifactId>
-						<version>${maven.surefire.plugin.version}</version>
-						<configuration>
-							<excludes>
-								<exclude>**/resttest/**</exclude>
-							</excludes>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
 		</profile>
 
 		<profile>
@@ -72,19 +59,6 @@
 			<properties>
 				<maven.replacer.value>${keycloak.url}</maven.replacer.value>
 			</properties>
-			<build>
-				<plugins>
-					<plugin>
-						<artifactId>maven-surefire-plugin</artifactId>
-						<version>${maven.surefire.plugin.version}</version>
-						<configuration>
-							<excludes>
-								<exclude>**/resttest/**</exclude>
-							</excludes>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
 		</profile>
 
 		<profile>
