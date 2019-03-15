@@ -1,5 +1,7 @@
 package it.vige.school.rooms.rest;
 
+import static it.vige.school.Constants.ADMIN_ROLE;
+
 import javax.ws.rs.ForbiddenException;
 import javax.ws.rs.NotAuthorizedException;
 import javax.ws.rs.Path;
@@ -32,7 +34,7 @@ public class RoomsRestResource {
 		if (auth == null) {
 			throw new NotAuthorizedException("Bearer");
 		} else if (auth.getUser().getGroups() == null
-				|| auth.getUser().getGroups().stream().filter(x -> x.getName().equals("admin")).count() == 0) {
+				|| auth.getUser().getGroups().stream().filter(x -> x.getName().equals(ADMIN_ROLE)).count() == 0) {
 			throw new ForbiddenException("Does not have realm admin role");
 		}
 	}
