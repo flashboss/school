@@ -34,7 +34,7 @@ ENV TERM xterm
 ENV SCHOOL_URL=localhost
 ENV KEYCLOAK_URL=localhost
 
-ENV INST_LANG en_EN
+ENV INST_LANG C
 WORKDIR /workspace
 COPY / /workspace/school
 RUN sudo chown -R wildfly:wildfly /workspace
@@ -55,7 +55,8 @@ RUN rm -Rf /home/wildfly/.m2 && \
 	sudo cp /opt/keycloak/docs/contrib/scripts/init.d/wildfly-init-debian.sh /etc/init.d/school && \
 	rm -Rf /workspace/school
 	
-CMD mkdir -p /opt/keycloak/realm-config/execution && \
+CMD export LC_ALL="$INST_LANG.UTF-8" && \
+	mkdir -p /opt/keycloak/realm-config/execution && \
 	cp /opt/keycloak/realm-config/school-domain-realm.json /opt/keycloak/realm-config/execution && \
 	sed -i -e 's/MAVEN_REPLACER_SCHOOL_SERVER_URL/'"$SCHOOL_URL"'/g' /opt/keycloak/realm-config/execution/school-domain-realm.json && \
 	sudo service keycloak start && \
