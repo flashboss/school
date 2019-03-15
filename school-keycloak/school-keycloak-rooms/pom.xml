@@ -57,6 +57,11 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>it.vige</groupId>
+			<artifactId>school-commons</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.keycloak</groupId>
 			<artifactId>keycloak-server-spi</artifactId>
 			<version>${keycloak.version}</version>

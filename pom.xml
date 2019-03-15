@@ -96,6 +96,7 @@
 	</dependencies>
 
 	<modules>
+		<module>school-commons</module>
 		<module>school-keycloak</module>
 		<module>school-app</module>
 	</modules>
