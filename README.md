@@ -127,7 +127,7 @@ To install the docker image run the command:
     
 To run the image run the command:
 
-    docker run -p 8080:8080 -p 8180:8180 -vige/school
+    docker run -p 8080:8080 -p 8180:8180 vige/school
     
 If you want start it in background mode:
 
