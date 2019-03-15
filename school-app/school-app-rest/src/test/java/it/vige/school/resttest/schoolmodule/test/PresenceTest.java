@@ -16,6 +16,7 @@ package it.vige.school.resttest.schoolmodule.test;
 import static it.vige.school.Utils.getCalendarByDate;
 import static it.vige.school.Utils.today;
 import static javax.ws.rs.client.ClientBuilder.newClient;
+import static javax.ws.rs.client.Entity.form;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.keycloak.OAuth2Constants.CLIENT_CREDENTIALS;
@@ -33,7 +34,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.ws.rs.client.Client;
-import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation.Builder;
 import javax.ws.rs.core.Form;
 import javax.ws.rs.core.GenericType;
@@ -136,7 +136,7 @@ public class PresenceTest extends RestCaller {
 			params.param(param.getKey(), param.getValue());
 		}
 
-		String json = request.post(Entity.form(params), String.class);
+		String json = request.post(form(params), String.class);
 		AccessTokenResponse tokenResp = readValue(json, AccessTokenResponse.class);
 
 		return tokenResp;
