@@ -1,0 +1,13 @@
+{
+	"realm": "school-domain",
+	"auth-server-url": "http://localhost:8180/auth",
+	"ssl-required": "none",
+	"resource": "school",
+	"credentials": {
+		"secret": "bce5816d-98c4-404f-a18d-bcc5cb005c79"
+	},
+	"confidential-port": 0,
+	"policy-enforcer": {
+		
+	}
+}

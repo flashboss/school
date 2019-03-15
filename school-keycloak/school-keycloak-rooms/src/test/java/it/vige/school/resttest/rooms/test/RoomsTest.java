@@ -13,9 +13,11 @@
  ******************************************************************************/
 package it.vige.school.resttest.rooms.test;
 
+import static java.util.Arrays.asList;
 import static javax.ws.rs.client.ClientBuilder.newClient;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.keycloak.OAuth2Constants.CLIENT_CREDENTIALS;
 import static org.keycloak.OAuth2Constants.GRANT_TYPE;
 import static org.keycloak.adapters.KeycloakDeploymentBuilder.build;
@@ -24,7 +26,6 @@ import static org.keycloak.util.JsonSerialization.readValue;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,34 +49,47 @@ import it.vige.school.rooms.School;
 
 public class RoomsTest extends RestCaller {
 
-	private final static String url_schools = "http://localhost:8180/auth/admin/realms/school-domain/rooms/schools";
-	private final static String url_rooms = "http://localhost:8180/auth/admin/realms/school-domain/rooms/rooms";
+	private final static String url_schools = "http://localhost:8180/auth/realms/school-domain/rooms/schools";
+	private final static String url_rooms = "http://localhost:8180/auth/realms/school-domain/rooms/rooms";
 
 	@Test
 	public void setSchool() throws IOException, VerificationException {
-		String authorization = authenticate().getToken();
-		Response response = get(authorization, url_rooms, null);
+		Response response = get(null, url_rooms, null);
 		List<Room> rooms = response.readEntity(new GenericType<List<Room>>() {
 		});
-		assertEquals(100, rooms.size(), "The query finds the first 100 rooms ");
+		assertEquals(111, rooms.size(), "The query finds all 111 rooms ");
+
 		School school = new School();
 		school.setDescription("My School");
 		Room firstRoom = rooms.get(0);
-		school.getRooms().put("myschool", Arrays.asList("" + firstRoom.getClazz() + firstRoom.getSection()));
+		school.getRooms().put("myschool", asList("" + firstRoom.getClazz() + firstRoom.getSection()));
+		String authorization = authenticate().getToken();
 		response = post(authorization, url_schools + "createSchool", school);
 		school = response.readEntity(School.class);
 		assertNotNull(school, "The school was inserted");
 		response.close();
-		response = get(authorization, url_schools + school.getId(), null);
+
+		response = get(null, url_schools + school.getId(), null);
 		List<School> schools = response.readEntity(new GenericType<List<School>>() {
 		});
 		assertEquals(1, schools.size(), "The school is found");
+		response.close();
+
+		school.setDescription("new description");
+		response = put(authorization, url_schools, school);
+		school = response.readEntity(School.class);
+		assertEquals("new description", school.getDescription(), "The school was updated");
+		response.close();
+
+		response = delete(authorization, url_schools + school.getId(), null);
+		school = response.readEntity(School.class);
+		assertNull(school, "The school was deleted");
 		response.close();
 	}
 
 	public AccessTokenResponse authenticate() throws IOException, VerificationException {
 
-		FileInputStream config = new FileInputStream("src/main/webapp/WEB-INF/keycloak.json");
+		FileInputStream config = new FileInputStream("src/test/resources/keycloak.json");
 		KeycloakDeployment deployment = build(config);
 
 		Form params = new Form();
