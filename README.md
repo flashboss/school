@@ -139,4 +139,4 @@ Both the executions will run using localhost as host connection name. If you nee
     
 If you need a different language by the english you can set the i18 variable. A sample to start the docker container with a italian language:
 
-    docker run -p 8080:8080 -p 8180:8180 -e INST_LANG=it_IT -d vige/school
+    docker run -p 8080:8080 -p 8180:8180 -e LC_ALL=it_IT.UTF-8 -d vige/school
