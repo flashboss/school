@@ -76,7 +76,7 @@ public class SchoolResource {
 	 * Update the school
 	 *
 	 * @param school
-	 * @return
+	 * @return the rest response
 	 */
 	@PUT
 	@Path("{school.id}")
