@@ -53,11 +53,11 @@
 	</developers>
 
 	<properties>
-		<maven.compiler.source>11</maven.compiler.source>
-		<maven.compiler.target>11</maven.compiler.target>
+		<maven.compiler.source>12</maven.compiler.source>
+		<maven.compiler.target>12</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spec.javaee.version>8.0</spec.javaee.version>
-		<primefaces.version>6.2</primefaces.version>
+		<primefaces.version>7.0.RC3</primefaces.version>
 		<maven.war.plugin.version>3.2.2</maven.war.plugin.version>
 		<maven.ejb.plugin.version>3.0.1</maven.ejb.plugin.version>
 		<maven.source.plugin.version>3.0.1</maven.source.plugin.version>
@@ -79,6 +79,15 @@
 	<build>
 		<finalName>${project.artifactId}</finalName>
 	</build>
+
+	<repositories>
+		<repository>
+			<id>prime-repo</id>
+			<name>PrimeFaces Maven Repository</name>
+			<url>http://repository.primefaces.org</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
 
 	<dependencies>
 		<dependency>
