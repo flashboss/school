@@ -12,16 +12,16 @@
 
 FROM openjdk
 EXPOSE 8000 8080 8180 9990 10090 8443 8543 22
-RUN apk update && \
-	apk -y install sudo locales openssh-server && \
+RUN apt-get update && \
+	apt-get -y install sudo locales openssh-server && \
     mkdir /var/run/sshd && \
     sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd && \
     echo "%sudo ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
     useradd -u 1000 -G users,sudo -d /home/wildfly --shell /bin/bash -m wildfly && \
     echo "wildfly:secret" | chpasswd && \
-    apk update && \
-    apk clean && \
-    apk -y autoremove && \
+    apt-get update && \
+    apt-get clean && \
+    apt-get -y autoremove && \
     rm -rf /var/lib/apt/lists/*
 
 USER wildfly
