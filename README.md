@@ -127,16 +127,20 @@ To install the docker image run the command:
     
 To run the image run the command:
 
-    docker run -p 8080:8080 -p 8180:8180 vige/school
+    docker run -p 8080:8080 -p 8180:8180 --name school vige/school
     
 If you want start it in background mode:
 
-    docker run -p 8080:8080 -p 8180:8180 -d vige/school
+    docker run -p 8080:8080 -p 8180:8180 -d --name school vige/school
 
 Both the executions will run using localhost as host connection name. If you need to specify a different host, for example if you are in a remote cloud, you must specify the hosts for keycloak and the school app so:
 
-    docker run -p 8080:8080 -p 8180:8180 -e SCHOOL_URL=${school.url} -e KEYCLOAK_URL=${keycloak.url} -d vige/school
+    docker run -p 8080:8080 -p 8180:8180 -e SCHOOL_URL=${school.url} -e KEYCLOAK_URL=${keycloak.url} -d --name school vige/school
     
 If you need a different language by the english you can set the i18 variable. A sample to start the docker container with a italian language:
 
-    docker run -p 8080:8080 -p 8180:8180 -e LC_ALL=it_IT.UTF-8 -d vige/school
+    docker run -p 8080:8080 -p 8180:8180 -e LC_ALL=it_IT.UTF-8 -d --name school vige/school
+
+Then connect to localhost:8080/school with root/gtn to start a session as admin in the school webapp.
+If you want to configure, add schools, classes and new users or approve users connect to: localhost:8180/auth with root/gtn in the keycloak webapp.
+If you want connect in the keycloak webapp as superuser connect to it with admin/admin
