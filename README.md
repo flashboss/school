@@ -141,6 +141,6 @@ If you need a different language by the english you can set the i18 variable. A 
 
     docker run -p 8080:8080 -p 8180:8180 -e LC_ALL=it_IT.UTF-8 -d --name school vige/school
 
-Then connect to localhost:8080/school with root/gtn to start a session as admin in the school webapp.
-If you want to configure, add schools, classes and new users or approve users connect to: localhost:8180/auth with root/gtn in the keycloak webapp.
+Then connect to http://localhost:8080/school with root/gtn to start a session as admin in the school webapp.
+If you want to configure, add schools, classes and new users or approve users connect to: http://localhost:8180/auth with root/gtn in the keycloak webapp.
 If you want connect in the keycloak webapp as superuser connect to it with admin/admin
