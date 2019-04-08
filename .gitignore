@@ -6,3 +6,5 @@ school-base
 .metadata
 .tern-project
 bin
+.idea
+*.iml
