@@ -13,7 +13,7 @@
 FROM openjdk
 EXPOSE 8000 8080 8180 9990 10090 8443 8543 22
 RUN yum -y update && \
-	yum -y install sudo locales openssh-server && \
+	yum -y install sudo wget locales openssh-server && \
     mkdir /var/run/sshd && \
     sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd && \
     echo "%sudo ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
