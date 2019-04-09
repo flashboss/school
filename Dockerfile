@@ -13,7 +13,7 @@
 FROM openjdk
 EXPOSE 8000 8080 8180 9990 10090 8443 8543 22
 RUN yum -y update && \
-	yum -y install sudo wget locales openssh-server && \
+	yum -y install sudo wget openssh-server && \
     mkdir /var/run/sshd && \
     sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd && \
     echo "%wheel ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
@@ -33,7 +33,6 @@ ENV TERM xterm
 ENV SCHOOL_URL=localhost
 ENV KEYCLOAK_URL=localhost
 
-ENV LC_ALL C.UTF-8
 WORKDIR /workspace
 COPY / /workspace/school
 RUN sudo chown -R wildfly:wildfly /workspace
@@ -54,9 +53,7 @@ RUN rm -Rf /home/wildfly/.m2 && \
 	sudo cp /opt/keycloak/docs/contrib/scripts/init.d/wildfly-init-debian.sh /etc/init.d/school && \
 	rm -Rf /workspace/school
 	
-CMD sudo sed -i '/^#.* '"$LC_ALL"' /s/^#//' /etc/locale.gen && \
-	sudo locale-gen && \
-	mkdir -p /opt/keycloak/realm-config/execution && \
+CMD mkdir -p /opt/keycloak/realm-config/execution && \
 	cp /opt/keycloak/realm-config/school-domain-realm.json /opt/keycloak/realm-config/execution && \
 	sed -i -e 's/MAVEN_REPLACER_SCHOOL_SERVER_URL/'"$SCHOOL_URL"'/g' /opt/keycloak/realm-config/execution/school-domain-realm.json && \
 	sudo service keycloak start && \
