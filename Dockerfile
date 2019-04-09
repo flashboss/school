@@ -49,8 +49,8 @@ RUN rm -Rf /home/wildfly/.m2 && \
 	sudo mv /workspace/school/keycloak /etc/default/keycloak && \
 	sudo echo "export JBOSS_OPTS=\"-b 0.0.0.0\"" > /workspace/school/school && \
 	sudo mv /workspace/school/school /etc/default/school && \
-	sudo cp /opt/keycloak/docs/contrib/scripts/init.d/wildfly-init-debian.sh /etc/init.d/keycloak && \
-	sudo cp /opt/keycloak/docs/contrib/scripts/init.d/wildfly-init-debian.sh /etc/init.d/school && \
+	sudo cp /opt/keycloak/docs/contrib/scripts/init.d/wildfly-init-redhat.sh /etc/init.d/keycloak && \
+	sudo cp /opt/keycloak/docs/contrib/scripts/init.d/wildfly-init-redhat.sh /etc/init.d/school && \
 	rm -Rf /workspace/school
 	
 CMD mkdir -p /opt/keycloak/realm-config/execution && \
