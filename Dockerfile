@@ -16,8 +16,8 @@ RUN yum -y update && \
 	yum -y install sudo wget locales openssh-server && \
     mkdir /var/run/sshd && \
     sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd && \
-    echo "%sudo ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
-    useradd -u 1000 -G users -d /home/wildfly --shell /bin/bash -m wildfly && \
+    echo "%wheel ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
+    useradd -u 1000 -G users,wheel -d /home/wildfly --shell /bin/bash -m wildfly && \
     echo "wildfly:secret" | chpasswd && \
     yum -y update && \
     yum clean all && \
