@@ -13,9 +13,7 @@
 FROM openjdk
 EXPOSE 8000 8080 8180 9990 10090 8443 8543 22
 RUN yum -y update && \
-	yum -y install sudo wget openssh-server initscripts && \
-    mkdir /var/run/sshd && \
-    sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd && \
+	yum -y install sudo wget initscripts && \
     echo "%wheel ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
     useradd -u 1000 -G users,wheel -d /home/wildfly --shell /bin/bash -m wildfly && \
     echo "wildfly:secret" | chpasswd && \
@@ -60,5 +58,4 @@ CMD mkdir -p /opt/keycloak/realm-config/execution && \
 	cp /opt/school/keycloak/keycloak.json /opt/school/standalone/deployments/school.war/WEB-INF && \
 	sed -i -e 's/MAVEN_REPLACER_AUTH_SERVER_URL/'"$KEYCLOAK_URL"'/g' /opt/school/standalone/deployments/school.war/WEB-INF/keycloak.json && \
 	sudo service school start && \
-	sudo /usr/sbin/sshd -D && \
     tail -f /dev/null
