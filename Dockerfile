@@ -11,7 +11,7 @@
 # limitations under the License.
 
 FROM openjdk
-EXPOSE 8000 8080 8180 9990 10090 8443 8543 22
+EXPOSE 8000 8080 8180 9990 10090 8443 8543
 RUN yum -y update && \
 	yum -y install sudo wget initscripts && \
     echo "%wheel ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
