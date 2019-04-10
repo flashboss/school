@@ -139,7 +139,7 @@ Both the executions will run using localhost as host connection name. If you nee
     
 If you need a different language by the english you can set the i18 variable. A sample to start the docker container with a italian language:
 
-    docker run -p 8080:8080 -p 8180:8180 -e SCHOOL_URL=${school.url} -e KEYCLOAK_URL=${keycloak.url} -e TZ=Europe/Rome -e LANG=it_IT.UTF-8 -e LANGUAGE=it_IT.UTF-8 -d --name school vige/school
+    docker run -p 8080:8080 -p 8180:8180 -e TZ=Europe/Rome -e LANG=it_IT.UTF-8 -e LANGUAGE=it_IT.UTF-8 -d --name school vige/school
 
 Then connect to http://localhost:8080/school with root/gtn to start a session as admin in the school webapp.
 If you want to configure, add schools, classes and new users or approve users connect to: http://localhost:8180/auth with root/gtn in the keycloak webapp.
