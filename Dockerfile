@@ -10,7 +10,7 @@
 # See the License for the specific language governing permissions and        
 # limitations under the License.
 
-FROM openjdk:12-jdk-oraclelinux7
+FROM openjdk:12-jdk-alpine3.9
 EXPOSE 8000 8080 8180 9990 10090 8443 8543
 RUN yum -y update && \
 	yum -y install sudo wget initscripts && \
