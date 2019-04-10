@@ -10,12 +10,10 @@
 # See the License for the specific language governing permissions and        
 # limitations under the License.
 
-FROM openjdk:12-jdk-alpine3.8
-EXPOSE 8000 8080 8180 9990 10090 8443 8543 22
+FROM ubuntu
+EXPOSE 8000 8080 8180 9990 10090 8443 8543
 RUN apt-get update && \
-	apt-get -y install sudo locales openssh-server && \
-    mkdir /var/run/sshd && \
-    sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd && \
+	apt-get -y install openjdk sudo locales openssh-server && \
     echo "%sudo ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
     useradd -u 1000 -G users,sudo -d /home/wildfly --shell /bin/bash -m wildfly && \
     echo "wildfly:secret" | chpasswd && \
@@ -64,5 +62,4 @@ CMD sudo sed -i '/^#.* '"$LC_ALL"' /s/^#//' /etc/locale.gen && \
 	cp /opt/school/keycloak/keycloak.json /opt/school/standalone/deployments/school.war/WEB-INF && \
 	sed -i -e 's/MAVEN_REPLACER_AUTH_SERVER_URL/'"$KEYCLOAK_URL"'/g' /opt/school/standalone/deployments/school.war/WEB-INF/keycloak.json && \
 	sudo service school start && \
-	sudo /usr/sbin/sshd -D && \
     tail -f /dev/null
