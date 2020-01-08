@@ -20,7 +20,7 @@
 
 	<groupId>it.vige</groupId>
 	<artifactId>school</artifactId>
-	<version>1.4.0-SNAPSHOT</version>
+	<version>1.4.0</version>
 	<packaging>pom</packaging>
 	<name>School Parent</name>
 	<description>School Web and Portlet Application Parent Aggregator</description>
@@ -39,7 +39,7 @@
 	<scm>
 		<connection>svn:git:https://github.com/flashboss/school.git</connection>
 		<developerConnection>svn:git:https://github.com/flashboss/school.git</developerConnection>
-		<tag>1.4.X-SNAPSHOT</tag>
+		<tag>1.4.0</tag>
 		<url>svn:git:https://github.com/flashboss/school.git</url>
 	</scm>
 	<developers>
