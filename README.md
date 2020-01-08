@@ -1,6 +1,6 @@
 School
 =============
-Is a javaee 8 based application designed as standalone application, portlet, service layer and api.
+Is a jakartaee 8 based application designed as standalone application, portlet, service layer and api.
 It is an open source project. This means you can download the School package, throw it into your deploy directory and gain fully featured School Application or Portlet.
 
 It covers all the following features:
@@ -9,12 +9,12 @@ It covers all the following features:
 - Browsing pupils and teachers.
 - Report the presences.
 
-This draft version has been tested on WildFly 17.0.0.Beta1-SNAPSHOT.
+This draft version has been tested on WildFly 18.0.1.Final.
 
 Requirements
 ------------
 
-- JDK 12
+- JDK 13
 - Maven 3.6.x
 
 
@@ -50,7 +50,7 @@ If you want automatically prepare a local active WildFly server with the REST ap
     
 If you want automatically prepare a local active Keycloak server:
 
-    mvn clean -Pproduction,prepare-keycloak
+    mvn install -Pproduction,prepare-keycloak
     
 If you want to start the WildFly prepared instance and execute the JSF application:
 
