@@ -13,7 +13,7 @@
 FROM ubuntu
 EXPOSE 8000 8080 8180 9990 10090 8443 8543
 RUN apt-get update && \
-	apt-get -y install java-12-openjdk sudo locales openssh-server && \
+	apt-get -y install java-13-openjdk sudo locales openssh-server && \
     echo "%sudo ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
     useradd -u 1000 -G users,sudo -d /home/wildfly --shell /bin/bash -m wildfly && \
     echo "wildfly:secret" | chpasswd && \
@@ -24,7 +24,7 @@ RUN apt-get update && \
 
 USER wildfly
 
-ENV MAVEN_VERSION=3.6.0
+ENV MAVEN_VERSION=3.6.2
 
 RUN mkdir /home/wildfly/apache-maven-$MAVEN_VERSION && \
   	wget -qO- "http://apache.ip-connect.vn.ua/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz" | tar -zx --strip-components=1 -C /home/wildfly/apache-maven-$MAVEN_VERSION/
