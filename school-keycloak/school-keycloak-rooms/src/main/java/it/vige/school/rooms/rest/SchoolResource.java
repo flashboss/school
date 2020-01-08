@@ -75,7 +75,7 @@ public class SchoolResource {
 	/**
 	 * Update the school
 	 *
-	 * @param school
+	 * @param school the school to update
 	 * @return the rest response
 	 */
 	@PUT
