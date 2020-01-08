@@ -53,27 +53,27 @@
 	</developers>
 
 	<properties>
-		<maven.compiler.source>12</maven.compiler.source>
-		<maven.compiler.target>12</maven.compiler.target>
+		<maven.compiler.source>13</maven.compiler.source>
+		<maven.compiler.target>13</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<spec.javaee.version>8.0</spec.javaee.version>
-		<primefaces.version>7.0.RC3</primefaces.version>
-		<maven.war.plugin.version>3.2.2</maven.war.plugin.version>
+		<spec.jakartaee.version>8.0.0</spec.jakartaee.version>
+		<primefaces.version>7.0</primefaces.version>
+		<maven.war.plugin.version>3.2.3</maven.war.plugin.version>
 		<maven.ejb.plugin.version>3.0.1</maven.ejb.plugin.version>
-		<maven.source.plugin.version>3.0.1</maven.source.plugin.version>
-		<maven.javadoc.plugin.version>3.0.1</maven.javadoc.plugin.version>
+		<maven.source.plugin.version>3.2.1</maven.source.plugin.version>
+		<maven.javadoc.plugin.version>3.1.1</maven.javadoc.plugin.version>
 		<maven.gpg.plugin.version>1.6</maven.gpg.plugin.version>
-		<maven.surefire.plugin.version>3.0.0-M3</maven.surefire.plugin.version>
+		<maven.surefire.plugin.version>3.0.0-M4</maven.surefire.plugin.version>
 		<maven.replacer.plugin.version>1.5.3</maven.replacer.plugin.version>
-		<maven.docker.plugin.version>0.28.0</maven.docker.plugin.version>
+		<maven.docker.plugin.version>0.31.0</maven.docker.plugin.version>
 		<maven.resources.plugin.version>3.1.0</maven.resources.plugin.version>
 		<ejb.version>3.2</ejb.version>
-		<wildfly.version>17.0.0.Beta1-SNAPSHOT</wildfly.version>
-		<wildfly.maven.plugin.version>2.0.1.Final</wildfly.maven.plugin.version>
-		<jboss.logging.version>3.3.2.Final</jboss.logging.version>
-		<resteasy.version>3.6.3.Final</resteasy.version>
-		<junit.version>5.4.0</junit.version>
-		<keycloak.version>5.0.0</keycloak.version>
+		<wildfly.version>18.0.1.Final</wildfly.version>
+		<wildfly.maven.plugin.version>2.0.2.Final</wildfly.maven.plugin.version>
+		<jboss.logging.version>3.4.1.Final</jboss.logging.version>
+		<resteasy.version>3.9.1.Final</resteasy.version>
+		<junit.version>5.5.2</junit.version>
+		<keycloak.version>8.0.1</keycloak.version>
 	</properties>
 
 	<build>
@@ -91,9 +91,9 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>javax</groupId>
-			<artifactId>javaee-api</artifactId>
-			<version>${spec.javaee.version}</version>
+			<groupId>jakarta.platform</groupId>
+			<artifactId>jakarta.jakartaee-api</artifactId>
+			<version>${spec.jakartaee.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
