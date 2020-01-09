@@ -13,7 +13,7 @@
 FROM ubuntu
 EXPOSE 8000 8080 8180 9990 10090 8443 8543
 RUN apt-get update && \
-	apt-get -y install java-13-openjdk sudo locales openssh-server && \
+	apt-get -y install openjdk-13-jdk sudo locales openssh-server && \
     echo "%sudo ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
     useradd -u 1000 -G users,sudo -d /home/wildfly --shell /bin/bash -m wildfly && \
     echo "wildfly:secret" | chpasswd && \
