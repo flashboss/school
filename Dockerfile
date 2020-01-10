@@ -22,7 +22,7 @@ RUN yum -y update && \
 
 USER wildfly
 
-ENV MAVEN_VERSION=3.6.2
+ENV MAVEN_VERSION=3.6.3
 
 RUN mkdir /home/wildfly/apache-maven-$MAVEN_VERSION && \
   	wget -qO- "http://apache.ip-connect.vn.ua/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz" | tar -zx --strip-components=1 -C /home/wildfly/apache-maven-$MAVEN_VERSION/
