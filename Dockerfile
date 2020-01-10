@@ -10,17 +10,15 @@
 # See the License for the specific language governing permissions and        
 # limitations under the License.
 
-FROM ubuntu
+FROM 13-oraclelinux7
 EXPOSE 8000 8080 8180 9990 10090 8443 8543
-RUN apt-get update && \
-	apt-get -y install openjdk-13-jdk sudo locales openssh-server && \
+RUN yum update && \
+	yum -y install sudo wget locales openssh-server && \
     echo "%sudo ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
-    useradd -u 1000 -G users,sudo -d /home/wildfly --shell /bin/bash -m wildfly && \
+    useradd -u 1000 -G users -d /home/wildfly --shell /bin/bash -m wildfly && \
     echo "wildfly:secret" | chpasswd && \
-    apt-get update && \
-    apt-get clean && \
-    apt-get -y autoremove && \
-    rm -rf /var/lib/apt/lists/*
+    yum update && \
+    yum clean all
 
 USER wildfly
 
