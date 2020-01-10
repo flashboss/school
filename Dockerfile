@@ -12,7 +12,7 @@
 
 FROM openjdk:13-oraclelinux7
 EXPOSE 8000 8080 8180 9990 10090 8443 8543
-RUN yum update && \
+RUN yum -y update && \
 	yum -y install sudo maven locales openssh-server && \
     echo "%sudo ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
     useradd -u 1000 -G users -d /home/wildfly --shell /bin/bash -m wildfly && \
