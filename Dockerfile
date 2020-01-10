@@ -10,30 +10,34 @@
 # See the License for the specific language governing permissions and        
 # limitations under the License.
 
-FROM openjdk:13-oraclelinux7
+FROM openjdk:13-jdk
 EXPOSE 8000 8080 8180 9990 10090 8443 8543
-RUN yum update && \
-	yum -y install sudo maven locales openssh-server && \
-    echo "%sudo ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
-    useradd -u 1000 -G users -d /home/wildfly --shell /bin/bash -m wildfly && \
+RUN yum -y update && \
+	yum -y install sudo wget openssh-server && \
+    echo "wildfly ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
+    useradd -u 1000 -G users,wheel -d /home/wildfly --shell /bin/bash -m wildfly && \
     echo "wildfly:secret" | chpasswd && \
-    yum update && \
+    yum -y update && \
     yum clean all
 
 USER wildfly
 
+ENV MAVEN_VERSION=3.6.3
+
+RUN mkdir /home/wildfly/apache-maven-$MAVEN_VERSION && \
+  	wget -qO- "http://apache.ip-connect.vn.ua/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz" | tar -zx --strip-components=1 -C /home/wildfly/apache-maven-$MAVEN_VERSION/
 ENV TERM xterm
 ENV SCHOOL_URL=localhost
 ENV KEYCLOAK_URL=localhost
 
-ENV LC_ALL C.UTF-8
 WORKDIR /workspace
 COPY / /workspace/school
 RUN sudo chown -R wildfly:wildfly /workspace
-RUN cd school && mvn install -Pproduction
-RUN cd school && /mvn package -Pproduction,prepare-school-jsf
-RUN cd school && mvn package -Pproduction,prepare-keycloak
+RUN cd school && /home/wildfly/apache-maven-$MAVEN_VERSION/bin/mvn install -Pproduction
+RUN cd school && /home/wildfly/apache-maven-$MAVEN_VERSION/bin/mvn package -Pproduction,prepare-school-jsf
+RUN cd school && /home/wildfly/apache-maven-$MAVEN_VERSION/bin/mvn package -Pproduction,prepare-keycloak
 RUN rm -Rf /home/wildfly/.m2 && \
+	rm -Rf /home/wildfly/apache-maven-$MAVEN_VERSION && \
 	sudo mv /workspace/school/school-keycloak/target/keycloak-run/wildfly* /opt/keycloak && \
 	sudo mv /workspace/school/school-app/school-app-jsf/target/school-run/wildfly* /opt/school && \
 	sudo chown -R wildfly:wildfly /opt/keycloak && \
@@ -46,9 +50,7 @@ RUN rm -Rf /home/wildfly/.m2 && \
 	sudo cp /opt/keycloak/docs/contrib/scripts/init.d/wildfly-init-debian.sh /etc/init.d/school && \
 	rm -Rf /workspace/school
 
-CMD sudo sed -i '/^#.* '"$LC_ALL"' /s/^#//' /etc/locale.gen && \
-	sudo locale-gen && \
-	mkdir -p /opt/keycloak/realm-config/execution && \
+CMD mkdir -p /opt/keycloak/realm-config/execution && \
 	cp /opt/keycloak/realm-config/school-domain-realm.json /opt/keycloak/realm-config/execution && \
 	sed -i -e 's/MAVEN_REPLACER_SCHOOL_SERVER_URL/'"$SCHOOL_URL"'/g' /opt/keycloak/realm-config/execution/school-domain-realm.json && \
 	sudo service keycloak start && \
