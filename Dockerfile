@@ -10,12 +10,12 @@
 # See the License for the specific language governing permissions and        
 # limitations under the License.
 
-FROM openjdk:13-oraclelinux7
+FROM openjdk:13-jdk
 EXPOSE 8000 8080 8180 9990 10090 8443 8543
 RUN yum -y update && \
 	yum -y install sudo wget openssh-server && \
-    echo "%sudo ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
-    useradd -u 1000 -G users -d /home/wildfly --shell /bin/bash -m wildfly && \
+    echo "wildfly ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
+    useradd -u 1000 -G users,wheel -d /home/wildfly --shell /bin/bash -m wildfly && \
     echo "wildfly:secret" | chpasswd && \
     yum -y update && \
     yum clean all
